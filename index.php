@@ -60,7 +60,7 @@ class TApplication
          */
         else
         {
-            $pagina 	= new curriculum();
+            $pagina 	= new home();
             ob_start();
             $pagina->show();
             $content 	= ob_get_contents();

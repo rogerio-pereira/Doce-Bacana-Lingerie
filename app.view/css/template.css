@@ -1,0 +1,137 @@
+/*
+ *	Arquivo  template.css
+ *	CSS da classe template.class.php
+ *	
+ *	Sistema:	Doce___Bacana_Lingerie
+ *	Autor:      Rogério Eduardo Pereira
+ *	Data:       13/01/2015
+ */
+@font-face 
+{
+	font-family:	"Logotipo";
+	src:			url("../fonts/harngton.eot");
+	src:			local('Logotipo'), url('../fonts/harngton.ttf') format('truetype');
+}
+body
+{
+	margin:		0px;
+	padding:	0px;
+	font-size:	1.6em;
+}
+
+a
+{
+	font-family:		'Logotipo';
+	text-decoration:	none;
+}
+a:hover
+{
+	text-decoration: underline;
+}
+
+header
+{
+	position: absolute;
+	width:		100%;
+}
+
+header figure img
+{
+	position:	absolute;
+	top:		0px;
+	left:		1%;
+}
+header div#headerLogin
+{
+	position:	absolute;
+	top:		60%;
+	right:		13%;
+}
+
+header div#headerLogin a
+{
+	background-image:		url('../img/template/cadeado.png');
+	background-repeat:		no-repeat;
+	background-size:		30px 30px;
+	background-position-x:	0px;
+	
+	padding-left:			30px;
+	
+	
+	color:					#f70d48;
+}
+
+header div#headerCadastro
+{
+	position:				absolute;
+	
+	top:					60%;
+	right:					1%;
+	
+	background-color:		black;
+	
+	-webkit-border-radius:	30px;
+	-moz-border-radius:		30px;
+	border-radius:			30px;
+	
+	padding-left:			15px;
+	padding-right:			15px;
+}
+
+header div#headerCadastro a
+{
+	color: white;
+}
+
+header div#headerBusca
+{
+	position:		absolute;
+	top:			380%;	
+	right:			-2%;
+	margin-right:	3%;
+	height:			100%;
+}
+
+
+header div#headerBusca form input#buscaProduto
+{
+	position:							relative;
+	font-family:						'Logotipo';
+	font-size:							1em;
+	
+	top:								0px;
+	margin-top:							0px;
+	padding-top:						0px;
+	padding-bottom:						0px;
+	padding-left:						20px;
+	
+	-webkit-border-top-left-radius:		30px;
+	-webkit-border-bottom-left-radius:	30px;
+	-moz-border-radius-topleft:			30px;
+	-moz-border-radius-bottomleft:		30px;
+	border-top-left-radius:				30px;
+	border-bottom-left-radius:			30px;
+}
+
+
+header div#headerBusca form label
+{
+	position:		relative;	
+	margin-top:		0px;
+	padding-top:	0px;
+}
+
+header div#headerBusca form label img
+{	
+	height: 29px;
+}
+
+nav#menuPrincipal
+{
+	position:			absolute;
+	top:				23%;
+	left:				1%;
+	width:				98%;
+	
+	background-color:	black;
+}

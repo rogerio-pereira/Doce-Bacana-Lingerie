@@ -1,13 +1,12 @@
 <?php
 
-/*	
-	Classe template
-	Exibe o template principal
-
-	Sistema:	#SISTEMA#
-	Autor: 		Rogério Eduardo Pereira
-	Data: 		22/08/2014
-*/
+/*	Arquivo  template.php
+ *	Template
+ *	
+ *	Sistema:	Doce___Bacana_Lingerie
+ *	Autor:      Rogério Eduardo Pereira
+ *	Data:       11/01/2015
+ */
 class template
 {
 	/*
@@ -34,7 +33,7 @@ class template
 		<!DOCTYPE HTML>
 		<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">
 			<head>
-				<title>		#TITULO# 		</title>
+				<title>		Doce & Bacana Lingerie 		</title>
 			
 				<!--Meta Tags-->
 				<meta name="description" content=	"">
@@ -42,7 +41,7 @@ class template
 				<meta charset='UTF-8' />
 				
 				<!--FavIcon-->
-				<link rel="shortcut icon" type="image/x-icon" href="app.view/img/favicon.ico"/>
+				<link rel="shortcut icon" type="image/x-icon" href="app.view/img/favicon2.ico"/>
 				
 				<!--Acentos-->
 				<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -50,13 +49,41 @@ class template
 				<!--Fontes-->
 				
 				<!--CSS-->
+				<link rel="stylesheet" type="text/css" href="app.view/css/template.css">
 				
 				<!--JQuery-->
 				
 				<!--JavaScript-->
 			</head>
 			<body>
+				<header>
+					<!--Logotipo-->
+					<figure>
+						<img src='app.view/img/template/logoPreto.png' alt='Logotipo' title='Logotipo'>
+					</figure>
+					<!--Login-->
+					<div id='headerLogin'>
+						<a href='?class=login' title='Login'>Login</a>
+					</div>
+					<!--Cadastro-->
+					<div id='headerCadastro'>
+						<a href="?class=cadastro" title='Cadastro'>Cadastre-se</a>
+					</div>
+					<!--Busca-->
+					<div id='headerBusca'>
+						<form id='formBusca'>
+							<input type='text' name='buscaProduto' id='buscaProduto' placeholder='Busca de Produtos'>
+							<label for='buscaProduto'><img src='app.view/img/template/buscarIcon.png'></label>
+						</form>
+					</div>
+				</header>
 				
+				<!--Menu-->
+				<nav id='navMenuPrincipal'>
+					<ul id='navMenuPrincipalLista'>
+						
+					</ul>
+				</nav>
 			</body>
 		</html>
 	<?php
