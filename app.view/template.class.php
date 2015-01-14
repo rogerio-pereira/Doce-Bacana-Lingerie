@@ -61,7 +61,7 @@ class template
 					<header>
 						<!--Logotipo-->
 						<figure>
-							<img src='app.view/img/template/logoPreto.png' alt='Logotipo' title='Logotipo'>
+							<img src='app.view/img/template/logoVermelho.png' alt='Logotipo' title='Logotipo'>
 						</figure>
 						<!--Login-->
 						<div id='headerLogin'>
