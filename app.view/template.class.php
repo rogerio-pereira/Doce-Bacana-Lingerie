@@ -95,10 +95,10 @@ class template
 					<section>
 						#CONTENT#
 					</section>
-					
-					<footer>
+						
+					<!--<footer>
 						dsd
-					</footer>
+					</footer>-->
 				</div>
 			</body>
 		</html>
