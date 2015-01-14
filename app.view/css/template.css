@@ -80,7 +80,13 @@ header div#headerCadastro
 
 header div#headerCadastro a
 {
-	color: white;
+	color:				white;
+	text-decoration:	none;
+}
+
+header div#headerCadastro a:hover
+{
+	text-decoration: underline;
 }
 
 header div#headerBusca
@@ -134,4 +140,51 @@ nav#navMenuPrincipal
 	width:				98%;
 	
 	background-color:	black;
+	
+	text-align:			center;
+}
+
+nav#navMenuPrincipal ul
+{
+	list-style: none;
+	
+	margin:		0px;
+	padding:	0px;
+}
+
+nav#navMenuPrincipal ul a
+{
+	color:		white;
+	margin:		0px;
+	padding:	0px;
+	
+	border:		none;
+}
+
+nav#navMenuPrincipal ul a:hover
+{
+	text-decoration: underline;
+}
+
+nav#navMenuPrincipal ul li
+{
+	display:			inline-block;
+	margin:				0px;
+	padding-left:		20px;
+	padding-right:		20px;
+	height:				100%;
+	
+	-webkit-transition: all 1s ease;
+	-moz-transition:	all 1s ease;
+	-ms-transition:		all 1s ease;
+	-o-transition:		all 1s ease;
+	transition:			all 1s ease;
+}
+
+nav#navMenuPrincipal ul li:hover
+{
+	text-decoration:	underline;
+	background-color:	white;
+	color:				black;
+	border:				none;
 }
