@@ -45,7 +45,7 @@ header div#headerLogin
 {
 	position:	absolute;
 	top:		60%;
-	right:		13%;
+	right:		15%;
 }
 
 header div#headerLogin a
@@ -126,10 +126,10 @@ header div#headerBusca form label img
 	height: 29px;
 }
 
-nav#menuPrincipal
+nav#navMenuPrincipal
 {
 	position:			absolute;
-	top:				23%;
+	top:				26%;
 	left:				1%;
 	width:				98%;
 	
