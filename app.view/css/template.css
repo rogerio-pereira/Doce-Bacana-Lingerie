@@ -53,13 +53,23 @@ hr
 
 div.imagemResponsiva
 {
-	position:	relative;
-	width:		100%;
-	text-align: center;
+	position:		relative;
+	width:			100%;
+	text-align:		center;
+	padding-bottom: 0px;
+	margin-bottom:	0px;
 }
 div.imagemResponsiva img
 {
 	width: 100%;
+}
+
+/*
+ * Para evitar criar um medidas.css para ter somente esse código não compensa, por isso coloquei no template.css
+ */
+div.imagemResponsiva img#imgMedidas
+{
+	width: 70%;
 }
 
 header
@@ -199,7 +209,7 @@ nav#navMenuPrincipal ul a:hover
 	text-decoration: underline;
 }
 
-nav#navMenuPrincipal ul li
+nav#navMenuPrincipal ul a li
 {
 	display:			inline-block;
 	margin:				0px;
@@ -230,6 +240,13 @@ section
 	width:			98%;
 	
 	text-align:		justify;
+}
+
+section div
+{
+	position:		relative;
+	width:			100%;
+	margin-bottom:	7%;
 }
 
 section aside#categoria
@@ -293,10 +310,11 @@ section div#conteudo
 
 footer
 {
-	position:			relative;
-	bottom:				0px;
-	left:				0%;
-	width:				100%;
+	position:			absolute;
+	margin-top:			5%;
+	bottom:				0%;
+	left:				-1%;
+	width:				102%;
 	background-color:	black;
 	color:				white;
 	text-align:			center;

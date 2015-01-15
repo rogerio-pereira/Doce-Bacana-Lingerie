@@ -98,11 +98,11 @@ class template
 				<!--Menu-->
 				<nav id='navMenuPrincipal'>
 					<ul id='navMenuPrincipalLista'>
-						<a href='?class=home'>		<li>	Home</li>	</a>
-						<a href='?class=empresa'>	<li>	Quem Somos</li>	</a>
-						<a href='?class=produtos'>	<li>	Produtos</li>	</a>
-						<a href='?class=medidas'>	<li>	Guia de Medidas</li>	</a>
-						<a href='?class=contato'>	<li>	Contato</li>	</a>
+						<a href='?class=home'>		<li>	Home				</li>	</a>
+						<a href='?class=empresa'>	<li>	Quem Somos			</li>	</a>
+						<a href='?class=produtos'>	<li>	Produtos			</li>	</a>
+						<a href='?class=medidas'>	<li>	Guia de Medidas		</li>	</a>
+						<a href='?class=contato'>	<li>	Contato				</li>	</a>
 					</ul>
 				</nav>
 
@@ -126,14 +126,13 @@ class template
 						<div id='conteudo'>
 							#CONTENT#
 						</div>
-						
 					</div>
 
-					<!--<footer>
+					<footer>
 						<hr>
 						&copy; Copyright 2015 - Doce & Bacana Lingerie<br>
 						Desenvolvedor: <a href='http://www.rogeriopereira.info.com' title='Desenvolvedor Rogério Pereira'>Rogério Pereira</a>
-					</footer>-->
+					</footer>
 				</section>
 			</body>
 		</html>

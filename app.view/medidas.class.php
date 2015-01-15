@@ -39,7 +39,7 @@
 		{
 		?>
 			<div class='imagemResponsiva'>
-				<img src='app.view/img/medida/guia_medida.jpg' title='Guia de Medidas' alt='Guia de Medida'>
+				<img id='imgMedidas' src='app.view/img/medida/guia_medida.jpg' title='Guia de Medidas' alt='Guia de Medida'>
 			</div>
 				
 			<p>
