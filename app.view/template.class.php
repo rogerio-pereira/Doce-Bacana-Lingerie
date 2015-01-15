@@ -10,23 +10,38 @@
 class template
 {
 	/*
-		Variaveis
-	*/
+	 *	Variaveis
+	 */
+	private $collectionCategoria;
 
 
 	/*
-		Método construtor
-	*/
+	 * Getters Setters
+	 */
+	function getCollectionCategoria()
+	{
+		return $this->collectionCategoria;
+	}
+
+	function setCollectionCategoria($collectionCategoria)
+	{
+		$this->collectionCategoria = $collectionCategoria;
+	}
+
+		
+	/*
+	 *	Método construtor
+	 */
 	public function __construct()
 	{
-
+		$this->setCollectionCategoria((new controladorCategoria())->getCollectionCategoria());
 	}
 
 
 	/*
-		Método show
-		Exibe as informações da página
-	*/
+	 *	Método show
+	 *	Exibe as informações da página
+ 	 */
 	public function show()
 	{
 	?>
@@ -48,6 +63,7 @@ class template
 				<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 				
 				<!--Fontes-->
+				<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 				
 				<!--CSS-->
 				<link rel="stylesheet" type="text/css" href="app.view/css/template.css">
@@ -57,49 +73,68 @@ class template
 				<!--JavaScript-->
 			</head>
 			<body>
-				<div id='page'>
-					<header>
-						<!--Logotipo-->
-						<figure>
-							<img src='app.view/img/template/logoVermelho.png' alt='Logotipo' title='Logotipo'>
-						</figure>
-						<!--Login-->
-						<div id='headerLogin'>
-							<a href='?class=login' title='Login'>Login</a>
-						</div>
-						<!--Cadastro-->
-						<div id='headerCadastro'>
-							<a href="?class=cadastro" title='Cadastro'>Cadastre-se</a>
-						</div>
-						<!--Busca-->
-						<div id='headerBusca'>
-							<form id='formBusca'>
-								<input type='text' name='buscaProduto' id='buscaProduto' placeholder='Busca de Produtos'>
-								<label for='buscaProduto'><img src='app.view/img/template/buscarIcon.png'></label>
-							</form>
-						</div>
-					</header>
+				<header>
+					<!--Logotipo-->
+					<figure>
+						<img src='app.view/img/template/logoVermelho.png' alt='Logotipo' title='Logotipo'>
+					</figure>
+					<!--Login-->
+					<div id='headerLogin'>
+						<a href='?class=login' title='Login'>Login</a>
+					</div>
+					<!--Cadastro-->
+					<div id='headerCadastro'>
+						<a href="?class=cadastro" title='Cadastro'>Cadastre-se</a>
+					</div>
+					<!--Busca-->
+					<div id='headerBusca'>
+						<form id='formBusca'>
+							<input type='text' name='buscaProduto' id='buscaProduto' placeholder='Busca de Produtos'>
+							<label for='buscaProduto'><img src='app.view/img/template/buscarIcon.png'></label>
+						</form>
+					</div>
+				</header>
 
-					<!--Menu-->
-					<nav id='navMenuPrincipal'>
-						<ul id='navMenuPrincipalLista'>
-							<a href='?class=home'>		<li>	Home</li>	</a>
-							<a href='?class=empresa'>	<li>	Quem Somos</li>	</a>
-							<a href='?class=produtos'>	<li>	Produtos</li>	</a>
-							<a href='?class=medidas'>	<li>	Guia de Medidas</li>	</a>
-							<a href='?class=contato'>	<li>	Contato</li>	</a>
-						</ul>
-					</nav>
+				<!--Menu-->
+				<nav id='navMenuPrincipal'>
+					<ul id='navMenuPrincipalLista'>
+						<a href='?class=home'>		<li>	Home</li>	</a>
+						<a href='?class=empresa'>	<li>	Quem Somos</li>	</a>
+						<a href='?class=produtos'>	<li>	Produtos</li>	</a>
+						<a href='?class=medidas'>	<li>	Guia de Medidas</li>	</a>
+						<a href='?class=contato'>	<li>	Contato</li>	</a>
+					</ul>
+				</nav>
 
-					<!--Section-->
-					<section>
-						#CONTENT#
-					</section>
+				<!--Section-->
+				<section>
+					<div>
+						<aside id='categoria'>
+							<strong>Categorias</strong>
+							<hr>
+							<nav id='navMenuCategorias'>
+								<ul id='navMenuCategoriasLista'>
+									<?php
+										foreach ($this->getCollectionCategoria() as $categoria)
+										{
+											echo "<a href='?class=categoria&nome={$categoria->nome}'><li>	{$categoria->nome}	</li></a>";
+										}
+									?>
+								</ul>
+							</nav>
+						</aside>
+						<div id='conteudo'>
+							#CONTENT#
+						</div>
 						
+					</div>
+
 					<!--<footer>
-						dsd
+						<hr>
+						&copy; Copyright 2015 - Doce & Bacana Lingerie<br>
+						Desenvolvedor: <a href='http://www.rogeriopereira.info.com' title='Desenvolvedor Rogério Pereira'>Rogério Pereira</a>
 					</footer>-->
-				</div>
+				</section>
 			</body>
 		</html>
 	<?php
