@@ -30,7 +30,7 @@ class TApplication
     static public function run()
     {
         //Suprimir Warnings
-        //error_reporting(E_WARNING);
+        error_reporting(E_WARNING);
         
         //$template = file_get_contents('app.view/template.class.php');
         $template = new template;

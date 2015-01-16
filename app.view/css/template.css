@@ -318,15 +318,16 @@ section div
 
 section aside#categoria
 {
-	width:			17%;
+	width:			14%;
 	float:			left;
 	padding-top:	0px;
 	text-align:		center;
 }
 
-section aside#categoria h1
+section aside#categoria h1, section aside#categoria a
 {
-	font-size: 1.6em;
+	font-size:		.8em;
+	font-family:	'Open Sans Condensed', sans-serif;
 }
 
 section aside#categoria nav#navMenuCategorias ul#navMenuCategoriasLista
@@ -358,11 +359,11 @@ section aside#categoria nav#navMenuCategorias ul#navMenuCategoriasLista a li
 	-moz-border-radius:		5px;
 	border-radius:			5px;
 	
-	-webkit-transition: all 1s ease;
-	-moz-transition:	all 1s ease;
-	-ms-transition:		all 1s ease;
-	-o-transition:		all 1s ease;
-	transition:			all 1s ease;
+	-webkit-transition:		all 1s ease;
+	-moz-transition:		all 1s ease;
+	-ms-transition:			all 1s ease;
+	-o-transition:			all 1s ease;
+	transition:				all 1s ease;
 }
 
 section aside#categoria nav#navMenuCategorias ul#navMenuCategoriasLista a li:hover
@@ -373,7 +374,7 @@ section aside#categoria nav#navMenuCategorias ul#navMenuCategoriasLista a li:hov
 
 section div#conteudo
 {
-	width:			79%;
+	width:			82%;
 	float:			right;
 	padding-left:	20px;
 	padding-right:	20px;

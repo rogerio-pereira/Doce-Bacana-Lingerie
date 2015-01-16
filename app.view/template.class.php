@@ -67,10 +67,14 @@ class template
 				
 				<!--CSS-->
 				<link rel="stylesheet" type="text/css" href="app.view/css/template.css">
+				<link rel="stylesheet" type="text/css" href="app.view/css/contato.css">
 				
 				<!--JQuery-->
+				<script type="text/javascript" src="app.view/js/jquery.js"></script>
+				<script type="text/javascript" src="app.view/js/jquery.maskedinput.js"></script>
 				
 				<!--JavaScript-->
+				<script type="text/javascript" src="app.view/js/contato.js"></script>
 			</head>
 			<body>
 				<div id='page'>
@@ -106,6 +110,7 @@ class template
 								<a href='?class=empresa'>	<li>	Quem Somos			</li>	</a>
 								<a href='?class=produtos'>	<li>	Produtos			</li>	</a>
 								<a href='?class=medidas'>	<li>	Guia de Medidas		</li>	</a>
+								<a href='?class=carrinho'>	<li>	Orçamento			</li>	</a>
 								<a href='?class=contato'>	<li>	Contato				</li>	</a>
 							</ul>
 						</nav>
