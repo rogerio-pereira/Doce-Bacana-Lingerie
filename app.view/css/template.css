@@ -16,19 +16,58 @@ body
 {
 	margin:				0px;
 	padding:			0px;
-	font-size:			1.6em;
+	width:				100%;
+	height:				100%;
+	
 	
 	background-image:	url('../img/template/fundo.png');
 	background-repeat:	repeat;
 	
 	font-family:		'Open Sans Condensed', sans-serif;
+	font-size:			1.6em;
 }
+* html div#page {
+	height: 100%; /* hack para IE6 que trata height como min-height */
+	}
+
 
 div#page
 {
-	position:	absolute;
+	width:			100%;
+	min-height:		100%;
+	padding:		0px;
+	margin:			0px;
+}
+div#header
+{
+	top:		0px;
 	width:		100%;
-	height:		100%;
+	padding:	0px;
+	margin:		0px;
+}
+div#menu
+{
+	position: absolute;
+	top:		29%;
+	width:		100%;
+	padding:	0px;
+	margin:		0px;
+}
+div#section
+{
+	position:	absolute;
+	top:		36%;
+	width:		100%;
+	padding:	0px;
+	margin:		0px;
+}
+div#footer
+{
+	position:		absolute;
+	bottom:			0px;
+	width:			100%;
+	margin-bottom:	0%;
+	padding-bottom: 0px;
 }
 
 a
@@ -74,20 +113,24 @@ div.imagemResponsiva img#imgMedidas
 
 header
 {
-	position: absolute;
+	position:	absolute;
+	top:		0px;
+	margin-top: 1%;	
 	width:		100%;
 }
 
-header figure img
+header figure
 {
-	position:	absolute;
+	position:	relative;
 	top:		0px;
 	left:		1%;
+	margin:		0px;
+	padding:	0px;
 }
 header div#headerLogin
 {
 	position:	absolute;
-	top:		60%;
+	top:		0%;
 	right:		15%;
 }
 
@@ -100,7 +143,6 @@ header div#headerLogin a
 	
 	padding-left:			30px;
 	
-	
 	color:					#f70d48;
 }
 
@@ -108,7 +150,7 @@ header div#headerCadastro
 {
 	position:				absolute;
 	
-	top:					60%;
+	top:					0%;
 	right:					1%;
 	
 	background-color:		black;
@@ -135,7 +177,7 @@ header div#headerCadastro a:hover
 header div#headerBusca
 {
 	position:		absolute;
-	top:			380%;	
+	top:			60%;	
 	right:			-2%;
 	margin-right:	3%;
 	height:			100%;
@@ -178,7 +220,6 @@ header div#headerBusca form label img
 nav#navMenuPrincipal
 {
 	position:			absolute;
-	top:				26%;
 	left:				1%;
 	width:				98%;
 	
@@ -306,15 +347,15 @@ section div#conteudo
 	padding-left:	20px;
 	padding-right:	20px;
 	padding-top:	10px;
+	padding-bottom:	0px;
+	margin-bottom:	1%;
 }
 
 footer
 {
 	position:			absolute;
-	margin-top:			5%;
-	bottom:				0%;
-	left:				-1%;
-	width:				102%;
+	margin-top:			0%;
+	width:				100%;
 	background-color:	black;
 	color:				white;
 	text-align:			center;
@@ -333,4 +374,61 @@ footer hr
 footer a
 {
 	color: #f70d48;
+}
+
+footer div#footerDesc
+{
+	position:	relative;
+	width:		100%;
+	top:		0px;
+	
+	color:		white;
+	
+	font-size:	.7em;
+	
+	margin-bottom: 25%;
+	
+	text-align: left;
+}
+
+footer div#footerDesc div#footerDescInformacoes
+{
+	position:	absolute;
+	width:		20%;
+	left:		2.5%;
+	top:		0px;
+}
+
+footer div#footerDesc div#footerDescConta
+{
+	position:	absolute;
+	width:		20%;
+	left:		25.5%;
+	top:		0px;
+}
+
+footer div#footerDesc div#footerDescContato
+{
+	position:	absolute;
+	width:		20%;
+	left:		51.5%;
+	top:		0px;
+}
+
+footer div#footerDesc div#footerDescSocial
+{
+	position:	absolute;
+	width:		20%;
+	left:		77.5%;
+	top:		0px;
+}
+
+footer div#footerDesc div#footerCopyright
+{
+	position:		absolute;
+	top:			80%;
+	width:			100%;
+	margin-top:		20%;
+	margin-bottom:	0px;
+	padding-bottom: 0px;
 }
