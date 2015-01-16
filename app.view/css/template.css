@@ -56,7 +56,7 @@ h1
 	padding-bottom: 0px;
 }
 
-h1,h2,h3,h4,h5,h6,p, ul
+h1,h2,h3,h4,h5,h6,p,ul
 {
 	margin-top:		0px;
 	padding-top:	0px;
@@ -228,6 +228,12 @@ header div#headerBusca form input#buscaProduto
 	-moz-border-radius-bottomleft:		30px;
 	border-top-left-radius:				30px;
 	border-bottom-left-radius:			30px;
+	border-color:						transparent;
+}
+
+header div#headerBusca form input#buscaProduto:focus
+{
+	outline: none;
 }
 
 
@@ -264,11 +270,15 @@ nav#navMenuPrincipal ul
 
 nav#navMenuPrincipal ul a
 {
-	color:		white;
-	margin:		0px;
-	padding:	0px;
+	color:			white;
+	padding-left:	0px;
+	padding-right:	0px;
+	margin-left:	0px;
+	margin-right:	0px;
+	padding:		0px;
+	height:			100%;
 	
-	border:		none;
+	border:			none;
 }
 
 nav#navMenuPrincipal ul a:hover
@@ -279,9 +289,11 @@ nav#navMenuPrincipal ul a:hover
 nav#navMenuPrincipal ul a li
 {
 	display:			inline-block;
-	margin:				0px;
-	padding-left:		20px;
-	padding-right:		20px;
+	
+	margin-left:		0px;
+	margin-right:		0px;
+	padding-left:		40px;
+	padding-right:		40px;
 	height:				100%;
 	
 	-webkit-transition: all 1s ease;
@@ -410,17 +422,17 @@ footer a
 
 footer div#footerDesc
 {
-	position:	relative;
-	width:		100%;
-	top:		0px;
+	position:		relative;
+	width:			100%;
+	top:			0px;
 	
-	color:		white;
+	color:			white;
 	
-	font-size:	.7em;
+	font-size:		.7em;
 	
-	margin-bottom: 23%;
+	margin-bottom:	23%;
 	
-	text-align: left;
+	text-align:		left;
 }
 
 footer div#footerDesc div#footerDescInformacoes
