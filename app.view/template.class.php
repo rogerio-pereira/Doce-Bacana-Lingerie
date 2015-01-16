@@ -116,7 +116,7 @@ class template
 						<section>
 							<div>
 								<aside id='categoria'>
-									<strong>Categorias</strong>
+									<h1>Categorias</h1>
 									<hr>
 									<nav id='navMenuCategorias'>
 										<ul id='navMenuCategoriasLista'>
@@ -145,7 +145,7 @@ class template
 											</p>
 											<hr>
 											<p>
-												<a href='?class=quemSomos'			title='Quem Somos'				alt='Quem Somos'>				Quem Somos				</a><br>
+												<a href='?class=empresa'			title='Quem Somos'				alt='Quem Somos'>				Quem Somos				</a><br>
 												<a href='?class=politicaCompras'	title='Politica de Compras'		alt='Politica de Compras'>		Politica de Compras		</a><br>
 												<a href='?class=pagamento'			title='Formas de Pagamento'		alt='Formas de Pagamento'>		Formas de Pagamento		</a><br>
 											</p>

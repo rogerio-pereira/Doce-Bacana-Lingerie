@@ -30,7 +30,53 @@ body
 	height: 100%; /* hack para IE6 que trata height como min-height */
 	}
 
+a
+{
+	font-family:		'Logotipo';
+	text-decoration:	none;
+}
+a:hover
+{
+	text-decoration: underline;
+}
 
+hr
+{
+	border:				0;
+    height:				1px;
+    background-image:	-webkit-linear-gradient(left,	rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+    background-image:   -moz-linear-gradient(left,		rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+    background-image:   -ms-linear-gradient(left,		rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+    background-image:   -o-linear-gradient(left,		rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+}
+
+h1
+{
+	margin-bottom:	0px;
+	padding-bottom: 0px;
+}
+
+h1,h2,h3,h4,h5,h6,p, ul
+{
+	margin-top:		0px;
+	padding-top:	0px;
+}
+
+h1
+{
+	font-size: 2em;
+}
+
+h2
+{
+	font-size: 1.5em;
+}
+
+h3,h4,h5,h6
+{
+	font-size: 1em;
+}
+	
 div#page
 {
 	width:			100%;
@@ -68,26 +114,6 @@ div#footer
 	width:			100%;
 	margin-bottom:	0%;
 	padding-bottom: 0px;
-}
-
-a
-{
-	font-family:		'Logotipo';
-	text-decoration:	none;
-}
-a:hover
-{
-	text-decoration: underline;
-}
-
-hr
-{
-	border:				0;
-    height:				1px;
-    background-image:	-webkit-linear-gradient(left,	rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
-    background-image:   -moz-linear-gradient(left,		rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
-    background-image:   -ms-linear-gradient(left,		rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
-    background-image:   -o-linear-gradient(left,		rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
 }
 
 div.imagemResponsiva
@@ -294,8 +320,13 @@ section aside#categoria
 {
 	width:			17%;
 	float:			left;
-	padding-top:	10px;
+	padding-top:	0px;
 	text-align:		center;
+}
+
+section aside#categoria h1
+{
+	font-size: 1.6em;
 }
 
 section aside#categoria nav#navMenuCategorias ul#navMenuCategoriasLista
@@ -346,9 +377,9 @@ section div#conteudo
 	float:			right;
 	padding-left:	20px;
 	padding-right:	20px;
-	padding-top:	10px;
 	padding-bottom:	0px;
 	margin-bottom:	1%;
+	font-size:		.8em;
 }
 
 footer
@@ -386,7 +417,7 @@ footer div#footerDesc
 	
 	font-size:	.7em;
 	
-	margin-bottom: 25%;
+	margin-bottom: 23%;
 	
 	text-align: left;
 }
