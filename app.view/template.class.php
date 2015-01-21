@@ -72,9 +72,11 @@ class template
 				<!--JQuery-->
 				<script type="text/javascript" src="app.view/js/jquery.js"></script>
 				<script type="text/javascript" src="app.view/js/jquery.maskedinput.js"></script>
+				<script type="text/javascript" src="app.view/js/jquery-cycle.js"></script>
 				
 				<!--JavaScript-->
 				<script type="text/javascript" src="app.view/js/contato.js"></script>
+				<script type="text/javascript" src="app.view/js/slider.js"></script>
 			</head>
 			<body>
 				<div id='page'>
@@ -86,11 +88,11 @@ class template
 							</figure>
 							<!--Login-->
 							<div id='headerLogin'>
-								<a href='?class=login' title='Login'>Login</a>
+								<a href='./login' title='Login'>Login</a>
 							</div>
 							<!--Cadastro-->
 							<div id='headerCadastro'>
-								<a href="?class=cadastro" title='Cadastro'>Cadastre-se</a>
+								<a href="./cadastro" title='Cadastro'>Cadastre-se</a>
 							</div>
 							<!--Busca-->
 							<div id='headerBusca'>
@@ -106,12 +108,12 @@ class template
 						<!--Menu-->
 						<nav id='navMenuPrincipal'>
 							<ul id='navMenuPrincipalLista'>
-								<a href='?class=home'><li>Home</li></a>
-								<a href='?class=empresa'><li>Quem Somos</li></a>
-								<a href='?class=produtos'><li>Produtos</li></a>
-								<a href='?class=medidas'><li>Guia de Medidas</li></a>
-								<a href='?class=carrinho'><li>Orçamento</li></a>
-								<a href='?class=contato'><li>Contato</li></a>
+								<a href='./home'><li>Home</li></a>
+								<a href='./empresa'><li>Quem Somos</li></a>
+								<a href='./produtos'><li>Produtos</li></a>
+								<a href='./medidas'><li>Guia de Medidas</li></a>
+								<a href='./carrinho'><li>Orçamento</li></a>
+								<a href='./contato'><li>Contato</li></a>
 							</ul>
 						</nav>
 					</div>
@@ -119,7 +121,33 @@ class template
 					<div id='section'>
 						<!--Section-->
 						<section>
+							<div id='bannerTop'>
+								<div class='sliderTop' id='1'>
+									<div class='sliderTopImg'>
+										<img src='app.view/img/produtos/banner/1.jpg'>
+										<img src='app.view/img/produtos/banner/3.jpg'>
+									</div>
+								</div>
+								<div class='sliderTop' id='2'>
+									<div class='sliderTopImg'>
+										<img src='app.view/img/produtos/banner/2.jpg'>
+										<img src='app.view/img/produtos/banner/1.jpg'>
+									</div>
+								</div>
+								<div class='sliderTop' id='3'>
+									<div class='sliderTopImg'>
+										<img src='app.view/img/produtos/banner/5.jpg'>
+										<img src='app.view/img/produtos/banner/4.jpg'>
+									</div>
+								</div>
+								<div class='sliderTop' id='4'>
+									<div class='sliderTopImg'>
+									<img src='app.view/img/template/frete.jpg' alt='Frete' title='Frete'>
+								</div>
+							</div>
+							
 							<div>
+								<!--Barra Lateral-->
 								<aside id='categoria'>
 									<h1>Categorias</h1>
 									<hr>
@@ -128,14 +156,22 @@ class template
 											<?php
 												foreach ($this->getCollectionCategoria() as $categoria)
 												{
-													echo "<a href='?class=categoria&nome={$categoria->nome}'><li>	{$categoria->nome}	</li></a>";
+													echo "<a href='./categoria/{$categoria->codigo}'><li>	{$categoria->nome}	</li></a>";
 												}
 											?>
 										</ul>
 									</nav>
 								</aside>
+								
+								<!--Conteudo-->
 								<div id='conteudo'>
 									#CONTENT#
+								</div>
+								
+								<!--Banner de Baixo-->
+								<div id='bannerFooter'>
+									<img src='app.view/img/template/banner_pagseguro2.png'	alt='Formas de Pagamento'	title='Formas de Pagamento'>
+									<img src='app.view/img/template/entrega.jpg'			alt='Entrega'				title='Entrega'>
 								</div>
 							</div>
 							
@@ -150,9 +186,9 @@ class template
 											</p>
 											<hr>
 											<p>
-												<a href='?class=empresa'			title='Quem Somos'				alt='Quem Somos'>				Quem Somos				</a><br>
-												<a href='?class=politicaCompras'	title='Politica de Compras'		alt='Politica de Compras'>		Politica de Compras		</a><br>
-												<a href='?class=pagamento'			title='Formas de Pagamento'		alt='Formas de Pagamento'>		Formas de Pagamento		</a><br>
+												<a href='./empresa'				title='Quem Somos'				alt='Quem Somos'>				Quem Somos				</a><br>
+												<a href='./politicaCompras'		title='Politica de Compras'		alt='Politica de Compras'>		Politica de Compras		</a><br>
+												<a href='./pagamento'			title='Formas de Pagamento'		alt='Formas de Pagamento'>		Formas de Pagamento		</a><br>
 											</p>
 										</div>
 										<div id='footerDescConta'>
@@ -161,8 +197,8 @@ class template
 											</p>
 											<hr>
 											<p>
-												<a href='?class=perfil'		title='Meu Perfil e dados'		alt='Meu Perfil e dados'>		Meu Perfil e dados		</a><br>
-												<a href='?class=carrinho'	title='Carrinho de Compras'		alt='Carrinho de Compras'>		Carrinho de Compras		</a><br>
+												<a href='./perfil'		title='Meu Perfil e dados'		alt='Meu Perfil e dados'>		Meu Perfil e dados		</a><br>
+												<a href='./carrinho'	title='Carrinho de Compras'		alt='Carrinho de Compras'>		Carrinho de Compras		</a><br>
 											</p>
 										</div>
 										<div id='footerDescContato'>
@@ -192,8 +228,7 @@ class template
 											</p>
 											<hr>
 											<p>
-												<a href='?class=perfil'		title='Meu Perfil e dados'		alt='Meu Perfil e dados'>		Meu Perfil e dados		</a><br>
-												<a href='?class=carrinho'	title='Carrinho de Compras'		alt='Carrinho de Compras'>		Carrinho de Compras		</a><br>
+												
 											</p>
 										</div>
 									</div>
@@ -207,6 +242,9 @@ class template
 					</div>		
 				</div> <!--Fim page-->
 			</body>
+			
+			<!--Scripts-->
+			<script>iniciaSlider();</script>
 		</html>
 	<?php
 	}

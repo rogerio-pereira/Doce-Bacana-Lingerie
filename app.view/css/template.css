@@ -34,6 +34,7 @@ a
 {
 	font-family:		'Logotipo';
 	text-decoration:	none;
+	color:				#f70d48;
 }
 a:hover
 {
@@ -321,11 +322,38 @@ section
 	text-align:		justify;
 }
 
+section h1
+{
+	margin-top:		0px;
+	padding-top:	0px;
+}
+
 section div
 {
 	position:		relative;
 	width:			100%;
 	margin-bottom:	7%;
+}
+
+section div#bannerTop
+{
+	width:		100%;
+	display:	inline-block;
+	margin:		0 0 0 0;
+}
+section div#bannerTop div.sliderTop
+{
+	position:		relative;
+	width:			24.7%;
+	margin:			0px;
+	display:		inline-block;	
+	text-align:		center;
+	vertical-align: top;
+}
+
+section div#bannerTop div.sliderTop div.sliderTopImg
+{
+	text-align: center;
 }
 
 section aside#categoria
@@ -391,8 +419,20 @@ section div#conteudo
 	padding-left:	20px;
 	padding-right:	20px;
 	padding-bottom:	0px;
-	margin-bottom:	1%;
+	margin-bottom:	0px;
 	font-size:		.8em;
+}
+
+section div#bannerFooter
+{
+	width:			82%;
+	float:			right;
+	text-align:		center;
+}
+section div#bannerFooter img
+{
+	margin:			auto auto auto auto;
+	vertical-align: middle;
 }
 
 footer
