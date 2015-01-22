@@ -66,18 +66,18 @@ class template
 				<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 				
 				<!--CSS-->
-				<link rel="stylesheet" type="text/css" href="app.view/css/template.css">
-				<link rel="stylesheet" type="text/css" href="app.view/css/formulario.css">
-				<link rel="stylesheet" type="text/css" href="app.view/css/contato.css">
+				<link rel="stylesheet" type="text/css" href="/app.view/css/template.css">
+				<link rel="stylesheet" type="text/css" href="/app.view/css/formulario.css">
+				<link rel="stylesheet" type="text/css" href="/app.view/css/contato.css">
 				
 				<!--JQuery-->
-				<script type="text/javascript" src="app.view/js/jquery.js"></script>
-				<script type="text/javascript" src="app.view/js/jquery.maskedinput.js"></script>
-				<script type="text/javascript" src="app.view/js/jquery-cycle.js"></script>
+				<script type="text/javascript" src="/app.view/js/jquery.js"></script>
+				<script type="text/javascript" src="/app.view/js/jquery.maskedinput.js"></script>
+				<script type="text/javascript" src="/app.view/js/jquery-cycle.js"></script>
 				
 				<!--JavaScript-->
-				<script type="text/javascript" src="app.view/js/contato.js"></script>
-				<script type="text/javascript" src="app.view/js/slider.js"></script>
+				<script type="text/javascript" src="/app.view/js/contato.js"></script>
+				<script type="text/javascript" src="/app.view/js/slider.js"></script>
 			</head>
 			<body>
 				<div id='page'>
@@ -85,7 +85,7 @@ class template
 						<header>
 							<!--Logotipo-->
 							<figure>
-								<img src='app.view/img/template/logoVermelho.png' alt='Logotipo' title='Logotipo'>
+								<img src='/app.view/img/template/logoVermelho.png' alt='Logotipo' title='Logotipo'>
 							</figure>
 							<!--Login-->
 							<div id='headerLogin'>
@@ -99,7 +99,7 @@ class template
 							<div id='headerBusca'>
 								<form id='formBusca'>
 									<input type='text' name='buscaProduto' id='buscaProduto' placeholder='Busca de Produtos'>
-									<label for='buscaProduto'><img src='app.view/img/template/buscarIcon.png'></label>
+									<label for='buscaProduto'><img src='/app.view/img/template/buscarIcon.png'></label>
 								</form>
 							</div>
 						</header>
@@ -125,25 +125,25 @@ class template
 							<div id='bannerTop'>
 								<div class='sliderTop' id='1'>
 									<div class='sliderTopImg'>
-										<img src='app.view/img/produtos/banner/1.jpg'>
-										<img src='app.view/img/produtos/banner/3.jpg'>
+										<img src='/app.view/img/produtos/banner/1.jpg'>
+										<img src='/app.view/img/produtos/banner/3.jpg'>
 									</div>
 								</div>
 								<div class='sliderTop' id='2'>
 									<div class='sliderTopImg'>
-										<img src='app.view/img/produtos/banner/2.jpg'>
-										<img src='app.view/img/produtos/banner/1.jpg'>
+										<img src='/app.view/img/produtos/banner/2.jpg'>
+										<img src='/app.view/img/produtos/banner/1.jpg'>
 									</div>
 								</div>
 								<div class='sliderTop' id='3'>
 									<div class='sliderTopImg'>
-										<img src='app.view/img/produtos/banner/5.jpg'>
-										<img src='app.view/img/produtos/banner/4.jpg'>
+										<img src='/app.view/img/produtos/banner/5.jpg'>
+										<img src='/app.view/img/produtos/banner/4.jpg'>
 									</div>
 								</div>
 								<div class='sliderTop' id='4'>
 									<div class='sliderTopImg'>
-									<img src='app.view/img/template/frete.jpg' alt='Frete' title='Frete'>
+									<img src='/app.view/img/template/frete.jpg' alt='Frete' title='Frete'>
 								</div>
 							</div>
 							
@@ -171,8 +171,8 @@ class template
 								
 								<!--Banner de Baixo-->
 								<div id='bannerFooter'>
-									<img src='app.view/img/template/banner_pagseguro2.png'	alt='Formas de Pagamento'	title='Formas de Pagamento'>
-									<img src='app.view/img/template/entrega.jpg'			alt='Entrega'				title='Entrega'>
+									<img src='/app.view/img/template/banner_pagseguro2.png'	alt='Formas de Pagamento'	title='Formas de Pagamento'>
+									<img src='/app.view/img/template/entrega.jpg'			alt='Entrega'				title='Entrega'>
 								</div>
 							</div>
 							

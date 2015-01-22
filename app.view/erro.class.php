@@ -1,7 +1,7 @@
 <?php
 /*
  *	Arquivo  erro.class.php
- *	#DESCRIÇÂO#
+ *	Classe de erros
  *	
  *	Sistema:	Doce___Bacana_Lingerie
  *	Autor:      Rogério Eduardo Pereira
@@ -26,7 +26,7 @@
 		/*
 		 * Método Contrutor
 		 */
-		public function __construct()
+		public function __construct($codigo)
 		{
 			
 		}

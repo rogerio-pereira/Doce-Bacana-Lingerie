@@ -71,12 +71,8 @@ class TApplication
          */
         $site = str_replace('#CONTENT#', $content, $template);
 	echo $site;
-	echo "<script>
-			refreshScroller();
-		</script>";
     }
 }
-//new ContaVisitas();
 TApplication::run();
 ?>
 
