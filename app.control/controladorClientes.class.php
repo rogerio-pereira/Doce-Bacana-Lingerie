@@ -362,13 +362,12 @@ class controladorClientes
 	 * Método salva
 	 * Cadastra/atualiza cliente
 	 */
-	public function salva()
+	public function salvar()
 	{
 		try
 		{
 			$this->setCliente(NULL);
 
-			$this->cliente->codigo					= $this->getCodigo();
 			$this->cliente->pessoa					= $this->getPessoa();
 			$this->cliente->nome					= $this->getNome();
 			$this->cliente->nomeResponsavel			= $this->getNomeResponsavel();

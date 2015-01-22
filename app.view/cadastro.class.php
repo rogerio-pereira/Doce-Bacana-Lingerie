@@ -157,7 +157,7 @@
 							<label for='email' class='titulo obrigatorio'>E-mail</label>
 						</td>
 						<td>
-							<input type='email' class='campo' name='email' id='email' placeholder='E-mail' maxlength='100'>
+							<input type='text' class='campo' name='email' id='email' placeholder='E-mail' maxlength='100'>
 						</td>
 					</tr>
 					<!--Senha-->
