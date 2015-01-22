@@ -11,8 +11,6 @@ div.contatoContent
 {
 	position: 		relative;
 	width: 			400px;
-	color: 			#f70d48;
-	font-family:	'Logotipo';
 	font-size: 		1em;
 	overflow:		hidden;
 	text-align:		left;
@@ -24,54 +22,4 @@ table.contatoTable
 {
 	margin: 	0px;
 	width:		400px;
-	font-size:	1.2em;
-}
-
-form.contatoForm input.campo, textArea.campo
-{
-	width: 			98%;
-	font-family:	'Open Sans Condensed', sans-serif;
-	font-size: 		.8em;
-	border-color:	#cbcbcb;
-}
-form.contatoForm input.campo:hover, textArea.campo:hover
-{
-	border-color: black;
-	border-width: 2px;
-}
-form.contatoForm input.campo:focus, textArea.campo:focus
-{
-	outline:		0;
-	border-color:	#f70d48;
-}
-
-form.contatoForm input[type='submit'],  form.contatoForm input[type='reset'] 
-{
-	padding:				5px 15px; 
-	background:				black; 
-	border:					0 none;
-	
-	cursor:					pointer;
-	
-	-webkit-border-radius: 	10px;
-	-moz-border-radius:		10px;
-	border-radius: 			10px;
-	
-	font-family:			'Logotipo';
-	font-size:				.8em;
-	
-	text-decoration:		underline;
-	color:					white;
-	
-	-webkit-transition:		all 1s ease;
-	-moz-transition:		all 1s ease;
-	-ms-transition:			all 1s ease;
-	-o-transition:			all 1s ease;
-	transition:				all 1s ease;
-}
-
-form.contatoForm input[type='submit']:hover,  form.contatoForm input[type='reset']:hover
-{
-	background-color:	white;
-	color:				black;
 }

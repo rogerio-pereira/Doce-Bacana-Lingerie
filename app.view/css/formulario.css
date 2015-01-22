@@ -1,0 +1,74 @@
+/*
+ *	Arquivo  formulario.css
+ *	CSS de todos os formularios
+ *	
+ *	Sistema:	Doce___Bacana_Lingerie
+ *	Autor:      Rogério Eduardo Pereira
+ *	Data:       22/01/2015
+ */
+.titulo
+{
+	font-family:	'Logotipo';
+}
+.obrigatorio
+{
+	color: 	#f70d48;
+}
+
+form.formulario table tr td
+{
+	vertical-align: top;
+}
+
+form.formulario input, form.formulario textArea, form.formulario select
+{
+	font-family:	'Open Sans Condensed', sans-serif;
+}
+
+form.formulario input.campo, form.formulario textArea.campo, form.formulario select.campo
+{
+	width: 			98%;
+	font-size: 		.8em;
+	border-color:	#cbcbcb;
+}
+form.formulario input.campo:hover, form.formulario textArea.campo:hover, form.formulario select.campo:hover
+{
+	border-color: black;
+	border-width: 2px;
+}
+form.formulario input.campo:focus, form.formulario textArea.campo:focus, form.formulario select.campo:focus
+{
+	outline:		0;
+	border-color:	#f70d48;
+}
+
+form.formulario input[type='submit'],  form.formulario input[type='reset'] 
+{
+	padding:				5px 15px; 
+	background:				black; 
+	border:					0 none;
+	
+	cursor:					pointer;
+	
+	-webkit-border-radius: 	10px;
+	-moz-border-radius:		10px;
+	border-radius: 			10px;
+	
+	font-family:			'Logotipo';
+	font-size:				.8em;
+	
+	text-decoration:		underline;
+	color:					white;
+	
+	-webkit-transition:		all 1s ease;
+	-moz-transition:		all 1s ease;
+	-ms-transition:			all 1s ease;
+	-o-transition:			all 1s ease;
+	transition:				all 1s ease;
+}
+
+form.formulario input[type='submit']:hover,  form.formulario input[type='reset']:hover
+{
+	background-color:	white;
+	color:				black;
+}

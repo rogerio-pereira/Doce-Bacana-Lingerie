@@ -26,12 +26,12 @@
 				<h1>Contato</h1>
 				<hr>
                 <div class='contatoContent'>
-                    <form class="contatoForm" name="contato" method="post" action="app.control/enviaEmail.class.php" onsubmit="return validaCamposContato();">
+                    <form class="formulario" name="contato" method="post" action="app.control/enviaEmail.class.php" onsubmit="return validaCamposContato();">
                         <table class="contatoTable">
                             <!--Nome-->
                             <tr>
                                 <td style="width: 30%">
-                                    <label for='txtNome'>Nome:</label>
+                                    <label for='txtNome' class='titulo obrigatorio'>Nome:</label>
                                 </td>
                                 <td style="width: 70%">
                                     <input name="txtNome" type="text" class="campo" id='txtNome' width="150px" placeholder='Nome'/>
@@ -40,7 +40,7 @@
                             <!--Email-->
                             <tr>
                                 <td style="width: 30%">
-                                    <label for='txtEmail'>E-mail</label>
+                                    <label for='txtEmail' class='titulo obrigatorio'>E-mail</label>
                                 </td>
                                 <td style="width: 70%">
                                     <input name="txtEmail" type="text" class="campo" id='txtEmail' placeholder='E-mail'/>
@@ -49,7 +49,7 @@
                             <!--Telefone-->
                             <tr>
                                 <td style="width: 30%">
-                                    <label for='txtTelefone'>Telefone</label>
+                                    <label for='txtTelefone' class='titulo obrigatorio'>Telefone</label>
                                 </td>
                                 <td style="width: 70%">
                                     <input name="txtTelefone" class='campoTelefone campo' type="text" id="txtTelefone" placeholder='Telefone'/>
@@ -58,7 +58,7 @@
                             <!--Cidade-->
                             <tr>
                                 <td style="width: 30%">
-                                    <label for='txtCidade'>Cidade</label>
+                                    <label for='txtCidade' class='titulo obrigatorio'>Cidade</label>
                                 </td>
                                 <td style="width: 70%">
                                     <input name="txtCidade" type="text" class="campo" id="txtCidade" placeholder='Cidade'/>
@@ -67,7 +67,7 @@
                             <!--Assunto-->
                             <tr>
                                 <td style="width: 30%">
-                                    <label for='txtAssunto'>Assunto</label>
+                                    <label for='txtAssunto' class='titulo obrigatorio'>Assunto</label>
                                 </td>
                                 <td style="width: 70%">
                                     <input name="txtAssunto" type="text" class="campo" id="txtAssunto" placeholder='Assunto'/>
@@ -76,7 +76,7 @@
                             <!--Label Mensagem-->
                             <tr>
                                 <td colspan="2" style="width: 100%">
-                                    <label for='txtMensagem'>Mensagem</label>
+                                    <label for='txtMensagem' class='titulo obrigatorio'>Mensagem</label>
                                 </td>
                             </tr>
                             <!--Mensagem-->

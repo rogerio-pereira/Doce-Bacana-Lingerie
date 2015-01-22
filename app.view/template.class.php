@@ -67,6 +67,7 @@ class template
 				
 				<!--CSS-->
 				<link rel="stylesheet" type="text/css" href="app.view/css/template.css">
+				<link rel="stylesheet" type="text/css" href="app.view/css/formulario.css">
 				<link rel="stylesheet" type="text/css" href="app.view/css/contato.css">
 				
 				<!--JQuery-->
