@@ -1,0 +1,414 @@
+<?php
+
+/*
+ * 	Arquivo  controladorClientes.class.php
+ * 	Controlador de Cadastro de Clientes
+ * 	
+ * 	Sistema:	Doce___Bacana_Lingerie
+ * 	Autor:      Rogério Eduardo Pereira
+ * 	Data:       22/01/2015
+ */
+
+/*
+ * Classe controladorClientes.class.php
+ */
+class controladorClientes
+{
+	/*
+	 * Variaveis
+	 */
+	private $cliente;
+	
+	private $codigo;
+	private $pessoa;
+	private $nome;
+	private $nomeResponsavel;
+	private $cpf;
+	private $cnpj;
+	private $informacaoTributaria;
+	private $inscricaoEstadual;
+	private $nascimento;
+	private $sexo;
+	private $telefone;
+	private $celular;
+	private $email;
+	private $senha;
+	private $ofertaEmail;
+	private $ofertaCelular;
+	private $cep;
+	private $endereco;
+	private $numero;
+	private $complemento;
+	private $bairro;
+	private $cidade;
+	private $estado;
+	private $pontoReferencia;
+	private $chave;
+	private $ativo;
+
+
+	/*
+	 * Getters e Setters
+	 */
+	function getCliente()
+	{
+		return $this->cliente;
+	}
+
+	function getCodigo()
+	{
+		return $this->codigo;
+	}
+
+	function getPessoa()
+	{
+		return $this->pessoa;
+	}
+
+	function getNome()
+	{
+		return $this->nome;
+	}
+
+	function getNomeResponsavel()
+	{
+		return $this->nomeResponsavel;
+	}
+
+	function getCpf()
+	{
+		return $this->cpf;
+	}
+
+	function getCnpj()
+	{
+		return $this->cnpj;
+	}
+
+	function getInformacaoTributaria()
+	{
+		return $this->informacaoTributaria;
+	}
+
+	function getInscricaoEstadual()
+	{
+		return $this->inscricaoEstadual;
+	}
+
+	function getNascimento()
+	{
+		return $this->nascimento;
+	}
+
+	function getSexo()
+	{
+		return $this->sexo;
+	}
+
+	function getTelefone()
+	{
+		return $this->telefone;
+	}
+
+	function getCelular()
+	{
+		return $this->celular;
+	}
+
+	function getEmail()
+	{
+		return $this->email;
+	}
+
+	function getSenha()
+	{
+		return $this->senha;
+	}
+
+	function getOfertaEmail()
+	{
+		return $this->ofertaEmail;
+	}
+
+	function getOfertaCelular()
+	{
+		return $this->ofertaCelular;
+	}
+
+	function getCep()
+	{
+		return $this->cep;
+	}
+
+	function getEndereco()
+	{
+		return $this->endereco;
+	}
+
+	function getNumero()
+	{
+		return $this->numero;
+	}
+
+	function getComplemento()
+	{
+		return $this->complemento;
+	}
+
+	function getBairro()
+	{
+		return $this->bairro;
+	}
+
+	function getCidade()
+	{
+		return $this->cidade;
+	}
+
+	function getEstado()
+	{
+		return $this->estado;
+	}
+
+	function getPontoReferencia()
+	{
+		return $this->pontoReferencia;
+	}
+	
+	function getChave()
+	{
+		return $this->chave;
+	}
+
+	function getAtivo()
+	{
+		return $this->ativo;
+	}
+
+	function setCliente($cliente)
+	{
+		$this->cliente = $cliente;
+	}
+
+	function setCodigo($codigo)
+	{
+		$this->codigo = $codigo;
+	}
+
+	function setPessoa($pessoa)
+	{
+		$this->pessoa = $pessoa;
+	}
+
+	function setNome($nome)
+	{
+		$this->nome = $nome;
+	}
+
+	function setNomeResponsavel($nomeResponsavel)
+	{
+		$this->nomeResponsavel = $nomeResponsavel;
+	}
+
+	function setCpf($cpf)
+	{
+		$this->cpf = $cpf;
+	}
+
+	function setCnpj($cnpj)
+	{
+		$this->cnpj = $cnpj;
+	}
+
+	function setInformacaoTributaria($informacaoTributaria)
+	{
+		$this->informacaoTributaria = $informacaoTributaria;
+	}
+
+	function setInscricaoEstadual($inscricaoEstadual)
+	{
+		$this->inscricaoEstadual = $inscricaoEstadual;
+	}
+
+	function setNascimento($nascimento)
+	{
+		$this->nascimento = $nascimento;
+	}
+
+	function setSexo($sexo)
+	{
+		$this->sexo = $sexo;
+	}
+
+	function setTelefone($telefone)
+	{
+		$this->telefone = $telefone;
+	}
+
+	function setCelular($celular)
+	{
+		$this->celular = $celular;
+	}
+
+	function setEmail($email)
+	{
+		$this->email = $email;
+	}
+
+	function setSenha($senha)
+	{
+		$this->senha = $senha;
+	}
+
+	function setOfertaEmail($ofertaEmail)
+	{
+		$this->ofertaEmail = $ofertaEmail;
+	}
+
+	function setOfertaCelular($ofertaCelular)
+	{
+		$this->ofertaCelular = $ofertaCelular;
+	}
+
+	function setCep($cep)
+	{
+		$this->cep = $cep;
+	}
+
+	function setEndereco($endereco)
+	{
+		$this->endereco = $endereco;
+	}
+
+	function setNumero($numero)
+	{
+		$this->numero = $numero;
+	}
+
+	function setComplemento($complemento)
+	{
+		$this->complemento = $complemento;
+	}
+
+	function setBairro($bairro)
+	{
+		$this->bairro = $bairro;
+	}
+
+	function setCidade($cidade)
+	{
+		$this->cidade = $cidade;
+	}
+
+	function setEstado($estado)
+	{
+		$this->estado = $estado;
+	}
+
+	function setPontoReferencia($pontoReferencia)
+	{
+		$this->pontoReferencia = $pontoReferencia;
+	}
+	
+	function setChave($chave)
+	{
+		$this->chave = $chave;
+	}
+
+	function setAtivo($ativo)
+	{
+		$this->ativo = $ativo;
+	}
+
+
+	/*
+	 * Método Contrutor
+	 */
+	public function __construct()
+	{
+		$this->setCliente(NULL);
+	
+		$this->setCodigo(NULL);
+		$this->setPessoa(NULL);
+		$this->setNome(NULL);
+		$this->setNomeResponsavel(NULL);
+		$this->setCpf(NULL);
+		$this->setCnpj(NULL);
+		$this->setInformacaoTributaria(NULL);
+		$this->setInscricaoEstadual(NULL);
+		$this->setNascimento(NULL);
+		$this->setSexo(NULL);
+		$this->setTelefone(NULL);
+		$this->setCelular(NULL);
+		$this->setEmail(NULL);
+		$this->setSenha(NULL);
+		$this->setOfertaEmail(NULL);
+		$this->setOfertaCelular(NULL);
+		$this->setCep(NULL);
+		$this->setEndereco(NULL);
+		$this->setNumero(NULL);
+		$this->setComplemento(NULL);
+		$this->setBairro(NULL);
+		$this->setCidade(NULL);
+		$this->setEstado(NULL);
+		$this->setPontoReferencia(NULL);
+		$this->setChave(NULL);
+		$this->setAtivo(NULL);
+	}
+
+	
+	
+	/*
+	 * Método salva
+	 * Cadastra/atualiza cliente
+	 */
+	public function salva()
+	{
+		try
+		{
+			$this->setCliente(NULL);
+
+			$this->cliente->codigo					= $this->getCodigo();
+			$this->cliente->pessoa					= $this->getPessoa();
+			$this->cliente->nome					= $this->getNome();
+			$this->cliente->nomeResponsavel			= $this->getNomeResponsavel();
+			$this->cliente->cpf						= $this->getCpf();
+			$this->cliente->cnpj					= $this->getCnpj();
+			$this->cliente->informacaoTributaria	= $this->getInformacaoTributaria();
+			$this->cliente->inscricaoEstadual		= $this->getInscricaoEstadual();
+			$this->cliente->nascimento				= $this->getNascimento();
+			$this->cliente->sexo					= $this->getSexo();
+			$this->cliente->telefone				= $this->getTelefone();
+			$this->cliente->celular					= $this->getCelular();
+			$this->cliente->email					= $this->getEmail();
+			$this->cliente->senha					= $this->getSenha();
+			$this->cliente->ofertaEmail				= $this->getOfertaEmail();
+			$this->cliente->ofertaCelular			= $this->getOfertaCelular();
+			$this->cliente->cep						= $this->getCep();
+			$this->cliente->endereco				= $this->getEndereco();
+			$this->cliente->numero					= $this->getNumero();
+			$this->cliente->complemento				= $this->getComplemento();
+			$this->cliente->bairro					= $this->getBairro();
+			$this->cliente->cidade					= $this->getCidade();
+			$this->cliente->estado					= $this->getEstado();
+			$this->cliente->pontoReferencia			= $this->getPontoReferencia();
+			$this->cliente->chave					= $this->getChave();
+			$this->cliente->ativo					= $this->getAtivo();
+
+			//RECUPERA CONEXAO BANCO DE DADOS
+			TTransaction::open('my_bd_site');
+
+			$result = $this->cliente->store();
+
+			TTransaction::close();
+
+			return true;
+		}
+		catch (Exception $e)
+		{
+			return false;
+		}
+	}
+}
+
+?>

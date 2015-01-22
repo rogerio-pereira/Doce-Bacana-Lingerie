@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 22-Jan-2015 às 13:17
+-- Data de Criação: 22-Jan-2015 às 17:22
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.16
 
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `nomeResponsavel` varchar(100) DEFAULT NULL,
   `cpf` varchar(14) DEFAULT NULL,
   `cnpj` varchar(18) DEFAULT NULL,
-  `informacaoTriburaria` int(3) unsigned zerofill DEFAULT NULL COMMENT '0 - Contribuinte ICMS; 1 - Não Contribuinte; 2 - Isento',
+  `informacaoTributaria` int(3) unsigned zerofill DEFAULT NULL COMMENT '0 - Contribuinte ICMS; 1 - Não Contribuinte; 2 - Isento',
   `inscricaoEstadual` varchar(20) DEFAULT NULL,
   `nascimento` date DEFAULT NULL,
   `sexo` tinyint(1) DEFAULT NULL COMMENT '1 - Masculino; 0 - Feminino',
@@ -65,8 +65,11 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `cidade` varchar(50) NOT NULL,
   `estado` varchar(2) NOT NULL,
   `pontoReferencia` varchar(500) DEFAULT NULL,
+  `chave` varchar(32) NOT NULL,
+  `ativo` tinyint(1) NOT NULL,
   PRIMARY KEY (`codigo`),
   UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `chave` (`chave`),
   UNIQUE KEY `cpf` (`cpf`,`cnpj`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 

@@ -40,8 +40,8 @@
 		?>
 			<h1>Cadastro</h1>
 			<hr>
-			<form class="formulario" name="cadastro" method="post" action="app.control/ajax.php" onsubmit="return validaCamposCadastro();">
-				<input type="hidden" name="formularioNome" value="cadastro">
+			<form class="formulario" name="cadastroCliente" method="post" action="app.control/ajax.php" onsubmit="return validaCamposCadastroCliente();">
+				<input type="hidden" name="formularioNome" value="cadastroCliente">
 				<table class='tabelaFormulario'>
 					<!--Pessoa-->
 					<tr>
@@ -49,8 +49,10 @@
 							<label class='titulo obrigatorio'>Pessoa</label>
 						</td>
 						<td>
-							<input type='radio' name='pessoa' id='radioPessoaFisica' checked><label for='radioPessoaFisica'>Pessoa Física</label><br />
-							<input type='radio' name='pessoa' id='radioPessoaJuridica' ><label for='radioPessoaJuridica'>Pessoa Jurídica</label>
+							<input type='radio' name='radioPessoa' id='radioPessoaFisica' value='1' onclick='selecionaPessoaFisica()' checked>
+								<label for='radioPessoaFisica'>Pessoa Física</label><br />
+							<input type='radio' name='radioPessoa' id='radioPessoaJuridica' value='2' onclick='selecionaPessoaJuridica()'>
+								<label for='radioPessoaJuridica'>Pessoa Jurídica</label>
 						</td>
 					</tr>
 					<!--Nome-->
@@ -86,11 +88,11 @@
 							<label for='radioInformacoesTributarias' class='titulo obrigatorio'>Informações Tributárias</label>
 						</td>
 						<td>
-							<input type='radio' name='radioInformacoesTributarias' id='radioInformacoesTributariasContribuinte' >
+							<input type='radio' name='radioInformacoesTributarias' id='radioInformacoesTributariasContribuinte' value='0'>
 								<label for='radioInformacoesTributariasContribuinte'>Contribuinte ICMS</label><br />
-							<input type='radio' name='radioInformacoesTributarias' id='radioInformacoesTributariasNaoContribuinte' >
+							<input type='radio' name='radioInformacoesTributarias' id='radioInformacoesTributariasNaoContribuinte' value='1'>
 								<label for='radioInformacoesTributariasNaoContribuinte'>Não Contribuinte</label><br />
-							<input type='radio' name='radioInformacoesTributarias' id='radioInformacoesTributariasIsento' >
+							<input type='radio' name='radioInformacoesTributarias' id='radioInformacoesTributariasIsento' value='2'>
 								<label for='radioInformacoesTributariasIsento'>Isento de Inscrição Estadual</label>
 						</td>
 					</tr>
@@ -127,8 +129,8 @@
 							<label for='sexo' class='titulo obrigatorio'>Sexo</label>
 						</td>
 						<td>
-							<input type='radio' name='radioInformacoesTributarias' id='radioSexoMasculino' ><label for='radioSexoMasculino'>Masculino</label><br />
-							<input type='radio' name='radioInformacoesTributarias' id='radioSexoFeminino' ><label for='radioSexoFeminino'>Feminino</label>
+							<input type='radio' name='radioSexo' id='radioSexoMasculino' value='1'><label for='radioSexoMasculino'>Masculino</label><br />
+							<input type='radio' name='radioSexo' id='radioSexoFeminino' value='0'><label for='radioSexoFeminino'>Feminino</label>
 						</td>
 					</tr>
 					<!--Telefone-->
@@ -165,6 +167,15 @@
 						</td>
 						<td>
 							<input type='password' class='campo' name='senha' id='senha' placeholder='Senha'>
+						</td>
+					</tr>
+					<!--Confirmação Senha-->
+					<tr>
+						<td>
+							<label for='confirmacao' class='titulo obrigatorio'>Confirmação de Senha</label>
+						</td>
+						<td>
+							<input type='password' class='campo' name='confirmacao' id='confirmacao' placeholder='Confirmação de Senha'>
 						</td>
 					</tr>
 					<!--Quebra de Linha-->
@@ -251,7 +262,7 @@
 							<label for='estado' class='titulo obrigatorio'>Estado</label>
 						</td>
 						<td>
-							<select class='campo'>
+							<select class='campo' name='estado' id='estado'>
 								<option value='' disabled label selected>Estados</option>
 								<option value='AC'>Acre</option>
 								<option value='AL'>Alagoas</option>
@@ -303,6 +314,10 @@
 					</tr>
 				</table>
 			</form>
+			<script>
+				adicionaMascaras();
+				selecionaPessoaFisica();
+			</script>
 		<?php
 		}
 	}

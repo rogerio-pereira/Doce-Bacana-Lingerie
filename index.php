@@ -70,7 +70,7 @@ class TApplication
          *  Susbstitui a string #CONTENT# do template para a pagina principal
          */
         $site = str_replace('#CONTENT#', $content, $template);
-	echo $site;
+		echo $site;
     }
 }
 TApplication::run();

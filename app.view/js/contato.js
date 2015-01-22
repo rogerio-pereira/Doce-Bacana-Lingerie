@@ -48,6 +48,11 @@ function validaCamposContato()
 		document.contato.txtEmail.focus();
 		return false;
 	}
+	//Valida email
+	else
+	{
+		
+	}
 	//Telefone
 	if (document.contato.txtTelefone.value=='')
 	{

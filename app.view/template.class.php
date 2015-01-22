@@ -78,6 +78,7 @@ class template
 				<!--JavaScript-->
 				<script type="text/javascript" src="/app.view/js/contato.js"></script>
 				<script type="text/javascript" src="/app.view/js/slider.js"></script>
+				<script type="text/javascript" src="/app.view/js/cadastro.js"></script>
 			</head>
 			<body>
 				<div id='page'>
@@ -89,11 +90,11 @@ class template
 							</figure>
 							<!--Login-->
 							<div id='headerLogin'>
-								<a href='./login' title='Login'>Login</a>
+								<a href='/login' title='Login'>Login</a>
 							</div>
 							<!--Cadastro-->
 							<div id='headerCadastro'>
-								<a href="./cadastro" title='Cadastro'>Cadastre-se</a>
+								<a href="/cadastro" title='Cadastro'>Cadastre-se</a>
 							</div>
 							<!--Busca-->
 							<div id='headerBusca'>
@@ -109,12 +110,12 @@ class template
 						<!--Menu-->
 						<nav id='navMenuPrincipal'>
 							<ul id='navMenuPrincipalLista'>
-								<a href='./home'><li>Home</li></a>
-								<a href='./empresa'><li>Quem Somos</li></a>
-								<a href='./produtos'><li>Produtos</li></a>
-								<a href='./medidas'><li>Guia de Medidas</li></a>
-								<a href='./carrinho'><li>Orçamento</li></a>
-								<a href='./contato'><li>Contato</li></a>
+								<a href='/home'><li>Home</li></a>
+								<a href='/empresa'><li>Quem Somos</li></a>
+								<a href='/produtos'><li>Produtos</li></a>
+								<a href='/medidas'><li>Guia de Medidas</li></a>
+								<a href='/carrinho'><li>Orçamento</li></a>
+								<a href='/contato'><li>Contato</li></a>
 							</ul>
 						</nav>
 					</div>
@@ -187,9 +188,9 @@ class template
 											</p>
 											<hr>
 											<p>
-												<a href='./empresa'				title='Quem Somos'				alt='Quem Somos'>				Quem Somos				</a><br>
-												<a href='./politicaCompras'		title='Politica de Compras'		alt='Politica de Compras'>		Politica de Compras		</a><br>
-												<a href='./pagamento'			title='Formas de Pagamento'		alt='Formas de Pagamento'>		Formas de Pagamento		</a><br>
+												<a href='/empresa'				title='Quem Somos'				alt='Quem Somos'>				Quem Somos				</a><br>
+												<a href='/politicaCompras'		title='Politica de Compras'		alt='Politica de Compras'>		Politica de Compras		</a><br>
+												<a href='/pagamento'			title='Formas de Pagamento'		alt='Formas de Pagamento'>		Formas de Pagamento		</a><br>
 											</p>
 										</div>
 										<div id='footerDescConta'>
@@ -198,8 +199,8 @@ class template
 											</p>
 											<hr>
 											<p>
-												<a href='./perfil'		title='Meu Perfil e dados'		alt='Meu Perfil e dados'>		Meu Perfil e dados		</a><br>
-												<a href='./carrinho'	title='Carrinho de Compras'		alt='Carrinho de Compras'>		Carrinho de Compras		</a><br>
+												<a href='/perfil'		title='Meu Perfil e dados'		alt='Meu Perfil e dados'>		Meu Perfil e dados		</a><br>
+												<a href='/carrinho'		title='Carrinho de Compras'		alt='Carrinho de Compras'>		Carrinho de Compras		</a><br>
 											</p>
 										</div>
 										<div id='footerDescContato'>
