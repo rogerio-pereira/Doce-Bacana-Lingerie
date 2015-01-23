@@ -328,7 +328,7 @@ function validaCamposCadastroCliente()
 		return false;
 	}
 	//Numero
-	if($("numero").val() == '')
+	if($("#numero").val() == '')
 	{
 		alert( "Campo em branco: Numero" );
 		$('#numero').focus();

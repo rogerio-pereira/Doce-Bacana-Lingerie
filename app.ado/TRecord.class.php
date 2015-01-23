@@ -124,13 +124,39 @@
 		
 		public function load($codigo)
 		{
-			// cria instruï¿½ï¿½o SQL
+			// cria instrução SQL
 			$sql = new TSqlSelect;
 			$sql->addEntity($this->getEntity());
 			$sql->addColumn('*');
 			
 			$criteria = new TCriteria;
 			$criteria->add(new TFilter('codigo', '=', $codigo));
+			$sql->setCriteria($criteria);
+			
+			if ( $conn = TTransaction::get() ) 
+			{
+				$result = $conn->query($sql->getInstruction());
+				if ( $result )
+				{
+					$object = $result->fetchObject(get_class($this));
+				}
+				return $object;
+			}
+			else
+			{
+				throw new Exception('Nï¿½o hï¿½ transaï¿½ï¿½o ativa');
+			}
+		}
+		
+		public function loadCriteria($criteria)
+		{
+			// cria instrução SQL
+			$sql = new TSqlSelect;
+			$sql->addEntity($this->getEntity());
+			$sql->addColumn('*');
+			
+			//$criteria = new TCriteria;
+			//$criteria->add(new TFilter('codigo', '=', $codigo));
 			$sql->setCriteria($criteria);
 			
 			if ( $conn = TTransaction::get() ) 

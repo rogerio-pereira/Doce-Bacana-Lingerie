@@ -10,6 +10,7 @@
  */
     session_start();
     header("Content-Type:text/html; charset=ISO-8859-1",true);
+	error_reporting(E_WARNING);
 
     //Autoload
     function __autoload($classe)
@@ -45,8 +46,14 @@
 		$controlador->setCelular($_POST['celular']);
 		$controlador->setEmail($_POST['email']);
 		$controlador->setSenha($_POST['senha']);
-		$controlador->setOfertaEmail($_POST['ofertaEmail']);
-		$controlador->setOfertaCelular($_POST['ofertaCelular']);
+		if($_POST['ofertaEmail'] == 'on')
+			$controlador->setOfertaEmail(1);
+		else
+			$controlador->setOfertaEmail(0);
+		if($_POST['ofertaCelular'] == 'on')
+			$controlador->setOfertaCelular(1);
+		else
+			$controlador->setOfertaCelular(0);
 		$controlador->setCep($_POST['cep']);
 		$controlador->setEndereco($_POST['endereco']);
 		$controlador->setNumero($_POST['numero']);
@@ -58,6 +65,9 @@
 		$controlador->setChave(md5($_POST['email']));
 		$controlador->setAtivo(FALSE);
 		
-		$controlador->salvar();
+		if($controlador->salvar() == true)
+			echo "<script>alert('Cadastrado com Sucesso!');</script>";
+		else
+			echo "<script>alert('Falha ao cadastrar!');</script>";
 	}
 ?>

@@ -257,7 +257,7 @@ class controladorClientes
 
 	function setSenha($senha)
 	{
-		$this->senha = $senha;
+		$this->senha = md5($senha);
 	}
 
 	function setOfertaEmail($ofertaEmail)
@@ -359,15 +359,15 @@ class controladorClientes
 	
 	
 	/*
-	 * Método salva
+	 * Método salvar
 	 * Cadastra/atualiza cliente
 	 */
 	public function salvar()
 	{
 		try
 		{
-			$this->setCliente(NULL);
-
+			$this->setCliente(new clientes2);
+			
 			$this->cliente->pessoa					= $this->getPessoa();
 			$this->cliente->nome					= $this->getNome();
 			$this->cliente->nomeResponsavel			= $this->getNomeResponsavel();
@@ -393,13 +393,14 @@ class controladorClientes
 			$this->cliente->pontoReferencia			= $this->getPontoReferencia();
 			$this->cliente->chave					= $this->getChave();
 			$this->cliente->ativo					= $this->getAtivo();
+			
 
 			//RECUPERA CONEXAO BANCO DE DADOS
-			TTransaction::open('my_bd_site');
+			TTransaction2::open('my_bd_site');
 
 			$result = $this->cliente->store();
 
-			TTransaction::close();
+			TTransaction2::close();
 
 			return true;
 		}
@@ -408,6 +409,66 @@ class controladorClientes
 			return false;
 		}
 	}
+	
+	/*
+	 * Método getClienteByChave
+	 * Obtem o cliente pela chave
+	 */
+	public function getClienteByChave($chave)
+	{
+		$this->setCliente(NULL);
+		$result;
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction::open('my_bd_site');
+
+		//TABELA exposition_gallery
+		$criteria	= new TCriteria;
+		$criteria->add(new TFilter('chave', '=', $chave));
+		//$criteria->setProperty('order', 'ordem ASC');
+		
+		$this->setCliente( new clientes());
+		$result = $this->cliente->loadCriteria($criteria);
+		
+		TTransaction::close();
+		
+		return $result;
+	}
+	
+	/*
+	 * Método ativaClienteByChave
+	 * Obtem o cliente pela chave
+	 */
+	public function ativaClienteByChave($chave)
+	{
+		try
+		{
+			$this->setCliente(NULL);
+			
+			//RECUPERA CONEXAO BANCO DE DADOS
+			TTransaction::open('my_bd_site');
+
+			//TABELA exposition_gallery
+			$criteria	= new TCriteria;
+			$criteria->add(new TFilter('chave', '=', $chave));
+			//$criteria->setProperty('order', 'ordem ASC');
+
+			$this->setCliente( (new clientes())->loadCriteria($criteria));
+
+			$this->cliente->ativo = true;
+
+			$this->cliente->store();
+
+			TTransaction::close();
+			
+			return true;
+		}
+		catch (Exception $e)
+		{
+			return false;
+		}
+	}
+	
 }
 
 ?>

@@ -1,6 +1,6 @@
 <?php
 /*
- *	Classe  usuarios.class.php
+ *	Classe  clientes2.class.php
  *	Classe de Modelo da tabela usuarios
  *	
  *	Sistema:	Doce___Bacana_Lingerie
@@ -9,13 +9,13 @@
  */
 
 	/*
-	 * Classe usuarios.class.php
+	 * Classe clientes2.class.php
 	 */
-	class usuarios extends TRecord
+	class clientes2 extends TRecord2
 	{
 		/*
 		 * Variaveis
 		 */
-		const TABLENAME = 'usuarios';
+		const TABLENAME = 'clientes';
 	}
 ?>
