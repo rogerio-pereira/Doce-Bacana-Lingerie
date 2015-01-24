@@ -40,7 +40,7 @@ class login
 				</title>
 			
 				<!--FavIcon-->
-				<link rel="shortcut icon" type="image/x-icon" href="app.view/img/favicon.ico"/>
+				<link rel="shortcut icon" type="image/x-icon" href="/app.view/img/template/favicon2.ico"/>
 				
 				<!--Acentos-->
 				<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -48,8 +48,8 @@ class login
 				<!--Fontes-->
 				
 				<!--CSS-->
-				<link rel="stylesheet" href="app.view/css/formulario.css">
-				<link rel="stylesheet" href="app.view/css/login.css">
+				<link rel="stylesheet" href="/app.view/css/formulario.css">
+				<link rel="stylesheet" href="/app.view/css/login.css">
 					
 				<!--JQuery-->
 				<script type="text/javascript" src="app.view/js/jquery.js"></script>

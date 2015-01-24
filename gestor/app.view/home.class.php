@@ -8,7 +8,7 @@
  *	Autor: 		Rogério Eduardo Pereira
  *	Data: 		#DATA#
 */
-class template
+class home
 {
 	/*
 		Variaveis
@@ -22,14 +22,14 @@ class template
 	{
 		new session();
         
-		if(!isset($_SESSION['usuario']))
+		/*if(!isset($_SESSION['usuario']))
 		{
 			echo "
 				<script>
 					top.location='../?class=login';
 				</script>
 			";
-		}
+		}*/
 	}
 
 

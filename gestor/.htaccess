@@ -1,0 +1,10 @@
+RewriteEngine	On
+RewriteRule		^([a-z]+)\/?$			?class=$1			[NC,L]
+RewriteRule		^([a-z]+)\/([0-9]+)$	?class=$1&cod=$2	[NC,L]
+RewriteRule		^([a-z]+)\/([a-z0-9]+)$	?class=$1&chave=$2	[NC,L]
+
+ErrorDocument	400 /?class=erro&codigo=400
+ErrorDocument	401 /?class=erro&codigo=401
+ErrorDocument	403 /?class=erro&codigo=403
+ErrorDocument	404 /?class=erro&codigo=404
+ErrorDocument	500 /?class=erro&codigo=500

@@ -32,16 +32,15 @@ class TApplication
     {
         new session;
         //Suprimir Warnings
-        error_reporting(E_WARNING);
+        //error_reporting(E_WARNING);
         
-	if($_SESSION['nome'] == '')
+	/*if($_SESSION['nome'] == '')
     {
 		$pagina 	= new login;
 		$pagina->show();
     }
 	else
-	{
-		//$template = file_get_contents('app.view/template.class.php');
+	{*/
 		$template = new template;
 		ob_start();
 		$template->show();
@@ -83,11 +82,11 @@ class TApplication
 		 *  Susbstitui a string #CONTENT# do template para a pagina principal
 		 */
 		$site = str_replace('#CONTENT#', $content, $template);
+		
 		echo $site;
-	}
+	//}
     }
 }
-//new ContaVisitas();
 TApplication::run();
 ?>
 
