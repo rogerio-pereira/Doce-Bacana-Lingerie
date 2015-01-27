@@ -26,6 +26,10 @@ class controladorUsuario
 	private $nome;
 	private $user;
 	private $senha;
+	private $telaCategoria;
+	private $telaOrcamento;
+	private $telaProduto;
+	private $telaUsuario;
 	
 	function getRepository()
 	{
@@ -34,6 +38,50 @@ class controladorUsuario
 
 	function getCollectionUsuario()
 	{
+		$this->setCollectionUsuario(NULL);
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction::open('my_bd_site');
+
+		//TABELA exposition_gallery
+		$criteria	= new TCriteria;
+		//$criteria->add(new TFilter('situacao', '=', $situacao));
+		$criteria->setProperty('order', 'nome');
+		
+		$this->repository = new TRepository();
+		
+		$this->repository->addColumn('*');
+		$this->repository->addEntity('usuarios');
+		
+		$this->setCollectionUsuario($this->repository->load($criteria));
+		
+		TTransaction::close();
+		
+		return $this->collectionUsuario;
+	}
+	
+	function getCollectionUsuario2()
+	{
+		$this->setCollectionUsuario(NULL);
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction2::open('my_bd_site');
+		
+		//TABELA exposition_gallery
+		$criteria	= new TCriteria;
+		//$criteria->add(new TFilter('situacao', '=', $situacao));
+		$criteria->setProperty('order', 'nome');
+		
+		$this->repository = new TRepository2();
+		
+		$this->repository->addColumn('*');
+		$this->repository->addEntity('usuarios');
+		
+		$this->setCollectionUsuario($this->repository->load($criteria));
+		
+		
+		TTransaction2::close();
+		
 		return $this->collectionUsuario;
 	}
 
@@ -61,7 +109,7 @@ class controladorUsuario
 		//$criteria->add(new TFilter('codigo', '=', $codigo));
 		//$criteria->setProperty('order', 'ordem ASC');
 		
-		$this->usuario = new usuarios();
+		$this->usuario = new usuariosModel();
 		$result = $this->usuario->load($codigo);
 		
 		return $result;
@@ -79,7 +127,7 @@ class controladorUsuario
 		$criteria->add(new TFilter('codigo', '=', $codigo));
 		//$criteria->setProperty('order', 'ordem ASC');
 		
-		$this->setUsuarioBD(new usuarios2());
+		$this->setUsuarioBD(new usuariosModel2());
 		$result = $this->usuario->load($codigo);
 		
 		return $result;
@@ -97,7 +145,7 @@ class controladorUsuario
 		$criteria->add(new TFilter('usuario', '=', $user));
 		//$criteria->setProperty('order', 'ordem ASC');
 		
-		$this->setUsuarioBD(new usuarios());
+		$this->setUsuarioBD(new usuariosModel());
 		$result = $this->usuario->loadCriteria($criteria);
 		
 		return $result;
@@ -115,7 +163,7 @@ class controladorUsuario
 		$criteria->add(new TFilter('usuario', '=', $user));
 		//$criteria->setProperty('order', 'ordem ASC');
 		
-		$this->setUsuarioBD(new usuarios2());
+		$this->setUsuarioBD(new usuariosModel2());
 		$result = $this->usuario->loadCriteria($criteria);
 		
 		return $result;
@@ -157,7 +205,47 @@ class controladorUsuario
 	{
 		$this->senha = md5($senha);
 	}
-	
+	function getTelaCategoria()
+	{
+		return $this->telaCategoria;
+	}
+
+	function getTelaOrcamento()
+	{
+		return $this->telaOrcamento;
+	}
+
+	function getTelaProduto()
+	{
+		return $this->telaProduto;
+	}
+
+	function getTelaUsuario()
+	{
+		return $this->telaUsuario;
+	}
+
+	function setTelaCategoria($telaCategoria)
+	{
+		$this->telaCategoria = $telaCategoria;
+	}
+
+	function setTelaOrcamento($telaOrcamento)
+	{
+		$this->telaOrcamento = $telaOrcamento;
+	}
+
+	function setTelaProduto($telaProduto)
+	{
+		$this->telaProduto = $telaProduto;
+	}
+
+	function setTelaUsuario($telaUsuario)
+	{
+		$this->telaUsuario = $telaUsuario;
+	}
+
+		
 
 	/*
 	 * MÃ©todo construtor
@@ -222,7 +310,7 @@ class controladorUsuario
 		$this->setRepository(new TRepository());
 		
 		$this->repository->addColumn('*');
-		$this->repository->addEntity('usuarios2');
+		$this->repository->addEntity('usuarios');
 		
 		$this->setCollectionUsuario($this->repository->load($criteria));
 		
@@ -238,19 +326,48 @@ class controladorUsuario
 	{
 		try
 		{
-			$this->usuario = new kanban_usuario2();
+			$this->usuario = new usuariosModel2();
 			
-			$this->usuario->codigo		= $this->getCodigo();
-			$this->usuario->nome		= $this->getNome();
-			$this->usuario->usuario		= $this->getUser();
+			$this->usuario->codigo			= $this->getCodigo();
+			$this->usuario->nome			= $this->getNome();
+			$this->usuario->usuario			= $this->getUser();
 			if($this->getCodigo() == '')
-				$this->usuario->senha	= $this->getSenha();
-			$this->usuario->cor			= $this->getCor();
+				$this->usuario->senha		= $this->getSenha();
+			$this->usuario->telaCategoria	= $this->getTelaCategoria();
+			$this->usuario->telaOrcamento	= $this->getTelaOrcamento();
+			$this->usuario->telaProduto		= $this->getTelaProduto();
+			$this->usuario->telaUsuario		= $this->getTelaUsuario();
 			
 			//RECUPERA CONEXAO BANCO DE DADOS
 			TTransaction2::open('my_bd_site');
 
 			$result = $this->usuario->store();
+
+			TTransaction2::close();
+
+			return true;
+		}
+		catch(Exception $e)
+		{
+			return false;
+		}
+	}
+	
+	/*
+	 *	Método apaga2
+	 *	Apaga o usuário com o codigo especifico;
+	 *	Usado em IFRAME
+	 */
+	public function apaga2($codigo)
+	{
+		try
+		{
+			$this->setUsuarioBD(new usuariosModel2());
+
+			//RECUPERA CONEXAO BANCO DE DADOS
+			TTransaction2::open('my_bd_site');
+
+			$this->usuario->delete($codigo);
 
 			TTransaction2::close();
 

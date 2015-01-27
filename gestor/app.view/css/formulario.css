@@ -18,6 +18,8 @@ form h1
 form.formulario table tr td
 {
 	vertical-align: top;
+	padding-left:	20px;
+	padding-right:	20px;
 }
 
 form.formulario input, form.formulario textArea, form.formulario select

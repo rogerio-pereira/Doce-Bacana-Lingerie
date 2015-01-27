@@ -69,6 +69,7 @@ class template
 				
 				<!--JavaScript-->
 				<script type="text/javascript" src="/app.view/js/categoria.js"></script>
+				<script type="text/javascript" src="/app.view/js/usuario.js"></script>
 			</head>
 			<body>
 				<div id='page'>

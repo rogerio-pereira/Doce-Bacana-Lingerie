@@ -50,7 +50,7 @@
 		{
 		?>
 			<h1>Categorias</h1>
-			<form class="formulario" name="ListaCategoria" method="post" onsubmit="">
+			<form class="formulario" name="ListaCategoria" method="post">
 				<input type="hidden" name="formularioNome" value="ListaCategoria">
 				<table class='tabelaFormulario'>
 					<!--Titulo-->
