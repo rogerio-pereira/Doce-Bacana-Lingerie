@@ -56,12 +56,10 @@
 			//Criteria
 			$sql->setCriteria($criteria);
 			
-			
 			if ($conn = TTransaction2::get()) 
 			{	
 				$result = $conn->query($sql->getInstruction());
 				$results= array();
-				
 				if ($result)
 				{
 					while($row = $result->fetchObject(get_class($this)))

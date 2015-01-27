@@ -57,8 +57,8 @@ class controladorUsuario
 		TTransaction::open('my_bd_site');
 
 		//TABELA exposition_gallery
-		$criteria	= new TCriteria;
-		$criteria->add(new TFilter('codigo', '=', $codigo));
+		//$criteria	= new TCriteria;
+		//$criteria->add(new TFilter('codigo', '=', $codigo));
 		//$criteria->setProperty('order', 'ordem ASC');
 		
 		$this->usuario = new usuarios();

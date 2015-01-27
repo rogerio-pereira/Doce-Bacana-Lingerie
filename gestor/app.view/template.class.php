@@ -65,8 +65,10 @@ class template
 				<link rel="stylesheet" type="text/css" href="/app.view/css/formulario.css">				
 				
 				<!--JQuery-->
+				<script type="text/javascript" src="/app.view/js/jquery.js"></script>
 				
 				<!--JavaScript-->
+				<script type="text/javascript" src="/app.view/js/categoria.js"></script>
 			</head>
 			<body>
 				<div id='page'>
@@ -82,27 +84,28 @@ class template
 							</h1>
 						</header>
 					</div>
-
 					<!--Section-->
 					<div id='section'>
+						<hr>
 						<aside>
 							<nav id='menu'>
 								<ul id='menuLista'>
 								<?php
 									//Categoria
 									if($_SESSION['usuario']->telaCategoria == true)
-										echo "<a href='/categoria'><li>		Categorias	</li></a>";
+										echo "<a href='/categorias'><li>		Categorias	</li></a>";
 									//Orçamento
 									if($_SESSION['usuario']->telaOrcamento == true)
-										echo "<a href='/orcamento'><li>		Orcamentos	</li></a>";
+										echo "<a href='/orcamentos'><li>		Orcamentos	</li></a>";
 									//Produto
 									if($_SESSION['usuario']->telaProduto == true)
-										echo "<a href='/produto'><li>		Produtos	</li></a>";
+										echo "<a href='/produtos'><li>		Produtos	</li></a>";
 									//Usuario
 									if($_SESSION['usuario']->telaUsuario == true)
-										echo "<a href='/usuario'><li>		Usuarios	</li></a>";
+										echo "<a href='/usuarios'><li>		Usuarios	</li></a>";
 								?>
-									<a href='/perfil'><li>		Perfil	</li></a>
+									<a href='/senha'><li>		Alterar Senha	</li></a>
+									<a href='/logoff'><li>		Logoff			</li></a>
 								</ul>
 							</nav>
 						</aside>
@@ -111,15 +114,15 @@ class template
 							#CONTENT#
 						</section>
 					</div>
-
+					
 					<!--Footer-->
-					<div id='footer'>
+					<!--<div id='footer'>
 						<footer>
 							<hr>
 							&copy; Copyright 2015 - Doce & Bacana Lingerie<br>
 							Desenvolvedor: <a href='http://www.rogeriopereira.info.com' title='Desenvolvedor Rogério Pereira'>Rogério Pereira</a>
 						</footer>
-					</div>
+					</div>-->
 				</div>
 			</body>
 		</html>
