@@ -51,7 +51,7 @@ class template
 				<meta charset='UTF-8' />
 				
 				<!--FavIcon-->
-				<link rel="shortcut icon" type="image/x-icon" href="app.view/img/favicon2.ico"/>
+				<link rel="shortcut icon" type="image/x-icon" href="/app.view/img/favicon2.ico"/>
 				
 				<!--Acentos-->
 				<!--<meta http-equiv="content-type" content="text/html; charset=utf-8" />-->
@@ -77,14 +77,14 @@ class template
 								<img src='/app.view/img/template/logoVermelho.png' alt='Logotipo' title='Logotipo'>
 							</figure>
 							<h1>
-								Bem vindo <?php if($_SESSION['nome'] != '') echo $_SESSION['nome']; ?>
+								Bem vindo <span id='logotipo'><?php if($_SESSION['usuario'] != '') echo $_SESSION['usuario']->nome; ?></span>
 							</h1>
 						</header>
 					</div>
 
 					<!--Section-->
 					<div id='section'>
-						Section
+						#CONTENT#
 					</div>
 
 					<!--Footer-->

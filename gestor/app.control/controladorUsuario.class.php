@@ -4,8 +4,8 @@
  * 	Controla a Classe Usuario
  * 	
  * 	Sistema:	Kanban
- * 	Autor:	Rogério Eduardo Pereira
- * 	Data:	Aug 28, 2014
+ * 	Autor:		Rog�rio Eduardo Pereira
+ * 	Data:		27/01/2015
  */
 
 /*
@@ -26,11 +26,99 @@ class controladorUsuario
 	private $nome;
 	private $user;
 	private $senha;
-	private $cor;
 	
-	public function getUsuarioBD()
+	function getRepository()
 	{
-		return $this->usuario;
+		return $this->repository;
+	}
+
+	function getCollectionUsuario()
+	{
+		return $this->collectionUsuario;
+	}
+
+	function setRepository($repository)
+	{
+		$this->repository = $repository;
+	}
+
+	function setCollectionUsuario($collectionUsuario)
+	{
+		$this->collectionUsuario = $collectionUsuario;
+	}
+
+		
+	public function getUsuarioBDByCod($codigo)
+	{
+		$this->setUsuarioBD(NULL);
+		$result;
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction::open('my_bd_site');
+
+		//TABELA exposition_gallery
+		$criteria	= new TCriteria;
+		$criteria->add(new TFilter('codigo', '=', $codigo));
+		//$criteria->setProperty('order', 'ordem ASC');
+		
+		$this->usuario = new usuarios();
+		$result = $this->usuario->load($codigo);
+		
+		return $result;
+	}
+	public function getUsuarioBDByCod2($codigo)
+	{
+		$this->setUsuarioBD(NULL);
+		$result;
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction2::open('my_bd_site');
+
+		//TABELA exposition_gallery
+		$criteria	= new TCriteria;
+		$criteria->add(new TFilter('codigo', '=', $codigo));
+		//$criteria->setProperty('order', 'ordem ASC');
+		
+		$this->setUsuarioBD(new usuarios2());
+		$result = $this->usuario->load($codigo);
+		
+		return $result;
+	}
+	public function getUsuarioBDByUser($user)
+	{
+		$this->setUsuarioBD(NULL);
+		$result;
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction::open('my_bd_site');
+
+		//TABELA exposition_gallery
+		$criteria	= new TCriteria;
+		$criteria->add(new TFilter('usuario', '=', $user));
+		//$criteria->setProperty('order', 'ordem ASC');
+		
+		$this->setUsuarioBD(new usuarios());
+		$result = $this->usuario->loadCriteria($criteria);
+		
+		return $result;
+	}
+	public function getUsuarioBDByUser2($user)
+	{
+		$this->setUsuarioBD(NULL);
+		$result;
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction2::open('my_bd_site');
+
+		//TABELA exposition_gallery
+		$criteria	= new TCriteria;
+		$criteria->add(new TFilter('usuario', '=', $user));
+		//$criteria->setProperty('order', 'ordem ASC');
+		
+		$this->setUsuarioBD(new usuarios2());
+		$result = $this->usuario->loadCriteria($criteria);
+		
+		return $result;
 	}
 	public function setUsuarioBD($usuario)
 	{
@@ -53,10 +141,6 @@ class controladorUsuario
 	{
 		return $this->senha;
 	}
-	public function getCor()
-	{
-		return $this->cor;
-	}
 	public function setCodigo($codigo)
 	{
 		$this->codigo = $codigo;
@@ -71,11 +155,7 @@ class controladorUsuario
 	}
 	public function setSenha($senha)
 	{
-		$this->senha = md5($senha.'K4/\/b@n');
-	}
-	public function setCor($cor)
-	{
-		$this->cor = $cor;
+		$this->senha = md5($senha);
 	}
 	
 
@@ -84,22 +164,26 @@ class controladorUsuario
 	 */
 	public function __construct()
 	{
-		$this->repository	= NULL;
-		$this->usuario		= NULL;
+		$this->setRepository(NULL);
+		$this->setUsuarioBD(NULL);
+		$this->setCodigo(NULL);
+		$this->setNome(NULL);
+		$this->setUser(NULL);
+		$this->setSenha(NULL);
 	}
 
 	public function zeraRepository()
 	{
-		$this->repository = NULL;
+		$this->setRepository(NULL);
 	}
 	
 	/*
-	 *	Método getUsuarios
+	 *	M�todo getUsuarios
 	 *	Obtem todos os usuarios
 	 */
 	public function getUsuarios()
 	{
-		$this->collectionUsuario = NULL;
+		$this->setCollectionUsuario(NULL);
 		
 		//RECUPERA CONEXAO BANCO DE DADOS
 		TTransaction::open('my_bd_site');
@@ -109,12 +193,12 @@ class controladorUsuario
 		//$criteria->add(new TFilter('situacao', '=', $situacao));
 		$criteria->setProperty('order', 'nome');
 		
-		$this->repository = new TRepository();
+		$this->setRepository(new TRepository());
 		
 		$this->repository->addColumn('*');
-		$this->repository->addEntity('kanban_usuario');
+		$this->repository->addEntity('usuarios');
 		
-		$this->collectionUsuario = $this->repository->load($criteria);
+		$this->setCollectionUsuario($this->repository->load($criteria));
 		
 		return $this->collectionUsuario;
 	}
@@ -125,7 +209,7 @@ class controladorUsuario
 	 */
 	public function getUsuarios2()
 	{
-		$this->collectionUsuario = NULL;
+		$this->setCollectionUsuario(NULL);
 		
 		//RECUPERA CONEXAO BANCO DE DADOS
 		TTransaction2::open('my_bd_site');
@@ -135,119 +219,14 @@ class controladorUsuario
 		//$criteria->add(new TFilter('situacao', '=', $situacao));
 		$criteria->setProperty('order', 'nome');
 		
-		$this->repository = new TRepository2();
+		$this->setRepository(new TRepository());
 		
 		$this->repository->addColumn('*');
-		$this->repository->addEntity('kanban_usuario');
+		$this->repository->addEntity('usuarios2');
 		
-		$this->collectionUsuario = $this->repository->load($criteria);
+		$this->setCollectionUsuario($this->repository->load($criteria));
 		
 		return $this->collectionUsuario;
-	}
-	
-	/*
-	 *	Método getUsuario
-	 *	Obtem o usuario
-	 */
-	public function getUsuario($codigo)
-	{
-		$this->usuario = NULL;
-		$result;
-		
-		//RECUPERA CONEXAO BANCO DE DADOS
-		TTransaction::open('my_bd_site');
-
-		//TABELA exposition_gallery
-		$criteria	= new TCriteria;
-		$criteria->add(new TFilter('codigo', '=', $codigo));
-		//$criteria->setProperty('order', 'ordem ASC');
-		
-		$this->usuario = new kanban_usuario();
-		$result = $this->usuario->load($codigo);
-		
-		return $result;
-	}
-	
-	/*
-	 *	Método getUsuario
-	 *	Obtem o usuario
-	 *	Usado em Iframes
-	 */
-	public function getUsuario2($codigo)
-	{
-		$this->usuario = NULL;
-		$result;
-		
-		//RECUPERA CONEXAO BANCO DE DADOS
-		TTransaction2::open('my_bd_site');
-
-		//TABELA exposition_gallery
-		$criteria	= new TCriteria;
-		$criteria->add(new TFilter('codigo', '=', $codigo));
-		//$criteria->setProperty('order', 'ordem ASC');
-		
-		$this->usuario = new kanban_usuario2();
-		$result = $this->usuario->load($codigo);
-		
-		return $result;
-	}
-	
-	/*
-	 *	Método getUsuarioByUser
-	 *	Obtem o usuario
-	 *	Usado em Iframes
-	 */
-	public function getUsuarioByUser($usuario)
-	{
-		$this->collectionUsuario = NULL;
-		
-		//RECUPERA CONEXAO BANCO DE DADOS
-		TTransaction::open('my_bd_site');
-
-		//TABELA exposition_gallery
-		$criteria	= new TCriteria;
-		$criteria->add(new TFilter('usuario', '=', $usuario));
-		//$criteria->setProperty('order', 'nome');
-		
-		$this->repository = new TRepository2();
-		
-		$this->repository->addColumn('*');
-		$this->repository->addEntity('kanban_usuario');
-		
-		$this->collectionUsuario = $this->repository->load($criteria);
-		
-		TTransaction::close();
-		
-		return $this->collectionUsuario[0];
-	}
-	
-	/*
-	 *	Método getUsuarioByUser2
-	 *	Obtem o usuario
-	 *	Usado em Iframes
-	 */
-	public function getUsuarioByUser2($usuario)
-	{
-		$this->collectionUsuario = NULL;
-		
-		//RECUPERA CONEXAO BANCO DE DADOS
-		TTransaction2::open('my_bd_site');
-
-		//TABELA exposition_gallery
-		$criteria	= new TCriteria;
-		$criteria->add(new TFilter('usuario', '=', $usuario));
-		//$criteria->setProperty('order', 'nome');
-		
-		$this->repository = new TRepository2();
-		
-		$this->repository->addColumn('*');
-		$this->repository->addEntity('kanban_usuario');
-		
-		$this->collectionUsuario = $this->repository->load($criteria);
-		
-		TTransaction2::close();
-		
-		return $this->collectionUsuario[0];
 	}
 	
 	/*

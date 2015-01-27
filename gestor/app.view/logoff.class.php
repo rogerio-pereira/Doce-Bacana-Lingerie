@@ -23,6 +23,8 @@ class logoff
 	 */
 	public function __construct()
 	{
+		$_SESSION['usuario'] = NULL;
+		setcookie();
 		session_destroy();
 		echo
 			"

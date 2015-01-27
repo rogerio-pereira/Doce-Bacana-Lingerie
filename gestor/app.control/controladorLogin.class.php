@@ -6,11 +6,11 @@
 <?php
 /*
  * 	Classe  controladorLogin
- * 	#RESUMO DA CLASSE#
+ * 	Controla o Login
  * 	
- *	Sistema:	#SISTEMA#
- *	Autor: 		RogÃ©rio Eduardo Pereira
- *	Data: 		#DATA#
+ *	Sistema:	Doce___Bacana_Lingerie
+ *	Autor: 		Rogério Eduardo Pereira
+ *	Data: 		27/01/2015
  */
 
 /*
@@ -26,42 +26,71 @@ class controladorLogin
 	private $usuario;
 	private $senha;
 	
-	public function getUsuario()
+	
+	/*
+	 * Getters e Setter
+	 */
+	function getControladorUsuario()
+	{
+		return $this->controladorUsuario;
+	}
+
+	function getUsuarioBD()
+	{
+		return $this->usuarioBD;
+	}
+
+	function getUsuario()
 	{
 		return $this->usuario;
 	}
-	public function getSenha()
+
+	function getSenha()
 	{
 		return $this->senha;
 	}
-	public function setUsuario($usuario)
+
+	function setControladorUsuario($controladorUsuario)
+	{
+		$this->controladorUsuario = $controladorUsuario;
+	}
+
+	function setUsuarioBD($usuarioBD)
+	{
+		$this->usuarioBD = $usuarioBD;
+	}
+
+	function setUsuario($usuario)
 	{
 		$this->usuario = $usuario;
 	}
-	public function setSenha($senha)
+
+	function setSenha($senha)
 	{
-		//$this->senha = md5($senha.'K4/\/b@n');
+		$this->senha = md5($senha);
 	}
-	
+
+		
 
 	/*
-	 * MÃ©todo construtor
+	 * Método construtor
 	 */
 	public function __construct()
 	{		
 		new session();
-		$this->controladorUsuario	= new controladorUsuario();
-		$this->usuario				= NULL;
+		$this->setControladorUsuario(new controladorUsuario);
+		$this->setUsuario(NULL);
+		$this->setSenha(NULL);
+		$this->setUsuarioBD(NULL);
 	}
 	
 	/*
-	 * MÃ©todo login
+	 * Método login
 	 * Realiza o login
 	 */
 	public function login()
 	{
-		$this->usuarioBD  = $this->controladorUsuario->getUsuarioByUser2($this->getUsuario());
-		
+		$this->setUsuarioBD($this->controladorUsuario->getUsuarioBDByUser2($this->getUsuario()));
 		if($this->compara())
 		{
 			$_SESSION['usuario'] = $this->usuarioBD;
@@ -79,8 +108,8 @@ class controladorLogin
 	private function compara()
 	{	
 		if  (
-				($this->usuario == $this->usuarioBD->usuario) &&
-				($this->senha   == $this->usuarioBD->senha)
+				($this->getUsuario() == $this->usuarioBD->usuario) &&
+				($this->getSenha()   == $this->usuarioBD->senha)
 			)
 		{
 			return true;

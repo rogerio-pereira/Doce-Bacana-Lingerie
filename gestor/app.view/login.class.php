@@ -48,38 +48,63 @@ class login
 				<!--Fontes-->
 				
 				<!--CSS-->
+				<link rel="stylesheet" href="/app.view/css/template.css">
 				<link rel="stylesheet" href="/app.view/css/formulario.css">
 				<link rel="stylesheet" href="/app.view/css/login.css">
 					
 				<!--JQuery-->
-				<script type="text/javascript" src="app.view/js/jquery.js"></script>
+				<script type="text/javascript" src="/app.view/js/jquery.js"></script>
 				
 				<!--JavaScript-->
-				<script type="text/javascript" src="app.view/js/login.js"></script>
+				<script type="text/javascript" src="/app.view/js/login.js"></script>
 			</head>
 			<body>
 				<div class='contentLogin'>
 					<form 
-							class="loginForm"
+							class="formulario"
 							name="login"
 							id="login"
 							method="post"
-					  >
-						<h1>Login</h1>
-						<input 
-							type='text' 
-							id='usuario' 
-							name='usuario'  
-							placeholder='Login' 
-						/><br>
-						<input 
-							type='password' 
-							id='senha' 
-							name='senha' 
-							placeholder='Senha' 
-						>	<br><br>
-						<input type="hidden" id="action" name="action"/>
-						<input name='botaoLogin' type='button' id='botaoLogin' value='Login' onclick='executaLogin()'/>
+					>
+						<input type="hidden" name="formularioNome" value="login">
+						<table>
+							<!--Titulo-->
+							<tr>
+								<td align=center>
+									<h1>Login</h1>
+								</td>
+							</tr>
+							<!--Login-->
+							<tr>
+								<td>
+									<input 
+										type='text' 
+										class='campo'
+										id='usuario' 
+										name='usuario'  
+										placeholder='Login' 
+									/>
+								</td>
+							</tr>
+							<!--Senha-->
+							<tr>
+								<td>
+									<input 
+										type='password' 
+										class='campo'
+										id='senha' 
+										name='senha' 
+										placeholder='Senha' 
+									>
+								</td>
+							</tr>
+							<!--Botão-->
+							<tr>
+								<td align=center >
+									<input name='botaoLogin' type='submit' id='botaoLogin' value='Login' onclick='executaLogin()'/>
+								</td>
+							</tr>
+						</table>
 					  </form>
 				</div>
 			</body>

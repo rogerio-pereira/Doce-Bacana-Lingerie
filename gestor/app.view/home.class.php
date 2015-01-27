@@ -22,14 +22,14 @@ class home
 	{
 		new session();
         
-		/*if(!isset($_SESSION['usuario']))
+		if(!isset($_SESSION['usuario']))
 		{
 			echo "
 				<script>
 					top.location='../?class=login';
 				</script>
 			";
-		}*/
+		}
 	}
 
 

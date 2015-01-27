@@ -8,9 +8,9 @@
  * 	Arquivo  ajax
  * 	Destino de todos os fomrularios
  * 	
- * 	Sistema:	#SISTEMA
+ * 	Sistema:	Doce___Bacana_Lingerie
  * 	Autor:		RogÃ©rio Eduardo Pereira
- * 	Data:		#DATA#
+ * 	Data:		27/01/2015
  */
 
     //Autoload
@@ -26,10 +26,33 @@
         }
     }
 	
-	error_reporting(E_WARNING);
+	//error_reporting(E_WARNING);
 	
-	//Obtem informaÃ§Ã£o do que sera feito atravÃ©s do campo hiddens
-	$request = $_POST['action'];
+	//Obtem informação do que sera feito através do campo hiddens
+	$request = $_POST['formularioNome'];
 	
-	
+	//Login
+	if($request == 'login')
+	{
+		$controlador	= new controladorLogin();
+		
+		$controlador->setUsuario( $_POST['usuario']);
+		$controlador->setSenha($_POST['senha']);
+		
+		$retorno = $controlador->login();
+		
+		if($retorno == true)
+		{
+			return true;
+		}
+		else
+		{
+			session_destroy();
+			echo "
+					<script>
+						alert('Falha ao fazer login');
+					</script>
+				";
+		}
+	}
 ?>

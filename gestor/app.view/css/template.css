@@ -75,6 +75,12 @@ h3,h4,h5,h6
 	font-size: 1em;
 }
 
+span#logotipo
+{
+	font-family:		'Logotipo';
+	color:				#f70d48;
+}
+
 div#page
 {
 	width:			100%;
@@ -95,7 +101,8 @@ header
 {
 	position:	absolute;
 	top:		0px;
-	margin-top: 0%;	
+	margin:		0%;	
+	padding:	0px;
 	width:		100%;
 }
 
@@ -106,18 +113,28 @@ header figure
 	left:		1%;
 	margin:		0px;
 	padding:	0px;
+	float:		left;	
 }
 header figure img
 {
-	width: 19%;
+	width: 81%;
 }
 
+header h1
+{
+	position:		absolute;
+	margin:			0px;
+	padding:		0px;
+	left:			21.5%;
+	top:			30%;
+	font-weight:	normal;
+}
 
 
 div#section
 {
 	position:	absolute;
-	top:		18%;
+	top:		19%;
 	width:		100%;
 	padding:	0px;
 	margin:		0px;

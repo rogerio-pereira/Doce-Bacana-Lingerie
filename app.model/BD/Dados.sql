@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 27-Jan-2015 às 11:00
+-- Data de Criação: 27-Jan-2015 às 10:59
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.16
 
@@ -33,6 +33,15 @@ CREATE TABLE IF NOT EXISTS `categorias` (
   `nome` varchar(20) NOT NULL,
   PRIMARY KEY (`codigo`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Extraindo dados da tabela `categorias`
+--
+
+INSERT INTO `categorias` (`codigo`, `nome`) VALUES
+(1, 'Conjuntos'),
+(2, 'Calcinhas'),
+(3, 'Lançamentos');
 
 -- --------------------------------------------------------
 
@@ -73,6 +82,13 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   UNIQUE KEY `cpf` (`cpf`,`cnpj`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
+--
+-- Extraindo dados da tabela `clientes`
+--
+
+INSERT INTO `clientes` (`codigo`, `pessoa`, `nome`, `nomeResponsavel`, `cpf`, `cnpj`, `informacaoTributaria`, `inscricaoEstadual`, `nascimento`, `sexo`, `telefone`, `celular`, `email`, `senha`, `ofertaEmail`, `ofertaCelular`, `cep`, `endereco`, `numero`, `complemento`, `bairro`, `cidade`, `estado`, `pontoReferencia`, `chave`, `ativo`) VALUES
+(12, 1, 'Rogério', NULL, '101.042.346-01', NULL, NULL, NULL, '1991-03-01', 1, NULL, NULL, 'rogerio@rogerio.com', 'c4ca4238a0b923820dcc509a6f75849b', 1, 1, '37701-223', 'Rua', 45, NULL, 'Jardim Bela Vista', 'Poços de Caldas', 'MG', NULL, '8c0f45f4ad8126311b4f9869728cf0af', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -87,6 +103,13 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   PRIMARY KEY (`codigo`),
   UNIQUE KEY `usuario` (`usuario`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Extraindo dados da tabela `usuarios`
+--
+
+INSERT INTO `usuarios` (`codigo`, `nome`, `usuario`, `senha`) VALUES
+(1, 'Administrador', 'docebac_admin', '60517bfbcd49ce758a56feb0d9299494');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
