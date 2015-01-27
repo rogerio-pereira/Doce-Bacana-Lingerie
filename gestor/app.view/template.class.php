@@ -61,7 +61,8 @@ class template
 				<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 				
 				<!--CSS-->
-				<link rel="stylesheet" type="text/css" href="/app.view/css/template.css">
+				<link rel="stylesheet" type="text/css" href="/app.view/css/template.css">					
+				<link rel="stylesheet" type="text/css" href="/app.view/css/formulario.css">				
 				
 				<!--JQuery-->
 				
@@ -84,7 +85,31 @@ class template
 
 					<!--Section-->
 					<div id='section'>
-						#CONTENT#
+						<aside>
+							<nav id='menu'>
+								<ul id='menuLista'>
+								<?php
+									//Categoria
+									if($_SESSION['usuario']->telaCategoria == true)
+										echo "<a href='/categoria'><li>		Categorias	</li></a>";
+									//Orçamento
+									if($_SESSION['usuario']->telaOrcamento == true)
+										echo "<a href='/orcamento'><li>		Orcamentos	</li></a>";
+									//Produto
+									if($_SESSION['usuario']->telaProduto == true)
+										echo "<a href='/produto'><li>		Produtos	</li></a>";
+									//Usuario
+									if($_SESSION['usuario']->telaUsuario == true)
+										echo "<a href='/usuario'><li>		Usuarios	</li></a>";
+								?>
+									<a href='/perfil'><li>		Perfil	</li></a>
+								</ul>
+							</nav>
+						</aside>
+						
+						<section>
+							#CONTENT#
+						</section>
 					</div>
 
 					<!--Footer-->

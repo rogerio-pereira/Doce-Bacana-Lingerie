@@ -139,9 +139,72 @@ div#section
 	padding:	0px;
 	margin:		0px;
 }
+aside
+{
+	width:			10%;
+	float:			left;
+	padding-top:	0px;
+	text-align:		center;
+}
 
+aside h1, section aside a
+{
+	font-size:		.8em;
+	font-family:	'Open Sans Condensed', sans-serif;
+}
 
+aside nav#menu ul#menuLista
+{
+	list-style:		none;
+	margin-top:		0px;
+	margin-left:	0px;
+	padding-left:	0px;
+	text-align:		left;
+}
 
+aside nav#menu ul#menuLista a
+{
+	color: black;
+	
+	font-family:	'Open Sans Condensed', sans-serif;
+	font-size:		.85em;
+}
+
+aside nav#menu ul#menuLista a:hover
+{
+	text-decoration: none;
+}
+
+aside nav#menu ul#menuLista a li
+{
+	background-color:		white;
+	padding-left:			10px;
+	
+	border:					solid 1px black;
+	-webkit-border-radius:	5px;
+	-moz-border-radius:		5px;
+	border-radius:			5px;
+	
+	-webkit-transition:		all 1s ease;
+	-moz-transition:		all 1s ease;
+	-ms-transition:			all 1s ease;
+	-o-transition:			all 1s ease;
+	transition:				all 1s ease;
+}
+
+aside nav#menu ul#menuLista a li:hover
+{
+	background-color:	black;
+	color:				white;
+}
+
+section
+{
+	position:		absolute;
+	right:			0px;
+	width:			88%;
+	padding-left:	10px;
+}
 
 div#footer
 {

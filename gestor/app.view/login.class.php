@@ -46,6 +46,7 @@ class login
 				<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 				
 				<!--Fontes-->
+				<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 				
 				<!--CSS-->
 				<link rel="stylesheet" href="/app.view/css/template.css">

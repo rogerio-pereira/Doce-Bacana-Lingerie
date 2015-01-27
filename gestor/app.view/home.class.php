@@ -5,8 +5,8 @@
  *	Exibe o template principal
  *
  *	Sistema:	#SISTEMA#
- *	Autor: 		RogÃ©rio Eduardo Pereira
- *	Data: 		#DATA#
+ *	Autor: 		Rogério Eduardo Pereira
+ *	Data: 		27/01/2015
 */
 class home
 {
@@ -35,7 +35,7 @@ class home
 
 	/*
 		MÃ©todo show
-		Exibe as informaÃ§Ãµes da pÃ¡gina
+		Exibe as informações da página
 	*/
 	public function show()
 	{

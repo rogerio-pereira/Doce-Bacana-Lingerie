@@ -158,7 +158,7 @@ class template
 											<?php
 												foreach ($this->getCollectionCategoria() as $categoria)
 												{
-													echo "<a href='./categoria/{$categoria->codigo}'><li>	{$categoria->nome}	</li></a>";
+													echo "<a href='/categoria/{$categoria->codigo}'><li>	{$categoria->nome}	</li></a>";
 												}
 											?>
 										</ul>
