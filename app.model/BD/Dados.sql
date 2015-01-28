@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 28-Jan-2015 às 12:38
+-- Data de Criação: 28-Jan-2015 às 19:17
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.16
 
@@ -99,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `produtos` (
   `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `referencia` varchar(20) NOT NULL,
   `categoria` bigint(20) unsigned NOT NULL,
-  `descricao` varchar(100) NOT NULL,
+  `descricao` varchar(150) NOT NULL,
   `caracteristicas` longtext NOT NULL,
   `tamanhoPP` tinyint(1) DEFAULT NULL,
   `tamanhoP` tinyint(1) DEFAULT NULL,
@@ -113,17 +113,25 @@ CREATE TABLE IF NOT EXISTS `produtos` (
   PRIMARY KEY (`codigo`),
   UNIQUE KEY `referencia` (`referencia`),
   KEY `categoria` (`categoria`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Extraindo dados da tabela `produtos`
+--
+
+INSERT INTO `produtos` (`codigo`, `referencia`, `categoria`, `descricao`, `caracteristicas`, `tamanhoPP`, `tamanhoP`, `tamanhoM`, `tamanhoG`, `tamanhoGG`, `tamanho48`, `tamanho50`, `tamanho52`, `tamanho54`) VALUES
+(1, 'ref01', 1, 'produto 1', 'caracteristicas produto 1', 0, 1, 1, 1, 1, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `produtos_cores`
+-- Estrutura da tabela `produtoscores`
 --
 
-CREATE TABLE IF NOT EXISTS `produtos_cores` (
+CREATE TABLE IF NOT EXISTS `produtoscores` (
   `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `codigoProduto` bigint(20) unsigned NOT NULL,
+  `nome` varchar(20) NOT NULL,
   `cor1` varchar(7) NOT NULL,
   `cor2` varchar(7) NOT NULL,
   `banner1` tinyint(1) DEFAULT NULL,
@@ -172,9 +180,9 @@ ALTER TABLE `produtos`
   ADD CONSTRAINT `produto_categoria` FOREIGN KEY (`categoria`) REFERENCES `categorias` (`codigo`) ON UPDATE CASCADE;
 
 --
--- Limitadores para a tabela `produtos_cores`
+-- Limitadores para a tabela `produtoscores`
 --
-ALTER TABLE `produtos_cores`
+ALTER TABLE `produtoscores`
   ADD CONSTRAINT `produtos_cor` FOREIGN KEY (`codigoProduto`) REFERENCES `produtos` (`codigo`) ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

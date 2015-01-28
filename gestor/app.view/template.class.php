@@ -62,14 +62,16 @@ class template
 				
 				<!--CSS-->
 				<link rel="stylesheet" type="text/css" href="/app.view/css/template.css">					
-				<link rel="stylesheet" type="text/css" href="/app.view/css/formulario.css">				
+				<link rel="stylesheet" type="text/css" href="/app.view/css/formulario.css">	
 				
 				<!--JQuery-->
 				<script type="text/javascript" src="/app.view/js/jquery.js"></script>
+				<script type="text/javascript" src="/app.view/js/tinymce/tinymce.min.js"></script>
 				
 				<!--JavaScript-->
 				<script type="text/javascript" src="/app.view/js/categoria.js"></script>
 				<script type="text/javascript" src="/app.view/js/usuario.js"></script>
+				<script type="text/javascript" src="/app.view/js/produto.js"></script>
 			</head>
 			<body>
 				<div id='page'>
