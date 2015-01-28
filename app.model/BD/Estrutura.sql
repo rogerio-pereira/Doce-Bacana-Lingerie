@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 27-Jan-2015 às 11:00
+-- Data de Criação: 28-Jan-2015 às 12:37
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.16
 
@@ -76,6 +76,51 @@ CREATE TABLE IF NOT EXISTS `clientes` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `produtos`
+--
+
+CREATE TABLE IF NOT EXISTS `produtos` (
+  `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `referencia` varchar(20) NOT NULL,
+  `categoria` bigint(20) unsigned NOT NULL,
+  `descricao` varchar(100) NOT NULL,
+  `caracteristicas` longtext NOT NULL,
+  `tamanhoPP` tinyint(1) DEFAULT NULL,
+  `tamanhoP` tinyint(1) DEFAULT NULL,
+  `tamanhoM` tinyint(1) DEFAULT NULL,
+  `tamanhoG` tinyint(1) DEFAULT NULL,
+  `tamanhoGG` tinyint(1) DEFAULT NULL,
+  `tamanho48` tinyint(1) DEFAULT NULL,
+  `tamanho50` tinyint(1) DEFAULT NULL,
+  `tamanho52` tinyint(1) DEFAULT NULL,
+  `tamanho54` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`codigo`),
+  UNIQUE KEY `referencia` (`referencia`),
+  KEY `categoria` (`categoria`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `produtos_cores`
+--
+
+CREATE TABLE IF NOT EXISTS `produtos_cores` (
+  `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `codigoProduto` bigint(20) unsigned NOT NULL,
+  `cor1` varchar(7) NOT NULL,
+  `cor2` varchar(7) NOT NULL,
+  `banner1` tinyint(1) DEFAULT NULL,
+  `banner2` tinyint(1) DEFAULT NULL,
+  `banner3` tinyint(1) DEFAULT NULL,
+  `home` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`codigo`),
+  KEY `codigoProduto` (`codigoProduto`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `usuarios`
 --
 
@@ -84,9 +129,29 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `nome` varchar(100) NOT NULL,
   `usuario` varchar(15) NOT NULL,
   `senha` varchar(32) NOT NULL,
+  `telaCategoria` tinyint(1) NOT NULL,
+  `telaOrcamento` tinyint(1) NOT NULL,
+  `telaProduto` tinyint(1) NOT NULL,
+  `telaUsuario` tinyint(1) NOT NULL,
   PRIMARY KEY (`codigo`),
   UNIQUE KEY `usuario` (`usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Limitadores para a tabela `produtos`
+--
+ALTER TABLE `produtos`
+  ADD CONSTRAINT `produto_categoria` FOREIGN KEY (`categoria`) REFERENCES `categorias` (`codigo`) ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `produtos_cores`
+--
+ALTER TABLE `produtos_cores`
+  ADD CONSTRAINT `produtos_cor` FOREIGN KEY (`codigoProduto`) REFERENCES `produtos` (`codigo`) ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
