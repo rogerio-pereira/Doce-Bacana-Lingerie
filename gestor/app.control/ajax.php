@@ -299,4 +299,23 @@
 				</tr>
 			";
 	}
+	//Alteração de Senha
+	else if($request == 'alteraSenha')
+	{
+		$controlador = new controladorUsuario;
+		$controlador->setSenhaAtual($_POST['senhaAtual']);
+		$controlador->setSenha($_POST['senhaNova']);
+		
+		if($controlador->verificaSenhaAtual())
+		{
+			if($controlador->alteraSenha())
+				echo 'Senha alterada com sucesso!';
+			else
+				echo 'Erro ao alterar senha!';
+		}
+		else
+		{
+			echo 'Senha Atual Inválida!';
+		}
+	}
 ?>

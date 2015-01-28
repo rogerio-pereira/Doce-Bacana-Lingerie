@@ -31,6 +31,8 @@ class controladorUsuario
 	private $telaProduto;
 	private $telaUsuario;
 	
+	private $senhaAtual;
+	
 	function getRepository()
 	{
 		return $this->repository;
@@ -244,7 +246,18 @@ class controladorUsuario
 	{
 		$this->telaUsuario = $telaUsuario;
 	}
+	
+	function getSenhaAtual()
+	{
+		return $this->senhaAtual;
+	}
 
+	function setSenhaAtual($senhaAtual)
+	{
+		$this->senhaAtual = md5($senhaAtual);
+	}
+
+	
 		
 
 	/*
@@ -258,6 +271,7 @@ class controladorUsuario
 		$this->setNome(NULL);
 		$this->setUser(NULL);
 		$this->setSenha(NULL);
+		$this->setSenhaAtual(NULL);
 	}
 
 	public function zeraRepository()
@@ -380,34 +394,42 @@ class controladorUsuario
 	}
 	
 	/*
-	 *	MÃ©todo alteraSenha
-	 *	Altera a senha do Usuario
-	 *	Usado em IFRAMES
+	 * Método confirma Senha Atual
+	 * Confirma a senha do usuario logado
+	 */
+	public function verificaSenhaAtual()
+	{
+		if($this->getSenhaAtual() === $_SESSION['usuario']->senha)
+			return true;
+		else
+			return false;
+	}
+	
+	/*
+	 * Método altera senha
+	 * Altera a senha do usuario ativo
 	 */
 	public function alteraSenha()
 	{
 		try
 		{
-			$this->usuario = new kanban_usuario2();
+			$this->setUsuarioBD(new usuariosModel2);
 			
-			$this->usuario->codigo		= $_SESSION['usuario']->codigo;
-			$this->usuario->nome		= $_SESSION['usuario']->nome;
-			$this->usuario->usuario		= $_SESSION['usuario']->usuario;
-			$this->usuario->senha		= $this->getSenha();
-			$this->usuario->cor			= $_SESSION['usuario']->cor;
-			
+			$this->usuario->codigo	= $_SESSION['usuario']->codigo;
+			$this->usuario->senha	= $this->getSenha();
+
 			//RECUPERA CONEXAO BANCO DE DADOS
 			TTransaction2::open('my_bd_site');
 
 			$result = $this->usuario->store();
-			
+
 			TTransaction2::close();
 
 			return true;
 		}
-		catch(Exception $e)
+		catch (Exception $e)
 		{
-			return false;
+			return false;;
 		}
 	}
 }
