@@ -339,8 +339,8 @@
 		$controlador->setTamanho54($_POST['tamanho54']);
 		$controlador->setCollectionProdutosCores(explode('¢', $_POST['cores']));
 		
-		
-		if($controlador->salvaProduto())
+		$controlador->upload();
+		/*if($controlador->salvaProduto())
 		{
 			$codigo = $controlador->getLast();
 			$controlador->setCodigoProduto($codigo);
@@ -375,6 +375,6 @@
 			}
 		}
 		else
-			echo 'Falha ao salvar Produto!';
+			echo 'Falha ao salvar Produto!';*/
 	}
 ?>

@@ -36,7 +36,7 @@ class login
 		<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">
 			<head>
 				<title>
-					Kanban - Login
+					Doce & Bacana Lingerie - Login
 				</title>
 			
 				<!--FavIcon-->

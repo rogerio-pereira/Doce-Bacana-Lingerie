@@ -12,7 +12,7 @@
 /*
  * Classe controladorProdutos.class.php
  */
-class controladorProdutos
+class controladorProdutos extends controladorUpload
 {
 	/*
 	 * Variaveis

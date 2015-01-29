@@ -81,7 +81,6 @@
 				{
 					$this->codigo = $this->getLast() +1;
 				}*/
-				
 				// cria instru√ß√£o SQL
 				$sql = new TSqlInsert;
 				$sql->addEntity($this->getEntity());
@@ -94,7 +93,7 @@
 			}
 			else
 			{
-				// cria instruÔøΩÔøΩo UPDATE
+				// cria instruÁ„o UPDATE
 				$sql = new TSqlUpdate;
 				$sql->addEntity($this->getEntity());
 				
@@ -110,7 +109,7 @@
 					}
 				}				
 			}
-				
+			
 			if ( $conn = TTransaction2::get() ) 
 			{
 				$result = $conn->exec($sql->getInstruction());
@@ -199,15 +198,15 @@
 			}			
 		}
 		
-		private function getLast()
+		public function getLast()
 		{
 			if ( $conn = TTransaction2::get() ) 
 			{
-				// cria instru√ß√£o SQL
+				// cria instruÁ„o SQL
 				$sql = new TSqlSelect;
 				$sql->addColumn('max(codigo) as codigo');
-				$sql->addEntity($this->getEntity());			
-			
+				$sql->addEntity($this->getEntity());	
+				
 				$result = $conn->query($sql->getInstruction());
 				$row = $result->fetch();
 				
@@ -215,7 +214,7 @@
 			}
 			else
 			{
-				throw new Exception('N√£o h√° transa√ß√£o ativa');
+				throw new Exception('N„o h· transaÁ„o ativa');
 			}			
 		}
 	}
