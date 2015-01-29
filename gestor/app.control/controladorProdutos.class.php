@@ -24,6 +24,7 @@ class controladorProdutos
 	private $codigoProd;
 	private $referencia;
 	private $categoria;
+	private $descricao;
 	private $caracteristicas;
 	private $tamanhoPP;
 	private $tamanhoP;
@@ -40,6 +41,7 @@ class controladorProdutos
 	
 	private $codigoProdCor;
 	private $codigoProduto;
+	private $nome;
 	private $cor1;
 	private $cor2;
 	private $banner1;
@@ -344,7 +346,27 @@ class controladorProdutos
 	{
 		$this->home = $home;
 	}
+	function getDescricao()
+	{
+		return $this->descricao;
+	}
 
+	function setDescricao($descricao)
+	{
+		$this->descricao = $descricao;
+	}
+
+	function getNome()
+	{
+		return $this->nome;
+	}
+
+	function setNome($nome)
+	{
+		$this->nome = $nome;
+	}
+
+		
 	
 	
 	/*
@@ -358,6 +380,7 @@ class controladorProdutos
 		$this->setCodigoProd(NULL);
 		$this->setReferencia(NULL);
 		$this->setCategoria(NULL);
+		$this->setDescricao(NULL);
 		$this->setCaracteristicas(NULL);
 		$this->setTamanhoPP(NULL);
 		$this->setTamanhoP(NULL);
@@ -378,9 +401,100 @@ class controladorProdutos
 		$this->setBanner2(NULL);
 		$this->setBanner3(NULL);
 		$this->setHome(NULL);
-		
 	}
 
+	/*
+	 * Método salvaProduto
+	 * Salva o Produto
+	 */
+	public function salvaProduto()
+	{
+		try
+		{
+			$this->setProduto(new produtosModel2());
+			
+			
+			$this->produto->codigo			= $this->getCodigoProd();
+			$this->produto->referencia		= $this->getReferencia();
+			$this->produto->categoria		= $this->getCategoria();
+			$this->produto->descricao		= $this->getDescricao();
+			$this->produto->caracteristicas	= $this->getCaracteristicas();
+			$this->produto->tamanhoPP		= $this->getTamanhoPP();
+			$this->produto->tamanhoP		= $this->getTamanhoP();
+			$this->produto->tamanhoM		= $this->getTamanhoM();
+			$this->produto->tamanhoG		= $this->getTamanhoG();
+			$this->produto->tamanhoGG		= $this->getTamanhoGG();
+			$this->produto->tamanho48		= $this->getTamanho48();
+			$this->produto->tamanho50		= $this->getTamanho50();
+			$this->produto->tamanho52		= $this->getTamanho52();
+			$this->produto->tamanho54		= $this->getTamanho54();
+			
+			
+			//RECUPERA CONEXAO BANCO DE DADOS
+			TTransaction2::open('my_bd_site');
+			
+			$result = $this->produto->store();
+
+			TTransaction2::close();
+
+			return true;
+		}
+		catch(Exception $e)
+		{
+			return false;
+		}
+	}
+	
+	/*
+	 * Método salvaCores
+	 * Salva cada cor
+	 */
+	public function salvaCor()
+	{
+		try
+		{			
+			$this->setProdutoCor(new produtoscoresModel2());
+
+			$this->produtoCor->codigoProduto	= $this->getCodigoProduto();
+			$this->produtoCor->nome				= $this->getNome();
+			$this->produtoCor->cor1				= $this->getCor1();
+			$this->produtoCor->cor2				= $this->getCor2();
+			$this->produtoCor->banner1			= $this->getBanner1();
+			$this->produtoCor->banner2			= $this->getBanner2();
+			$this->produtoCor->banner3			= $this->getBanner3();
+			$this->produtoCor->home				= $this->getHome();
+
+			//RECUPERA CONEXAO BANCO DE DADOS
+			TTransaction2::open('my_bd_site');
+
+			$result = $this->produtoCor->store();
+
+			TTransaction2::close();
+			return true;
+		} 
+		catch (Exception $ex)
+		{
+			return false;
+		}
+	}
+	
+	/*
+	 * Método getLast
+	 * Retorna o ultimo codigo de produto cadastrado
+	 */
+	public function getLast()
+	{
+		$this->setProduto(new produtosModel2());
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction2::open('my_bd_site');
+		
+		$codigo =  $this->produto->getLast();
+		
+		TTransaction2::close();
+		
+		return $codigo;
+	}
 }
 
 ?>

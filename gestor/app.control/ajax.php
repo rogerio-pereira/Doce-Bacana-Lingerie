@@ -318,4 +318,63 @@
 			echo 'Senha Atual Inválida!';
 		}
 	}
+	//Salvar Produto
+	else if($request == 'salvaProduto')
+	{
+		$controlador =  new controladorProdutos();
+		
+		$controlador->setCodigoProd($_POST['codigo']);
+		$controlador->setReferencia($_POST['referencia']);
+		$controlador->setCategoria($_POST['categoria']);
+		$controlador->setDescricao($_POST['descricao']);
+		$controlador->setCaracteristicas($_POST['caracteristicas']);
+		$controlador->setTamanhoPP($_POST['tamanhoPP']);
+		$controlador->setTamanhoP($_POST['tamanhoP']);
+		$controlador->setTamanhoM($_POST['tamanhoM']);
+		$controlador->setTamanhoG($_POST['tamanhoG']);
+		$controlador->setTamanhoGG($_POST['tamanhoGG']);
+		$controlador->setTamanho48($_POST['tamanho48']);
+		$controlador->setTamanho50($_POST['tamanho50']);
+		$controlador->setTamanho52($_POST['tamanho52']);
+		$controlador->setTamanho54($_POST['tamanho54']);
+		$controlador->setCollectionProdutosCores(explode('¢', $_POST['cores']));
+		
+		
+		if($controlador->salvaProduto())
+		{
+			$codigo = $controlador->getLast();
+			$controlador->setCodigoProduto($codigo);
+			
+			$i=1;
+			foreach ($controlador->getCollectionProdutosCores() as $data)
+			{
+				$cor = explode('¬', $data);
+								
+				$controlador->setNome($cor[0]);
+				$controlador->setCor1($cor[1]);
+				$controlador->setCor2($cor[2]);
+				$controlador->setBanner1($cor[3]);
+				$controlador->setBanner2($cor[4]);
+				$controlador->setBanner3($cor[5]);
+				$controlador->setHome($cor[6]);
+				
+				if($controlador->salvaCor())
+				{
+					if(isset($_FILES["foto_{$i}"]["tmp_name"]))
+					{
+						$foto_temp	= $_FILES["foto_{$i}"]["tmp_name"];
+						$foto_name	= $_FILES["foto_{$i}"]["name"];
+						$foto_size	= $_FILES["foto_{$i}"]["size"];
+						$foto_type	= $_FILES["foto_{$i}"]["type"];
+					}
+				}
+				else
+					echo 'Erro ao salvar cor '.$i;
+				
+				$i++;
+			}
+		}
+		else
+			echo 'Falha ao salvar Produto!';
+	}
 ?>
