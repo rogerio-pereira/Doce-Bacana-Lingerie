@@ -4,7 +4,7 @@
  * 	Classe  logoff
  * 	Faz o logoff da sessão
  * 	
- * 	Sistema:	Kanban
+ * 	Sistema:	Doce___Bacana_Lingerie
  * 	Autor:	Rogério Eduardo Pereira
  * 	Data:	Sep 3, 2014
  */

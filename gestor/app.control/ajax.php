@@ -321,7 +321,14 @@
 	//Salvar Produto
 	else if($request == 'salvaProduto')
 	{
-		$controlador =  new controladorProdutos();
+		/*
+		 * Ver http://stackoverflow.com/questions/10899384/uploading-both-data-and-files-in-one-form-using-ajax
+		 * e tentar adaptar para o que eu preciso
+		 */
+		echo 'ajax';
+		
+		
+		/*$controlador =  new controladorProdutos();
 		
 		$controlador->setCodigoProd($_POST['codigo']);
 		$controlador->setReferencia($_POST['referencia']);
@@ -337,13 +344,14 @@
 		$controlador->setTamanho50($_POST['tamanho50']);
 		$controlador->setTamanho52($_POST['tamanho52']);
 		$controlador->setTamanho54($_POST['tamanho54']);
-		$controlador->setCollectionProdutosCores(explode('¢', $_POST['cores']));
+		$controlador->setCollectionProdutosCores(explode('¢', str_replace('Â', '', $_POST['cores']))); //Precisa do replace porque o concat do javascrip vem com esse caractere
+		$arquivos = $_POST['arquivos'];
+		echo array_values($arquivos) ;
 		
-		$controlador->upload();
-		/*if($controlador->salvaProduto())
+		if($controlador->salvaProduto())
 		{
-			$codigo = $controlador->getLast();
-			$controlador->setCodigoProduto($codigo);
+			$codigoProduto = $controlador->getLastProduto();
+			$controlador->setCodigoProduto($codigoProduto);
 			
 			$i=1;
 			foreach ($controlador->getCollectionProdutosCores() as $data)
@@ -360,12 +368,18 @@
 				
 				if($controlador->salvaCor())
 				{
+					$codigoCor = $controlador->getLastCor();
+					
 					if(isset($_FILES["foto_{$i}"]["tmp_name"]))
 					{
-						$foto_temp	= $_FILES["foto_{$i}"]["tmp_name"];
-						$foto_name	= $_FILES["foto_{$i}"]["name"];
-						$foto_size	= $_FILES["foto_{$i}"]["size"];
-						$foto_type	= $_FILES["foto_{$i}"]["type"];
+						$controlador->setFoto_temp($_FILES["foto_{$i}"]["tmp_name"]);
+						$controlador->setFoto_name($_FILES["foto_{$i}"]["name"]);
+						$controlador->setFoto_size($_FILES["foto_{$i}"]["size"]);
+						$controlador->setFoto_type($_FILES["foto_{$i}"]["type"]);
+						
+						$nome = $codigoProduto.'_'.$codigoCor;
+						
+						$controlador->upload($nome, $controlador->getBanner1(), $controlador->getBanner2(), $controlador->getBanner3(), $controlador->getHome());
 					}
 				}
 				else

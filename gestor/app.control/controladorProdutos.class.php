@@ -479,10 +479,10 @@ class controladorProdutos extends controladorUpload
 	}
 	
 	/*
-	 * Método getLast
+	 * Método getLastProduto
 	 * Retorna o ultimo codigo de produto cadastrado
 	 */
-	public function getLast()
+	public function getLastProduto()
 	{
 		$this->setProduto(new produtosModel2());
 		
@@ -490,6 +490,24 @@ class controladorProdutos extends controladorUpload
 		TTransaction2::open('my_bd_site');
 		
 		$codigo =  $this->produto->getLast();
+		
+		TTransaction2::close();
+		
+		return $codigo;
+	}
+	
+	/*
+	 * Método getLastCor
+	 * Retorna o ultimo codigo de cor cadastrada
+	 */
+	public function getLastCor()
+	{
+		$this->setProdutoCor(new produtoscoresModel2());
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction2::open('my_bd_site');
+		
+		$codigo =  $this->produtoCor->getLast();
 		
 		TTransaction2::close();
 		

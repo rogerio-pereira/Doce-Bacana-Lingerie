@@ -1,7 +1,7 @@
 <?php
 /*
  *	Arquivo  produto.class.php
- *	#DESCRIÇÂO#
+ *	Cadastro/Alteração de Produto
  *	
  *	Sistema:	Doce___Bacana_Lingerie
  *	Autor:      Rogério Eduardo Pereira
@@ -63,6 +63,7 @@
 			<h1>Produto</h1>
 			<!--Hack para centralizar os botões das tabelas-->
 			<div style='position: absolute;'>
+				<!--<form class="formulario" name="salvaProduto" enctype="multipart/form-data" method="post" action='/app.control/ajax.php'>-->
 				<form class="formulario" name="salvaProduto" enctype="multipart/form-data" method="post" onsubmit="validaProduto()">
 					<input type="hidden" name="formularioNome"	value="salvaProduto">
 					<input type="hidden" name="numeroCor"		id='numeroCor'	value="0">

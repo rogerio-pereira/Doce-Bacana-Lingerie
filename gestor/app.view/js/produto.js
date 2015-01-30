@@ -6,6 +6,8 @@
  *	Autor:      Rogério Eduardo Pereira
  *	Data:       28/01/2015
  */
+var files		= new Array();
+
 function iniciaTextArea()
 {
 	tinymce.init
@@ -23,52 +25,78 @@ function insereCor()
 	var numeroCor = (parseInt($('#numeroCor').val()) + 1);
 	$('#numeroCor').val(numeroCor.toString());
 			
-	var data =	"	<tr>																																			" +
-				"		<td>																																		" +
-				"			Nome																																	" +
-				"		</td>																																		" +
-				"		<td>																																		" +
-				"			<input type='text' class='campo' name='nomeCor_" + numeroCor + "' id='nomeCor_" + numeroCor + "' placeholder='Nome' maxlength='20'>		" +
-				"		</td>																																		" +
-				"	</tr>																																			" +
-				"	<tr>																																			" +
-				"		<td>																																		" +
-				"			Cor 1																																	" +
-				"		</td>																																		" +
-				"		<td>																																		" +
-				"			<input type='color' class='campo' name='cor1_" + numeroCor + "' id='cor1_" + numeroCor + "' placeholder='Cor 1'>						" +
-				"		</td>																																		" +
-				"	</tr>																																			" +
-				"	<tr>																																			" +
-				"		<td>																																		" +
-				"			Cor 2																																	" +
-				"		</td>																																		" +
-				"		<td>																																		" +
-				"			<input type='color' class='campo' name='cor2_" + numeroCor + "' id='cor2_" + numeroCor + "' placeholder='Cor 2'>						" +
-				"		</td>																																		" +
-				"	</tr>																																			" +
-				"	<tr>																																			" +
-				"		<td>																																		" +
-				"			Banner																																	" +
-				"		</td>																																		" +
-				"		<td>																																		" +
-				"			<input type='checkbox' name='banner1_"	+ numeroCor + "' class='chkBanner1_"	+ numeroCor + "'	value='1'>Banner 1<br>				" +
-				"			<input type='checkbox' name='banner2_"	+ numeroCor + "' class='chkBanner2_"	+ numeroCor + "'	value='1'>Banner 2<br>				" +
-				"			<input type='checkbox' name='banner3_"	+ numeroCor + "' class='chkBanner3_"	+ numeroCor + "'	value='1'>Banner 3<br>				" +
-				"			<input type='checkbox' name='home_"		+ numeroCor + "' class='chkHome_"		+ numeroCor + "'	value='1'>Home<br>					" +
-				"		</td>																																		" +
-				"	</tr>																																			" +
-				"	<tr>																																			" +
-				"		<td>																																		" +
-				"			Foto																																	" +
-				"		</td>																																		" +
-				"		<td>																																		" +
-				"			<input type='file' name='foto_" + numeroCor + "' id='foto_" + numeroCor + "' placeholder='Foto'>										" +
-				"		</td>																																		" +
-				"	</tr>																																			";
+	var data =	"	<tr>																																					" +
+				"		<td>																																				" +
+				"			Nome																																			" +
+				"		</td>																																				" +
+				"		<td>																																				" +
+				"			<input type='text' class='campo' name='nomeCor_" + numeroCor + "' id='nomeCor_" + numeroCor + "' placeholder='Nome' maxlength='20'>				" +
+				"		</td>																																				" +
+				"	</tr>																																					" +
+				"	<tr>																																					" +
+				"		<td>																																				" +
+				"			Cor 1																																			" +
+				"		</td>																																				" +
+				"		<td>																																				" +
+				"			<input																																			" +
+				"				type='color'																																" +
+				"				class='campo cor_" + numeroCor + "'																											" +
+				"				name='cor1_" + numeroCor + "'																												" +
+				"				id='cor1_" + numeroCor + "'																													" +
+				"				placeholder='Cor 1'																															" +
+				"				onchange=\"alteraCor('cor_" + numeroCor + "', this.value)\"																					" +
+				"			>																																				" +
+				"		</td>																																				" +
+				"	</tr>																																					" +
+				"	<tr>																																					" +
+				"		<td>																																				" +
+				"			Cor 2																																			" +
+				"		</td>																																				" +
+				"		<td>																																				" +
+				"			<input																																			" +
+				"				type='color'																																" +
+				"				class='campo cor_" + numeroCor + "'																											" +
+				"				name='cor2_" + numeroCor + "'																												" +
+				"				id='cor2_" + numeroCor + "'																													" +
+				"				placeholder='Cor 1'																															" +
+				"			>																																				" +
+				"		</td>																																				" +
+				"	</tr>																																					" +
+				"	<tr>																																					" +
+				"		<td>																																				" +
+				"			Banner																																			" +
+				"		</td>																																				" +
+				"		<td>																																				" +
+				"			<input type='checkbox' name='banner1_"	+ numeroCor + "' class='chkBanner1_"	+ numeroCor + "'	value='1'>Banner 1<br>						" +
+				"			<input type='checkbox' name='banner2_"	+ numeroCor + "' class='chkBanner2_"	+ numeroCor + "'	value='1'>Banner 2<br>						" +
+				"			<input type='checkbox' name='banner3_"	+ numeroCor + "' class='chkBanner3_"	+ numeroCor + "'	value='1'>Banner 3<br>						" +
+				"			<input type='checkbox' name='home_"		+ numeroCor + "' class='chkHome_"		+ numeroCor + "'	value='1'>Home<br>							" +
+				"		</td>																																				" +
+				"	</tr>																																					" +
+				"	<tr>																																					" +
+				"		<td>																																				" +
+				"			Foto																																			" +
+				"		</td>																																				" +
+				"		<td>																																				" +
+				"			<input type='file' class='arquivo' name='foto_" + numeroCor + "' id='foto_" + numeroCor + "' placeholder='Foto''>												" +
+				"		</td>																																				" +
+				"	</tr>																																					";
 	
 	
 	$("#produtoCor").append(data);
+}
+
+function alteraCor(element, value)
+{
+	$("."+element).val(value);
+}
+
+function prepareUpload()
+{
+	$(".arquivo").each(function( index, value)
+	{
+		files.push(this.files[0]);
+	});
 }
 
 function novoProduto()
@@ -139,7 +167,7 @@ function validaProduto()
 
 function salvarProduto()
 {
-	var cores = '';
+	var cores = '\0';
 	var tamPP;
 	var tamP;
 	var tamM;
@@ -150,37 +178,37 @@ function salvarProduto()
 	var tam52;
 	var tam54;
 	
+	prepareUpload();
+	
 	for(i=1; i<=parseInt($('#numeroCor').val()); i++)
 	{	
-		cores = cores + $("#nomeCor_"+i).val() + '¬';
-		cores = cores + $("#cor1_"+i).val() + '¬';
-		cores = cores + $("#cor2_"+i).val() + '¬';
+		cores = cores.concat($("#nomeCor_"+i).val()).concat('¬');
+		cores = cores.concat($("#cor1_"+i).val()).concat('¬');
+		cores = cores.concat($("#cor2_"+i).val()).concat('¬');
 		
 		if ($(".chkBanner1_"+i).is(":checked"))
-			cores = cores + '1¬';
+			cores = cores.concat('1¬');
 		else
-			cores = cores + '0¬';
+			cores = cores.concat('0¬');
 		
 		if ($(".chkBanner2_"+i).is(":checked"))
-			cores = cores + '1¬';
+			cores = cores.concat('1¬');
 		else
-			cores = cores + '0¬';
+			cores = cores.concat('0¬');
 		
 		if ($(".chkBanner3_"+i).is(":checked"))
-			cores = cores + '1¬';
+			cores = cores.concat('1¬');
 		else
-			cores = cores + '0¬';
+			cores = cores.concat('0¬');
 		
 		if ($(".chkHome_"+i).is(":checked"))
-			cores = cores + '1¬';
+			cores = cores.concat('1');
 		else
-			cores = cores + '0';
+			cores = cores.concat('0');
 		
 		if(i < parseInt($('#numeroCor').val()))
-			cores = cores + '¢';
+			cores = cores.concat('¢');
 	}
-	
-	cores.replace('Â', '');
 	
 	if ($("#tamanhoPP").is(":checked"))
 		tamPP = 1;
@@ -227,7 +255,6 @@ function salvarProduto()
 	else
 		tam54 = 0;
 	
-	
 	$.ajax
 	({
 		type: "POST",
@@ -250,12 +277,30 @@ function salvarProduto()
 			tamanho52:			tam52,
 			tamanho54:			tam54,
 			cores:				cores,
-			formularioNome:	'salvaProduto'
+			arquivos:			files,
+			formularioNome:		'salvaProduto'
 		},
 		success: function(data) 
 		{
 			alert(data);
 			//top.location='/produtos';
-		}
+		},
+		xhrFields: 
+		{
+			// add listener to XMLHTTPRequest object directly for progress (jquery doesn't have this yet)
+			onprogress: function (progress) 
+			{
+				// calculate upload progress
+				var percentage = Math.floor((progress.total / progress.totalSize) * 100);
+				// log upload progress to console
+				console.log('progress', percentage);
+				if (percentage === 100) 
+				{
+					console.log('DONE!');
+				}
+			}
+		},
+		processData: false,
+		contentType: multipart/form-data
 	});
 }
