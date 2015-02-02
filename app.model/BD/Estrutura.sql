@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 28-Jan-2015 às 19:16
+-- Data de Criação: 02-Fev-2015 às 13:29
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.16
 
@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `produtos` (
   PRIMARY KEY (`codigo`),
   UNIQUE KEY `referencia` (`referencia`),
   KEY `categoria` (`categoria`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
 
 -- --------------------------------------------------------
 
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `produtoscores` (
   `home` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`codigo`),
   KEY `codigoProduto` (`codigoProduto`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
 
 -- --------------------------------------------------------
 
@@ -136,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `telaUsuario` tinyint(1) NOT NULL,
   PRIMARY KEY (`codigo`),
   UNIQUE KEY `usuario` (`usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Constraints for dumped tables

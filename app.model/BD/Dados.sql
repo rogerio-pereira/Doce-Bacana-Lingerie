@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 28-Jan-2015 às 19:17
+-- Data de Criação: 02-Fev-2015 às 13:29
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.16
 
@@ -113,14 +113,15 @@ CREATE TABLE IF NOT EXISTS `produtos` (
   PRIMARY KEY (`codigo`),
   UNIQUE KEY `referencia` (`referencia`),
   KEY `categoria` (`categoria`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
 
 --
 -- Extraindo dados da tabela `produtos`
 --
 
 INSERT INTO `produtos` (`codigo`, `referencia`, `categoria`, `descricao`, `caracteristicas`, `tamanhoPP`, `tamanhoP`, `tamanhoM`, `tamanhoG`, `tamanhoGG`, `tamanho48`, `tamanho50`, `tamanho52`, `tamanho54`) VALUES
-(1, 'ref01', 1, 'produto 1', 'caracteristicas produto 1', 0, 1, 1, 1, 1, 0, 0, 0, 0);
+(30, 'Ref01', 1, 'Calcinha e Soutien Com Pingente e Renda', '<p><strong>SOUTIEN</strong></p>\r\n<p>Material utilizado - microfibra e renda com m&iacute;nimo de 85% de poliamida, bojo, vi&eacute;s m&eacute;xico, vi&eacute;s aro, fita cetenco, aro,linha e fio de helanca.&nbsp;</p>\r\n<p><span style="text-decoration: underline;">Bojos</span> - encapados com microfibra possuindo detalhes de pregas</p>\r\n<p><span style="text-decoration: underline;">Base</span> - n&atilde;o tem&nbsp;</p>\r\n<p><span style="text-decoration: underline;">Laterais</span> - microfibra com detalhe de renda</p>\r\n<p><span style="text-decoration: underline;">Costas</span> - normal</p>\r\n<p><span style="text-decoration: underline;">Fecho</span> - duplo 3cm</p>\r\n<p><span style="text-decoration: underline;">Al&ccedil;as</span> - com regulador de metal&nbsp;</p>\r\n<p>La&ccedil;o com pingente em banho steel</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p><strong>CALCINHA&nbsp;</strong></p>\r\n<p><span style="text-decoration: underline;">Material utilizado</span> - microfibra e renda com no m&iacute;nimo de 85% de poliamida,malha 100% algod&atilde;o,vies m&eacute;xico, linha e fio de helanca.</p>\r\n<p><span style="text-decoration: underline;">Frente</span> - microfibra&nbsp;</p>\r\n<p><span style="text-decoration: underline;">Laterais</span> - renda&nbsp;</p>\r\n<p><span style="text-decoration: underline;">Costas</span> - microfibra&nbsp;</p>\r\n<p>La&ccedil;o na frente</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p><strong>ITENS INCLUSOS</strong></p>\r\n<p>N&atilde;o acompanha acess&oacute;rios, colares e brincos.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p><strong>PRAZO DE ENTREGA</strong></p>\r\n<p>Envio em at&eacute; 2 dias &uacute;teis ap&oacute;s confirma&ccedil;&atilde;o do pagamento.</p>\r\n<p>Entrega em at&eacute; 15 dias dependendo da forma de envio e do local de entrega.&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p><strong>GARANTIA</strong></p>\r\n<p>90 dias ap&oacute;s o recebimento contra defeitos de fabrica&ccedil;&atilde;o.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p><strong>EMBALAGEM</strong></p>\r\n<p>Caixa personalizada.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p><strong>OBSERVA&Ccedil;&Otilde;ES</strong></p>\r\n<p>Pode haver alguma pequena varia&ccedil;&atilde;o na cor real dos produtos devido ao tipo de monitor utilizado.</p>', NULL, 1, 1, 1, 1, NULL, NULL, NULL, NULL),
+(31, 'Ref02', 1, 'Calcinha e Soutien com Renda', '<p><strong>SOUTIEN</strong></p>\r\n<p><span style="text-decoration: underline;">Material utilizado</span> - microfibra e renda com m&iacute;nimo de 85% de poliamida, bojo, vi&eacute;s m&eacute;xico, vi&eacute;s aro, fita cetenco, aro,linha e fio de helanca.&nbsp;</p>\r\n<p><span style="text-decoration: underline;">Bojos</span> - encapados com microfibra possuindo detalhes de pregas</p>\r\n<p><span style="text-decoration: underline;">Base</span> - n&atilde;o tem&nbsp;</p>\r\n<p><span style="text-decoration: underline;">Laterais</span> - microfibra com detalhe de renda</p>\r\n<p><span style="text-decoration: underline;">Costas</span> - normal</p>\r\n<p><span style="text-decoration: underline;">Fecho</span> - duplo 3cm</p>\r\n<p><span style="text-decoration: underline;">Al&ccedil;as</span> - com regulador de metal&nbsp;</p>\r\n<p>La&ccedil;o com pingente em banho steel</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p><strong>CALCINHA&nbsp;</strong></p>\r\n<p><span style="text-decoration: underline;">Material utilizado</span> - microfibra e renda com no m&iacute;nimo de 85% de poliamida,malha 100% algod&atilde;o,vies m&eacute;xico, linha e fio de helanca.</p>\r\n<p><span style="text-decoration: underline;">Frente</span> - microfibra&nbsp;</p>\r\n<p><span style="text-decoration: underline;">Laterais</span> - renda&nbsp;</p>\r\n<p><span style="text-decoration: underline;">Costas</span> - microfibra&nbsp;</p>\r\n<p>La&ccedil;o na frente</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p><strong>ITENS INCLUSOS</strong></p>\r\n<p>N&atilde;o acompanha acess&oacute;rios, colares e brincos.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p><strong>PRAZO DE ENTREGA</strong></p>\r\n<p>Envio em at&eacute; 2 dias &uacute;teis ap&oacute;s confirma&ccedil;&atilde;o do pagamento.</p>\r\n<p>Entrega em at&eacute; 15 dias dependendo da forma de envio e do local de entrega.&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p><strong>GARANTIA</strong></p>\r\n<p>90 dias ap&oacute;s o recebimento contra defeitos de fabrica&ccedil;&atilde;o.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p><strong>EMBALAGEM</strong></p>\r\n<p>Caixa personalizada.</p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<p><strong>OBSERVA&Ccedil;&Otilde;ES</strong></p>\r\n<p>Pode haver alguma pequena varia&ccedil;&atilde;o na cor real dos produtos devido ao tipo de monitor utilizado.</p>', NULL, 1, 1, 1, 1, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -140,7 +141,18 @@ CREATE TABLE IF NOT EXISTS `produtoscores` (
   `home` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`codigo`),
   KEY `codigoProduto` (`codigoProduto`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
+
+--
+-- Extraindo dados da tabela `produtoscores`
+--
+
+INSERT INTO `produtoscores` (`codigo`, `codigoProduto`, `nome`, `cor1`, `cor2`, `banner1`, `banner2`, `banner3`, `home`) VALUES
+(19, 30, 'Rubi', '#ca252b', '#ca252b', 1, NULL, NULL, 1),
+(20, 30, 'Bic', '#0127a4', '#0127a4', NULL, 1, NULL, NULL),
+(21, 30, 'Branco', '#ffffff', '#ffffff', NULL, NULL, 1, NULL),
+(22, 31, 'Suzy', '#0da5f9', '#0da5f9', 1, NULL, NULL, 1),
+(23, 31, 'Rubi', '#cb0f10', '#cb0f10', NULL, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -159,7 +171,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `telaUsuario` tinyint(1) NOT NULL,
   PRIMARY KEY (`codigo`),
   UNIQUE KEY `usuario` (`usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Extraindo dados da tabela `usuarios`
