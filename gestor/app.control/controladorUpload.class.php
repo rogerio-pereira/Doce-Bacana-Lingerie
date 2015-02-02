@@ -179,14 +179,13 @@ class controladorUpload
 
 	public function upload($nome, $banner1, $banner2, $banner3, $home)
 	{
-		echo $this->getFoto_name()."\n<br>".$this->getFoto_temp();
 		
-		$this->setDiretorio('../../app.view/img/produtos');
-		$this->setDiretorioMiniatura('../../app.view/img/produtos/miniaturas');
-		$this->setDiretorioBanner1('../../app.view/img/produtos/banner1');
-		$this->setDiretorioBanner2('../../app.view/img/produtos/banner2');
-		$this->setDiretorioBanner3('../../app.view/img/produtos/banner3');
-		$this->setDiretorioHome('../../app.view/img/produtos/home');
+		$this->setDiretorio('../../app.view/img/produtos/');
+		$this->setDiretorioMiniatura('../../app.view/img/produtos/miniaturas/');
+		$this->setDiretorioBanner1('../../app.view/img/produtos/banner1/');
+		$this->setDiretorioBanner2('../../app.view/img/produtos/banner2/');
+		$this->setDiretorioBanner3('../../app.view/img/produtos/banner3/');
+		$this->setDiretorioHome('../../app.view/img/produtos/home/');
 		
 		//Alterando nome da imagem
 		$array = explode('.', $this->foto_name);
@@ -211,21 +210,21 @@ class controladorUpload
 			if($banner2 == true)
 			{
 				if(copy($this->getDiretorio().$this->foto_name, $this->getDiretorioBanner2().$this->foto_name))
-					$this->redimensionaImagem ($this->getDiretorioBanner1().$this->foto_name, 228);
+					$this->redimensionaImagem ($this->getDiretorioBanner2().$this->foto_name, 228);
 			}
 			
 			//Banner 3
 			if($banner3 == true)
 			{
 				if(copy($this->getDiretorio().$this->foto_name, $this->getDiretorioBanner3().$this->foto_name))
-					$this->redimensionaImagem ($this->getDiretorioBanner1().$this->foto_name, 228);
+					$this->redimensionaImagem ($this->getDiretorioBanner3().$this->foto_name, 228);
 			}
 			
 			//Home
 			if($home == true)
 			{
 				if(copy($this->getDiretorio().$this->foto_name, $this->getDiretorioHome().$this->foto_name))
-					$this->redimensionaImagem ($this->getDiretorioBanner1().$this->foto_name, 228);
+					$this->redimensionaImagem ($this->getDiretorioHome().$this->foto_name, 228);
 			}
 		}
 	}

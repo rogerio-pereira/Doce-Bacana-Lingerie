@@ -326,6 +326,7 @@
 		 * e tentar adaptar para o que eu preciso
 		 */
 		echo 'ajax';
+		echo $_FILES['foto_1']['name'];
 		
 		
 		/*$controlador =  new controladorProdutos();

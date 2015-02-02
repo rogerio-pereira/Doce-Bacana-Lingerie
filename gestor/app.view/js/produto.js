@@ -6,7 +6,7 @@
  *	Autor:      Rogério Eduardo Pereira
  *	Data:       28/01/2015
  */
-var files		= new Array();
+var files;
 
 function iniciaTextArea()
 {
@@ -255,9 +255,7 @@ function salvarProduto()
 	else
 		tam54 = 0;
 	
-	alert('aqui');
-	
-	$.ajax
+	/*$.ajax
 	({
 		type: "POST",
 		url: "/app.control/ajax.php",
@@ -287,5 +285,43 @@ function salvarProduto()
 			alert(data);
 			//top.location='/produtos';
 		}
+	});*/
+	
+	var formData = $('#salvaProduto').serialize();
+	
+	$.each(data.files, function(key, value)
+	{
+		formData = formData + '&filenames[]=' + value;
 	});
+	
+	$.ajax({
+		url: '/app.control/ajaxUpload.php',
+		type: 'POST',
+		data: formData,
+		cache: false,
+		dataType: 'json',
+		success: function(data, textStatus, jqXHR)
+		{
+			if(typeof data.error === 'undefined')
+			{
+				// Success so call function to process the form
+				alert(data);
+				//console.log('SUCCESS: ' + data.success);
+			}
+			else
+			{
+				// Handle errors here
+				console.log('ERRORS: ' + data.error);
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown)
+		{
+			// Handle errors here
+			console.log('ERRORS: ' + textStatus);
+		},
+		complete: function()
+		{
+			// STOP LOADING SPINNER
+		}
+});
 }

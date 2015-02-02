@@ -171,6 +171,11 @@ class controladorProdutos extends controladorUpload
 	{
 		return $this->collectionProdutosCores;
 	}
+	
+	function addCor($cor)
+	{
+		$this->collectionProdutosCores[] = $cor;
+	}
 
 	function getProdutoCor()
 	{
@@ -452,9 +457,9 @@ class controladorProdutos extends controladorUpload
 	public function salvaCor()
 	{
 		try
-		{			
+		{	
 			$this->setProdutoCor(new produtoscoresModel2());
-
+			
 			$this->produtoCor->codigoProduto	= $this->getCodigoProduto();
 			$this->produtoCor->nome				= $this->getNome();
 			$this->produtoCor->cor1				= $this->getCor1();
@@ -463,7 +468,7 @@ class controladorProdutos extends controladorUpload
 			$this->produtoCor->banner2			= $this->getBanner2();
 			$this->produtoCor->banner3			= $this->getBanner3();
 			$this->produtoCor->home				= $this->getHome();
-
+			
 			//RECUPERA CONEXAO BANCO DE DADOS
 			TTransaction2::open('my_bd_site');
 

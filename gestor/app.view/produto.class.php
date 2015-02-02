@@ -63,8 +63,8 @@
 			<h1>Produto</h1>
 			<!--Hack para centralizar os botões das tabelas-->
 			<div style='position: absolute;'>
-				<!--<form class="formulario" name="salvaProduto" enctype="multipart/form-data" method="post" action='/app.control/ajax.php'>-->
-				<form class="formulario" name="salvaProduto" enctype="multipart/form-data" method="post" onsubmit="validaProduto()">
+				<form class="formulario" name="salvaProduto" enctype="multipart/form-data" method="post" action='/app.control/ajaxUpload.php'>
+				<!--<form class="formulario" name="salvaProduto" id='salvaProduto' enctype="multipart/form-data" method="post" onsubmit="validaProduto()">-->
 					<input type="hidden" name="formularioNome"	value="salvaProduto">
 					<input type="hidden" name="numeroCor"		id='numeroCor'	value="0">
 					<input type="hidden" name="codigo"			id='codigo'		value="<?php echo $this->getProduto()->codigo; ?>">
