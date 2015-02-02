@@ -15,15 +15,20 @@
 class controladorUpload
 {
 	/*
+	 * Constantes
+	 */
+	const DIRETORIO				= '../../app.view/img/produtos/';
+	const DIRETORIO_THUMB		= '../../app.view/img/produtos/thumbs/';
+	const DIRETORIO_MINIATURA	= '../../app.view/img/produtos/miniaturas/';
+	const DIRETORIO_BANNER1		= '../../app.view/img/produtos/banner1/';
+	const DIRETORIO_BANNER2		= '../../app.view/img/produtos/banner2/';
+	const DIRETORIO_BANNER3		= '../../app.view/img/produtos/banner3/';
+	const DIRETORIO_HOME		= '../../app.view/img/produtos/home/';		
+		
+	
+	/*
 	 * Variaveis
 	 */
-	private $diretorio;
-	private $diretorioBanner1;
-	private $diretorioBanner2;
-	private $diretorioBanner3;
-	private $diretorioHome;
-	private $diretorioMiniatura;
-	private	$subdiretorio;
 	private	$extensao;
 	private	$foto_temp;
 	private	$foto_name;
@@ -35,16 +40,6 @@ class controladorUpload
 	/*
 	 * Getters e Setters
 	 */
-	function getDiretorio()
-	{
-		return $this->diretorio;
-	}
-
-	function getSubdiretorio()
-	{
-		return $this->subdiretorio;
-	}
-
 	function getExtensao()
 	{
 		return $this->extensao;
@@ -70,14 +65,9 @@ class controladorUpload
 		return $this->foto_type;
 	}
 
-	function setDiretorio($diretorio)
+	function getImagem()
 	{
-		$this->diretorio = $diretorio;
-	}
-
-	function setSubdiretorio($subdiretorio)
-	{
-		$this->subdiretorio = $subdiretorio;
+		return $this->imagem;
 	}
 
 	function setExtensao($extensao)
@@ -104,66 +94,14 @@ class controladorUpload
 	{
 		$this->foto_type = $foto_type;
 	}
-	function getDiretorioBanner1()
-	{
-		return $this->diretorioBanner1;
-	}
-
-	function getDiretorioBanner2()
-	{
-		return $this->diretorioBanner2;
-	}
-
-	function getDiretorioBanner3()
-	{
-		return $this->diretorioBanner3;
-	}
-
-	function getDiretorioHome()
-	{
-		return $this->diretorioHome;
-	}
-
-	function setDiretorioBanner1($diretorioBanner1)
-	{
-		$this->diretorioBanner1 = $diretorioBanner1;
-	}
-
-	function setDiretorioBanner2($diretorioBanner2)
-	{
-		$this->diretorioBanner2 = $diretorioBanner2;
-	}
-
-	function setDiretorioBanner3($diretorioBanner3)
-	{
-		$this->diretorioBanner3 = $diretorioBanner3;
-	}
-
-	function setDiretorioHome($diretorioHome)
-	{
-		$this->diretorioHome = $diretorioHome;
-	}
-	function getDiretorioMiniatura()
-	{
-		return $this->diretorioMiniatura;
-	}
-
-	function setDiretorioMiniatura($diretorioMiniatura)
-	{
-		$this->diretorioMiniatura = $diretorioMiniatura;
-	}
-	
-	function getImagem()
-	{
-		return $this->imagem;
-	}
 
 	function setImagem($imagem)
 	{
 		$this->imagem = $imagem;
 	}
 
-				
+	
+					
 
 	/*
 	 * Método Contrutor
@@ -180,51 +118,48 @@ class controladorUpload
 	public function upload($nome, $banner1, $banner2, $banner3, $home)
 	{
 		
-		$this->setDiretorio('../../app.view/img/produtos/');
-		$this->setDiretorioMiniatura('../../app.view/img/produtos/miniaturas/');
-		$this->setDiretorioBanner1('../../app.view/img/produtos/banner1/');
-		$this->setDiretorioBanner2('../../app.view/img/produtos/banner2/');
-		$this->setDiretorioBanner3('../../app.view/img/produtos/banner3/');
-		$this->setDiretorioHome('../../app.view/img/produtos/home/');
-		
 		//Alterando nome da imagem
 		$array = explode('.', $this->foto_name);
 		$array[0] = $nome;
 		$this->setFoto_name(implode('.', $array));
 		
 		//ENVIA O ARQUIVO PARA A PASTA
-		if(move_uploaded_file($this->foto_temp,	$this->getDiretorio().$this->foto_name))
+		if(move_uploaded_file($this->foto_temp, self::DIRETORIO.$this->foto_name))
 		{
+			//Copia a imagem para a pasta Thumbs
+			if(copy(self::DIRETORIO.$this->foto_name, self::DIRETORIO_THUMB.$this->foto_name))
+				$this->redimensionaImagem (self::DIRETORIO_THUMB.$this->foto_name, 114);
+			
 			//Copia a imagem para a pasta Miniatura
-			if(copy($this->getDiretorio().$this->foto_name, $this->getDiretorioMiniatura().$this->foto_name))
-				$this->redimensionaImagem ($this->getDiretorioMiniatura().$this->foto_name, 35);
+			if(copy(self::DIRETORIO.$this->foto_name, self::DIRETORIO_MINIATURA.$this->foto_name))
+				$this->redimensionaImagem (self::DIRETORIO_MINIATURA.$this->foto_name, 35);
 			
 			//Banner 1
 			if($banner1 == true)
 			{
-				if(copy($this->getDiretorio().$this->foto_name, $this->getDiretorioBanner1().$this->foto_name))
-					$this->redimensionaImagem ($this->getDiretorioBanner1().$this->foto_name, 228);
+				if(copy(self::DIRETORIO.$this->foto_name, self::DIRETORIO_BANNER1.$this->foto_name))
+					$this->redimensionaImagem (self::DIRETORIO_BANNER1.$this->foto_name, 228);
 			}
 			
 			//Banner 2
 			if($banner2 == true)
 			{
-				if(copy($this->getDiretorio().$this->foto_name, $this->getDiretorioBanner2().$this->foto_name))
-					$this->redimensionaImagem ($this->getDiretorioBanner2().$this->foto_name, 228);
+				if(copy(self::DIRETORIO.$this->foto_name, self::DIRETORIO_BANNER2.$this->foto_name))
+					$this->redimensionaImagem (self::DIRETORIO_BANNER2.$this->foto_name, 228);
 			}
 			
 			//Banner 3
 			if($banner3 == true)
 			{
-				if(copy($this->getDiretorio().$this->foto_name, $this->getDiretorioBanner3().$this->foto_name))
-					$this->redimensionaImagem ($this->getDiretorioBanner3().$this->foto_name, 228);
+				if(copy(self::DIRETORIO.$this->foto_name, self::DIRETORIO_BANNER3.$this->foto_name))
+					$this->redimensionaImagem (self::DIRETORIO_BANNER3.$this->foto_name, 228);
 			}
 			
 			//Home
 			if($home == true)
 			{
-				if(copy($this->getDiretorio().$this->foto_name, $this->getDiretorioHome().$this->foto_name))
-					$this->redimensionaImagem ($this->getDiretorioHome().$this->foto_name, 228);
+				if(copy(self::DIRETORIO.$this->foto_name, self::DIRETORIO_HOME.$this->foto_name))
+					$this->redimensionaImagem (self::DIRETORIO_HOME.$this->foto_name, 228);
 			}
 		}
 	}
@@ -282,6 +217,22 @@ class controladorUpload
 		catch (Exception $e)
 		{
 			return false;
+		}
+	}
+	
+	/*
+	 * Método apagaImagem($imagem)
+	 * Apaga a imagem passada como parametro
+	 */
+	public function apagaImagem($imagem)
+	{
+		try
+		{
+			unlink($imagem);
+		} 
+		catch (Exception $ex) 
+		{
+			echo "<script>alert('Erro ao apagar imagem!');</script>";
 		}
 	}
 }

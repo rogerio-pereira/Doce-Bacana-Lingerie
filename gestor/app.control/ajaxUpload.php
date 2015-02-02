@@ -139,7 +139,7 @@
 			
 			$i=1;
 			$erro=0;
-			foreach ($controlador->getCollectionProdutosCores() as $data)
+			foreach ($controlador->getVariableCollectionProdutosCores() as $data)
 			{
 				//$cor = explode('¬', $data);
 								

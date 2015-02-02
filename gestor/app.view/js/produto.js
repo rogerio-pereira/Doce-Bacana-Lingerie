@@ -78,9 +78,10 @@ function insereCor()
 				"			Foto																																			" +
 				"		</td>																																				" +
 				"		<td>																																				" +
-				"			<input type='file' class='arquivo' name='foto_" + numeroCor + "' id='foto_" + numeroCor + "' placeholder='Foto''>												" +
+				"			<input type='file' class='arquivo' name='foto_" + numeroCor + "' id='foto_" + numeroCor + "' placeholder='Foto''>								" +
 				"		</td>																																				" +
-				"	</tr>																																					";
+				"	</tr>																																					" +
+				"	<tr><td colspan='2'><hr></td></tr>																														";
 	
 	
 	$("#produtoCor").append(data);
@@ -324,4 +325,23 @@ function salvarProduto()
 			// STOP LOADING SPINNER
 		}
 });
+}
+
+function removeCor(codProd, codCor)
+{
+	$.ajax
+	({
+		type: "POST",
+		url: "/app.control/ajax.php",
+		data: 
+		{
+			codProd:		codProd,
+			codCor:			codCor,
+			formularioNome:	'apagaCor'
+		},
+		success: function(data) 
+		{
+			$('.corSalva').html(data);
+		}
+	});
 }

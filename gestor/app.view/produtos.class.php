@@ -49,6 +49,7 @@
 		public function show()
 		{
 		?>
+
 			<h1>Produtos</h1>
 			<form class="formulario" name="listaProdutos"	method="post" onsubmit="validaAlteracaoSenha()">
 				<input type="hidden" name="formularioNome"	value="listaProdutos">
@@ -88,7 +89,7 @@
 											{$produto->referencia}
 										</td>
 										<td>
-											{$produto->nome}
+											{$produto->nome} <!--Nome Categoria-->
 										</td>
 										<td align='center'>
 											<input type='checkbox' name='produtosApagar[]' class='chkProdutosApagar' value='{$produto->codigo}'>

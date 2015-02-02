@@ -72,7 +72,9 @@ class controladorProdutos extends controladorUpload
 		
 		$this->repository = new TRepository();
 		
-		$this->repository->addColumn('*');
+		$this->repository->addColumn('p.codigo as codigo');
+		$this->repository->addColumn('p.referencia as referencia');
+		$this->repository->addColumn('c.nome as nome');
 		$this->repository->addEntity('produtos p');
 		$this->repository->addEntity('categorias c');
 		
@@ -167,7 +169,57 @@ class controladorProdutos extends controladorUpload
 		return $this->tamanho54;
 	}
 
-	function getCollectionProdutosCores()
+	function getCollectionProdutosCores($codigo)
+	{
+		$this->setCollectionProdutosCores(NULL);
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction::open('my_bd_site');
+
+		//TABELA exposition_gallery
+		$criteria	= new TCriteria;
+		$criteria->add(new TFilter('codigoProduto', '=', $codigo));
+		$criteria->setProperty('order', 'nome');
+		
+		$this->repository = new TRepository();
+		
+		$this->repository->addColumn('*');
+		$this->repository->addEntity('produtoscores');
+		
+		$this->setCollectionProdutosCores($this->repository->load($criteria));
+		
+		TTransaction::close();
+		
+		return $this->collectionProdutosCores;
+	}
+	
+	function getCollectionProdutosCores2($codigo)
+	{
+		$this->setCollectionProdutosCores(NULL);
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction2::open('my_bd_site');
+		
+
+		//TABELA exposition_gallery
+		$criteria	= new TCriteria;
+		$criteria->add(new TFilter('codigoProduto', '=', $codigo));
+		$criteria->setProperty('order', 'nome');
+		
+		
+		$this->repository = new TRepository2();
+		
+		$this->repository->addColumn('*');
+		$this->repository->addEntity('produtoscores');
+		
+		$this->setCollectionProdutosCores($this->repository->load($criteria));
+		
+		TTransaction2::close();
+		
+		return $this->collectionProdutosCores;
+	}
+	
+	function getVariableCollectionProdutosCores()
 	{
 		return $this->collectionProdutosCores;
 	}
@@ -177,9 +229,24 @@ class controladorProdutos extends controladorUpload
 		$this->collectionProdutosCores[] = $cor;
 	}
 
-	function getProdutoCor()
+	function getProdutoCor($codigo)
 	{
-		return $this->produtoCor;
+		$this->setProdutoCor(NULL);
+		$result;
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction2::open('my_bd_site');
+
+		//TABELA exposition_gallery
+		//$criteria	= new TCriteria;
+		//$criteria->add(new TFilter('codigo', '=', $codigo));
+		//$criteria->setProperty('order', 'ordem ASC');
+		
+		$this->setProdutoCor(new produtoscoresModel2());
+				
+		$result = $this->produtoCor->load($codigo);
+				
+		return $result;
 	}
 
 	function getCodigoProdCor()
@@ -517,6 +584,56 @@ class controladorProdutos extends controladorUpload
 		TTransaction2::close();
 		
 		return $codigo;
+	}
+	
+	/*
+	 * Método Apaga Cor
+	 * Apaga a cor do produto
+	 */
+	public function apagarCor()
+	{
+		try
+		{
+			//RECUPERA CONEXAO BANCO DE DADOS
+			TTransaction2::open('my_bd_site');
+			
+			$this->setProdutoCor(new produtoscoresModel2());
+			$this->produtoCor->delete($this->getCodigoProdCor());
+
+			TTransaction2::close();
+			
+			$nome = $this->getCodigoProd().'_'.$this->getCodigoProdCor();
+			
+			//RECUPERA CONEXAO BANCO DE DADOS
+			TTransaction2::open('my_bd_site');
+			
+			$this->setProdutoCor($this->getProdutoCor($this->getCodigoProdCor()));
+			
+			TTransaction2::close();
+
+			//Apaga as imagens
+			$this->apagaImagem (self::DIRETORIO.$nome.'.jpg');
+			$this->apagaImagem (self::DIRETORIO_MINIATURA.$nome.'.jpg');
+			$this->apagaImagem (self::DIRETORIO_THUMB.$nome.'.jpg');
+			//Banner 1
+			if($this->produtoCor->banner1 == 1)
+				$this->apagaImagem (self::DIRETORIO_BANNER1.$nome.'.jpg');
+			//Banner2
+			if($this->produtoCor->banner2 == 1)
+				$this->apagaImagem (self::DIRETORIO_BANNER2.$nome.'.jpg');
+			//Banner 3
+			if($this->produtoCor->banner3 == 1)
+				$this->apagaImagem (self::DIRETORIO_BANNER3.$nome.'.jpg');
+			//Home
+			if($this->produtoCor->home == 1)
+				$this->apagaImagem (self::DIRETORIO_HOME.$nome.'.jpg');
+			
+			return true;
+		}
+		catch (Exception $e)
+		{
+			return false;
+		}
 	}
 }
 

@@ -183,11 +183,7 @@
 			$controlador->apaga2($codigo);
 		}
 		
-		echo '1';
-		
 		$collectionUsuario = $controlador->getCollectionUsuario2();
-		
-		echo '2';
 		
 		echo
 			"
@@ -318,78 +314,130 @@
 			echo 'Senha Atual Inválida!';
 		}
 	}
-	//Salvar Produto
-	else if($request == 'salvaProduto')
+	//Remover Cor
+	else if($request == 'apagaCor')
 	{
-		/*
-		 * Ver http://stackoverflow.com/questions/10899384/uploading-both-data-and-files-in-one-form-using-ajax
-		 * e tentar adaptar para o que eu preciso
-		 */
-		echo 'ajax';
-		echo $_FILES['foto_1']['name'];
 		
+		$controlador = new controladorProdutos();
 		
-		/*$controlador =  new controladorProdutos();
+		$controlador->setCodigoProd($_POST['codProd']);
+		$controlador->setCodigoProdCor($_POST['codCor']);
+				
+		$controlador->apagarCor();
 		
-		$controlador->setCodigoProd($_POST['codigo']);
-		$controlador->setReferencia($_POST['referencia']);
-		$controlador->setCategoria($_POST['categoria']);
-		$controlador->setDescricao($_POST['descricao']);
-		$controlador->setCaracteristicas($_POST['caracteristicas']);
-		$controlador->setTamanhoPP($_POST['tamanhoPP']);
-		$controlador->setTamanhoP($_POST['tamanhoP']);
-		$controlador->setTamanhoM($_POST['tamanhoM']);
-		$controlador->setTamanhoG($_POST['tamanhoG']);
-		$controlador->setTamanhoGG($_POST['tamanhoGG']);
-		$controlador->setTamanho48($_POST['tamanho48']);
-		$controlador->setTamanho50($_POST['tamanho50']);
-		$controlador->setTamanho52($_POST['tamanho52']);
-		$controlador->setTamanho54($_POST['tamanho54']);
-		$controlador->setCollectionProdutosCores(explode('¢', str_replace('Â', '', $_POST['cores']))); //Precisa do replace porque o concat do javascrip vem com esse caractere
-		$arquivos = $_POST['arquivos'];
-		echo array_values($arquivos) ;
+		$controlador->setCollectionProdutosCores(NULL);
+		$collectionCor = $controlador->getCollectionProdutosCores2($controlador->getCodigoProd());
 		
-		if($controlador->salvaProduto())
+		$numeroCor = 1;
+		foreach ($collectionCor as $cor)
 		{
-			$codigoProduto = $controlador->getLastProduto();
-			$controlador->setCodigoProduto($codigoProduto);
-			
-			$i=1;
-			foreach ($controlador->getCollectionProdutosCores() as $data)
-			{
-				$cor = explode('¬', $data);
-								
-				$controlador->setNome($cor[0]);
-				$controlador->setCor1($cor[1]);
-				$controlador->setCor2($cor[2]);
-				$controlador->setBanner1($cor[3]);
-				$controlador->setBanner2($cor[4]);
-				$controlador->setBanner3($cor[5]);
-				$controlador->setHome($cor[6]);
-				
-				if($controlador->salvaCor())
-				{
-					$codigoCor = $controlador->getLastCor();
-					
-					if(isset($_FILES["foto_{$i}"]["tmp_name"]))
-					{
-						$controlador->setFoto_temp($_FILES["foto_{$i}"]["tmp_name"]);
-						$controlador->setFoto_name($_FILES["foto_{$i}"]["name"]);
-						$controlador->setFoto_size($_FILES["foto_{$i}"]["size"]);
-						$controlador->setFoto_type($_FILES["foto_{$i}"]["type"]);
-						
-						$nome = $codigoProduto.'_'.$codigoCor;
-						
-						$controlador->upload($nome, $controlador->getBanner1(), $controlador->getBanner2(), $controlador->getBanner3(), $controlador->getHome());
-					}
-				}
-				else
-					echo 'Erro ao salvar cor '.$i;
-				
-				$i++;
-			}
+			echo
+			"	<tr>																														" .
+			"		<td>																													" .
+			"			Nome																												" .
+			"		</td>																													" .
+			"		<td>																													" .
+			"			<input																												" .
+			"				type='text'																										" .
+			"				class='campo'																									" .
+			"				name='nomeCor_".$numeroCor."'																					" .
+			"				id='nomeCor_".$numeroCor."'																						" .
+			"				placeholder='Nome'																								" .
+			"				maxlength='20'																									" .
+			"				value='{$cor->nome}'																							" .
+			"			/>																													" .
+			"		</td>																													" .
+			"	</tr>																														" .
+			"	<tr>																														" .
+			"		<td>																													" .
+			"			Cor 1																												" .
+			"		</td>																													" .
+			"		<td>																													" .
+			"			<input																												" .
+			"				type='color'																									" .
+			"				class='campo cor_'.$numeroCor.'																					" .
+			"				name='cor1_''.$numeroCor.																						" .
+			"				id='cor1_'.$numeroCor.'																							" .
+			"				placeholder='Cor 1'																								" .
+			"				value='{$cor->cor1}'																							" .
+			"				onchange=\"alteraCor('cor_'.$numeroCor.', this.value)\"															" .
+			"			>																													" .
+			"		</td>																													" .
+			"	</tr>																														" .
+			"	<tr>																														" .
+			"		<td>																													" .
+			"			Cor 2																												" .
+			"		</td>																													" .
+			"		<td>																													" .
+			"			<input																												" .
+			"				type='color'																									" .
+			"				class='campo cor_'.$numeroCor.'																					" .
+			"				name='cor2_'.$numeroCor.'																						" .
+			"				id='cor2_'.$numeroCor.'																							" .
+			"				placeholder='Cor 1'																								" .
+			"				value='{$cor->cor2}'																							" .
+			"			>																													" .
+			"		</td>																													" .
+			"	</tr>																														" .
+			"	<tr>																														" .
+			"		<td>																													" .
+			"			Banner																												" .
+			"		</td>																													" .
+			"		<td>																													";
+
+			//Banner 1
+			if($cor->banner1 == 1)
+				echo "<input type='checkbox' name='banner1_'.$numeroCor.'	class='chkBanner1_'.$numeroCor.'	value='1' checked>Banner 1<br>";
+			else
+				echo "<input type='checkbox' name='banner1_'.$numeroCor.'	class='chkBanner1_'.$numeroCor.'	value='1'>Banner 1<br>";
+
+			//Banner2
+			if($cor->banner2 == 1)
+				echo "<input type='checkbox' name='banner2_'.$numeroCor.'	class='chkBanner2_'.$numeroCor.'	value='1' checked>Banner 2<br>";
+			else
+				echo "<input type='checkbox' name='banner2_'.$numeroCor.'	class='chkBanner2_'.$numeroCor.'	value='1'>Banner 2<br>";
+
+			//Banner3
+			if($cor->banner3 == 1)
+				echo "<input type='checkbox' name='banner3_'.$numeroCor.'	class='chkBanner3_'.$numeroCor.'	value='1' checked>Banner 3<br>";
+			else
+				echo "<input type='checkbox' name='banner3_'.$numeroCor.'	class='chkBanner3_'.$numeroCor.'	value='1'>Banner 3<br>";
+
+			//Home
+			if($cor->home == 1)
+				echo "<input type='checkbox' name='home_'.$numeroCor.'	class='chkHome_'.$numeroCor.'	value='1' checked>Home";
+			else
+				echo "<input type='checkbox' name='home_'.$numeroCor.'	class='chkHome_'.$numeroCor.'	value='1'>Home";
+
+			echo
+			"		</td>																														" .
+			"	</tr>																															" .
+			"	<tr>																															" .
+			"		<td>																														" .
+			"			Foto																													" .
+			"		</td>																														" .
+			"		<td>																														" .
+			"			<img																													" .
+			"				src='http://docebacana.virtual/app.view/img/produtos/thumbs/{$this->getProduto()->codigo}_{$cor->codigo}.jpg'		" .
+			"				alt='{$cor->nome}'																									" .
+			"				title='{$cor->nome}'																								" .
+			"			>																														" .
+			"		</td>																														" .
+			"	</tr>																															" .
+			"	<tr>																															" .
+			"		<td colspan='2' align='center'>																								" .
+			"			<input																													" .
+			"				name='botaoRemoverCor'																								" .
+			"				type='button'																										" .
+			"				id='botaoRemoverCor'																								" .
+			"				value='Remover Cor'																									" .
+			"				onclick='removeCor({$this->getProduto()->codigo}, {$cor->codigo})'													" .
+			"			/>																														" .
+			"		</td>																														" .
+			"	</tr>																															" .
+			"	<tr> <td colspan='2'><hr></td></tr>																								";
+
+			$numeroCor++;
 		}
-		else
-			echo 'Falha ao salvar Produto!';*/
 	}
 ?>
