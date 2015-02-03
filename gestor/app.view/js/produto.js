@@ -341,7 +341,32 @@ function removeCor(codProd, codCor)
 		},
 		success: function(data) 
 		{
-			$('.corSalva').html(data);
+			//$('.corSalva').empty();
+			//$('.corSalva').html(data);
+			location.reload();
 		}
 	});
+}
+
+function apagaProdutos()
+{
+	var arrCod = [];
+	$(".chkProdutosApagar:checked").each(function() {
+		arrCod.push($(this).val());
+	});
+	
+	$.ajax
+	({
+		type: "POST",
+		url: "/app.control/ajax.php",
+		data: 
+		{
+			codigos:		arrCod,
+			formularioNome:	'apagaProdutos'
+		},
+		success: function(data) 
+		{
+			$('.tabelaFormulario').html(data);
+		}
+	});	
 }

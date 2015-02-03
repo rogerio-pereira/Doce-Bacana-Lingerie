@@ -84,6 +84,33 @@ class controladorProdutos extends controladorUpload
 		
 		return $this->collectionProdutos;
 	}
+	
+	function getCollectionProdutos2()
+	{
+		$this->setCollectionProdutos(NULL);
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction2::open('my_bd_site');
+
+		//TABELA exposition_gallery
+		$criteria	= new TCriteria;
+		$criteria->add(new TFilter('p.categoria', '=', 'c.codigo'));
+		$criteria->setProperty('order', 'referencia');
+		
+		$this->repository = new TRepository2();
+		
+		$this->repository->addColumn('p.codigo as codigo');
+		$this->repository->addColumn('p.referencia as referencia');
+		$this->repository->addColumn('c.nome as nome');
+		$this->repository->addEntity('produtos p');
+		$this->repository->addEntity('categorias c');
+		
+		$this->setCollectionProdutos($this->repository->load($criteria));
+		
+		TTransaction2::close();
+		
+		return $this->collectionProdutos;
+	}
 
 	function getProduto($codigo)
 	{
@@ -631,6 +658,39 @@ class controladorProdutos extends controladorUpload
 			return true;
 		}
 		catch (Exception $e)
+		{
+			return false;
+		}
+	}
+	
+	/*
+	 * Método ApagarProduto
+	 * Apaga o Produto de acordo com o codigo
+	 */
+	public function apagaProduto($codigo)
+	{
+		try
+		{
+			$this->setCodigoProd($codigo);
+
+			foreach($this->getCollectionProdutosCores2($this->getCodigoProd()) as $cor)
+			{
+				$this->setCodigoProdCor($cor->codigo);
+				$this->apagarCor();
+			}
+			
+			$this->setProduto(new produtosModel2());
+
+			//RECUPERA CONEXAO BANCO DE DADOS
+			TTransaction2::open('my_bd_site');
+
+			$this->produto->delete($this->getCodigoProd());
+
+			TTransaction2::close();
+			
+			return true;
+		}
+		catch(Exception $e)
 		{
 			return false;
 		}

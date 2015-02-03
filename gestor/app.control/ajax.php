@@ -332,112 +332,199 @@
 		foreach ($collectionCor as $cor)
 		{
 			echo
-			"	<tr>																														" .
-			"		<td>																													" .
-			"			Nome																												" .
-			"		</td>																													" .
-			"		<td>																													" .
-			"			<input																												" .
-			"				type='text'																										" .
-			"				class='campo'																									" .
-			"				name='nomeCor_".$numeroCor."'																					" .
-			"				id='nomeCor_".$numeroCor."'																						" .
-			"				placeholder='Nome'																								" .
-			"				maxlength='20'																									" .
-			"				value='{$cor->nome}'																							" .
-			"			/>																													" .
-			"		</td>																													" .
-			"	</tr>																														" .
-			"	<tr>																														" .
-			"		<td>																													" .
-			"			Cor 1																												" .
-			"		</td>																													" .
-			"		<td>																													" .
-			"			<input																												" .
-			"				type='color'																									" .
-			"				class='campo cor_'.$numeroCor.'																					" .
-			"				name='cor1_''.$numeroCor.																						" .
-			"				id='cor1_'.$numeroCor.'																							" .
-			"				placeholder='Cor 1'																								" .
-			"				value='{$cor->cor1}'																							" .
-			"				onchange=\"alteraCor('cor_'.$numeroCor.', this.value)\"															" .
-			"			>																													" .
-			"		</td>																													" .
-			"	</tr>																														" .
-			"	<tr>																														" .
-			"		<td>																													" .
-			"			Cor 2																												" .
-			"		</td>																													" .
-			"		<td>																													" .
-			"			<input																												" .
-			"				type='color'																									" .
-			"				class='campo cor_'.$numeroCor.'																					" .
-			"				name='cor2_'.$numeroCor.'																						" .
-			"				id='cor2_'.$numeroCor.'																							" .
-			"				placeholder='Cor 1'																								" .
-			"				value='{$cor->cor2}'																							" .
-			"			>																													" .
-			"		</td>																													" .
-			"	</tr>																														" .
-			"	<tr>																														" .
-			"		<td>																													" .
-			"			Banner																												" .
-			"		</td>																													" .
-			"		<td>																													";
+			"	<tr>																														
+					<td>																													
+						Nome																												
+					</td>																													
+					<td>																													
+						<input																												
+							type='text'																										
+							class='campo'																									
+							name='nomeCor_".strval($numeroCor)."'																						
+							id='nomeCor_".strval($numeroCor)."'																						
+							placeholder='Nome'																								
+							maxlength='20'																									
+							value='{$cor->nome}'																							
+						/>																													
+					</td>																													
+				</tr>																														
+				<tr>																														
+					<td>																													
+						Cor 1																												
+					</td>																													
+					<td>																													
+						<input																												
+							type='color'																									
+							class='campo cor_".strval($numeroCor)."'																					
+							name='cor1_".strval($numeroCor)."'																						
+							id='cor1_".strval($numeroCor)."'																							
+							placeholder='Cor 1'																								
+							value='{$cor->cor1}'																							
+							onchange=\"alteraCor('cor_{$numeroCor}', this.value)\"															
+						>																													
+					</td>																													
+				</tr>																														
+				<tr>																														
+					<td>																													
+						Cor 2																												
+					</td>																													
+					<td>																													
+						<input																												
+							type='color'																									
+							class='campo cor_".strval($numeroCor)."'																					
+							name='cor2_".strval($numeroCor)."'																						
+							id='cor2_".strval($numeroCor)."'																							
+							placeholder='Cor 1'																								
+							value='{$cor->cor2}'																							
+						>																													
+					</td>																													
+				</tr>																														
+				<tr>																														
+					<td>																													
+						Banner																												
+					</td>																													
+					<td>																													";
 
 			//Banner 1
 			if($cor->banner1 == 1)
-				echo "<input type='checkbox' name='banner1_'.$numeroCor.'	class='chkBanner1_'.$numeroCor.'	value='1' checked>Banner 1<br>";
+				echo "<input type='checkbox' name='banner1_".strval($numeroCor)."'	class='chkBanner1_".strval($numeroCor)."'	value='1' checked>Banner 1<br>";
 			else
-				echo "<input type='checkbox' name='banner1_'.$numeroCor.'	class='chkBanner1_'.$numeroCor.'	value='1'>Banner 1<br>";
+				echo "<input type='checkbox' name='banner1_".strval($numeroCor)."'	class='chkBanner1_".strval($numeroCor)."'	value='1'>Banner 1<br>";
 
 			//Banner2
 			if($cor->banner2 == 1)
-				echo "<input type='checkbox' name='banner2_'.$numeroCor.'	class='chkBanner2_'.$numeroCor.'	value='1' checked>Banner 2<br>";
+				echo "<input type='checkbox' name='banner2_".strval($numeroCor)."'	class='chkBanner2_".strval($numeroCor)."'	value='1' checked>Banner 2<br>";
 			else
-				echo "<input type='checkbox' name='banner2_'.$numeroCor.'	class='chkBanner2_'.$numeroCor.'	value='1'>Banner 2<br>";
+				echo "<input type='checkbox' name='banner2_".strval($numeroCor)."'	class='chkBanner2_".strval($numeroCor)."'	value='1'>Banner 2<br>";
 
 			//Banner3
 			if($cor->banner3 == 1)
-				echo "<input type='checkbox' name='banner3_'.$numeroCor.'	class='chkBanner3_'.$numeroCor.'	value='1' checked>Banner 3<br>";
+				echo "<input type='checkbox' name='banner3_".strval($numeroCor)."'	class='chkBanner3_".strval($numeroCor)."'	value='1' checked>Banner 3<br>";
 			else
-				echo "<input type='checkbox' name='banner3_'.$numeroCor.'	class='chkBanner3_'.$numeroCor.'	value='1'>Banner 3<br>";
+				echo "<input type='checkbox' name='banner3_".strval($numeroCor)."'	class='chkBanner3_".strval($numeroCor)."'	value='1'>Banner 3<br>";
 
 			//Home
 			if($cor->home == 1)
-				echo "<input type='checkbox' name='home_'.$numeroCor.'	class='chkHome_'.$numeroCor.'	value='1' checked>Home";
+				echo "<input type='checkbox' name='home_".strval($numeroCor)."'	class='chkHome_".strval($numeroCor)."'	value='1' checked>Home";
 			else
-				echo "<input type='checkbox' name='home_'.$numeroCor.'	class='chkHome_'.$numeroCor.'	value='1'>Home";
+				echo "<input type='checkbox' name='home_".strval($numeroCor)."'	class='chkHome_".strval($numeroCor)."'	value='1'>Home";
 
 			echo
-			"		</td>																														" .
-			"	</tr>																															" .
-			"	<tr>																															" .
-			"		<td>																														" .
-			"			Foto																													" .
-			"		</td>																														" .
-			"		<td>																														" .
-			"			<img																													" .
-			"				src='http://docebacana.virtual/app.view/img/produtos/thumbs/{$this->getProduto()->codigo}_{$cor->codigo}.jpg'		" .
-			"				alt='{$cor->nome}'																									" .
-			"				title='{$cor->nome}'																								" .
-			"			>																														" .
-			"		</td>																														" .
-			"	</tr>																															" .
-			"	<tr>																															" .
-			"		<td colspan='2' align='center'>																								" .
-			"			<input																													" .
-			"				name='botaoRemoverCor'																								" .
-			"				type='button'																										" .
-			"				id='botaoRemoverCor'																								" .
-			"				value='Remover Cor'																									" .
-			"				onclick='removeCor({$this->getProduto()->codigo}, {$cor->codigo})'													" .
-			"			/>																														" .
-			"		</td>																														" .
-			"	</tr>																															" .
-			"	<tr> <td colspan='2'><hr></td></tr>																								";
+			"		</td>																														
+				</tr>																															
+				<tr>																															
+					<td>																														
+						Foto																													
+					</td>																														
+					<td>																														
+						<img																													
+							src='http://docebacana.virtual/app.view/img/produtos/thumbs/{$this->getProduto()->codigo}_{$cor->codigo}.jpg'		
+							alt='{$cor->nome}'																									
+							title='{$cor->nome}'																								
+						/>																														
+					</td>																														
+				</tr>																															
+				<tr>																															
+					<td colspan='2' align='center'>																								
+						<input																													
+							name='botaoRemoverCor'																								
+							type='button'																										
+							id='botaoRemoverCor'																								
+							value='Remover Cor'																									
+							onclick='removeCor({$this->getProduto()->codigo}, {$cor->codigo})'													
+						/>																														
+					</td>																														
+				</tr>																															
+				<tr> <td colspan='2'><hr></td></tr>																								";
 
 			$numeroCor++;
 		}
+	}
+	else if($request == 'apagaProdutos')
+	{
+		$codigos = $_POST['codigos'];
+		
+		$controlador	= new controladorProdutos();
+		
+		foreach ($codigos as $codigo)
+		{
+			$controlador->apagaProduto($codigo);
+		}
+		
+		
+		$collectionProdutos = $controlador->getCollectionProdutos2();
+		
+		echo 'aqui3';
+		
+		echo
+			"
+				<tr>
+					<td align='center'>
+						Alterar
+					</td>
+					<td align='center'>
+						Referencia
+					</td>
+					<td align='center'>
+						Categoria
+					</td>
+					<td align='center'>
+						Excluir
+					</td>
+				</tr>
+				<tr>
+					<td colspan='4'>
+						<hr>
+					</td>
+				</tr>
+			";
+		
+		foreach ($collectionProdutos as $produto)
+		{
+			echo
+				"
+					<!--{$produto->referencia}-->
+					<tr>
+						<td align='center'>
+							<input type='radio' name='radioProduto' id='radioProduto' value='{$produto->codigo}'>
+						</td>
+						<td>
+							{$produto->referencia}
+						</td>
+						<td>
+							{$produto->nome} <!--Nome Categoria-->
+						</td>
+						<td align='center'>
+							<input type='checkbox' name='produtosApagar[]' class='chkProdutosApagar' value='{$produto->codigo}'>
+						</td>
+					</tr>
+				";
+		}
+		
+		echo
+			"
+				<tr>
+					<td colspan='4'>
+						<hr>
+					</td>
+				</tr>
+				<!--Botões-->
+				<tr>
+					<td>
+						<input type='button' value='Alterar' onclick='alteraProduto()'>
+					</td>
+					<td colspan='2' align='center'>
+						<input type='button' value='Cadastrar' onclick='novoProduto()'>
+					</td>
+					<td>
+			";
+			
+			if(count($collectionProdutos > 0))
+				echo "<input type='button' value='Apagar' onclick='apagaProdutos()'>";
+			
+			echo "
+					</td>
+				</tr>
+			";
 	}
 ?>
