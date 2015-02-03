@@ -19,6 +19,7 @@ class controladorProdutos
 	 */
 	private $repository;
 	private $collectionBanner;
+	private $collectionProduto;
 
 
 	/*
@@ -64,7 +65,42 @@ class controladorProdutos
 	{
 		$this->collectionBanner = $collectionBanner;
 	}
+	
+	function getCollectionProduto($categoria)
+	{
+		$this->setCollectionProduto(NULL);
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction::open('my_bd_site');
 
+		//TABELA exposition_gallery
+		$criteria	= new TCriteria;
+		if($categoria != NULL)
+			$criteria->add(new TFilter('categoria', '=', $categoria));
+		$criteria->add(new TFilter('home', '=', 1));
+		$criteria->add(new TFilter('p.codigo', '=', 'c.codigoProduto'));
+		$criteria->setProperty('order', 'RAND()');
+		$criteria->setProperty('limit', 9);
+		
+		$this->repository = new TRepository();
+		
+		$this->repository->addColumn('*');
+		$this->repository->addEntity('produtos p');
+		$this->repository->addEntity('produtoscores c');
+		
+		$this->setCollectionProduto($this->repository->load($criteria));
+		
+		TTransaction::close();
+		
+		return $this->collectionProduto;
+	}
+
+	function setCollectionProduto($collectionProduto)
+	{
+		$this->collectionProduto = $collectionProduto;
+	}
+
+	
 	
 	
 	/*
@@ -74,6 +110,7 @@ class controladorProdutos
 	{
 		$this->setRepository(NULL);
 		$this->setCollectionBanner(NULL);
+		$this->setCollectionProduto(NULL);
 	}
 	
 }

@@ -1,6 +1,6 @@
 <?php
 
-/*	Arquivo  template.php
+/*	Arquivo  template.class.php
  *	Template
  *	
  *	Sistema:	Doce___Bacana_Lingerie
