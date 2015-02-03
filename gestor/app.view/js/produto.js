@@ -28,6 +28,7 @@ function insereCor()
 	var data =	"	<tr>																																					" +
 				"		<td>																																				" +
 				"			Nome																																			" +
+				"			<input type='hidden' name='corSalva_" + numeroCor + "' id='corSalva_" + numeroCor + "'	value='0'>												" +
 				"		</td>																																				" +
 				"		<td>																																				" +
 				"			<input type='text' class='campo' name='nomeCor_" + numeroCor + "' id='nomeCor_" + numeroCor + "' placeholder='Nome' maxlength='20'>				" +

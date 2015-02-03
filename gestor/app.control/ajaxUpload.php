@@ -94,42 +94,45 @@
 		
 		for($i=1; $i<=$_POST['numeroCor']; $i++)
 		{
-			//Banner 1
-			if(isset($_POST['banner1_'.$i]))
-				$banner1 = 1;
-			else
-				$banner1 = 0;
-			//Banner 2
-			if(isset($_POST['banner2_'.$i]))
-				$banner2 = 1;
-			else
-				$banner2 = 0;			
-			//Banner 3
-			if(isset($_POST['banner3_'.$i]))
-				$banner3 = 1;
-			else
-				$banner3 = 0;
-			//Home
-			if(isset($_POST['home_'.$i]))
-				$home = 1;
-			else
-				$home = 0;
-			
-			
-			
-			$controlador->addCor([
-									$_POST['nomeCor_'.$i], 
-									$_POST['cor1_'.$i], 
-									$_POST['cor2_'.$i], 
-									$banner1,
-									$banner2,
-									$banner3,
-									$home,
-									$_FILES["foto_{$i}"]["tmp_name"],
-									$_FILES["foto_{$i}"]["name"],
-									$_FILES["foto_{$i}"]["size"],
-									$_FILES["foto_{$i}"]["type"]
-								]);
+			if($_POST['corSalva_'.$i] == 0)
+			{
+				//Banner 1
+				if(isset($_POST['banner1_'.$i]))
+					$banner1 = 1;
+				else
+					$banner1 = 0;
+				//Banner 2
+				if(isset($_POST['banner2_'.$i]))
+					$banner2 = 1;
+				else
+					$banner2 = 0;			
+				//Banner 3
+				if(isset($_POST['banner3_'.$i]))
+					$banner3 = 1;
+				else
+					$banner3 = 0;
+				//Home
+				if(isset($_POST['home_'.$i]))
+					$home = 1;
+				else
+					$home = 0;
+
+
+
+				$controlador->addCor([
+										$_POST['nomeCor_'.$i], 
+										$_POST['cor1_'.$i], 
+										$_POST['cor2_'.$i], 
+										$banner1,
+										$banner2,
+										$banner3,
+										$home,
+										$_FILES["foto_{$i}"]["tmp_name"],
+										$_FILES["foto_{$i}"]["name"],
+										$_FILES["foto_{$i}"]["size"],
+										$_FILES["foto_{$i}"]["type"]
+									]);
+			}
 		}
 		
 		if($controlador->salvaProduto())

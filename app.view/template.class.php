@@ -13,6 +13,7 @@ class template
 	 *	Variaveis
 	 */
 	private $collectionCategoria;
+	private $produtoBanner;
 
 
 	/*

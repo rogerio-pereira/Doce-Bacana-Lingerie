@@ -237,6 +237,7 @@
 									"	<tr>																														" .
 									"		<td>																													" .
 									"			Nome																												" .
+									"			<input type='hidden' name='corSalva_".$numeroCor."' id='corSalva_".$numeroCor."'	value='1'>						" .
 									"		</td>																													" .
 									"		<td>																													" .
 									"			<input																												" .
@@ -247,6 +248,7 @@
 									"				placeholder='Nome'																								" .
 									"				maxlength='20'																									" .
 									"				value='{$cor->nome}'																							" .
+									"				disabled																										" .
 									"			/>																													" .
 									"		</td>																													" .
 									"	</tr>																														" .
@@ -262,7 +264,8 @@
 									"				id='cor1_'.$numeroCor.'																							" .
 									"				placeholder='Cor 1'																								" .
 									"				value='{$cor->cor1}'																							" .
-									"				onchange=\"alteraCor('cor_'.$numeroCor.', this.value)\"															" .
+									"				onchange=\"alteraCor('cor_.$numeroCor.', this.value)\"															" .
+									"				disabled																										" .
 									"			>																													" .
 									"		</td>																													" .
 									"	</tr>																														" .
@@ -278,6 +281,7 @@
 									"				id='cor2_'.$numeroCor.'																							" .
 									"				placeholder='Cor 1'																								" .
 									"				value='{$cor->cor2}'																							" .
+									"				disabled																										" .
 									"			>																													" .
 									"		</td>																													" .
 									"	</tr>																														" .
@@ -289,27 +293,27 @@
 
 									//Banner 1
 									if($cor->banner1 == 1)
-										echo "<input type='checkbox' name='banner1_'.$numeroCor.'	class='chkBanner1_'.$numeroCor.'	value='1' checked>Banner 1<br>";
+										echo "<input type='checkbox' name='banner1_'.$numeroCor.'	class='chkBanner1_'.$numeroCor.'	value='1' checked disabled>Banner 1<br>";
 									else
-										echo "<input type='checkbox' name='banner1_'.$numeroCor.'	class='chkBanner1_'.$numeroCor.'	value='1'>Banner 1<br>";
+										echo "<input type='checkbox' name='banner1_'.$numeroCor.'	class='chkBanner1_'.$numeroCor.'	value='1' disabled>Banner 1<br>";
 
 									//Banner2
 									if($cor->banner2 == 1)
-										echo "<input type='checkbox' name='banner2_'.$numeroCor.'	class='chkBanner2_'.$numeroCor.'	value='1' checked>Banner 2<br>";
+										echo "<input type='checkbox' name='banner2_'.$numeroCor.'	class='chkBanner2_'.$numeroCor.'	value='1' checked disabled>Banner 2<br>";
 									else
-										echo "<input type='checkbox' name='banner2_'.$numeroCor.'	class='chkBanner2_'.$numeroCor.'	value='1'>Banner 2<br>";
+										echo "<input type='checkbox' name='banner2_'.$numeroCor.'	class='chkBanner2_'.$numeroCor.'	value='1' disabled>Banner 2<br>";
 
 									//Banner3
 									if($cor->banner3 == 1)
-										echo "<input type='checkbox' name='banner3_'.$numeroCor.'	class='chkBanner3_'.$numeroCor.'	value='1' checked>Banner 3<br>";
+										echo "<input type='checkbox' name='banner3_'.$numeroCor.'	class='chkBanner3_'.$numeroCor.'	value='1' checked disabled>Banner 3<br>";
 									else
-										echo "<input type='checkbox' name='banner3_'.$numeroCor.'	class='chkBanner3_'.$numeroCor.'	value='1'>Banner 3<br>";
+										echo "<input type='checkbox' name='banner3_'.$numeroCor.'	class='chkBanner3_'.$numeroCor.'	value='1' disabled>Banner 3<br>";
 
 									//Home
 									if($cor->home == 1)
-										echo "<input type='checkbox' name='home_'.$numeroCor.'	class='chkHome_'.$numeroCor.'	value='1' checked>Home<br>";
+										echo "<input type='checkbox' name='home_'.$numeroCor.'	class='chkHome_'.$numeroCor.'	value='1' checked disabled>Home<br>";
 									else
-										echo "<input type='checkbox' name='home_'.$numeroCor.'	class='chkHome_'.$numeroCor.'	value='1'>Home<br>";
+										echo "<input type='checkbox' name='home_'.$numeroCor.'	class='chkHome_'.$numeroCor.'	value='1' disabled>Home<br>";
 
 									echo
 									"		</td>																														" .
