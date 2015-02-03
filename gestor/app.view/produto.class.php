@@ -324,7 +324,7 @@
 									"		</td>																														" .
 									"		<td>																														" .
 									"			<img																													" .
-									"				src='http://docebacana.virtual/app.view/img/produtos/thumbs/{$this->getProduto()->codigo}_{$cor->codigo}.jpg'		" .
+									"				src='http://www.docebacanalingerie.com.br/app.view/img/produtos/thumbs/{$this->getProduto()->codigo}_{$cor->codigo}.jpg'		" .
 									"				alt='{$cor->nome}'																									" .
 									"				title='{$cor->nome}'																								" .
 									"			>																														" .

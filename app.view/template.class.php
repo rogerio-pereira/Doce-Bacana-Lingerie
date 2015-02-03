@@ -13,7 +13,9 @@ class template
 	 *	Variaveis
 	 */
 	private $collectionCategoria;
-	private $produtoBanner;
+	private $produtosBanner1;
+	private $produtosBanner2;
+	private $produtosBanner3;
 
 
 	/*
@@ -28,7 +30,37 @@ class template
 	{
 		$this->collectionCategoria = $collectionCategoria;
 	}
+	function getProdutosBanner1()
+	{
+		return $this->produtosBanner1;
+	}
 
+	function getProdutosBanner2()
+	{
+		return $this->produtosBanner2;
+	}
+
+	function getProdutosBanner3()
+	{
+		return $this->produtosBanner3;
+	}
+
+	function setProdutosBanner1($produtosBanner1)
+	{
+		$this->produtosBanner1 = $produtosBanner1;
+	}
+
+	function setProdutosBanner2($produtosBanner2)
+	{
+		$this->produtosBanner2 = $produtosBanner2;
+	}
+
+	function setProdutosBanner3($produtosBanner3)
+	{
+		$this->produtosBanner3 = $produtosBanner3;
+	}
+
+	
 		
 	/*
 	 *	Método construtor
@@ -36,6 +68,9 @@ class template
 	public function __construct()
 	{
 		$this->setCollectionCategoria((new controladorCategoria())->getCollectionCategoria());
+		$this->setProdutosBanner1((new controladorProdutos())->getCollectionBanner(1));
+		$this->setProdutosBanner2((new controladorProdutos())->getCollectionBanner(2));
+		$this->setProdutosBanner3((new controladorProdutos())->getCollectionBanner(3));
 	}
 
 
@@ -127,20 +162,26 @@ class template
 							<div id='bannerTop'>
 								<div class='sliderTop' id='1'>
 									<div class='sliderTopImg'>
-										<img src='/app.view/img/produtos/banner/1.jpg'>
-										<img src='/app.view/img/produtos/banner/3.jpg'>
+										<?php
+											foreach ($this->getProdutosBanner1() as $cor)
+												echo "<img src='/app.view/img/produtos/banner1/{$cor->codigoProduto}_{$cor->codigo}.jpg'>";
+										?>
 									</div>
 								</div>
 								<div class='sliderTop' id='2'>
 									<div class='sliderTopImg'>
-										<img src='/app.view/img/produtos/banner/2.jpg'>
-										<img src='/app.view/img/produtos/banner/1.jpg'>
+										<?php
+											foreach ($this->getProdutosBanner2() as $cor)
+												echo "<img src='/app.view/img/produtos/banner2/{$cor->codigoProduto}_{$cor->codigo}.jpg'>";
+										?>
 									</div>
 								</div>
 								<div class='sliderTop' id='3'>
 									<div class='sliderTopImg'>
-										<img src='/app.view/img/produtos/banner/5.jpg'>
-										<img src='/app.view/img/produtos/banner/4.jpg'>
+										<?php
+											foreach ($this->getProdutosBanner3() as $cor)
+												echo "<img src='/app.view/img/produtos/banner3/{$cor->codigoProduto}_{$cor->codigo}.jpg'>";
+										?>
 									</div>
 								</div>
 								<div class='sliderTop' id='4'>
