@@ -625,6 +625,12 @@ class controladorProdutos extends controladorUpload
 			TTransaction2::open('my_bd_site');
 			
 			$this->setProdutoCor(new produtoscoresModel2());
+			
+			$this->setBanner1($this->produtoCor->banner1);
+			$this->setBanner2($this->produtoCor->banner2);
+			$this->setBanner3($this->produtoCor->banner3);
+			$this->setHome($this->produtoCor->home);
+			
 			$this->produtoCor->delete($this->getCodigoProdCor());
 
 			TTransaction2::close();
@@ -642,18 +648,10 @@ class controladorProdutos extends controladorUpload
 			$this->apagaImagem (self::DIRETORIO.$nome.'.jpg');
 			$this->apagaImagem (self::DIRETORIO_MINIATURA.$nome.'.jpg');
 			$this->apagaImagem (self::DIRETORIO_THUMB.$nome.'.jpg');
-			//Banner 1
-			if($this->produtoCor->banner1 == 1)
-				$this->apagaImagem (self::DIRETORIO_BANNER1.$nome.'.jpg');
-			//Banner2
-			if($this->produtoCor->banner2 == 1)
-				$this->apagaImagem (self::DIRETORIO_BANNER2.$nome.'.jpg');
-			//Banner 3
-			if($this->produtoCor->banner3 == 1)
-				$this->apagaImagem (self::DIRETORIO_BANNER3.$nome.'.jpg');
-			//Home
-			if($this->produtoCor->home == 1)
-				$this->apagaImagem (self::DIRETORIO_HOME.$nome.'.jpg');
+			$this->apagaImagem (self::DIRETORIO_BANNER1.$nome.'.jpg');
+			$this->apagaImagem (self::DIRETORIO_BANNER2.$nome.'.jpg');
+			$this->apagaImagem (self::DIRETORIO_BANNER3.$nome.'.jpg');
+			$this->apagaImagem (self::DIRETORIO_HOME.$nome.'.jpg');
 			
 			return true;
 		}

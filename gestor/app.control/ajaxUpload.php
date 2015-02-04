@@ -27,7 +27,8 @@
         }
     }
 	
-	error_reporting(E_WARNING);
+	//error_reporting(E_WARNING);
+	error_reporting(E_ALL);
 	
 	$request = $_POST['formularioNome'];
 	

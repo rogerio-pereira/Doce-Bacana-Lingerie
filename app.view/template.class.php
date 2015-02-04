@@ -105,6 +105,7 @@ class template
 				<link rel="stylesheet" type="text/css" href="/app.view/css/template.css">
 				<link rel="stylesheet" type="text/css" href="/app.view/css/formulario.css">
 				<link rel="stylesheet" type="text/css" href="/app.view/css/contato.css">
+				<link rel="stylesheet" type="text/css" href="/app.view/css/produtos.css">
 				
 				<!--JQuery-->
 				<script type="text/javascript" src="/app.view/js/jquery.js"></script>
@@ -146,7 +147,7 @@ class template
 						<!--Menu-->
 						<nav id='navMenuPrincipal'>
 							<ul id='navMenuPrincipalLista'>
-								<a href='/home'><li>Home</li></a>
+								<a href='/'><li>Home</li></a>
 								<a href='/empresa'><li>Quem Somos</li></a>
 								<a href='/produtos'><li>Produtos</li></a>
 								<a href='/medidas'><li>Guia de Medidas</li></a>

@@ -173,23 +173,25 @@ class controladorUpload
 		try
 		{
 			$this->setImagem($imagem);											//Seta o diretorio completo
-
+			//
 			//Imagem PNG
 			if(strpos($this->getImagem(), '.png') !== FALSE)
 			{
 				$original		= imagecreatefrompng($this->getImagem());		//Carrega PNG
 			}
 			else if(strpos($this->getImagem(), '.jpg') !== FALSE)
+			{
 				$original		= imagecreatefromjpeg($this->getImagem());		//Carrega PNG
-
-			$largOriginal	= imagesx($original);								//Carrega Largura
+			}
+			
+			$largOriginal	= imagesx($original);								//Carrega Largura;
 			$altOriginal	= imagesy($original);								//Carrega Altura
-
+			
 			$fator		= $altOriginal / $largOriginal;							//Calcula Fator de redimensionamento
 			$alturaNova	= $larguraNova * $fator;								//Calcula Altura Nova
-
+			
 			$saida		= imagecreatetruecolor($larguraNova,$alturaNova);		//Cria imagem nova
-
+			//
 			//Transparencia PNG
 			if(strpos($this->getImagem(), '.png') !== FALSE)
 			{
@@ -198,20 +200,20 @@ class controladorUpload
 				$transparent = imagecolorallocatealpha($saida, 255, 255, 255, 127);
 				imagefilledrectangle($saida, 0, 0, $larguraNova, $alturaNova, $transparent);
 			}
-
+			
 			imagecopyresized($saida,$original, 0, 0, 0, 0,$larguraNova,$alturaNova,$largOriginal,$altOriginal);	//Cria copia da imagem redimentionada
-
+			
 			if(strpos($this->getImagem(), '.png') !== FALSE)
 			{
 				imagepng($saida, $this->getImagem());															//Grava imagem PNG nova, com qualidade 100%
 			}
 			else if(strpos($this->getImagem(), '.jpg') !== FALSE)
 				imagejpeg($saida, $this->getImagem());															//Grava imagem JPG nova, com qualidade 100%
-
+			
 			imagedestroy($saida);
 			imagedestroy($original);
 			$this->setImagem(NULL);
-
+			
 			return true;
 		}
 		catch (Exception $e)
@@ -228,7 +230,8 @@ class controladorUpload
 	{
 		try
 		{
-			unlink($imagem);
+			if(file_exists($imagem))
+				unlink($imagem);
 		} 
 		catch (Exception $ex) 
 		{

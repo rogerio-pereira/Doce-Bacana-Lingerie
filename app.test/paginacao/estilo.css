@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*----------------------RESET--------------------*/
+
+body, html, div, blockquote, img, label, p, h1, h2, h3, h4, h5, h6, pre, ul, ol,
+li, dl, dt, dd, form, a, fieldset, input, th, td
+{margin: 0; padding: 0; outline: none;}
+
+body{line-height:1; font-size:62.5%; background:#ccc; font-family:Arial, Helvetica, sans-serif;} /*---- 1.0 em = 10px---*/
+
+h1, h2, h3, h4, h5, h6{font-size:100%;}
+
+p, a{font-size:1.3em; line-height:1.8em; margin-bottom:10px;}
+
+.box p{margin:0;}
+
+/*----------------------RESET--------------------*/
+
+.box{position:relative; float:right; width:300px; padding:10px; margin:10px; background:#DCF1F1; border:1px solid #CDE2ED;}
+
+.global-div{width:900px; height:auto; min-height:300px; padding:0 15px 15px 15px; position:absolute; float:none; left:50%;  margin:5px 0 0 -470px ; border:5px solid #fff; background:#fff; box-shadow:0 0 5px #999; -moz-box-shadow:0 0 5px #999; -webkit-box-shadow:0 0 5px #999; }
+
+.global-div img{float:left; margin-right:20px; border:1px solid #eaeaea; z-index:500; }
+
+h1{font:italic 4em Georgia, "Times New Roman", Times, serif; text-align:center; margin: -5px -20px 20px -20px; background:#111; color:#fff; padding:15px 5px; letter-spacing:-0.04em; text-shadow:1px 1px 5px #000; font-weight:normal;}
+
+h2{font:3em Georgia, "Times New Roman", Times, serif;}
+
+ul{list-style:none; margin-left:300px;}
+
+ul li{display:inline; margin-right:50px;}
+
+.paginacao a{color:#333; padding:3px 5px; border:1px solid #ccc; text-decoration:none; margin:0 3px;}
+
+.paginacao a:hover{background:#333; color:#fff;}
+
+.paginacao a.atual{font-weight:bold; background:#fff; color:#333; border:0; border-bottom:1px solid #ccc; font-size:1.6em;}

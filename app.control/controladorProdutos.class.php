@@ -66,25 +66,38 @@ class controladorProdutos
 		$this->collectionBanner = $collectionBanner;
 	}
 	
-	function getCollectionProduto($categoria)
-	{
+	function getCollectionProduto($categoria, $inicio)
+	{		
 		$this->setCollectionProduto(NULL);
 		
 		//RECUPERA CONEXAO BANCO DE DADOS
 		TTransaction::open('my_bd_site');
 
-		//TABELA exposition_gallery
+		//Criterio de seleção
 		$criteria	= new TCriteria;
 		if($categoria != NULL)
 			$criteria->add(new TFilter('categoria', '=', $categoria));
+		
 		$criteria->add(new TFilter('home', '=', 1));
 		$criteria->add(new TFilter('p.codigo', '=', 'c.codigoProduto'));
-		$criteria->setProperty('order', 'RAND()');
-		$criteria->setProperty('limit', 9);
+		
+		//Ordenação
+		if($categoria == NULL)
+		{
+			$criteria->setProperty('order', 'RAND()');
+			$criteria->setProperty('limit', 9);
+		}
+		else
+		{
+			$criteria->setProperty('order', 'codigoProduto');
+			$criteria->setProperty('limit', $inicio.',9');
+		}
 		
 		$this->repository = new TRepository();
 		
-		$this->repository->addColumn('*');
+		$this->repository->addColumn('DISTINCT p.codigo as codProd');
+		$this->repository->addColumn('p.referencia');
+		$this->repository->addColumn('c.codigo as codCor');
 		$this->repository->addEntity('produtos p');
 		$this->repository->addEntity('produtoscores c');
 		
@@ -109,10 +122,41 @@ class controladorProdutos
 	public function __construct()
 	{
 		$this->setRepository(NULL);
-		$this->setCollectionBanner(NULL);
 		$this->setCollectionProduto(NULL);
+		$this->setCollectionBanner(NULL);
 	}
 	
+	/*
+	 * Método getTotal
+	 * Obtem o total de itens cadastrados
+	 */
+	public function getTotal($categoria)
+	{
+		$total = 0;
+		$result;
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction::open('my_bd_site');
+
+		//Criterio de seleção
+		$criteria	= new TCriteria;
+		$criteria->add(new TFilter('categoria', '=', $categoria));		
+		$criteria->add(new TFilter('home', '=', 1));
+		$criteria->add(new TFilter('p.codigo', '=', 'c.codigoProduto'));
+				
+		$this->repository = new TRepository();
+		
+		$this->repository->addColumn('count(*) as total');
+		$this->repository->addEntity('produtos p');
+		$this->repository->addEntity('produtoscores c');
+		
+		$result = $this->repository->load($criteria);
+		$total = $result[0]->total;
+		
+		TTransaction::close();
+		
+		return $total;
+	}
 }
 
 ?>

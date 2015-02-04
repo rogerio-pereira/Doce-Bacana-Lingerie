@@ -56,6 +56,7 @@
 			//Criteria
 			$sql->setCriteria($criteria);
 						
+			
 			if ($conn = TTransaction::get()) 
 			{	
 				$result = $conn->query($sql->getInstruction());

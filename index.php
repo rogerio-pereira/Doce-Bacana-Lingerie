@@ -60,7 +60,7 @@ class TApplication
          */
         else
         {
-            $pagina 	= new home();
+            $pagina 	= new categoria();
             ob_start();
             $pagina->show();
             $content 	= ob_get_contents();

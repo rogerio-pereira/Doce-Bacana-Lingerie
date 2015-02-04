@@ -454,7 +454,6 @@
 		
 		$collectionProdutos = $controlador->getCollectionProdutos2();
 		
-		echo 'aqui3';
 		
 		echo
 			"
