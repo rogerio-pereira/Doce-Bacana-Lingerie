@@ -106,6 +106,7 @@ class template
 				<link rel="stylesheet" type="text/css" href="/app.view/css/formulario.css">
 				<link rel="stylesheet" type="text/css" href="/app.view/css/contato.css">
 				<link rel="stylesheet" type="text/css" href="/app.view/css/produtos.css">
+				<link rel="stylesheet" type="text/css" href="/app.view/css/paginacao.css">
 				
 				<!--JQuery-->
 				<script type="text/javascript" src="/app.view/js/jquery.js"></script>

@@ -59,9 +59,23 @@ class controladorCategoria
 		return $this->collectionCategoria;
 	}
 
-	function getCategoria()
+	function getCategoria($codigo)
 	{
-		return $this->categoria;
+		$this->setCategoria(NULL);
+		$result;
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction::open('my_bd_site');
+
+		//TABELA exposition_gallery
+		//$criteria	= new TCriteria;
+		//$criteria->add(new TFilter('codigo', '=', $codigo));
+		//$criteria->setProperty('order', 'ordem ASC');
+		
+		$this->setCategoria(new categorias());
+		$result = $this->categoria->load($codigo);
+		
+		return $result;
 	}
 
 	function setCollectionCategoria($collectionCategoria)

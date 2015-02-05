@@ -27,8 +27,9 @@
 		 * Variaveis
 		 */
 		private $codigo;
-		private $pagina;
 		private $collectionProduto;
+		private $categoria;
+		private $pagina;
 		private $total;
 		private $proximo;
 		private $anterior;
@@ -107,8 +108,17 @@
 		{
 			$this->ultimaPagina = $ultimaPagina;
 		}
+		function getCategoria()
+		{
+			return $this->categoria;
+		}
 
-								
+		function setCategoria($categoria)
+		{
+			$this->categoria = $categoria;
+		}
+
+										
 		
 		/*
 		 * Método Contrutor
@@ -142,7 +152,10 @@
 				$this->setCollectionProduto((new controladorProdutos())->getCollectionProduto(NULL, NULL));
 			//Categoria
 			else
+			{
 				$this->setCollectionProduto((new controladorProdutos())->getCollectionProduto($this->getCodigo(), $inicio));
+				$this->setCategoria((new controladorCategoria())->getCategoria($this->getCodigo()));
+			}
 		}
 		
 		/*
@@ -151,13 +164,18 @@
 		 */
 		public function show()
 		{
+			if($this->getCodigo() == NULL)
+				echo '<h1>Produtos</h1>';
+			else
+				echo "<h1>{$this->getCategoria()->nome}</h1>";
 			
 			echo 
 				"
-					<h1>Produtos</h1>
 					<hr>
 					<ul class='produtosLista'>
 				";
+			
+			
 			foreach($this->getCollectionProduto() as $produto)
 			{
 				echo
@@ -177,26 +195,78 @@
 			}
 			echo "</ul>";
 			
+			
 			//Paginação
 			if($this->getCodigo() != NULL)
-			{
+			{				
 				echo '<div class="paginacao">';
+				$paginacao = '';
 				
 				if ($this->getPagina() > 1)
 				{
-					$paginacao = "<a href='/categoria/{$this->getCodigo()}/{$this->getAnterior()}'>		&lsaquo; Anterior	</a>";
+					$paginacao .= "<a href='/categoria/{$this->getCodigo()}/{$this->getAnterior()}'>		&lt; Anterior	</a>";
 				}
 				
-				if ($ultima_pag <= 9)
+				//Menos de 9 paginas no total
+				if ($this->getUltimaPagina() <= 9)
 				{
-					for ($i=1; $i<=$ultima_pag; $i++)
+					for ($i=1; $i<=$this->getUltimaPagina(); $i++)
 					{
-						if ($i == $pag)
-							$paginacao = "<a class='atual' href='/categoria/{$this->getCodigo()}/{$i}'>		{$i}	</a>";			
+						if ($i == $this->getPagina())
+							$paginacao .= "<a class='atual' href='/categoria/{$this->getCodigo()}/{$i}'>		{$i}	</a>";			
 						else 
-							$paginacao = "<a href='/categoria/{$this->getCodigo()}/{$i}'>		{$i}	</a>";
+							$paginacao .= "<a href='/categoria/{$this->getCodigo()}/{$i}'>		{$i}	</a>";
 					}
 				} 
+				//Mais de 9 paginas no total
+				if ($this->getUltimaPagina() > 9)
+				{
+					if ($this->getPagina() < 1 + (2 * self::ADJACENTES))
+					{
+						for ($i=1; $i< 2 + (2 * self::ADJACENTES); $i++)
+						{
+							if ($i == $this->getPagina())
+								$paginacao .= "<a class='atual' href='/categoria/{$this->getCodigo()}/{$i}'>		{$i}	</a>";					
+							else 
+								$paginacao .= "<a href='/categoria/{$this->getCodigo()}/{$i}'>		{$i}	</a>";
+						}
+						$paginacao .= '...';
+						$paginacao = "<a href='/categoria/{$this->getCodigo()}/{$this->getUltimaPagina()}'>		{$this->getUltimaPagina()}	</a>";
+					}
+					else if($this->getPagina() > (2 * self::ADJACENTES) && $this->getPagina() < $this->getUltimaPagina() - 3)
+					{
+						$paginacao = "<a href='/categoria/{$this->getCodigo()}/1'>		1	</a>";				
+						$paginacao .= '... ';	
+						for ($i = $this->getPagina()-self::ADJACENTES; $i<= $this->getPagina() + self::ADJACENTES; $i++)
+						{
+							if ($i == $this->getPagina())
+								$paginacao .= "<a class='atual' href='/categoria/{$this->getCodigo()}/{$i}'>		{$i}	</a>";					
+							else
+								$paginacao .= "<a href='/categoria/{$this->getCodigo()}/{$i}'>		{$i}	</a>";
+						}
+						$paginacao .= '...';
+						$paginacao .= "<a href='/categoria/{$this->getCodigo()}/{$this->getUltimaPagina()}'>		{$$this->getUltimaPagina()}	</a>";
+					}
+					else 
+					{
+						$paginacao .= "<a href='/categoria/{$this->getCodigo()}/1'>		1	</a>";				
+						$paginacao .= '... ';	
+						for ($i = $this->getUltimaPagina() - (4 + (2 * self::ADJACENTES)); $i <= $this->getUltimaPagina(); $i++)
+						{
+							if ($i == $this->getPagina())
+								$paginacao .= "<a class='atual' href='/categoria/{$this->getCodigo()}/{$i}'>		{$i}	</a>";	
+							else 
+								$paginacao .= "<a href='/categoria/{$this->getCodigo()}/{$i}'>		{$i}	</a>";
+						}
+					}
+				}
+				
+				if ($this->getProximo() <= $this->getUltimaPagina() && $this->getUltimaPagina() > 1)
+					$paginacao .= "<a href='/categoria/{$this->getCodigo()}/{$this->getProximo()}'>		Próximo &gt;	</a>";
+
+				echo $paginacao;
+
+				echo '</div>';
 			}
 		}
 	}

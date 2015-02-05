@@ -98,6 +98,7 @@ class controladorProdutos
 		$this->repository->addColumn('DISTINCT p.codigo as codProd');
 		$this->repository->addColumn('p.referencia');
 		$this->repository->addColumn('c.codigo as codCor');
+		$this->repository->addColumn('c.nome as categoria');
 		$this->repository->addEntity('produtos p');
 		$this->repository->addEntity('produtoscores c');
 		

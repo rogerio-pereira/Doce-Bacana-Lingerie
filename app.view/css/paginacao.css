@@ -1,0 +1,55 @@
+/*
+ *	Arquivo  formulario.css
+ *	CSS da paginação
+ *	
+ *	Sistema:	Doce___Bacana_Lingerie
+ *	Autor:      Rogério Eduardo Pereira
+ *	Data:       05/02/2015
+ * 
+ *	Paginação obtida em
+ *  http://tutorial.thiagobueno.tk/paginacao-avancada-com-php 
+ *	04/02/2014 17:17
+ */
+@charset "utf-8";
+
+div.paginacao
+{
+	text-align: center;
+}
+.paginacao a
+{
+	color:					white; 
+	background:				black; 
+	text-decoration:		none;
+	text-align:				center;
+	
+	padding:				3px 5px; 
+	margin:					0 3px;
+	-webkit-border-radius: 	20px;
+	-moz-border-radius:		20px;
+	border-radius: 			20px;
+	
+	cursor:					pointer;
+	
+	-webkit-transition:		all 1s ease;
+	-moz-transition:		all 1s ease;
+	-ms-transition:			all 1s ease;
+	-o-transition:			all 1s ease;
+	transition:				all 1s ease;
+}
+
+.paginacao a:hover
+{
+	background-color:	white;
+	color:				black;
+}
+
+.paginacao a.atual
+{
+	text-align:		center;
+	font-weight:	bold; 
+	background:		#f70d48; 
+	color:			white; 
+	border:			0; 
+	border-bottom:	1px solid #ccc; 
+}
