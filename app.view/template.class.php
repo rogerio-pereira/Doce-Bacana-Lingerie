@@ -67,6 +67,7 @@ class template
 	 */
 	public function __construct()
 	{
+		new session();
 		$this->setCollectionCategoria((new controladorCategoria())->getCollectionCategoria());
 		$this->setProdutosBanner1((new controladorProdutos())->getCollectionBanner(1));
 		$this->setProdutosBanner2((new controladorProdutos())->getCollectionBanner(2));
@@ -136,6 +137,12 @@ class template
 							<!--Cadastro-->
 							<div id='headerCadastro'>
 								<a href="/cadastro" title='Cadastro'>Cadastre-se</a>
+							</div>
+							<div id='usuarioNome'>
+							<?php 
+									if($_SESSION['cliente'] != '') 
+										echo "Bem Vindo <a href='/perfil/'>{$_SESSION['cliente']->nome}</a>"; 
+							?>
 							</div>
 							<!--Busca-->
 							<div id='headerBusca'>

@@ -24,7 +24,7 @@ class login
 	public function __construct()
 	{
 		new session();
-		$_SESSION['cliente'] = NULL;
+		//$_SESSION['cliente'] = NULL;
 	}
 	/*
 	 * Método show

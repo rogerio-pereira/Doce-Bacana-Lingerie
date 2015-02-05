@@ -74,23 +74,18 @@
 	{
 		$controlador	= new controladorLogin();
 		
-		$controlador->setEmail( $_POST['email']);
+		$controlador->setEmail($_POST['email']);
 		$controlador->setSenha($_POST['senha']);
 		
 		$retorno = $controlador->login();
 		
 		if($retorno == true)
 		{
-			return true;
+			echo "Login sucedido!";
 		}
 		else
 		{
-			session_destroy();
-			echo "
-					<script>
-						alert('Falha ao fazer login');
-					</script>
-				";
+			echo "Falha ao fazer login";
 		}
 	}
 ?>

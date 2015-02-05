@@ -479,17 +479,18 @@ class controladorClientes
 		$result;
 		
 		//RECUPERA CONEXAO BANCO DE DADOS
-		TTransaction::open('my_bd_site');
+		TTransaction2::open('my_bd_site');
 
 		//TABELA exposition_gallery
 		$criteria	= new TCriteria;
-		$criteria->add(new TFilter('email', '=', $email));
+		$criteria->add(new TFilter('email', '=', "'{$email}'"));
 		//$criteria->setProperty('order', 'ordem ASC');
 		
-		$this->setCliente( new clientes());
+		$this->setCliente( new clientes2());
+		
 		$result = $this->cliente->loadCriteria($criteria);
 		
-		TTransaction::close();
+		TTransaction2::close();
 		
 		return $result;
 	}

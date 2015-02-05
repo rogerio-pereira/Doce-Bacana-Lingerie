@@ -220,6 +220,15 @@ header div#headerCadastro a:hover
 	color:				black;
 }
 
+header div#usuarioNome
+{
+	position:		absolute;
+	top:			20%;
+	right:			-2%;
+	margin-right:	3%;
+	height:			100%;
+}
+
 header div#headerBusca
 {
 	position:		absolute;

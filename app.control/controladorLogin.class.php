@@ -91,11 +91,11 @@ class controladorLogin
 	 */
 	public function login()
 	{
-		$this->setClienteBD($this->getControladorCliente()->getClienteByEmail($this->getEmail()));
+		$this->setClienteBD((new controladorClientes())->getClienteByEmail($this->getEmail()));
+		
 		if($this->compara())
 		{
 			$_SESSION['cliente'] = $this->getClienteBD();
-			
 			return true;
 		}
 		else
@@ -110,7 +110,7 @@ class controladorLogin
 	{	
 		if  (
 				($this->getEmail()	== $this->getClienteBD()->email) &&
-				($this->getSenha()   == $this->getClienteBD->senha)
+				($this->getSenha()   == $this->getClienteBD()->senha)
 			)
 		{
 			return true;

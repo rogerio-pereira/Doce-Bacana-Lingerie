@@ -14,7 +14,7 @@ function executaLogin()
 		url: "app.control/ajax.php",
 		data: 
 		{
-			usuario:		$('#usuario').val(),
+			email:			$('#email').val(),
 			senha:			$('#senha').val(),
 			formularioNome:	'login'
 		},
