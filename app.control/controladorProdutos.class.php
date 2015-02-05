@@ -75,17 +75,21 @@ class controladorProdutos
 
 		//Criterio de seleção
 		$criteria	= new TCriteria;
-		if($categoria != NULL)
+		if(($categoria != NULL) && ($categoria != -1))
 			$criteria->add(new TFilter('categoria', '=', $categoria));
-		
 		$criteria->add(new TFilter('home', '=', 1));
 		$criteria->add(new TFilter('p.codigo', '=', 'c.codigoProduto'));
-		
+		$criteria->add(new TFilter('p.categoria', '=', 'cat.codigo'));
 		//Ordenação
 		if($categoria == NULL)
 		{
 			$criteria->setProperty('order', 'RAND()');
 			$criteria->setProperty('limit', 9);
+		}
+		else if($categoria == -1)
+		{
+			$criteria->setProperty('order', 'categoria, codigoProduto');
+			$criteria->setProperty('limit', $inicio.',9');
 		}
 		else
 		{
@@ -98,9 +102,10 @@ class controladorProdutos
 		$this->repository->addColumn('DISTINCT p.codigo as codProd');
 		$this->repository->addColumn('p.referencia');
 		$this->repository->addColumn('c.codigo as codCor');
-		$this->repository->addColumn('c.nome as categoria');
+		$this->repository->addColumn('cat.nome as categoria');
 		$this->repository->addEntity('produtos p');
 		$this->repository->addEntity('produtoscores c');
+		$this->repository->addEntity('categorias cat');
 		
 		$this->setCollectionProduto($this->repository->load($criteria));
 		
@@ -141,7 +146,8 @@ class controladorProdutos
 
 		//Criterio de seleção
 		$criteria	= new TCriteria;
-		$criteria->add(new TFilter('categoria', '=', $categoria));		
+		if(($categoria != NULL) && ($categoria != -1))
+			$criteria->add(new TFilter('categoria', '=', $categoria));		
 		$criteria->add(new TFilter('home', '=', 1));
 		$criteria->add(new TFilter('p.codigo', '=', 'c.codigoProduto'));
 				
