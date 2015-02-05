@@ -469,6 +469,30 @@ class controladorClientes
 		}
 	}
 	
+	/*
+	 * Método getClienteByEmail
+	 * Obtem o cliente pela chave
+	 */
+	public function getClienteByEmail($email)
+	{
+		$this->setCliente(NULL);
+		$result;
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction::open('my_bd_site');
+
+		//TABELA exposition_gallery
+		$criteria	= new TCriteria;
+		$criteria->add(new TFilter('email', '=', $email));
+		//$criteria->setProperty('order', 'ordem ASC');
+		
+		$this->setCliente( new clientes());
+		$result = $this->cliente->loadCriteria($criteria);
+		
+		TTransaction::close();
+		
+		return $result;
+	}
 }
 
 ?>

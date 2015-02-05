@@ -107,6 +107,7 @@ class template
 				<link rel="stylesheet" type="text/css" href="/app.view/css/contato.css">
 				<link rel="stylesheet" type="text/css" href="/app.view/css/produtos.css">
 				<link rel="stylesheet" type="text/css" href="/app.view/css/paginacao.css">
+				<link rel="stylesheet" type="text/css" href="/app.view/css/login.css">
 				
 				<!--JQuery-->
 				<script type="text/javascript" src="/app.view/js/jquery.js"></script>
@@ -117,6 +118,8 @@ class template
 				<script type="text/javascript" src="/app.view/js/contato.js"></script>
 				<script type="text/javascript" src="/app.view/js/slider.js"></script>
 				<script type="text/javascript" src="/app.view/js/cadastro.js"></script>
+				<script type="text/javascript" src="/app.view/js/busca.js"></script>
+				<script type="text/javascript" src="/app.view/js/login.js"></script>
 			</head>
 			<body>
 				<div id='page'>
@@ -136,7 +139,7 @@ class template
 							</div>
 							<!--Busca-->
 							<div id='headerBusca'>
-								<form id='formBusca'>
+								<form id='formBusca' method='post' onsubmit="buscaProd()">
 									<input type='text' name='buscaProduto' id='buscaProduto' placeholder='Busca de Produtos'>
 									<label for='buscaProduto'><img src='/app.view/img/template/buscarIcon.png'></label>
 								</form>
