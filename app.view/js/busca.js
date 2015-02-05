@@ -10,5 +10,5 @@ function buscaProd()
 {
 	alert($('#buscaProduto').val());
 	//$(location).attr('href','/busca/');
-	windows.top.location.href='/busca/';
+	//windows.top.location.href='/busca/';
 }

@@ -27,7 +27,7 @@ class login
 		$_SESSION['cliente'] = NULL;
 	}
 	/*
-	 * Método show
+	 * M�todo show
 	 * Exibe as informações na tela
 	 */
 	public function show()

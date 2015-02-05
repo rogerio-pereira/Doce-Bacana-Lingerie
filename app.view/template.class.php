@@ -293,7 +293,11 @@ class template
 			</body>
 			
 			<!--Scripts-->
-			<script>iniciaSlider();</script>
+			<script>
+				iniciaSlider();
+				adicionaMascaras();
+				selecionaPessoaFisica();
+			</script>
 		</html>
 	<?php
 	}

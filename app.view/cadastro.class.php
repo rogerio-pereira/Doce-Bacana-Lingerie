@@ -314,10 +314,6 @@
 					</tr>
 				</table>
 			</form>
-			<script>
-				adicionaMascaras();
-				selecionaPessoaFisica();
-			</script>
 		<?php
 		}
 	}
