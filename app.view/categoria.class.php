@@ -163,9 +163,7 @@
 		 * Exibe as informações na tela
 		 */
 		public function show()
-		{
-			var_dump($_SESSION['cliente']);
-			
+		{			
 			if($this->getCodigo() == NULL)
 				echo '<h1>Produtos</h1>';
 			else

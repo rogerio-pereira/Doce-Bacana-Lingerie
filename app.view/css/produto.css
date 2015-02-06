@@ -1,0 +1,95 @@
+/*
+ *	Arquivo  produto.css
+ *	CSS da classe produto.class.php
+ *	
+ *	Sistema:	Doce___Bacana_Lingerie
+ *	Autor:      Rogério Eduardo Pereira
+ *	Data:       06/02/2015
+ */
+div.produtoContainer
+{
+	position: relative;
+}
+div.imagensProduto
+{
+	position:			relative;
+	width:				30%;
+	left:				0;
+	top:				0;
+}
+
+div#imagemGrande
+{
+	position:	relative;
+	width:		100%;
+}
+div#imagemGrande img
+{
+	position:	relative;
+	width:		100%;
+	border:		solid 2px black;
+}
+
+div#miniaturasCores
+{
+	text-align: center;
+}
+
+ul#listaCoresProduto
+{
+	list-style: none;
+}
+
+ul#listaCoresProduto li
+{
+	display:	inline-block;
+	cursor:		pointer;
+}
+
+ul#listaCoresProduto li img
+{
+	border: solid 2px black;
+}
+
+div.detalheProduto
+{
+	position:			relative;
+	width:				67%;
+	right: 				0;
+	top:				0;
+	float:				right
+}
+
+div.incluirOrcamento
+{
+	position:				relative;
+	width:					auto;
+	padding:				5px 15px; 
+	background:				#f70d48; 
+	border:					0 none;
+	
+	cursor:					pointer;
+	
+	-webkit-border-radius: 	30px;
+	-moz-border-radius:		30px;
+	border-radius: 			30px;
+	
+	font-family:			'Logotipo';
+	font-size:				1.5em;
+	text-align:				center;
+	color:					white;
+	
+	-webkit-transition:		all 1s ease;
+	-moz-transition:		all 1s ease;
+	-ms-transition:			all 1s ease;
+	-o-transition:			all 1s ease;
+	transition:				all 1s ease;
+	
+}
+
+div.incluirOrcamento:hover
+{
+	background-color:	white;
+	color:				black;
+	text-decoration:	underline;
+}

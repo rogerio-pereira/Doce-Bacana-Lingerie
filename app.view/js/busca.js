@@ -6,9 +6,7 @@
  *	Autor:      Rogério Eduardo Pereira
  *	Data:       05/02/2015
  */
-function buscaProd()
+function bProd()
 {
-	alert($('#buscaProduto').val());
-	//$(location).attr('href','/busca/');
-	//windows.top.location.href='/busca/';
+	top.location='/busca/'+$('#buscaProduto').val()
 }

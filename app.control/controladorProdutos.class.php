@@ -20,6 +20,8 @@ class controladorProdutos
 	private $repository;
 	private $collectionBanner;
 	private $collectionProduto;
+	private $produto;
+	private $collectionCores;
 
 
 	/*
@@ -119,8 +121,79 @@ class controladorProdutos
 		$this->collectionProduto = $collectionProduto;
 	}
 
-	
-	
+	function getProduto($codigo)
+	{
+		$this->setProduto(NULL);
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction::open('my_bd_site');
+
+		//Criterio de seleção
+		$criteria	= new TCriteria;
+		$criteria->add(new TFilter('p.codigo', '=', $codigo));
+		$criteria->add(new TFilter('p.categoria', '=', 'cat.codigo'));
+		
+		$this->repository = new TRepository();
+		
+		$this->repository->addColumn('p.codigo as codigoProduto');
+		$this->repository->addColumn('p.referencia as referencia');
+		$this->repository->addColumn('cat.nome as categoria');
+		$this->repository->addColumn('p.descricao as descricao');
+		$this->repository->addColumn('p.caracteristicas as caracteristicas');
+		$this->repository->addColumn('p.tamanhoPP as tamanhoPP');
+		$this->repository->addColumn('p.tamanhoP as tamanhoP');
+		$this->repository->addColumn('p.tamanhoM as tamanhoM');
+		$this->repository->addColumn('p.tamanhoG as tamanhoG');
+		$this->repository->addColumn('p.tamanhoGG as tamanhoGG');
+		$this->repository->addColumn('p.tamanho48 as tamanho48');
+		$this->repository->addColumn('p.tamanho50 as tamanho50');
+		$this->repository->addColumn('p.tamanho52 as tamanho52');
+		$this->repository->addColumn('p.tamanho54 as tamanho54');
+		$this->repository->addEntity('produtos p');
+		$this->repository->addEntity('categorias cat');
+		
+		$this->setProduto($this->repository->load($criteria));
+		
+		TTransaction::close();
+		
+		return $this->produto[0];
+	}
+
+	function setProduto($produto)
+	{
+		$this->produto = $produto;
+	}
+		
+	function getCollectionCores($codigo)
+	{
+		$this->setCollectionCores(NULL);
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction::open('my_bd_site');
+
+		//TABELA exposition_gallery
+		$criteria	= new TCriteria;
+		$criteria->add(new TFilter('codigoProduto', '=', $codigo));
+		$criteria->setProperty('order', 'nome');
+		
+		$this->repository = new TRepository();
+		
+		$this->repository->addColumn('*');
+		$this->repository->addEntity('produtoscores');
+		
+		$this->setCollectionCores($this->repository->load($criteria));
+		
+		TTransaction::close();
+		
+		return $this->collectionCores;
+	}
+
+	function setCollectionCores($collectionCores)
+	{
+		$this->collectionCores = $collectionCores;
+	}
+
+		
 	
 	/*
 	 * Método Contrutor
@@ -130,6 +203,8 @@ class controladorProdutos
 		$this->setRepository(NULL);
 		$this->setCollectionProduto(NULL);
 		$this->setCollectionBanner(NULL);
+		$this->setProduto(NULL);
+		$this->setCollectionCores(NULL);
 	}
 	
 	/*

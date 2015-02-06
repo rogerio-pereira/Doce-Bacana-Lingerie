@@ -109,6 +109,7 @@ class template
 				<link rel="stylesheet" type="text/css" href="/app.view/css/produtos.css">
 				<link rel="stylesheet" type="text/css" href="/app.view/css/paginacao.css">
 				<link rel="stylesheet" type="text/css" href="/app.view/css/login.css">
+				<link rel="stylesheet" type="text/css" href="/app.view/css/produto.css">
 				
 				<!--JQuery-->
 				<script type="text/javascript" src="/app.view/js/jquery.js"></script>
@@ -121,6 +122,7 @@ class template
 				<script type="text/javascript" src="/app.view/js/cadastro.js"></script>
 				<script type="text/javascript" src="/app.view/js/busca.js"></script>
 				<script type="text/javascript" src="/app.view/js/login.js"></script>
+				<script type="text/javascript" src="/app.view/js/produto.js"></script>
 			</head>
 			<body>
 				<div id='page'>
@@ -146,10 +148,10 @@ class template
 							</div>
 							<!--Busca-->
 							<div id='headerBusca'>
-								<form id='formBusca' method='post' onsubmit="buscaProd()">
+								<form id='formBusca' method='post' onsubmit="">
 									<input type='text' name='buscaProduto' id='buscaProduto' placeholder='Busca de Produtos'>
-									<label for='buscaProduto'><img src='/app.view/img/template/buscarIcon.png'></label>
-								</form>
+									<img src='/app.view/img/template/buscarIcon.png' onclick="top.location='/busca/'+$('#buscaProduto').val()">
+								</form><br>
 							</div>
 						</header>
 					</div> <!--Fim Header-->
@@ -198,7 +200,7 @@ class template
 								</div>
 								<div class='sliderTop' id='4'>
 									<div class='sliderTopImg'>
-									<img src='/app.view/img/template/frete.jpg' alt='Frete' title='Frete'>
+									<img src='/app.view/img/template/frete.png' alt='Frete' title='Frete'>
 								</div>
 							</div>
 							

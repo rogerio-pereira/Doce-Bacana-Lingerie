@@ -44,7 +44,6 @@
 				foreach ($this->columns as $coluna)
 					$sql->addColumn($coluna);
 			
-			
 			//Entidade
 			if(count($this->entity) == 1)
 				$sql->addEntity($this->entity[0]);
@@ -55,7 +54,6 @@
 			
 			//Criteria
 			$sql->setCriteria($criteria);
-						
 			
 			if ($conn = TTransaction::get()) 
 			{	

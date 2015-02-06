@@ -37,7 +37,10 @@
 		 */
 		public function show()
 		{
-			
+		?>
+			<h1>Busca: <span id='logotipo'><?php echo $_GET['chave']; ?></span>
+			<hr>
+		<?php
 		}
 	}
 
