@@ -48,11 +48,7 @@
 		else
 		{
 			session_destroy();
-			echo "
-					<script>
-						alert('Falha ao fazer login');
-					</script>
-				";
+			echo "Falha ao fazer login";
 		}
 	}
 	//Salvar Categoria

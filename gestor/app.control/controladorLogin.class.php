@@ -91,6 +91,7 @@ class controladorLogin
 	public function login()
 	{
 		$this->setUsuarioBD($this->controladorUsuario->getUsuarioBDByUser2($this->getUsuario()));
+		
 		if($this->compara())
 		{
 			$_SESSION['usuario'] = $this->usuarioBD;

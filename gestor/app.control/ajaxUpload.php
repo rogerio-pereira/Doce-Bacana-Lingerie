@@ -138,8 +138,15 @@
 		
 		if($controlador->salvaProduto())
 		{
-			$codigoProduto = $controlador->getLastProduto();
+			$codigoProduto = $controlador->getCodigoProd();
+			if(($codigoProduto == NULL) || ($codigoProduto == ''))
+			{
+				$codigoProduto = $controlador->getLastProduto();
+			}
+			
+			
 			$controlador->setCodigoProduto($codigoProduto);
+			
 			
 			$i=1;
 			$erro=0;
