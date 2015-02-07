@@ -8,5 +8,7 @@
  */
 function bProd()
 {
-	top.location='/busca/'+$('#buscaProduto').val()
+	var busca = $('#buscaProduto').val();
+	busca = busca.replace(' ', '+');
+	top.location='/busca/'+busca;
 }

@@ -7,7 +7,6 @@
  *	Autor:      Rogério Eduardo Pereira
  *	Data:       21/01/2015
  */
-
 	/*
 	 * Classe erro.class.php
 	 */
@@ -26,7 +25,7 @@
 		/*
 		 * Método Contrutor
 		 */
-		public function __construct($codigo)
+		public function __construct()
 		{
 			
 		}

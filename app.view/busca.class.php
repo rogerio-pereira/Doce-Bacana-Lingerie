@@ -138,14 +138,14 @@
 			$inicio = ($this->getPagina() - 1) * 9;
 			
 			//Calcula itens para paginação
-			$this->setTotal((new controladorProdutos())->getTotalBusca($this->getBusca()));		//NÃO TEM ESSE METODO
+			$this->setTotal((new controladorProdutos())->getTotalBusca($this->getBusca()));	
 			$this->setProximo($this->getPagina()+1);
 			$this->setAnterior($this->getPagina()-1);
 			$this->setUltimaPagina(ceil($this->getTotal() / self::LIMITE));
 			
-			
 			//Home
-			$this->setCollectionProduto((new controladorProdutos())->getCollectionProdutoBusca($this->getBusca()));
+			$this->setCollectionProduto((new controladorProdutos())->getCollectionProdutoBusca($this->getBusca(), $inicio));
+			
 		}
 		
 		/*

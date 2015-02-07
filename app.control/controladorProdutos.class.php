@@ -116,8 +116,10 @@ class controladorProdutos
 		return $this->collectionProduto;
 	}
 	
-	function getCollectionProdutoBusca($busca)
+	
+	function getCollectionProdutoBusca($busca, $inicio)
 	{		
+		
 		$this->setCollectionProduto(NULL);
 		
 		//RECUPERA CONEXAO BANCO DE DADOS
@@ -128,7 +130,8 @@ class controladorProdutos
 		
 		
 		//Busca por Referencia ou descricao
-		$criteria->add(new TFilter('categoria', '=', $categoria));
+		$criteria->add(new TFilter('referencia', 'LIKE', '%'.$busca.'%'));
+		$criteria->add(new TFilter('descricao', 'LIKE', '%'.$busca.'%'));
 				
 				
 				
@@ -136,21 +139,8 @@ class controladorProdutos
 		$criteria->add(new TFilter('p.codigo', '=', 'c.codigoProduto'));
 		$criteria->add(new TFilter('p.categoria', '=', 'cat.codigo'));
 		//Ordenação
-		if($categoria == NULL)
-		{
-			$criteria->setProperty('order', 'RAND()');
-			$criteria->setProperty('limit', 9);
-		}
-		else if($categoria == -1)
-		{
-			$criteria->setProperty('order', 'categoria, codigoProduto');
-			$criteria->setProperty('limit', $inicio.',9');
-		}
-		else
-		{
-			$criteria->setProperty('order', 'codigoProduto');
-			$criteria->setProperty('limit', $inicio.',9');
-		}
+		$criteria->setProperty('order', 'categoria, codigoProduto');
+		$criteria->setProperty('limit', $inicio.',9');
 		
 		$this->repository = new TRepository();
 		
@@ -279,6 +269,45 @@ class controladorProdutos
 		$criteria->add(new TFilter('home', '=', 1));
 		$criteria->add(new TFilter('p.codigo', '=', 'c.codigoProduto'));
 				
+		$this->repository = new TRepository();
+		
+		$this->repository->addColumn('count(*) as total');
+		$this->repository->addEntity('produtos p');
+		$this->repository->addEntity('produtoscores c');
+		
+		$result = $this->repository->load($criteria);
+		$total = $result[0]->total;
+		
+		TTransaction::close();
+		
+		return $total;
+	}
+	
+	/*
+	 * Método getTotalBusca
+	 * Obtem o total de itens da busca
+	 */
+	function getTotalBusca($busca)
+	{
+		$total = 0;
+		$result;
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction::open('my_bd_site');
+
+		//Criterio de seleção
+		$criteria	= new TCriteria;
+		
+		
+		//Busca por Referencia ou descricao
+		$criteria->add(new TFilter('referencia', 'LIKE', '%'.$busca.'%'));
+		$criteria->add(new TFilter('descricao', 'LIKE', '%'.$busca.'%'));
+				
+				
+				
+		$criteria->add(new TFilter('home', '=', 1));
+		$criteria->add(new TFilter('p.codigo', '=', 'c.codigoProduto'));
+		
 		$this->repository = new TRepository();
 		
 		$this->repository->addColumn('count(*) as total');

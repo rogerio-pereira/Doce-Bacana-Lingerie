@@ -148,9 +148,9 @@ class template
 							</div>
 							<!--Busca-->
 							<div id='headerBusca'>
-								<form id='formBusca' method='post' onsubmit="">
+								<form id='formBusca' method='post' onsubmit="bProd()" action="/buscaIntermediaria/">
 									<input type='text' name='buscaProduto' id='buscaProduto' placeholder='Busca de Produtos'>
-									<img src='/app.view/img/template/buscarIcon.png' onclick="top.location='/busca/'+$('#buscaProduto').val()">
+									<img src='/app.view/img/template/buscarIcon.png' onclick="bProd()">
 								</form><br>
 							</div>
 						</header>
