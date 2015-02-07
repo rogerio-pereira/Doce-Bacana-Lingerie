@@ -88,4 +88,42 @@
 			echo "Falha ao fazer login";
 		}
 	}
+	else if($formulario == 'incluiOrcamento')
+	{
+		try
+		{
+			$_SESSION['orcamento'][] = $_POST['codigo'];
+			
+			echo "
+					<script>
+						alert('Item incluido no orçamento!');
+					</script>
+				";
+			
+			if($_SESSION['cliente'] == '') 
+				echo
+					"
+						<script>
+							alert('Por favor faça o login para continuar!');
+							top.location='/login';
+						</script>
+					";
+			else
+				echo
+					"
+						<script>
+							top.location='/';
+						</script>
+					";
+				
+		} 
+		catch (Exception $ex) 
+		{
+			echo "
+					<script>
+						alert('Falha ao incluir item no orçamento!');
+					</script>
+				";
+		}
+	}
 ?>

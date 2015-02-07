@@ -63,7 +63,7 @@
 			<hr>
 			<div class='produtoContainer'>
 				<div class='detalheProduto'>
-					<div class='incluirOrcamento' onclick="incluirOrcamento(<?php echo $this->getProduto()->codigo; ?>)">
+					<div class='incluirOrcamento' onclick="incluirOrcamento(<?php echo $this->getProduto()->codigoProduto; ?>)">
 						Incluir no Orçamento
 					</div>
 					<h2>	<?php echo $this->getProduto()->referencia; ?>	</h2>

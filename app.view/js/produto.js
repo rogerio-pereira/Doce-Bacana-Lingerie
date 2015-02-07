@@ -10,3 +10,21 @@ function mudaImagemProduto(codigoProduto, codigo)
 {
 	$('#imagemGrande').html("<img src='/app.view/img/produtos/"+codigoProduto+"_"+codigo+".jpg'>");
 }
+
+function incluirOrcamento(codigo)
+{
+	$.ajax
+	({
+		type: "POST",
+		url: "/app.control/ajax.php",
+		data: 
+		{
+			codigo:			codigo,
+			formularioNome:	'incluiOrcamento'
+		},
+		success: function(data) 
+		{
+			$('.retornoAjax').html(data);
+		}
+	});
+}

@@ -125,6 +125,8 @@ class template
 				<script type="text/javascript" src="/app.view/js/produto.js"></script>
 			</head>
 			<body>
+				<!--Usado para o retorno de mensagens do ajax-->
+				<div class='retornoAjax'></div>
 				<div id='page'>
 					<div id='header'>
 						<header>
@@ -164,7 +166,7 @@ class template
 								<a href='/empresa'><li>Quem Somos</li></a>
 								<a href='/produtos'><li>Produtos</li></a>
 								<a href='/medidas'><li>Guia de Medidas</li></a>
-								<a href='/carrinho'><li>Orçamento</li></a>
+								<a href='/orcamento'><li>Orçamento</li></a>
 								<a href='/contato'><li>Contato</li></a>
 							</ul>
 						</nav>
@@ -256,7 +258,7 @@ class template
 											<hr>
 											<p>
 												<a href='/perfil'		title='Meu Perfil e dados'		alt='Meu Perfil e dados'>		Meu Perfil e dados		</a><br>
-												<a href='/carrinho'		title='Carrinho de Compras'		alt='Carrinho de Compras'>		Carrinho de Compras		</a><br>
+												<a href='/orcamento'	title='Orçamento'				alt='Orçamento'>				Orçamento				</a><br>
 											</p>
 										</div>
 										<div id='footerDescContato'>
