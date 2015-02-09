@@ -48,6 +48,14 @@ class controladorProdutos extends controladorUpload
 	private $banner2;
 	private $banner3;
 	private $home;
+	
+	private $collectionCores;
+	private $cor;
+	
+	private $codigoCores;
+	private $nomeCores;
+	private $cor1Cores;
+	private $cor2Cores;
 
 
 	/*
@@ -465,7 +473,86 @@ class controladorProdutos extends controladorUpload
 		$this->nome = $nome;
 	}
 
+	function getCollectionCores()
+	{
+		$this->setCollectionCores(NULL);
 		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction::open('my_bd_site');
+
+		//TABELA exposition_gallery
+		$criteria	= new TCriteria;
+		//$criteria->add(new TFilter('p.categoria', '=', 'c.codigo'));
+		$criteria->setProperty('order', 'nome');
+		
+		$this->repository = new TRepository();
+		
+		$this->repository->addColumn('*');
+		$this->repository->addEntity('cores');
+		
+		$this->setCollectionCores($this->repository->load($criteria));
+		
+		TTransaction::close();
+		
+		return $this->collectionCores;
+	}
+
+	function getCor()
+	{
+		return $this->cor;
+	}
+
+	function getCodigoCores()
+	{
+		return $this->codigoCores;
+	}
+
+	function getNomeCores()
+	{
+		return $this->nomeCores;
+	}
+
+	function getCor1Cores()
+	{
+		return $this->cor1Cores;
+	}
+
+	function getCor2Cores()
+	{
+		return $this->cor2Cores;
+	}
+
+	function setCollectionCores($collectionCores)
+	{
+		$this->collectionCores = $collectionCores;
+	}
+
+	function setCor($cor)
+	{
+		$this->cor = $cor;
+	}
+
+	function setCodigoCores($codigoCores)
+	{
+		$this->codigoCores = $codigoCores;
+	}
+
+	function setNomeCores($nomeCores)
+	{
+		$this->nomeCores = $nomeCores;
+	}
+
+	function setCor1Cores($cor1Cores)
+	{
+		$this->cor1Cores = $cor1Cores;
+	}
+
+	function setCor2Cores($cor2Cores)
+	{
+		$this->cor2Cores = $cor2Cores;
+	}
+
+			
 	
 	
 	/*
@@ -500,6 +587,12 @@ class controladorProdutos extends controladorUpload
 		$this->setBanner2(NULL);
 		$this->setBanner3(NULL);
 		$this->setHome(NULL);
+		$this->setCollectionCores(NULL);
+		$this->setCor(NULL);
+		$this->setCodigoCores(NULL);
+		$this->setNomeCores(NULL);
+		$this->setCor1Cores(NULL);
+		$this->setCor2Cores(NULL);
 	}
 
 	/*

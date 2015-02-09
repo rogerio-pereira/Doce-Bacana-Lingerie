@@ -20,12 +20,21 @@ function iniciaTextArea()
 	});
 }
 
-function insereCor()
+function insereCor(combo)
 {
+	alert(combo);
 	var numeroCor = (parseInt($('#numeroCor').val()) + 1);
 	$('#numeroCor').val(numeroCor.toString());
 			
 	var data =	"	<tr>																																					" +
+				"		<td>																																				" +
+				"			Cores Definidas																																	" +
+				"		</td>																																				" +
+				"		<td>																																				" +
+							combo																																			  +
+				"		</td>																																				" +
+				"	</tr>																																					" +
+				"	<tr>																																					" +
 				"		<td>																																				" +
 				"			Nome																																			" +
 				"			<input type='hidden' name='corSalva_" + numeroCor + "' id='corSalva_" + numeroCor + "'	value='0'>												" +

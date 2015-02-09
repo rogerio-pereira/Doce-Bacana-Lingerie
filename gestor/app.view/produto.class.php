@@ -19,6 +19,8 @@
 		private $produto;
 		private $collectionCores;
 		private $collectionCategoria;
+		private $collectionCoresDefinidas;
+		private $comboCores;
 		
 		
 		/*
@@ -52,7 +54,17 @@
 			$this->collectionCores = $collectionCores;
 		}
 
-				
+		function getCollectionCoresDefinidas()
+		{
+			return $this->collectionCoresDefinidas;
+		}
+
+		function setCollectionCoresDefinidas($collectionCoresDefinidas)
+		{
+			$this->collectionCoresDefinidas = $collectionCoresDefinidas;
+		}
+
+						
 				
 		/*
 		 * Método Contrutor
@@ -62,6 +74,15 @@
 			$this->setProduto((new controladorProdutos())->getProduto($_GET['cod']));
 			$this->setCollectionCores((new controladorProdutos())->getCollectionProdutosCores($_GET['cod']));
 			$this->setCollectionCategoria((new controladorCategoria())->getCollectionCategoria());
+			$this->setCollectionCoresDefinidas((new controladorProdutos())->getCollectionCores());
+			
+			$this->comboCores	= "<select id='coresDefinidas' class='comboCores' onchange='corDefinida()'>";
+			//Cria o combobox de cores
+			foreach ($this->collectionCoresDefinidas as $corDefinida)
+			{
+				$this->comboCores	.= "<option value='{$corDefinida->codigo}'>{$corDefinida->nome}</option>";
+			}
+			$this->comboCores	.= "</select>";
 		}
 		
 		/*
@@ -70,7 +91,7 @@
 		 */
 		public function show()
 		{
-		?>
+			?>
 			<h1>Produto</h1>
 			<!--Hack para centralizar os botões das tabelas-->
 			<div style='position: absolute;'>
@@ -357,7 +378,7 @@
 					<table style="position: relative; width: 100%;">
 						<tr>
 							<td colspan='2' align='center'>
-								<input name="botaoInserirCor" type="button" id="botaoInserirCor" value="Inserir Cor" onclick='insereCor()'/>
+								<input name="botaoInserirCor" type="button" id="botaoInserirCor" value="Inserir Cor" onclick="insereCor('<?php $this->comboCores; ?>')"/>
 							</td>
 						</tr>
 						<tr>
