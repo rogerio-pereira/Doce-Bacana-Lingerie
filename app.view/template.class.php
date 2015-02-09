@@ -110,6 +110,7 @@ class template
 				<link rel="stylesheet" type="text/css" href="/app.view/css/paginacao.css">
 				<link rel="stylesheet" type="text/css" href="/app.view/css/login.css">
 				<link rel="stylesheet" type="text/css" href="/app.view/css/produto.css">
+				<link rel="stylesheet" type="text/css" href="/app.view/css/perfil.css">
 				
 				<!--JQuery-->
 				<script type="text/javascript" src="/app.view/js/jquery.js"></script>
@@ -145,8 +146,8 @@ class template
 							</div>
 							<div id='usuarioNome'>
 							<?php 
-									if($_SESSION['cliente'] != '') 
-										echo "Bem Vindo <a href='/perfil/'>{$_SESSION['cliente']->nome}</a>"; 
+								if($_SESSION['cliente'] != '') 
+									echo "Bem Vindo <a href='/perfil/'>{$_SESSION['cliente']->nome}</a>"; 
 							?>
 							</div>
 							<!--Busca-->

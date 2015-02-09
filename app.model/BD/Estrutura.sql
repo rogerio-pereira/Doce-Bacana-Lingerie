@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 03-Fev-2015 às 13:02
+-- Data de Criação: 09-Fev-2015 às 19:11
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.16
 
@@ -71,7 +71,21 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `chave` (`chave`),
   UNIQUE KEY `cpf` (`cpf`,`cnpj`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cores`
+--
+
+CREATE TABLE IF NOT EXISTS `cores` (
+  `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `nome` varchar(20) NOT NULL,
+  `cor1` varchar(7) NOT NULL,
+  `cor2` varchar(7) NOT NULL,
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
 
 -- --------------------------------------------------------
 
@@ -97,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `produtos` (
   PRIMARY KEY (`codigo`),
   UNIQUE KEY `referencia` (`referencia`),
   KEY `categoria` (`categoria`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=52 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 -- --------------------------------------------------------
 
@@ -117,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `produtoscores` (
   `home` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`codigo`),
   KEY `codigoProduto` (`codigoProduto`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=127 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=122 ;
 
 -- --------------------------------------------------------
 
@@ -136,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `telaUsuario` tinyint(1) NOT NULL,
   PRIMARY KEY (`codigo`),
   UNIQUE KEY `usuario` (`usuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Constraints for dumped tables

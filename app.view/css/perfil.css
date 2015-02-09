@@ -1,22 +1,29 @@
 /*
- *	Arquivo  produtos.css
- *	CSS da classe categorias.class.php
+ *	Arquivo  perfil.css
+ *	CSS da classe perfil.class.php
  *	
  *	Sistema:	Doce___Bacana_Lingerie
  *	Autor:      Rogério Eduardo Pereira
- *	Data:       04/02/2015
+ *	Data:       09/02/2015
  */
-ul.produtosLista
+div.informacoesPerfil
 {
-	list-style: none;
+	width:		75%;
+	left:		0px;
+	top:		0px;
+	float:		left;
 }
-ul.produtosLista li
-{	
-	display:	inline-block;
-	text-align: center;
-	margin-bottom: 5%;
+
+div.menuPerfil
+{
+	position:	relative;
+	width:		25%;
+	right:		0px;
+	top:		0px;
+	float:		right;
 }
-ul.produtosLista li a
+
+div.menuPerfil a
 {
 	color:					white;
 	background-color:		black;
@@ -35,17 +42,8 @@ ul.produtosLista li a
 	transition:				all 1s ease;
 }
 
-ul.produtosLista li a:hover
+div.menuPerfil a:hover
 {
 	background-color:	white;
 	color:				black;
-}
-
-ul.produtosLista li a.linkImagem
-{
-	color:				black;
-	text-decoration:	none;
-	background-color:	transparent;
-	
-	font-family:		'Open Sans Condensed', sans-serif;
 }
