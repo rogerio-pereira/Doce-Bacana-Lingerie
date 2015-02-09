@@ -115,6 +115,7 @@ class template
 				<script type="text/javascript" src="/app.view/js/jquery.js"></script>
 				<script type="text/javascript" src="/app.view/js/jquery.maskedinput.js"></script>
 				<script type="text/javascript" src="/app.view/js/jquery-cycle.js"></script>
+				<script type="text/javascript" src="/app.view/js/jquery.elevatezoom.js"></script>
 				
 				<!--JavaScript-->
 				<script type="text/javascript" src="/app.view/js/contato.js"></script>

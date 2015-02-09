@@ -120,6 +120,7 @@
 											display:		inline-block;
 											border:			solid 2px black;
 											margin:			0px;
+											cursor:			pointer;
 										}
 										.cod_{$i}:after 
 										{
@@ -128,12 +129,14 @@
 											width:			0;
 											height:			0;
 											margin-top:		-500px;
+		
+											cursor:			pointer;
 
 											border-top:		500px solid {$cor->cor1};
 											border-right:	500px solid {$cor->cor2};
 										}
 									</style>
-									<div class='cod_{$i}'></div>
+									<div class='cod_{$i}' onclick='mudaImagemProduto({$cor->codigoProduto}, {$cor->codigo})'></div>
 								";
 							$i++;
 						}
@@ -146,7 +149,11 @@
 				</div>
 				<div class="imagensProduto">
 					<div id='imagemGrande'>
-						<img src='/app.view/img/produtos/<?php echo $this->getCollectionCor()[0]->codigoProduto.'_'.$this->getCollectionCor()[0]->codigo.'.jpg'; ?>'>
+						<img 
+							src='/app.view/img/produtos/<?php echo $this->getCollectionCor()[0]->codigoProduto.'_'.$this->getCollectionCor()[0]->codigo.'.jpg';?>' 
+							id='prodImgZoom'
+							data-zoom-image='/app.view/img/produtos/<?php echo $this->getCollectionCor()[0]->codigoProduto.'_'.$this->getCollectionCor()[0]->codigo.'.jpg';?>' 
+						>
 					</div>
 					<div id='miniaturasCores'>
 						<ul id='listaCoresProduto'>
@@ -160,7 +167,7 @@
 												src='/app.view/img/produtos/miniaturas/{$cor->codigoProduto}_{$cor->codigo}.jpg' 
 												alt='$cor->nome' 
 												title='$cor->nome'
-												 onclick='mudaImagemProduto({$cor->codigoProduto}, {$cor->codigo})'
+												onclick='mudaImagemProduto({$cor->codigoProduto}, {$cor->codigo})'
 											>
 										</li>
 									";
@@ -170,6 +177,9 @@
 					</div>
 				</div>
 			</div>
+			<script>
+				adicionaZoom();
+			</script>
 		<?php
 		}
 	}

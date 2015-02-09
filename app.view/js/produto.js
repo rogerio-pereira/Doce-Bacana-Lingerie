@@ -8,7 +8,8 @@
  */
 function mudaImagemProduto(codigoProduto, codigo)
 {
-	$('#imagemGrande').html("<img src='/app.view/img/produtos/"+codigoProduto+"_"+codigo+".jpg'>");
+	$('#imagemGrande').html("<img src='/app.view/img/produtos/"+codigoProduto+"_"+codigo+".jpg' id='prodImgZoom' data-zoom-image='/app.view/img/produtos/"+codigoProduto+"_"+codigo+".jpg'>");
+	adicionaZoom();
 }
 
 function incluirOrcamento(codigo)
@@ -26,5 +27,17 @@ function incluirOrcamento(codigo)
 		{
 			$('.retornoAjax').html(data);
 		}
+	});
+}
+function adicionaZoom()
+{
+	$("#prodImgZoom").elevateZoom(
+	{
+		/*tint:			true, 
+		tintColour:		'#000000', 
+		tintOpacity:	0.5,*/
+		zoomType:		"lens", 
+		lensShape:		"round", 
+		lensSize:		200
 	});
 }
