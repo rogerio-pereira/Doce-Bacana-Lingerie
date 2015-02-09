@@ -138,21 +138,21 @@ class controladorUpload
 			if($banner1 == true)
 			{
 				if(copy(self::DIRETORIO.$this->foto_name, self::DIRETORIO_BANNER1.$this->foto_name))
-					$this->redimensionaImagem (self::DIRETORIO_BANNER1.$this->foto_name, 228);
+					$this->redimensionaImagem (self::DIRETORIO_BANNER1.$this->foto_name, 161);
 			}
 			
 			//Banner 2
 			if($banner2 == true)
 			{
 				if(copy(self::DIRETORIO.$this->foto_name, self::DIRETORIO_BANNER2.$this->foto_name))
-					$this->redimensionaImagem (self::DIRETORIO_BANNER2.$this->foto_name, 228);
+					$this->redimensionaImagem (self::DIRETORIO_BANNER2.$this->foto_name, 161);
 			}
 			
 			//Banner 3
 			if($banner3 == true)
 			{
 				if(copy(self::DIRETORIO.$this->foto_name, self::DIRETORIO_BANNER3.$this->foto_name))
-					$this->redimensionaImagem (self::DIRETORIO_BANNER3.$this->foto_name, 228);
+					$this->redimensionaImagem (self::DIRETORIO_BANNER3.$this->foto_name, 161);
 			}
 			
 			//Home
@@ -205,10 +205,10 @@ class controladorUpload
 			
 			if(strpos($this->getImagem(), '.png') !== FALSE)
 			{
-				imagepng($saida, $this->getImagem());															//Grava imagem PNG nova, com qualidade 100%
+				imagepng($saida, $this->getImagem());																//Grava imagem PNG nova, com qualidade 100%
 			}
 			else if(strpos($this->getImagem(), '.jpg') !== FALSE)
-				imagejpeg($saida, $this->getImagem());															//Grava imagem JPG nova, com qualidade 100%
+				imagejpeg($saida, $this->getImagem(), 100);															//Grava imagem JPG nova, com qualidade 100%
 			
 			imagedestroy($saida);
 			imagedestroy($original);

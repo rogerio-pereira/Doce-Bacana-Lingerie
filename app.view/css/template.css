@@ -285,6 +285,7 @@ nav#navMenuPrincipal
 	background-color:	black;
 	
 	text-align:			center;
+	z-index:			50;
 }
 
 nav#navMenuPrincipal ul
@@ -293,6 +294,7 @@ nav#navMenuPrincipal ul
 	
 	margin:		0px;
 	padding:	0px;
+	z-index:	50;
 }
 
 nav#navMenuPrincipal ul a
@@ -306,11 +308,13 @@ nav#navMenuPrincipal ul a
 	height:			100%;
 	
 	border:			none;
+	z-index:		50;
 }
 
 nav#navMenuPrincipal ul a:hover
 {
-	text-decoration: underline;
+	text-decoration:	underline;
+	z-index:			50;
 }
 
 nav#navMenuPrincipal ul a li
@@ -328,6 +332,8 @@ nav#navMenuPrincipal ul a li
 	-ms-transition:		all 1s ease;
 	-o-transition:		all 1s ease;
 	transition:			all 1s ease;
+	
+	z-index:			50;
 }
 
 nav#navMenuPrincipal ul li:hover
@@ -336,12 +342,13 @@ nav#navMenuPrincipal ul li:hover
 	background-color:	white;
 	color:				black;
 	border:				none;
+	z-index:			50;
 }
 
 section
 {
 	position:		absolute;
-	top:			31.4%;
+	top:			20%;
 	left:			1%;
 	width:			98%;
 	
@@ -359,13 +366,14 @@ section div
 	position:		relative;
 	width:			100%;
 	margin-bottom:	7%;
+	margin-top:		0px;
 }
 
 section div#bannerTop
 {
 	width:		100%;
 	display:	inline-block;
-	margin:		0 0 0 0;
+	margin:		0% 0% 0% 0%;
 }
 section div#bannerTop div.sliderTop
 {
@@ -451,7 +459,7 @@ section div#conteudo
 
 section div#bannerFooter
 {
-	width:			82%;
+	width:			100%;
 	float:			right;
 	text-align:		center;
 }

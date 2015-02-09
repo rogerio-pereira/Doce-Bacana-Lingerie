@@ -92,13 +92,29 @@
 	{
 		try
 		{
-			$_SESSION['orcamento'][] = $_POST['codigo'];
+			$adiciona = true;
+			foreach ($_SESSION['orcamento'] as $orcamento)
+			{
+				if($orcamento == $_POST['codigo'])
+					$adiciona = false;
+			}
+					
+			if($adiciona == true)	
+			{
+				$_SESSION['orcamento'][] = $_POST['codigo'];
 			
-			echo "
-					<script>
-						alert('Item incluido no orçamento!');
-					</script>
-				";
+				echo "
+						<script>
+							alert('Item incluido no orçamento!');
+						</script>
+					";
+			}
+			else
+				echo "
+						<script>
+							alert('Item já havia sido incluido no orçamento antes!');
+						</script>
+					";
 			
 			if($_SESSION['cliente'] == '') 
 				echo
