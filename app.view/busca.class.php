@@ -116,12 +116,14 @@
 		}
 
 		
+		
 				
 		/*
 		 * Método Contrutor
 		 */
 		public function __construct()
 		{
+			
 			//Busca
 			if(!empty($_GET['chave']))
 				$this->setBusca($_GET['chave']);
@@ -154,9 +156,10 @@
 		 */
 		public function show()
 		{
+		
 			echo
 				"
-					<h1>Busca: <span id='logotipo'>{$_GET['chave']}</span>
+					<h1>Busca: <span id='logotipo'>{$_GET['chave']}</span></h1>
 					<hr>
 					<ul class='produtosLista'>
 				";
@@ -180,78 +183,75 @@
 			echo "</ul>";
 
 
-			//Paginação
-			if($this->getCodigo() != NULL)
-			{				
-				echo '<div class="paginacao">';
-				$paginacao = '';
-
-				if ($this->getPagina() > 1)
+			//Paginação			
+			echo '<div class="paginacao">';
+			$paginacao = '';
+			
+			if ($this->getPagina() > 1)
+			{
+				$paginacao .= "<a href='/categoria/{$this->getCodigo()}/{$this->getAnterior()}'>		&lt; Anterior	</a>";
+			}
+			
+			//Menos de 9 paginas no total
+			if ($this->getUltimaPagina() <= 9)
+			{
+				for ($i=1; $i<=$this->getUltimaPagina(); $i++)
 				{
-					$paginacao .= "<a href='/categoria/{$this->getCodigo()}/{$this->getAnterior()}'>		&lt; Anterior	</a>";
+					if ($i == $this->getPagina())
+						$paginacao .= "<a class='atual' href='/busca/{$this->getBusca()}/{$i}'>		{$i}	</a>";			
+					else 
+						$paginacao .= "<a href='/busca/{$this->getBusca()}/{$i}'>		{$i}	</a>";
 				}
-
-				//Menos de 9 paginas no total
-				if ($this->getUltimaPagina() <= 9)
+			} 
+			//Mais de 9 paginas no total
+			if ($this->getUltimaPagina() > 9)
+			{
+				if ($this->getPagina() < 1 + (2 * self::ADJACENTES))
 				{
-					for ($i=1; $i<=$this->getUltimaPagina(); $i++)
+					for ($i=1; $i< 2 + (2 * self::ADJACENTES); $i++)
 					{
 						if ($i == $this->getPagina())
-							$paginacao .= "<a class='atual' href='/categoria/{$this->getCodigo()}/{$i}'>		{$i}	</a>";			
+							$paginacao .= "<a class='atual' href='/busca/{$this->getBusca()}/{$i}'>		{$i}	</a>";					
 						else 
-							$paginacao .= "<a href='/categoria/{$this->getCodigo()}/{$i}'>		{$i}	</a>";
+							$paginacao .= "<a href='/busca/{$this->getBusca()}/{$i}'>		{$i}	</a>";
 					}
-				} 
-				//Mais de 9 paginas no total
-				if ($this->getUltimaPagina() > 9)
+					$paginacao .= '...';
+					$paginacao = "<a href='/busca/{$this->getBusca()}/{$this->getUltimaPagina()}'>		{$this->getUltimaPagina()}	</a>";
+				}
+				else if($this->getPagina() > (2 * self::ADJACENTES) && $this->getPagina() < $this->getUltimaPagina() - 3)
 				{
-					if ($this->getPagina() < 1 + (2 * self::ADJACENTES))
+					$paginacao = "<a href='/busca/{$this->getBusca()}/1'>		1	</a>";				
+					$paginacao .= '... ';	
+					for ($i = $this->getPagina()-self::ADJACENTES; $i<= $this->getPagina() + self::ADJACENTES; $i++)
 					{
-						for ($i=1; $i< 2 + (2 * self::ADJACENTES); $i++)
-						{
-							if ($i == $this->getPagina())
-								$paginacao .= "<a class='atual' href='/categoria/{$this->getCodigo()}/{$i}'>		{$i}	</a>";					
-							else 
-								$paginacao .= "<a href='/categoria/{$this->getCodigo()}/{$i}'>		{$i}	</a>";
-						}
-						$paginacao .= '...';
-						$paginacao = "<a href='/categoria/{$this->getCodigo()}/{$this->getUltimaPagina()}'>		{$this->getUltimaPagina()}	</a>";
+						if ($i == $this->getPagina())
+							$paginacao .= "<a class='atual' href='/busca/{$this->getBusca()}/{$i}'>		{$i}	</a>";					
+						else
+							$paginacao .= "<a href='/busca/{$this->getBusca()}/{$i}'>		{$i}	</a>";
 					}
-					else if($this->getPagina() > (2 * self::ADJACENTES) && $this->getPagina() < $this->getUltimaPagina() - 3)
+					$paginacao .= '...';
+					$paginacao .= "<a href='/busca/{$this->getBusca()}/{$this->getUltimaPagina()}'>		{$$this->getUltimaPagina()}	</a>";
+				}
+				else 
+				{
+					$paginacao .= "<a href='//busca/{$this->getBusca()}/1'>		1	</a>";				
+					$paginacao .= '... ';	
+					for ($i = $this->getUltimaPagina() - (4 + (2 * self::ADJACENTES)); $i <= $this->getUltimaPagina(); $i++)
 					{
-						$paginacao = "<a href='/categoria/{$this->getCodigo()}/1'>		1	</a>";				
-						$paginacao .= '... ';	
-						for ($i = $this->getPagina()-self::ADJACENTES; $i<= $this->getPagina() + self::ADJACENTES; $i++)
-						{
-							if ($i == $this->getPagina())
-								$paginacao .= "<a class='atual' href='/categoria/{$this->getCodigo()}/{$i}'>		{$i}	</a>";					
-							else
-								$paginacao .= "<a href='/categoria/{$this->getCodigo()}/{$i}'>		{$i}	</a>";
-						}
-						$paginacao .= '...';
-						$paginacao .= "<a href='/categoria/{$this->getCodigo()}/{$this->getUltimaPagina()}'>		{$$this->getUltimaPagina()}	</a>";
-					}
-					else 
-					{
-						$paginacao .= "<a href='/categoria/{$this->getCodigo()}/1'>		1	</a>";				
-						$paginacao .= '... ';	
-						for ($i = $this->getUltimaPagina() - (4 + (2 * self::ADJACENTES)); $i <= $this->getUltimaPagina(); $i++)
-						{
-							if ($i == $this->getPagina())
-								$paginacao .= "<a class='atual' href='/categoria/{$this->getCodigo()}/{$i}'>		{$i}	</a>";	
-							else 
-								$paginacao .= "<a href='/categoria/{$this->getCodigo()}/{$i}'>		{$i}	</a>";
-						}
+						if ($i == $this->getPagina())
+							$paginacao .= "<a class='atual' href='/busca/{$this->getBusca()}/{$i}'>		{$i}	</a>";	
+						else 
+							$paginacao .= "<a href='/busca/{$this->getBusca()}/{$i}'>		{$i}	</a>";
 					}
 				}
-
-				if ($this->getProximo() <= $this->getUltimaPagina() && $this->getUltimaPagina() > 1)
-					$paginacao .= "<a href='/categoria/{$this->getCodigo()}/{$this->getProximo()}'>		Próximo &gt;	</a>";
-
-				echo $paginacao;
-
-				echo '</div>';
 			}
+
+			if ($this->getProximo() <= $this->getUltimaPagina() && $this->getUltimaPagina() > 1)
+				$paginacao .= "<a href='/busca/{$this->getBusca()}/{$this->getProximo()}'>		Próximo &gt;	</a>";
+
+			echo $paginacao;
+
+			echo '</div>';
 		}
 	}
 

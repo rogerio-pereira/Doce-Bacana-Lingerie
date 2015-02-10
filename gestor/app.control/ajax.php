@@ -522,4 +522,11 @@
 				</tr>
 			";
 	}
+	else if($request == 'buscaCorDefinida')
+	{
+		$controlador = new controladorProdutos();
+		$cor = $controlador->getCor($_POST['codigo']);
+		$cor = $cor->nome.'~'.$cor->cor1.'~'.$cor->cor2;
+		echo $cor;
+	}
 ?>

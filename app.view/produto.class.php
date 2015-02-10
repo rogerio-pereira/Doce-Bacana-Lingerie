@@ -172,6 +172,17 @@
 										</li>
 									";
 							}
+							echo
+									"
+										<li>
+											<img 
+												src='/app.view/img/produtos/miniaturas_embalagens/{$cor->codigoProduto}' 
+												alt='Embalagem' 
+												title='Embalagem'
+												onclick='mudaImagemProduto({$cor->codigoProduto}, 'embalagem')'
+											>
+										</li>
+									";
 						?>
 						</ul>
 					</div>

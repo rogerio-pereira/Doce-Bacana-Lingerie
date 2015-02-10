@@ -17,13 +17,16 @@ class controladorUpload
 	/*
 	 * Constantes
 	 */
-	const DIRETORIO				= '../../app.view/img/produtos/';
-	const DIRETORIO_THUMB		= '../../app.view/img/produtos/thumbs/';
-	const DIRETORIO_MINIATURA	= '../../app.view/img/produtos/miniaturas/';
-	const DIRETORIO_BANNER1		= '../../app.view/img/produtos/banner1/';
-	const DIRETORIO_BANNER2		= '../../app.view/img/produtos/banner2/';
-	const DIRETORIO_BANNER3		= '../../app.view/img/produtos/banner3/';
-	const DIRETORIO_HOME		= '../../app.view/img/produtos/home/';		
+	const DIRETORIO						= '../../app.view/img/produtos/';
+	const DIRETORIO_THUMB				= '../../app.view/img/produtos/thumbs/';
+	const DIRETORIO_MINIATURA			= '../../app.view/img/produtos/miniaturas/';
+	const DIRETORIO_BANNER1				= '../../app.view/img/produtos/banner1/';
+	const DIRETORIO_BANNER2				= '../../app.view/img/produtos/banner2/';
+	const DIRETORIO_BANNER3				= '../../app.view/img/produtos/banner3/';
+	const DIRETORIO_HOME				= '../../app.view/img/produtos/home/';		
+	const DIRETORIO_EMBALAGEM			= '../../app.view/img/produtos/embalagens/';
+	const DIRETORIO_MINIATURAEMBALAGEM	= '../../app.view/img/produtos/miniaturas_embalagens/';
+	
 		
 	
 	/*
@@ -161,6 +164,22 @@ class controladorUpload
 				if(copy(self::DIRETORIO.$this->foto_name, self::DIRETORIO_HOME.$this->foto_name))
 					$this->redimensionaImagem (self::DIRETORIO_HOME.$this->foto_name, 228);
 			}
+		}
+	}
+	
+	public function uploadEmbalagem($nome)
+	{
+		//Alterando nome da imagem
+		$array = explode('.', $this->foto_name);
+		$array[0] = $nome;
+		$this->setFoto_name(implode('.', $array));
+		
+		//ENVIA O ARQUIVO PARA A PASTA
+		if(move_uploaded_file($this->foto_temp, self::DIRETORIO_EMBALAGEM.$this->foto_name))
+		{			
+			//Copia a imagem para a pasta Miniatura
+			if(copy(self::DIRETORIO_EMBALAGEM.$this->foto_name, self::DIRETORIO_MINIATURAEMBALAGEM.$this->foto_name))
+				$this->redimensionaImagem (self::DIRETORIO_MINIATURAEMBALAGEM.$this->foto_name, 35);
 		}
 	}
 	

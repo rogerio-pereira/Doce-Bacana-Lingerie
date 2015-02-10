@@ -136,6 +136,11 @@
 			}
 		}
 		
+		$controlador->setFoto_temp($_FILES["embalagem"]["tmp_name"]);
+		$controlador->setFoto_temp($_FILES["embalagem"]["tmp_name"]);
+		$controlador->setFoto_temp($_FILES["embalagem"]["tmp_name"]);
+		$controlador->setFoto_temp($_FILES["embalagem"]["tmp_name"]);
+		
 		if($controlador->salvaProduto())
 		{
 			$codigoProduto = $controlador->getCodigoProd();
@@ -146,6 +151,8 @@
 			
 			
 			$controlador->setCodigoProduto($codigoProduto);
+			
+			$controlador->uploadEmbalagem($codigoProduto);
 			
 			
 			$i=1;

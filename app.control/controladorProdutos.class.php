@@ -127,17 +127,20 @@ class controladorProdutos
 
 		//Criterio de seleção
 		$criteria	= new TCriteria;
-		
+		$criteria1	= new TCriteria;
+		$criteria2	= new TCriteria;
 		
 		//Busca por Referencia ou descricao
-		$criteria->add(new TFilter('referencia', 'LIKE', '%'.$busca.'%'));
-		$criteria->add(new TFilter('descricao', 'LIKE', '%'.$busca.'%'));
+		$criteria1->add(new TFilter('referencia', 'LIKE', '%'.$busca.'%'), TExpression::OR_OPERATOR);
+		$criteria1->add(new TFilter('descricao', 'LIKE', '%'.$busca.'%'),  TExpression::OR_OPERATOR);
 				
-				
-				
-		$criteria->add(new TFilter('home', '=', 1));
-		$criteria->add(new TFilter('p.codigo', '=', 'c.codigoProduto'));
-		$criteria->add(new TFilter('p.categoria', '=', 'cat.codigo'));
+		//Outras campos do criterio de seleção
+		$criteria2->add(new TFilter('home', '=', 1));
+		$criteria2->add(new TFilter('p.codigo', '=', 'c.codigoProduto'));
+		$criteria2->add(new TFilter('p.categoria', '=', 'cat.codigo'));
+		
+		$criteria->add($criteria1, TExpression::AND_OPERATOR);
+		$criteria->add($criteria2, TExpression::AND_OPERATOR);
 		//Ordenação
 		$criteria->setProperty('order', 'categoria, codigoProduto');
 		$criteria->setProperty('limit', $inicio.',9');
@@ -297,22 +300,27 @@ class controladorProdutos
 
 		//Criterio de seleção
 		$criteria	= new TCriteria;
-		
+		$criteria1	= new TCriteria;
+		$criteria2	= new TCriteria;
 		
 		//Busca por Referencia ou descricao
-		$criteria->add(new TFilter('referencia', 'LIKE', '%'.$busca.'%'));
-		$criteria->add(new TFilter('descricao', 'LIKE', '%'.$busca.'%'));
+		$criteria1->add(new TFilter('referencia', 'LIKE', '%'.$busca.'%'), TExpression::OR_OPERATOR);
+		$criteria1->add(new TFilter('descricao', 'LIKE', '%'.$busca.'%'),  TExpression::OR_OPERATOR);
 				
-				
-				
-		$criteria->add(new TFilter('home', '=', 1));
-		$criteria->add(new TFilter('p.codigo', '=', 'c.codigoProduto'));
+		//Outras campos do criterio de seleção
+		$criteria2->add(new TFilter('home', '=', 1));
+		$criteria2->add(new TFilter('p.codigo', '=', 'c.codigoProduto'));
+		$criteria2->add(new TFilter('p.categoria', '=', 'cat.codigo'));
+		
+		$criteria->add($criteria1, TExpression::AND_OPERATOR);
+		$criteria->add($criteria2, TExpression::AND_OPERATOR);
 		
 		$this->repository = new TRepository();
 		
 		$this->repository->addColumn('count(*) as total');
 		$this->repository->addEntity('produtos p');
 		$this->repository->addEntity('produtoscores c');
+		$this->repository->addEntity('categorias cat');
 		
 		$result = $this->repository->load($criteria);
 		$total = $result[0]->total;

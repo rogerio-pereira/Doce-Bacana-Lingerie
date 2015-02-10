@@ -497,9 +497,24 @@ class controladorProdutos extends controladorUpload
 		return $this->collectionCores;
 	}
 
-	function getCor()
+	function getCor($codigo)
 	{
-		return $this->cor;
+		$this->setCor(NULL);
+		$result;
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction2::open('my_bd_site');
+
+		//TABELA exposition_gallery
+		//$criteria	= new TCriteria;
+		//$criteria->add(new TFilter('codigo', '=', $codigo));
+		//$criteria->setProperty('order', 'ordem ASC');
+		
+		$this->setCor(new coresModel2());
+				
+		$result = $this->cor->load($codigo);
+				
+		return $result;
 	}
 
 	function getCodigoCores()
@@ -662,6 +677,10 @@ class controladorProdutos extends controladorUpload
 			$result = $this->produtoCor->store();
 
 			TTransaction2::close();
+			
+			if($this->existeCor($this->getNome(), $this->getCor1(), $this->getCor2()) == false)
+					$this->salvaCorNova($this->getNome(), $this->getCor1(), $this->getCor2());
+					
 			return true;
 		} 
 		catch (Exception $ex)
@@ -782,6 +801,70 @@ class controladorProdutos extends controladorUpload
 			return true;
 		}
 		catch(Exception $e)
+		{
+			return false;
+		}
+	}
+	
+	/*
+	 * Método existeCor
+	 * Verifica se existe a cor ja cadastrada
+	 */
+	public function existeCor($nome, $cor1, $cor2)
+	{
+		$registros = 0;
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction2::open('my_bd_site');
+
+		//TABELA exposition_gallery
+		$criteria	= new TCriteria;
+		$criteria->add(new TFilter('nome', '=', $nome));
+		$criteria->add(new TFilter('cor1', '=', $cor1));
+		$criteria->add(new TFilter('cor2', '=', $cor2));
+		//$criteria->setProperty('order', 'ordem ASC');
+		
+		$this->repository = new TRepository2();
+		
+		$this->repository->addColumn('COUNT(*) as registros');
+		$this->repository->addEntity('cores');
+		
+		$registros = $this->repository->load($criteria);
+		
+		$registros = $registros[0]->registros;
+		
+		TTransaction::close();
+		
+		if($registros > 0)
+			return true;
+		else
+			return false;
+	}
+	
+	/*
+	 * Método salvaCorNova()
+	 * Salva uma nova cor na tabela de cores prédefinidas
+	 */
+	public function salvaCorNova($nome, $cor1, $cor2)
+	{
+		try
+		{	
+			$this->setCor(new coresModel2());
+			
+			$this->cor->nome				= $nome;
+			$this->cor->cor1				= $cor1;
+			$this->cor->cor2				= $cor2;
+			
+			//RECUPERA CONEXAO BANCO DE DADOS
+			TTransaction2::open('my_bd_site');
+
+			$result = $this->cor->store();
+
+			TTransaction2::close();
+					
+			return true;
+		} 
+		catch (Exception $ex)
 		{
 			return false;
 		}

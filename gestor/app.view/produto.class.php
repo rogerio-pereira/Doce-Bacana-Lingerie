@@ -76,7 +76,8 @@
 			$this->setCollectionCategoria((new controladorCategoria())->getCollectionCategoria());
 			$this->setCollectionCoresDefinidas((new controladorProdutos())->getCollectionCores());
 			
-			$this->comboCores	= "<select id='coresDefinidas' class='comboCores' onchange='corDefinida()'>";
+			$this->comboCores	= "<select id='coresDefinidas' class='campo #numero#' onchange='selecionaCorDefinida(#numero#)'>";
+			$this->comboCores	.= "<option value='' selected></option>";
 			//Cria o combobox de cores
 			foreach ($this->collectionCoresDefinidas as $corDefinida)
 			{
@@ -378,7 +379,20 @@
 					<table style="position: relative; width: 100%;">
 						<tr>
 							<td colspan='2' align='center'>
-								<input name="botaoInserirCor" type="button" id="botaoInserirCor" value="Inserir Cor" onclick="insereCor('<?php $this->comboCores; ?>')"/>
+								<input name="botaoInserirCor" type="button" id="botaoInserirCor" value="Inserir Cor" onclick="insereCor()"/>
+							</td>
+						</tr>
+						<tr>
+							<td colspan='2'>
+								<hr>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Embalagem
+							</td>
+							<td>
+								<input type='file' class='arquivo' name='embalagem' id='embalagem' placeholder='Embalagem'>	
 							</td>
 						</tr>
 						<tr>
@@ -397,6 +411,11 @@
 			<script>
 				iniciaTextArea();
 			</script>
+			<div class='divCores' style='visibility: hidden'>
+				<?php
+					echo $this->comboCores;
+				?>
+			</div>
 		<?php
 		}
 	}

@@ -8,7 +8,10 @@
  */
 function mudaImagemProduto(codigoProduto, codigo)
 {
-	$('#imagemGrande').html("<img src='/app.view/img/produtos/"+codigoProduto+"_"+codigo+".jpg' id='prodImgZoom' data-zoom-image='/app.view/img/produtos/"+codigoProduto+"_"+codigo+".jpg'>");
+	if(codigo != 'embalagem')
+		$('#imagemGrande').html("<img src='/app.view/img/produtos/"+codigoProduto+"_"+codigo+".jpg' id='prodImgZoom' data-zoom-image='/app.view/img/produtos/"+codigoProduto+"_"+codigo+".jpg'>");
+	else
+		$('#imagemGrande').html("<img src='/app.view/img/produtos/embalagens/"+codigoProduto+".jpg' id='prodImgZoom' data-zoom-image='/app.view/img/produtos/embalagens/"+codigoProduto+".jpg'>");
 	adicionaZoom();
 }
 

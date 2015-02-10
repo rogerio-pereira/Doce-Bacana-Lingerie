@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 09-Fev-2015 às 19:10
+-- Data de Criação: 10-Fev-2015 às 17:41
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.16
 
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `chave` (`chave`),
   UNIQUE KEY `cpf` (`cpf`,`cnpj`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Extraindo dados da tabela `clientes`
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `cores` (
   `cor1` varchar(7) NOT NULL,
   `cor2` varchar(7) NOT NULL,
   PRIMARY KEY (`codigo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Extraindo dados da tabela `cores`
@@ -125,7 +125,8 @@ INSERT INTO `cores` (`codigo`, `nome`, `cor1`, `cor2`) VALUES
 (15, 'Onça', '#000000', '#ffff80'),
 (16, 'Chocolate', '#e6c391', '#e6c391'),
 (17, 'Preto com Bic', '#000000', '#4132c8'),
-(18, 'Zebra', '#000000', '#ffffff');
+(18, 'Zebra', '#000000', '#ffffff'),
+(19, 'Mamona Assassina', '#00ff00', '#ff0000');
 
 -- --------------------------------------------------------
 
@@ -151,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `produtos` (
   PRIMARY KEY (`codigo`),
   UNIQUE KEY `referencia` (`referencia`),
   KEY `categoria` (`categoria`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
 
 --
 -- Extraindo dados da tabela `produtos`
@@ -173,7 +174,15 @@ INSERT INTO `produtos` (`codigo`, `referencia`, `categoria`, `descricao`, `carac
 (21, 'Ref3002', 2, 'Fio dental frente de microfibra e costa de renda com regulagem (veste P/M/G)', '<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">PRAZO DE ENTREGA</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">Envio em at&eacute; 2 dias &uacute;teis ap&oacute;s confirma&ccedil;&atilde;o do pagamento.</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">Entrega em at&eacute; 15 dias dependendo da forma de envio e do local de entrega.&nbsp;</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">GARANTIA</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">90 dias ap&oacute;s o recebimento contra defeitos de fabrica&ccedil;&atilde;o.</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">EMBALAGEM</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">Caixa personalizada.</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">OBSERVA&Ccedil;&Otilde;ES</span>&nbsp;</p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">Pode haver alguma pequena varia&ccedil;&atilde;o na cor real dos produtos devido ao tipo de monitor utilizado</span></p>', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL),
 (22, 'Ref3003', 2, 'Fio dental frente de renda costas de microfibra com regulagem (veste P/M/G)', '<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">PRAZO DE ENTREGA</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">Envio em at&eacute; 2 dias &uacute;teis ap&oacute;s confirma&ccedil;&atilde;o do pagamento.</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">Entrega em at&eacute; 15 dias dependendo da forma de envio e do local de entrega.&nbsp;</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">GARANTIA</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">90 dias ap&oacute;s o recebimento contra defeitos de fabrica&ccedil;&atilde;o.</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">EMBALAGEM</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">Caixa personalizada.</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">OBSERVA&Ccedil;&Otilde;ES</span>&nbsp;</p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">Pode haver alguma pequena varia&ccedil;&atilde;o na cor real dos produtos devido ao tipo de monitor utilizado</span></p>', NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL),
 (23, 'Ref3004', 2, 'Fio duplo frente de renda lateral dupla com detalhe franzido', '<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">PRAZO DE ENTREGA</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">Envio em at&eacute; 2 dias &uacute;teis ap&oacute;s confirma&ccedil;&atilde;o do pagamento.</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">Entrega em at&eacute; 15 dias dependendo da forma de envio e do local de entrega.&nbsp;</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">GARANTIA</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">90 dias ap&oacute;s o recebimento contra defeitos de fabrica&ccedil;&atilde;o.</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">EMBALAGEM</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">Caixa personalizada.</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">OBSERVA&Ccedil;&Otilde;ES</span>&nbsp;</p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">Pode haver alguma pequena varia&ccedil;&atilde;o na cor real dos produtos devido ao tipo de monitor utilizado</span></p>', NULL, 1, 1, 1, 1, NULL, NULL, NULL, NULL),
-(24, 'Ref3006', 2, 'Fio duplo frente de  renda detalhe lateral', '<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">PRAZO DE ENTREGA</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">Envio em at&eacute; 2 dias &uacute;teis ap&oacute;s confirma&ccedil;&atilde;o do pagamento.</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">Entrega em at&eacute; 15 dias dependendo da forma de envio e do local de entrega.&nbsp;</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">GARANTIA</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">90 dias ap&oacute;s o recebimento contra defeitos de fabrica&ccedil;&atilde;o.</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">EMBALAGEM</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">Caixa personalizada.</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">OBSERVA&Ccedil;&Otilde;ES</span>&nbsp;</p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">Pode haver alguma pequena varia&ccedil;&atilde;o na cor real dos produtos devido ao tipo de monitor utilizado</span></p>', NULL, 1, 1, 1, 1, NULL, NULL, NULL, NULL);
+(24, 'Ref3006', 2, 'Fio duplo frente de  renda detalhe lateral', '<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">PRAZO DE ENTREGA</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">Envio em at&eacute; 2 dias &uacute;teis ap&oacute;s confirma&ccedil;&atilde;o do pagamento.</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">Entrega em at&eacute; 15 dias dependendo da forma de envio e do local de entrega.&nbsp;</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">GARANTIA</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">90 dias ap&oacute;s o recebimento contra defeitos de fabrica&ccedil;&atilde;o.</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">EMBALAGEM</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">Caixa personalizada.</span></p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">OBSERVA&Ccedil;&Otilde;ES</span>&nbsp;</p>\r\n<p><span style="font-size: 10pt; font-family: Arial, sans-serif;">Pode haver alguma pequena varia&ccedil;&atilde;o na cor real dos produtos devido ao tipo de monitor utilizado</span></p>', NULL, 1, 1, 1, 1, NULL, NULL, NULL, NULL),
+(25, 'dsad', 3, 'dasd', '<p>dasdasd</p>', NULL, 1, 1, 1, 1, NULL, NULL, NULL, NULL),
+(26, 'eqweq', 1, 'eqwd', '<p>dsad</p>', NULL, 1, 1, 1, 1, NULL, NULL, NULL, NULL),
+(27, '231', 1, 'dsad', '<p>dasd</p>', NULL, 1, 1, 1, 1, NULL, NULL, NULL, NULL),
+(28, 'ewqdasdsa', 1, 'dasda', '<p>dsadas</p>', NULL, 1, 1, 1, 1, NULL, NULL, NULL, NULL),
+(29, 'dwqewe', 2, 'dasd', '<p>asd</p>', NULL, 1, 1, 1, 1, NULL, NULL, NULL, NULL),
+(30, 'ewqeqwe', 2, 'dasds', '<p>dasdasd</p>', NULL, 1, 1, 1, 1, NULL, NULL, NULL, NULL),
+(31, 'ewqe132', 2, 'dsad', '<p>dasd</p>', NULL, 1, 1, 1, 1, NULL, NULL, NULL, NULL),
+(32, 'dsadadqwe123', 2, 'dasda', '<p>dasda</p>', NULL, 1, 1, 1, 1, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -193,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `produtoscores` (
   `home` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`codigo`),
   KEY `codigoProduto` (`codigoProduto`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=122 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=133 ;
 
 --
 -- Extraindo dados da tabela `produtoscores`
@@ -261,7 +270,18 @@ INSERT INTO `produtoscores` (`codigo`, `codigoProduto`, `nome`, `cor1`, `cor2`, 
 (118, 23, 'Onça', '#000000', '#ffff80', 1, NULL, NULL, 1),
 (119, 23, 'Preto', '#000000', '#000000', NULL, NULL, NULL, NULL),
 (120, 24, 'Preto', '#000000', '#000000', NULL, NULL, NULL, NULL),
-(121, 24, 'Zebra', '#000000', '#ffffff', NULL, 1, NULL, 1);
+(121, 24, 'Zebra', '#000000', '#ffffff', NULL, 1, NULL, 1),
+(122, 25, 'Preto', '#000000', '#000000', NULL, NULL, NULL, NULL),
+(123, 26, 'Preto', '#000000', '#000000', NULL, NULL, NULL, NULL),
+(124, 27, 'Branco', '#ffffff', '#ffffff', NULL, NULL, NULL, NULL),
+(125, 28, 'Preto', '#000000', '#000000', NULL, NULL, NULL, NULL),
+(126, 29, 'Preto', '#000000', '#000000', NULL, NULL, NULL, NULL),
+(127, 30, 'Mamona Assassina', '#00ff00', '#ff0000', NULL, NULL, NULL, NULL),
+(128, 31, 'Mamona Assassina', '#00ff00', '#ff0000', NULL, NULL, NULL, NULL),
+(129, 31, 'Mamona Assassina', '#00ff00', '#ff0000', NULL, NULL, NULL, NULL),
+(130, 31, 'Chocolate', '#c48888', '#c48888', NULL, NULL, NULL, NULL),
+(131, 32, 'Mamona Assassina', '#00ff00', '#ff0000', NULL, NULL, NULL, NULL),
+(132, 32, 'Chocolate', '#c48888', '#c48888', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 

@@ -20,11 +20,15 @@ function iniciaTextArea()
 	});
 }
 
-function insereCor(combo)
+function insereCor()
 {
-	alert(combo);
 	var numeroCor = (parseInt($('#numeroCor').val()) + 1);
+	
 	$('#numeroCor').val(numeroCor.toString());
+	
+	
+	var combo = $('.divCores').html();
+	combo = combo.split("#numero#").join(numeroCor);	//Método alternativo para o replace usando em todas as ocorrencias... o replace substitui só a primeira
 			
 	var data =	"	<tr>																																					" +
 				"		<td>																																				" +
@@ -377,6 +381,27 @@ function apagaProdutos()
 		success: function(data) 
 		{
 			$('.tabelaFormulario').html(data);
+		}
+	});	
+}
+
+function selecionaCorDefinida(componente)
+{
+	$.ajax
+	({
+		type: "POST",
+		url: "/app.control/ajax.php",
+		data: 
+		{
+			codigo:			$('.'+componente).val(),
+			formularioNome:	'buscaCorDefinida'
+		},
+		success: function(data) 
+		{
+			data = data.split("~");
+			$('#nomeCor_'+componente).val(data[0]);
+			$('#cor1_'+componente).val(data[1]);
+			$('#cor2_'+componente).val(data[2]);
 		}
 	});	
 }
