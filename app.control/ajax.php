@@ -619,8 +619,9 @@
 	//Envio de Orçamento
 	else if($formulario == 'enviaOrcamento')
 	{
+		echo date('Y-m-d H:i:s');
 		//Não existe cliente logado
-		if($_SESSION['cliente'] != '')
+		if($_SESSION['cliente'] == '')
 			echo
 					"
 						<script>
@@ -628,8 +629,34 @@
 						</script>
 					";
 		else
-		{
+		{			
+			$controlador = new controladorOrcamento();
 			
+			$controlador->setCliente($_SESSION['cliente']->codigo);
+			$controlador->setDataHora('now()');
+			$controlador->setStatus(0);					
+					
+			$arrayProdutos;
+			foreach($_SESSION['produtosOrcamento'] as $orcamento)
+			{
+				$somaQuantidade = 0;
+				$somaQuantidade =	$orcamento['quantidadePP'] + 
+									$orcamento['quantidadeP'] + 
+									$orcamento['quantidadeM'] + 
+									$orcamento['quantidadeG'] + 
+									$orcamento['quantidadeGG'] + 
+									$orcamento['quantidade48'] + 
+									$orcamento['quantidade50'] + 
+									$orcamento['quantidade52'] + 
+									$orcamento['quantidade54'];
+				
+				if($somaQuantidade > 0)
+				{
+					//Adicionar produtos no array... e depois
+					//$arrayProdutos[] = new array(#VALORES#);
+				}
+				//$controlador->setCollectionOrcamentosProdutos($arrayProdutos)
+			}
 		}
 	}
 ?>

@@ -45,7 +45,7 @@
 			<h1>Orçamento</h1>
 			<hr>
 			<form class="formulario" name="orcamento" method="post" action="app.control/ajax.php" onsubmit="enviaOrcamento">
-				<input type="hidden" name="formularioNome" value="orcamento">
+				<input type="hidden" name="formularioNome" value="enviaOrcamento">
 				<table class='tabelaFormulario'>
 					<?php
 						if(count($_SESSION['produtosOrcamento']) > 0)
