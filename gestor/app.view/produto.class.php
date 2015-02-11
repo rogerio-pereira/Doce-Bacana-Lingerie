@@ -388,14 +388,6 @@
 							</td>
 						</tr>
 						<tr>
-							<td>
-								Embalagem
-							</td>
-							<td>
-								<input type='file' class='arquivo' name='embalagem' id='embalagem' placeholder='Embalagem'>	
-							</td>
-						</tr>
-						<tr>
 							<td colspan='2'>
 								<hr>
 							</td>

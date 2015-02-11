@@ -68,7 +68,7 @@ class controladorProdutos
 		$this->collectionBanner = $collectionBanner;
 	}
 	
-	function getCollectionProduto($categoria, $inicio)
+	function getCollectionProdutosCores2($categoria, $inicio)
 	{		
 		$this->setCollectionProduto(NULL);
 		
@@ -204,10 +204,73 @@ class controladorProdutos
 		
 		return $this->produto[0];
 	}
+	
+	function getProduto2($codigo)
+	{
+		$this->setProduto(NULL);
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction2::open('my_bd_site');
+
+		//Criterio de seleção
+		$criteria	= new TCriteria;
+		$criteria->add(new TFilter('codigo', '=', $codigo));
+		
+		$this->repository = new TRepository2();
+		
+		$this->repository->addColumn('*');
+		$this->repository->addEntity('produtos');
+		
+		$this->setProduto($this->repository->load($criteria));
+		
+		TTransaction2::close();
+		
+		return $this->produto[0];
+	}
 
 	function setProduto($produto)
 	{
 		$this->produto = $produto;
+	}
+	
+	function getCollectionProduto($categoria, $inicio)
+	{
+		$this->setCollectionProduto(NULL);
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction::open('my_bd_site');
+
+		//TABELA exposition_gallery
+		$criteria	= new TCriteria;
+		if(($categoria != NULL) && ($categoria != -1))
+			$criteria->add(new TFilter('categoria', '=', $categoria));		
+		$criteria->add(new TFilter('home', '=', 1));
+		$criteria->add(new TFilter('p.codigo', '=', 'c.codigoProduto'));
+		
+		$criteria->setProperty('order', 'categoria, codigoProduto');
+		if(($categoria != NULL) && ($categoria != -1))
+			$criteria->setProperty('limit', $inicio.',9');
+		else
+			$criteria->setProperty('limit', '9');
+				
+		
+		$this->repository = new TRepository();
+		
+		$this->repository = new TRepository();
+		
+		$this->repository->addColumn('DISTINCT p.codigo as codProd');
+		$this->repository->addColumn('p.referencia');
+		$this->repository->addColumn('c.codigo as codCor');
+		$this->repository->addColumn('cat.nome as categoria');
+		$this->repository->addEntity('produtos p');
+		$this->repository->addEntity('produtoscores c');
+		$this->repository->addEntity('categorias cat');
+		
+		$this->setCollectionCores($this->repository->load($criteria));
+		
+		TTransaction::close();
+		
+		return $this->collectionCores;
 	}
 		
 	function getCollectionCores($codigo)
@@ -230,6 +293,30 @@ class controladorProdutos
 		$this->setCollectionCores($this->repository->load($criteria));
 		
 		TTransaction::close();
+		
+		return $this->collectionCores;
+	}
+	
+	function getCollectionCores2($codigo)
+	{
+		$this->setCollectionCores(NULL);
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction2::open('my_bd_site');
+
+		//TABELA exposition_gallery
+		$criteria	= new TCriteria;
+		$criteria->add(new TFilter('codigoProduto', '=', $codigo));
+		$criteria->setProperty('order', 'nome');
+		
+		$this->repository = new TRepository2();
+		
+		$this->repository->addColumn('*');
+		$this->repository->addEntity('produtoscores');
+		
+		$this->setCollectionCores($this->repository->load($criteria));
+		
+		TTransaction2::close();
 		
 		return $this->collectionCores;
 	}

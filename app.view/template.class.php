@@ -117,6 +117,7 @@ class template
 				<script type="text/javascript" src="/app.view/js/jquery.maskedinput.js"></script>
 				<script type="text/javascript" src="/app.view/js/jquery-cycle.js"></script>
 				<script type="text/javascript" src="/app.view/js/jquery.elevatezoom.js"></script>
+				<script type="text/javascript" src="/app.view/js/jquery.numeric.js"></script>
 				
 				<!--JavaScript-->
 				<script type="text/javascript" src="/app.view/js/contato.js"></script>
@@ -125,6 +126,7 @@ class template
 				<script type="text/javascript" src="/app.view/js/busca.js"></script>
 				<script type="text/javascript" src="/app.view/js/login.js"></script>
 				<script type="text/javascript" src="/app.view/js/produto.js"></script>
+				<script type="text/javascript" src="/app.view/js/orcamento.js"></script>
 			</head>
 			<body>
 				<!--Usado para o retorno de mensagens do ajax-->

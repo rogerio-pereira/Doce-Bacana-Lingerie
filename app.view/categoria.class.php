@@ -149,7 +149,9 @@
 			
 			//Home
 			if($this->getCodigo() == NULL)
+			{
 				$this->setCollectionProduto((new controladorProdutos())->getCollectionProduto(NULL, NULL));
+			}
 			//Categoria
 			else
 			{

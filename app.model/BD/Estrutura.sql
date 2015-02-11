@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 10-Fev-2015 às 17:41
+-- Data de Criação: 11-Fev-2015 às 18:42
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.16
 
@@ -90,6 +90,46 @@ CREATE TABLE IF NOT EXISTS `cores` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `orcamento`
+--
+
+CREATE TABLE IF NOT EXISTS `orcamento` (
+  `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `cliente` bigint(20) unsigned NOT NULL,
+  `dataHora` datetime NOT NULL,
+  `codigoCorreio` varchar(30) DEFAULT NULL,
+  `status` int(11) NOT NULL COMMENT '0 - Aberto; 1 - Fazendo Orçamento; 2 - Aguardando Cliente; 4 - Aguardando Pagamento; 5 - Postado no Correio; 6 - Entregue',
+  PRIMARY KEY (`codigo`),
+  KEY `cliente` (`cliente`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `orcamentoproduto`
+--
+
+CREATE TABLE IF NOT EXISTS `orcamentoproduto` (
+  `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `codigoOrcamento` bigint(20) unsigned NOT NULL,
+  `codigoProduto` bigint(20) unsigned NOT NULL,
+  `quantidadePP` int(11) DEFAULT NULL,
+  `quantidadeP` int(11) DEFAULT NULL,
+  `quantidadeM` int(11) DEFAULT NULL,
+  `quantidadeG` int(11) DEFAULT NULL,
+  `quantidadeGG` int(11) DEFAULT NULL,
+  `quantidade48` int(11) DEFAULT NULL,
+  `quantidade50` int(11) DEFAULT NULL,
+  `quantidade52` int(11) DEFAULT NULL,
+  `quantidade54` int(11) DEFAULT NULL,
+  PRIMARY KEY (`codigo`),
+  KEY `codigoOrcamento` (`codigoOrcamento`,`codigoProduto`),
+  KEY `codigoProduto` (`codigoProduto`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `produtos`
 --
 
@@ -155,6 +195,19 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Limitadores para a tabela `orcamento`
+--
+ALTER TABLE `orcamento`
+  ADD CONSTRAINT `orcamento_cliente` FOREIGN KEY (`cliente`) REFERENCES `clientes` (`codigo`) ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `orcamentoproduto`
+--
+ALTER TABLE `orcamentoproduto`
+  ADD CONSTRAINT `orcamento_produto_` FOREIGN KEY (`codigoProduto`) REFERENCES `produtoscores` (`codigo`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `produto_orcamento` FOREIGN KEY (`codigoOrcamento`) REFERENCES `orcamento` (`codigo`) ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `produtos`
