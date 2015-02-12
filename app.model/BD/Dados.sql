@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 12-Fev-2015 às 11:19
+-- Data de Criação: 12-Fev-2015 às 19:07
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.16
 
@@ -139,10 +139,19 @@ CREATE TABLE IF NOT EXISTS `orcamento` (
   `cliente` bigint(20) unsigned NOT NULL,
   `dataHora` datetime NOT NULL,
   `codigoCorreio` varchar(30) DEFAULT NULL,
-  `status` int(11) NOT NULL COMMENT '0 - Aberto; 1 - Fazendo Orçamento; 2 - Aguardando Cliente; 4 - Aguardando Pagamento; 5 - Postado no Correio; 6 - Entregue',
+  `status` int(11) NOT NULL COMMENT '0 - Aberto; 1 - Fazendo Orçamento; 2 - Aguardando Cliente; 3 - Aguardando Pagamento; 4 - Postado no Correio; 5 - Entregue',
   PRIMARY KEY (`codigo`),
-  KEY `cliente` (`cliente`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  KEY `cliente` (`cliente`),
+  FULLTEXT KEY `codigoCorreio` (`codigoCorreio`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
+
+--
+-- Extraindo dados da tabela `orcamento`
+--
+
+INSERT INTO `orcamento` (`codigo`, `cliente`, `dataHora`, `codigoCorreio`, `status`) VALUES
+(39, 13, '2015-02-12 15:15:00', NULL, 0),
+(40, 13, '2015-02-12 15:15:00', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -168,7 +177,25 @@ CREATE TABLE IF NOT EXISTS `orcamentoproduto` (
   PRIMARY KEY (`codigo`),
   KEY `codigoOrcamento` (`codigoOrcamento`,`codigoProduto`),
   KEY `codigoProduto` (`codigoProduto`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=162 ;
+
+--
+-- Extraindo dados da tabela `orcamentoproduto`
+--
+
+INSERT INTO `orcamentoproduto` (`codigo`, `codigoOrcamento`, `codigoProduto`, `quantidadePP`, `quantidadeP`, `quantidadeM`, `quantidadeG`, `quantidadeGG`, `quantidade48`, `quantidade50`, `quantidade52`, `quantidade54`, `referencia`, `nome`) VALUES
+(150, 39, 61, 0, 1, 2, 3, 4, 0, 0, 0, 0, 'Ref1100', 'Branco'),
+(151, 39, 62, 0, 5, 6, 7, 8, 0, 0, 0, 0, 'Ref1100', 'Chocolate'),
+(152, 39, 60, 0, 9, 10, 11, 12, 0, 0, 0, 0, 'Ref1100', 'Preto'),
+(153, 39, 55, 0, 13, 14, 15, 16, 0, 0, 0, 0, 'Ref1105', 'Branco'),
+(154, 39, 56, 0, 17, 18, 19, 20, 0, 0, 0, 0, 'Ref1105', 'Chocolate'),
+(155, 39, 54, 0, 21, 22, 23, 24, 0, 0, 0, 0, 'Ref1105', 'Preto'),
+(156, 40, 61, 0, 1, 2, 3, 4, 0, 0, 0, 0, 'Ref1100', 'Branco'),
+(157, 40, 62, 0, 5, 6, 7, 8, 0, 0, 0, 0, 'Ref1100', 'Chocolate'),
+(158, 40, 60, 0, 9, 10, 11, 12, 0, 0, 0, 0, 'Ref1100', 'Preto'),
+(159, 40, 55, 0, 13, 14, 15, 16, 0, 0, 0, 0, 'Ref1105', 'Branco'),
+(160, 40, 56, 0, 17, 18, 19, 20, 0, 0, 0, 0, 'Ref1105', 'Chocolate'),
+(161, 40, 54, 0, 21, 22, 23, 24, 0, 0, 0, 0, 'Ref1105', 'Preto');
 
 -- --------------------------------------------------------
 

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 12-Fev-2015 às 11:19
+-- Data de Criação: 12-Fev-2015 às 19:07
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.16
 
@@ -98,10 +98,11 @@ CREATE TABLE IF NOT EXISTS `orcamento` (
   `cliente` bigint(20) unsigned NOT NULL,
   `dataHora` datetime NOT NULL,
   `codigoCorreio` varchar(30) DEFAULT NULL,
-  `status` int(11) NOT NULL COMMENT '0 - Aberto; 1 - Fazendo Orçamento; 2 - Aguardando Cliente; 4 - Aguardando Pagamento; 5 - Postado no Correio; 6 - Entregue',
+  `status` int(11) NOT NULL COMMENT '0 - Aberto; 1 - Fazendo Orçamento; 2 - Aguardando Cliente; 3 - Aguardando Pagamento; 4 - Postado no Correio; 5 - Entregue',
   PRIMARY KEY (`codigo`),
-  KEY `cliente` (`cliente`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  KEY `cliente` (`cliente`),
+  FULLTEXT KEY `codigoCorreio` (`codigoCorreio`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
 
 -- --------------------------------------------------------
 
@@ -127,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `orcamentoproduto` (
   PRIMARY KEY (`codigo`),
   KEY `codigoOrcamento` (`codigoOrcamento`,`codigoProduto`),
   KEY `codigoProduto` (`codigoProduto`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=162 ;
 
 -- --------------------------------------------------------
 

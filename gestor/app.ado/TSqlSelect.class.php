@@ -49,10 +49,15 @@
                 }
                 
                 //Obtém as propriedades do critério
+				$group  = $this->criteria->getProperty('group');
                 $order  = $this->criteria->getProperty('order');
                 $limit  = $this->criteria->getProperty('limit');
                 $offset = $this->criteria->getProperty('offset');
                 
+				if($group)
+                {
+                    $this->sql .= ' GROUP BY ' . $group;
+                }
                 //Obtém a ordenação do SELECT
                 if($order)
                 {

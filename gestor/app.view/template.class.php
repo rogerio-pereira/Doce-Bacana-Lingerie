@@ -72,6 +72,7 @@ class template
 				<script type="text/javascript" src="/app.view/js/categoria.js"></script>
 				<script type="text/javascript" src="/app.view/js/usuario.js"></script>
 				<script type="text/javascript" src="/app.view/js/produto.js"></script>
+				<script type="text/javascript" src="/app.view/js/orcamento.js"></script>
 			</head>
 			<body>
 				<div id='page'>

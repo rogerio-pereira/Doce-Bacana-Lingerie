@@ -529,4 +529,17 @@
 		$cor = $cor->nome.'~'.$cor->cor1.'~'.$cor->cor2;
 		echo $cor;
 	}
+	else if($request == 'atualizaOrcamento')
+	{
+		$controlador = new controladorOrcamentos();
+		
+		$controlador->setCodigoOrcamento($_POST['codigo']);
+		$controlador->setStatus($_POST['status']);
+		$controlador->setCodigoCorreio($_POST['rastreio']);
+		
+		if($controlador->salva())
+			echo 'Orçamento atualizado com sucesso!';
+		else
+			echo 'Falha ao atualizar orçamento!';
+	}
 ?>
