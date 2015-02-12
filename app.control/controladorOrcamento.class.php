@@ -286,6 +286,92 @@ class controladorOrcamento
 		$this->setQuantidade54(NULL);		
 	}
 
+	/*
+	 * Método salvaOrcamento
+	 * Salva o orçamentos
+	 */
+	public function salvaOrcamento()
+	{
+		try
+		{
+			$this->setOrcamento(new orcamentoModel2());
+			
+			$this->orcamento->cliente	= $this->getCliente();
+			$this->orcamento->dataHora	= $this->getDataHora();
+			$this->orcamento->status	= $this->getStatus();
+			
+			//RECUPERA CONEXAO BANCO DE DADOS
+			TTransaction2::open('my_bd_site');
+			
+			$result = $this->orcamento->store();
+
+			TTransaction2::close();
+
+			return true;
+		}
+		catch(Exception $e)
+		{
+			return false;
+		}
+	}
+	
+	/*
+	 * Método getLastProduto
+	 * Retorna o ultimo codigo de orçamento cadastrado
+	 */
+	public function getLastProduto()
+	{
+		$this->setOrcamento(new orcamentoModel2());
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction2::open('my_bd_site');
+		
+		$codigo =  $this->orcamento->getLast();
+		
+		TTransaction2::close();
+		
+		return $codigo;
+	}
+	
+	/*
+	 * Método salvaProdutoOrcamento
+	 * Salva os produtos do orçamento
+	 */
+	public function salvaProdutosOrcamento()
+	{
+		try
+		{
+			foreach($this->getCollectionOrcamentosProdutos() as $produto)
+			{
+				$this->setOrcamentoProduto(new orcamentoprodutoModel2());
+				
+				$this->orcamentoProduto->codigoOrcamento	= $produto[0];
+				$this->orcamentoProduto->codigoProduto		= $produto[0];
+				$this->orcamentoProduto->quantidadePP		= $produto[0];
+				$this->orcamentoProduto->quantidadeP		= $produto[0];
+				$this->orcamentoProduto->quantidadeM		= $produto[0];
+				$this->orcamentoProduto->quantidadeG		= $produto[0];
+				$this->orcamentoProduto->quantidadeGG		= $produto[0];
+				$this->orcamentoProduto->quantidade48		= $produto[0];
+				$this->orcamentoProduto->quantidade50		= $produto[0];
+				$this->orcamentoProduto->quantidade52		= $produto[0];
+				$this->orcamentoProduto->quantidade54		= $produto[0];
+				
+				//RECUPERA CONEXAO BANCO DE DADOS
+				TTransaction2::open('my_bd_site');
+
+				$result = $this->orcamentoProduto->store();
+
+				TTransaction2::close();
+			}
+
+			return true;
+		}
+		catch(Exception $e)
+		{
+			return false;
+		}
+	}
 }
 
 ?>
