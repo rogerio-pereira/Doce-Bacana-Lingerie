@@ -16,6 +16,6 @@
 		/*
 		 * Variaveis
 		 */
-		const TABLENAME = 'orcamentoprodutos';
+		const TABLENAME = 'orcamentoproduto';
 	}
 ?>

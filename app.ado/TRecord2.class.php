@@ -109,7 +109,6 @@
 					}
 				}				
 			}
-			
 			if ( $conn = TTransaction2::get() ) 
 			{
 				$result = $conn->exec($sql->getInstruction());

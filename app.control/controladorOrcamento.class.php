@@ -356,7 +356,7 @@ class controladorOrcamento
 				$this->orcamentoProduto->quantidade50		= $produto[8];
 				$this->orcamentoProduto->quantidade52		= $produto[9];
 				$this->orcamentoProduto->quantidade54		= $produto[10];
-				$this->orcamento->referencia				= $produto[11];
+				$this->orcamentoProduto->referencia			= $produto[11];
 				$this->orcamentoProduto->nome				= $produto[12];
 				
 				//RECUPERA CONEXAO BANCO DE DADOS

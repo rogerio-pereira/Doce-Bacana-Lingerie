@@ -48,7 +48,7 @@
 			<h1>Perfil</h1>
 			<hr>
 			<div class='menuPerfil'>
-				<a href='/alterarPerfil/'>	Alterar Perfil	</a><br>
+				<a href='/alterarDados/'>	Alterar Dados	</a><br>
 				<a href='/alterarSenha/'>	Alterar Senha	</a><br>
 				<a href='/meusOrcamentos/'>	Meus Orcamentos	</a>
 			</div>

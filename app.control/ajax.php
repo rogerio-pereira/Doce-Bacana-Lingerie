@@ -636,13 +636,13 @@
 			$controlador = new controladorOrcamento();
 			
 			$controlador->setCliente($_SESSION['cliente']->codigo);
-			$controlador->setDataHora('now()');
+			$controlador->setDataHora(date('Y-m-d H:i'));
 			$controlador->setStatus(0);	
 			
 			if($controlador->salvaOrcamento())
 			{
 				$codigoOrcamento = $controlador->getLastProduto();
-
+				
 				$arrayProdutos;
 				foreach($_SESSION['produtosOrcamento'] as $orcamento)
 				{
@@ -661,7 +661,7 @@
 						//Adicionar produtos no array... e depois
 						$arrayProdutos[] =	array(
 													$codigoOrcamento,
-													$orcamento['codigoProduto'],
+													$orcamento['codigoCor'],
 													$orcamento['quantidadePP'],
 													$orcamento['quantidadeP'],
 													$orcamento['quantidadeM'],
@@ -671,6 +671,7 @@
 													$orcamento['quantidade50'],
 													$orcamento['quantidade52'],
 													$orcamento['quantidade54'],
+													$orcamento['referencia'],
 													$orcamento['nome'],
 												);
 				}
@@ -680,6 +681,7 @@
 				if($controlador->salvaProdutosOrcamento())
 				{
 					if(new enviaEmailOrcamento($codigoOrcamento, $controlador->getCollectionOrcamentosProdutos()));
+						echo "<script>alert('Orçamento enviado com sucesso!');</script>";
 				}
 			}
 		}

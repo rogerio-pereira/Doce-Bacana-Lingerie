@@ -19,6 +19,9 @@
 		private $codigoOrcamento;
         private $collectionProdutos;
 		
+		private $headers;
+		private $corpoMensagem;
+		
 		/*
 		 * Getters e Setters
 		 */
@@ -63,9 +66,9 @@
         {
 			$this->setCodigoOrcamento($codigoOrcamento);
 			$this->setCollectionProdutos($collectionProdutos);
-		
-            $this->constroiEmail();
+			
             $this->configuraEmail();
+            $this->constroiEmail();
             //$this->send();
             if($this->send2())
 				return true;
@@ -82,15 +85,16 @@
             /*
              *  Headers
              */
-            /*$this->headers = "MIME-Version: 1.1\n";
-            $this->headers .= "Content-type: text/plain; charset=iso-8859-1\n"; // ou UTF-8, como queira
-            $this->headers .= "From: $this->Nome <$this->de>\n";                // remetente
-            $this->headers .= "Return-Path: $this->de\n";                       // return-path
-            $this->headers .= "Reply-To: $this->de\n";                          // Endereço (devidamente validado) que o seu usuário informou no contato*/
+			$nome = self::DE;
+            $this->headers = "MIME-Version: 1.1\n";
+            $this->headers .= "Content-type: text/plain; charset=iso-8859-1\n";		// ou UTF-8, como queira
+            $this->headers .= "From: {$nome} <{$this->deEmail}}>\n";		       // remetente
+            /*$this->headers .= "Return-Path: $this->de\n";							// return-path
+            $this->headers .= "Reply-To: $this->de\n";								// Endereço (devidamente validado) que o seu usuário informou no contato*/
             
-            $this->corpoMensagem =  ""?>
+            $this->corpoMensagem =  "
 										<p>
-											Nova solicitação de orçamento com código <strong><?php echo $this->getCodigoOrcamento(); ?></strong>
+											Nova solicitação de orçamento com código <strong>{$this->getCodigoOrcamento()}</strong>
 										</p>
 										
 										<hr>
@@ -100,23 +104,17 @@
 										</p>
 										
 										<p>
-											<strong>Nome:</strong>		<?php echo $_SESSION['cliente']->nome; ?><br>
-											<strong>Telefone:</strong>	<?php echo $_SESSION['cliente']->telefone; ?><br>
-											<strong>Celular:</strong>	<?php echo $_SESSION['cliente']->celular; ?><br>
-											<strong>E-Mail:</strong>	<?php echo $_SESSION['cliente']->email; ?><br>
-											<strong>Endereço:</strong>	<?php 
-																			echo	$_SESSION['cliente']->endereco		.	', '	.
-																					$_SESSION['cliente']->numero		.	'. '	.
-																					$_SESSION['cliente']->complemento
-																			; 
-																		?><br>
-											<strong>Bairro:</strong>	<?php echo $_SESSION['cliente']->bairro; ?><br>
-											<strong>Cidade:</strong>	<?php 
-																			echo	$_SESSION['cliente']->email		.	' - '	.
-																					$_SESSION['cliente']->estado
-																			; 
-																		?><br>
-											<strong>CEP:</strong>		<?php echo $_SESSION['cliente']->cep; ?>
+											<strong>Nome:</strong>		{$_SESSION['cliente']->nome}<br>
+											<strong>Telefone:</strong>	{$_SESSION['cliente']->telefone}<br>
+											<strong>Celular:</strong>	{$_SESSION['cliente']->celular}<br>
+											<strong>E-Mail:</strong>	{$_SESSION['cliente']->email}<br>
+											<strong>Endereço:</strong>	{$_SESSION['cliente']->endereco} , 
+																		{$_SESSION['cliente']->numero}. 
+																		{$_SESSION['cliente']->complemento}<br>
+											<strong>Bairro:</strong>	{$_SESSION['cliente']->bairro}<br>
+											<strong>Cidade:</strong>	{$_SESSION['cliente']->cidade} - 
+																		{$_SESSION['cliente']->estado}<br>
+											<strong>CEP:</strong>		{$_SESSION['cliente']->cep}
 										</p>
 										
 										<hr>
@@ -127,44 +125,49 @@
 										
 										<table>
 											<tr>
-												<td>	Referencia		</td>
-												<td>	Cor				</td>
-												<td>	Quantidade PP	</td>
-												<td>	Quantidade P	</td>
-												<td>	Quantidade M	</td>
-												<td>	Quantidade G	</td>
-												<td>	Quantidade GG	</td>
-												<td>	Quantidade 48	</td>
-												<td>	Quantidade 50	</td>
-												<td>	Quantidade 52	</td>
-												<td>	Quantidade 54	</td>
+												<td style='padding-right: 10px;'>	<strong>Referencia</strong>		</td>
+												<td>	<strong>Cor</strong>				</td>
+												<td>	<strong>Quantidade PP</strong>	</td>
+												<td>	<strong>Quantidade P</strong>	</td>
+												<td>	<strong>Quantidade M</strong>	</td>
+												<td>	<strong>Quantidade G</strong>	</td>
+												<td>	<strong>Quantidade GG</strong>	</td>
+												<td>	<strong>Quantidade 48</strong>	</td>
+												<td>	<strong>Quantidade 50</strong>	</td>
+												<td>	<strong>Quantidade 52</strong>	</td>
+												<td>	<strong>Quantidade 54</strong>	</td>
 											</tr>
-											<?php
-												foreach($this->getCollectionProdutos() as $produto)
-													echo
-														"
-															<td>	$produto[11]					</td>
-															<td>	$produto[12]					</td>
-															<td>	$produto[2]						</td>
-															<td>	<strong>$produto[3]</strong>	</td>
-															<td>	<strong>$produto[4]</strong>	</td>
-															<td>	<strong>$produto[5]</strong>	</td>
-															<td>	<strong>$produto[6]</strong>	</td>
-															<td>	$produto[7]						</td>
-															<td>	$produto[8]						</td>
-															<td>	$produto[9]						</td>
-															<td>	$produto[10]					</td>	
-														";
-											?>
+									";
+										
+			foreach($this->getCollectionProdutos() as $produto)
+				$this->corpoMensagem .=
+										"
+											<tr>
+												<td>					$produto[11]					</td>
+												<td>					$produto[12]					</td>
+												<td align='center'>		$produto[2]						</td>
+												<td align='center'>		<strong>$produto[3]</strong>	</td>
+												<td align='center'>		<strong>$produto[4]</strong>	</td>
+												<td align='center'>		<strong>$produto[5]</strong>	</td>
+												<td align='center'>		<strong>$produto[6]</strong>	</td>
+												<td align='center'>		$produto[7]						</td>
+												<td align='center'>		$produto[8]						</td>
+												<td align='center'>		$produto[9]						</td>
+												<td align='center'>		$produto[10]					</td>	
+											<tr>
+										";
+			
+			$this->corpoMensagem .=
+									"
 										</table>
 										
 										<hr>
 										
 										<p>
-											A Doce & Bacana Lingerie agradece a preferencia. Logo um de nossos representantes entrara em contato com os
-											valores do orçamento.
+											A <strong>Doce & Bacana Lingerie</strong> agradece a preferencia. <br>
+											Logo um de nossos representantes entrará em contato com os valores do orçamento.
 										</p>
-									<?php
+									";
         }
         
         /*
@@ -254,15 +257,13 @@
          */
         private function send2()
         {
-            if	(
-					mail($this->deEmail,				$this->assunto,		$this->corpoMensagem,	$this->headers,		'-r'.$_SESSION['cliente']->email) &&
-					mail($_SESSION['cliente']->email,	$this->assunto,		$this->corpoMensagem,	$this->headers,		'-r'.$this->deEmail)
+			if	(
+					mail($this->getDeEmail(),			self::ASSUNTO,		$this->corpoMensagem,	$this->headers,		'-r'.$_SESSION['cliente']->email) &&
+					mail($_SESSION['cliente']->email,	self::ASSUNTO,		$this->corpoMensagem,	$this->headers,		'-r'.$this->getDeEmail())
 				)
                 return true;
             else
                 return false;
         }
     }
-    
-    new enviaEmail;
 ?>

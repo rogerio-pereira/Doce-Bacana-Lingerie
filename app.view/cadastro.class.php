@@ -297,7 +297,7 @@
 					<!--Ponto de Referencia-->
 					<tr>
 						<td colspan='2'>
-							<label for='referencia' class='titulo'>Referencia</label>
+							<label for='referencia' class='titulo'>Ponto de Referencia</label>
 						</td>
 					</tr>
 					<tr>
