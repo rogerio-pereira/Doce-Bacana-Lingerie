@@ -356,3 +356,67 @@ function validaCamposCadastroCliente()
 		return false;
 	}
 }
+
+function validaCamposAlterarCliente()
+{
+	//E-mail
+	if( $("#email").val() == '')
+	{
+		alert( "Campo em branco: E-mail" );
+		$('#email').focus();
+		return false;
+	}
+	//Valida Email
+	else
+	{
+		if(validaEmail($("#email").val()) == false)
+		{
+			alert( "E-mail invalido!" );
+			$("#email").val('');
+			$('#email').focus();
+			return false;
+		}
+	}
+	//CEP
+	if( $("#cep").val() == '')
+	{
+		alert( "Campo em branco: CEP" );
+		$('#cep').focus();
+		return false;
+	}
+	//Endereço
+	if( $("#endereco").val() == '')
+	{
+		alert( "Campo em branco: Endereco" );
+		$('#endereco').focus();
+		return false;
+	}
+	//Numero
+	if($("#numero").val() == '')
+	{
+		alert( "Campo em branco: Numero" );
+		$('#numero').focus();
+		return false;
+	}
+	//Bairro
+	if( $("#bairro").val() == '')
+	{
+		alert( "Campo em branco: Bairro" );
+		$('#bairro').focus();
+		return false;
+	}
+	//Cidade
+	if( $("#cidade").val() == '')
+	{
+		alert( "Campo em branco: Cidade" );
+		$('#cidade').focus();
+		return false;
+	}
+	//Estado
+	if ($("#estado").find(":selected").val() == '')
+	{
+		alert( "Campo em branco: Estado" );
+		$('#estado').focus();
+		return false;
+	}
+}

@@ -33,7 +33,8 @@
 			{
 				if($value == NULL)
 				{
-					unset($this->data[$prop]);
+					//unset($this->data[$prop]);
+					$this->data[$prop] = '';
 				}
 				else
 				{

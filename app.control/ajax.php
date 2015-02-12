@@ -686,4 +686,53 @@
 			}
 		}
 	}
+	//Alteração de Cadastro
+	else if($formulario == 'alteraCliente')
+	{
+		$controlador = new controladorClientes();
+		
+		$controlador->setCodigo($_POST['codigo']);
+		$controlador->setTelefone($_POST['telefone']);
+		$controlador->setCelular($_POST['celular']);
+		$controlador->setEmail($_POST['email']);
+		if($_POST['ofertaEmail'] == 'on')
+			$controlador->setOfertaEmail(1);
+		else
+			$controlador->setOfertaEmail(0);
+		if($_POST['ofertaCelular'] == 'on')
+			$controlador->setOfertaCelular(1);
+		else
+			$controlador->setOfertaCelular(0);
+		$controlador->setCep($_POST['cep']);
+		$controlador->setEndereco($_POST['endereco']);
+		$controlador->setNumero($_POST['numero']);
+		$controlador->setComplemento($_POST['complemento']);
+		$controlador->setBairro($_POST['bairro']);
+		$controlador->setCidade($_POST['cidade']);
+		$controlador->setEstado($_POST['estado']);
+		$controlador->setPontoReferencia($_POST['referencia']);
+		
+		if($controlador->atualizar() == true)
+		{
+			$_SESSION['cliente']->telefone			= $controlador->getTelefone();
+			$_SESSION['cliente']->celular			= $controlador->getCelular();
+			$_SESSION['cliente']->email				= $controlador->getEmail();
+			$_SESSION['cliente']->ofertaEmail		= $controlador->getOfertaEmail();
+			$_SESSION['cliente']->ofertaCelular		= $controlador->getOfertaCelular();
+			$_SESSION['cliente']->cep				= $controlador->getCep();
+			$_SESSION['cliente']->endereco			= $controlador->getEndereco();
+			$_SESSION['cliente']->numero			= $controlador->getNumero();
+			$_SESSION['cliente']->complemento		= $controlador->getComplemento();
+			$_SESSION['cliente']->bairro			= $controlador->getBairro();
+			$_SESSION['cliente']->cidade			= $controlador->getCidade();
+			$_SESSION['cliente']->telefone			= $controlador->getTelefone();
+			$_SESSION['cliente']->estado			= $controlador->getEstado();
+			$_SESSION['cliente']->referencia		= $controlador->getPontoReferencia();
+			
+			
+			echo "<script>alert('Alterado com Sucesso!');	top.location='/perfil';</script>";
+		}
+		else
+			echo "<script>alert('Falha ao alterar!');top.location='/perfil';</script>";
+	}
 ?>

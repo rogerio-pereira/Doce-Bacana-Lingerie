@@ -172,9 +172,9 @@
 					<tr>
 						<?php 
 							if($_SESSION['cliente']->ofertaEmail == 1)
-								echo '<td>Recebe informações por e-mail</td>';
+								echo '<tr><td>Recebe informações por e-mail</td></tr>';
 							if($_SESSION['cliente']->ofertaCelular == 1)
-								echo '<td>Recebe informações por celular</td>';
+								echo '<tr><td>Recebe informações por celular</td></tr>';
 						?>
 					</tr>
 					<tr>

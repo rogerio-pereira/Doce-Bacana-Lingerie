@@ -494,6 +494,47 @@ class controladorClientes
 		
 		return $result;
 	}
+	
+	/*
+	 * Método atualizar()
+	 * Atualiza as informações do cliente
+	 */
+	public function atualizar()
+	{
+		try
+		{
+			$this->setCliente(new clientes2);
+			
+			$this->cliente->codigo				= $this->getCodigo();
+			$this->cliente->telefone			= $this->getTelefone();
+			$this->cliente->celular				= $this->getCelular();
+			$this->cliente->email				= $this->getEmail();
+			$this->cliente->senha				= $this->getSenha();
+			$this->cliente->ofertaEmail			= $this->getOfertaEmail();
+			$this->cliente->ofertaCelular		= $this->getOfertaCelular();
+			$this->cliente->cep					= $this->getCep();
+			$this->cliente->endereco			= $this->getEndereco();
+			$this->cliente->numero				= $this->getNumero();
+			$this->cliente->complemento			= $this->getComplemento();
+			$this->cliente->bairro				= $this->getBairro();
+			$this->cliente->cidade				= $this->getCidade();
+			$this->cliente->estado				= $this->getEstado();
+			$this->cliente->pontoReferencia		= $this->getPontoReferencia();			
+
+			//RECUPERA CONEXAO BANCO DE DADOS
+			TTransaction2::open('my_bd_site');
+
+			$result = $this->cliente->store();
+
+			TTransaction2::close();
+
+			return true;
+		}
+		catch (Exception $e)
+		{
+			return false;
+		}
+	}
 }
 
 ?>
