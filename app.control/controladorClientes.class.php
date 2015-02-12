@@ -50,9 +50,23 @@ class controladorClientes
 	/*
 	 * Getters e Setters
 	 */
-	function getCliente()
+	function getCliente($codigo)
 	{
-		return $this->cliente;
+		$this->setCliente(NULL);
+		$result;
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction::open('my_bd_site');
+
+		//TABELA exposition_gallery
+		//$criteria	= new TCriteria;
+		//$criteria->add(new TFilter('codigo', '=', $codigo));
+		//$criteria->setProperty('order', 'ordem ASC');
+		
+		$this->setCliente(new clientes());
+		$result = $this->cliente->load($codigo);
+		
+		return $result;
 	}
 
 	function getCodigo()

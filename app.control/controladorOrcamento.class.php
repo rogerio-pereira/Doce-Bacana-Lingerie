@@ -51,17 +51,78 @@ class controladorOrcamento
 
 	function getCollectionOrcamentos()
 	{
+		$this->setCollectionOrcamentos(NULL);
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction::open('my_bd_site');
+		//TABELA exposition_gallery
+		$criteria	= new TCriteria;
+		//$criteria->add(new TFilter('situacao', '=', $situacao));
+		$criteria->add(new TFilter('o.cliente', '=', 'c.codigo'));
+		$criteria->add(new TFilter('o.codigo', '=', 'p.codigoOrcamento'));
+		$criteria->setProperty('group', 'codigoOrcamento');
+		$criteria->setProperty('order', 'c.codigo DESC');	
+
+		$this->repository = new TRepository();
+
+		$this->repository->addColumn('o.codigo as codigo');
+		$this->repository->addColumn('o.status as status');
+		$this->repository->addColumn('p.codigoOrcamento as codigoOrcamento');
+		$this->repository->addColumn('c.nome as cliente');
+		$this->repository->addColumn('o.dataHora as dataHora');
+		$this->repository->addColumn('count(p.codigo) as total');
+		$this->repository->addEntity('orcamento o');
+		$this->repository->addEntity('clientes c');
+		$this->repository->addEntity('orcamentoproduto p');
+
+		$this->setCollectionOrcamentos($this->repository->load($criteria));
+
+		TTransaction::close();
+
 		return $this->collectionOrcamentos;
 	}
 
-	function getCollectionOrcamentosProdutos()
+	function getCollectionOrcamentosProdutos($codigo)
 	{
+		$this->setCollectionOrcamentosProdutos(NULL);
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction::open('my_bd_site');
+
+		//TABELA exposition_gallery
+		$criteria	= new TCriteria;
+		$criteria->add(new TFilter('codigoOrcamento', '=', $codigo));
+		$criteria->setProperty('order', 'nome');	
+
+		$this->repository = new TRepository();
+
+		$this->repository->addColumn('*');
+		$this->repository->addEntity('orcamentoproduto');
+
+		$this->setCollectionOrcamentosProdutos($this->repository->load($criteria));
+
+		TTransaction::close();
+
 		return $this->collectionOrcamentosProdutos;
 	}
 
-	function getOrcamento()
+	function getOrcamento($codigo)
 	{
-		return $this->orcamento;
+		$this->setOrcamento(NULL);
+			$result;
+
+			//RECUPERA CONEXAO BANCO DE DADOS
+			TTransaction::open('my_bd_site');
+
+			//TABELA exposition_gallery
+			//$criteria	= new TCriteria;
+			//$criteria->add(new TFilter('codigo', '=', $codigo));
+			//$criteria->setProperty('order', 'ordem ASC');
+
+			$this->setOrcamento(new orcamentoModel());
+			$result = $this->orcamento->load($codigo);
+
+			return $result;
 	}
 
 	function getCodigoOrcamento()

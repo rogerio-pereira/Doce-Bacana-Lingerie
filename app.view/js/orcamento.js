@@ -63,3 +63,10 @@ function enviaOrcamento()
 		}
 	});
 }
+
+function selecionaOrcamento()
+{
+	var codigo = $('input[name=radioOrcamento]:checked').val();
+	
+	top.location='/meuOrcamento/'+codigo;
+}
