@@ -128,6 +128,8 @@
 											'quantidade50',
 											'quantidade52',
 											'quantidade54',
+											'referencia',
+											'nome'
 										);
 				
 				foreach($collectionCor as $cor)
@@ -153,7 +155,9 @@
 										'0', 
 										'0', 
 										'0', 
-										'0'
+										'0',
+										$produto->referencia,
+										$cor->nome
 									);
 					$arrayCor		= array_combine($keys, $values);
 					
@@ -244,8 +248,8 @@
 		}
 		
 		
-		$_SESSION['produtosOrcamento'] = array_values($_SESSION['produtosOrcamento']);
-		$_SESSION['orcamento'] = array_values($_SESSION['orcamento']);
+		$_SESSION['produtosOrcamento']	= array_values($_SESSION['produtosOrcamento']);
+		$_SESSION['orcamento']			= array_values($_SESSION['orcamento']);
 		
 		if(count($_SESSION['produtosOrcamento']) > 0)
 		{
@@ -666,7 +670,8 @@
 													$orcamento['quantidade48'],
 													$orcamento['quantidade50'],
 													$orcamento['quantidade52'],
-													$orcamento['quantidade54']
+													$orcamento['quantidade54'],
+													$orcamento['nome'],
 												);
 				}
 
@@ -674,7 +679,7 @@
 
 				if($controlador->salvaProdutosOrcamento())
 				{
-					
+					if(new enviaEmailOrcamento($codigoOrcamento, $controlador->getCollectionOrcamentosProdutos()));
 				}
 			}
 		}

@@ -4,47 +4,37 @@
     /*
      *  Classe que controla o envio de e-mails da pagina Contato
      */
-    class enviaEmailCadastro
+    class enviaEmailOrcamento
     {
-        private $nome;
-        private $email;
-        private $chave;
-		private $de			= 'Doce & Bacana Lingerie (Por favor nao responda)';
-		private $assunto	= 'Cadastro Doce & Bacana Lingerie';
-		private $deEmail;
+		/*
+		 * Constantes
+		 */
+		const DE		= 'Orçamento - Doce & Bacana Lingerie';
+		const ASSUNTO	= 'Solicitação de Orçamento';
 		
-		function getNome()
-		{
-			return $this->nome;
-		}
-
-		function getEmail()
-		{
-			return $this->email;
-		}
-
-		function getChave()
-		{
-			return $this->chave;
-		}
-
-		function setNome($nome)
-		{
-			$this->nome = $nome;
-		}
-
-		function setEmail($email)
-		{
-			$this->email = $email;
-		}
-
-		function setChave($chave)
-		{
-			$this->chave = $chave;
-		}
+		/*
+		 * Variaveis
+		 */
+		private $deEmail;
+		private $codigoOrcamento;
+        private $collectionProdutos;
+		
+		/*
+		 * Getters e Setters
+		 */
 		function getDeEmail()
 		{
 			return $this->deEmail;
+		}
+
+		function getCodigoOrcamento()
+		{
+			return $this->codigoOrcamento;
+		}
+
+		function getCollectionProdutos()
+		{
+			return $this->collectionProdutos;
 		}
 
 		function setDeEmail($deEmail)
@@ -52,23 +42,35 @@
 			$this->deEmail = $deEmail;
 		}
 
+		function setCodigoOrcamento($codigoOrcamento)
+		{
+			$this->codigoOrcamento = $codigoOrcamento;
+		}
+
+		function setCollectionProdutos($collectionProdutos)
+		{
+			$this->collectionProdutos = $collectionProdutos;
+		}
+
+		
 		
 		        
         /*
          *  Método construtor
          *  Inicializa as variaveis, constroi o email, configura servidor e envia
          */
-        public function __construct($nome, $email, $chave)
+        public function __construct($codigoOrcamento, $collectionProdutos)
         {
-			$this->setNome($nome);
-			$this->setEmail($email);
-			$this->setChave($chave);
+			$this->setCodigoOrcamento($codigoOrcamento);
+			$this->setCollectionProdutos($collectionProdutos);
 		
-			
             $this->constroiEmail();
             $this->configuraEmail();
             //$this->send();
-            $this->send2();
+            if($this->send2())
+				return true;
+			else
+				return false;
         }
         
         /*
@@ -88,36 +90,79 @@
             
             $this->corpoMensagem =  ""?>
 										<p>
-											Olá <?php echo $this->getNome(); ?>, Você foi cadastrado com sucesso no site 
-											<a href='http://www.docebacanalingerie.com.br' title='Doce & Bacana Lingerie' alt='Doce & Bacana Lingerie'>
-												Doce & Bacana Lingerie
-											</a>.
+											Nova solicitação de orçamento com código <strong><?php echo $this->getCodigoOrcamento(); ?></strong>
+										</p>
+										
+										<hr>
+										
+										<p>
+											<strong>Dados do Cliente</strong>
 										</p>
 										
 										<p>
-											Precisamos que confirme que você se cadastrou clicando no link abaixo
-											<a href="http://www.docebacanalingerie.com.br/confirmacao/<?php echo $this->getChave(); ?>" 
-											   title="Confirmação de Cadastro" 
-											   alt='Confirmação de Cadastro'
-											>
-												http://www.docebacanalingerie.com.br/confirmacao/<?php echo $this->getChave(); ?>
-											</a>
+											<strong>Nome:</strong>		<?php echo $_SESSION['cliente']->nome; ?><br>
+											<strong>Telefone:</strong>	<?php echo $_SESSION['cliente']->telefone; ?><br>
+											<strong>Celular:</strong>	<?php echo $_SESSION['cliente']->celular; ?><br>
+											<strong>E-Mail:</strong>	<?php echo $_SESSION['cliente']->email; ?><br>
+											<strong>Endereço:</strong>	<?php 
+																			echo	$_SESSION['cliente']->endereco		.	', '	.
+																					$_SESSION['cliente']->numero		.	'. '	.
+																					$_SESSION['cliente']->complemento
+																			; 
+																		?><br>
+											<strong>Bairro:</strong>	<?php echo $_SESSION['cliente']->bairro; ?><br>
+											<strong>Cidade:</strong>	<?php 
+																			echo	$_SESSION['cliente']->email		.	' - '	.
+																					$_SESSION['cliente']->estado
+																			; 
+																		?><br>
+											<strong>CEP:</strong>		<?php echo $_SESSION['cliente']->cep; ?>
 										</p>
 										
-										<p>
-											Caso não tenha sido você que se cadastrou, entre em contato pelo e-mail 
-											<a href='mailto:adm@docebacanalingerie.com.br'>adm@docebacanalingerie.com.br</a>
-										</p>
+										<hr>
 										
 										<p>
-											Este é um e-mail enviado de forma automatica, por favor nao responda... Qualquer dúvida entre em contato pelo e-mail 
-											<a href='mailto:contato@docebacanalingerie.com.br' alt='E-mail de Contato' title='E-mail de Contato'>
-												contato@docebacanalingerie.com.br
-											</a>
+											<strong>Orçamento</strong>
 										</p>
 										
+										<table>
+											<tr>
+												<td>	Referencia		</td>
+												<td>	Cor				</td>
+												<td>	Quantidade PP	</td>
+												<td>	Quantidade P	</td>
+												<td>	Quantidade M	</td>
+												<td>	Quantidade G	</td>
+												<td>	Quantidade GG	</td>
+												<td>	Quantidade 48	</td>
+												<td>	Quantidade 50	</td>
+												<td>	Quantidade 52	</td>
+												<td>	Quantidade 54	</td>
+											</tr>
+											<?php
+												foreach($this->getCollectionProdutos() as $produto)
+													echo
+														"
+															<td>	$produto[11]					</td>
+															<td>	$produto[12]					</td>
+															<td>	$produto[2]						</td>
+															<td>	<strong>$produto[3]</strong>	</td>
+															<td>	<strong>$produto[4]</strong>	</td>
+															<td>	<strong>$produto[5]</strong>	</td>
+															<td>	<strong>$produto[6]</strong>	</td>
+															<td>	$produto[7]						</td>
+															<td>	$produto[8]						</td>
+															<td>	$produto[9]						</td>
+															<td>	$produto[10]					</td>	
+														";
+											?>
+										</table>
+										
+										<hr>
+										
 										<p>
-											A Doce & Bacana Lingerie agradece pela sua preferencia.
+											A Doce & Bacana Lingerie agradece a preferencia. Logo um de nossos representantes entrara em contato com os
+											valores do orçamento.
 										</p>
 									<?php
         }
@@ -129,15 +174,15 @@
         private function configuraEmail()
         {
             // verifica se existe arquivo de configuraÃ§Ã£o para este banco de dados
-            if (file_exists("../app.config/mail.ini"))
+            if (file_exists("../app.config/mailOrcamento.ini"))
             {
                 // lÃª o INI e retorna um array
-                $configMail = parse_ini_file("../app.config/mail.ini");
+                $configMail = parse_ini_file("../app.config/mailOrcamento.ini");
             }
             else
             {
                 // se nÃ£o existir, lanÃ§a um erro
-                throw new Exception("Arquivo mail.ini nÃ£o encontrado");
+                throw new Exception("Arquivo mailOrcamento.ini nÃ£o encontrado");
             }
             
             $this->mail = new PHPMailer;
@@ -154,14 +199,15 @@
             $this->mail->From         = isset($configMail['username'])      ? $configMail['username']   : NULL;     //Usuario SMTP
 			$this->setDeEmail($configMail['username']);
             //Remetente
-            $this->mail->FromName     = $this->de;																	//E-mail remetente
+            $this->mail->FromName     = self::DE;																	//E-mail remetente
             //Destinatario
-            $this->mail->AddAddress($this->email);                                                                   //E-mail destinatario
+            $this->mail->AddAddress($_SESSION['cliente']->email);				                                    //E-mail destinatario
+			$this->mail->AddAddress($configMail['username']);                                                       //E-mail destinatario
             //Define mensagem HTML
             $this->mail->IsHTML(true);                                                                              //Formato do texto em HTML
             $this->mail->CharSet      = 'iso-8859-1';                                                               //Caracteres do E-mail
             //Assunto                                                      
-            $this->mail->Subject      = $this->assunto;																//Assunto
+            $this->mail->Subject      = self::ASSUNTO;																//Assunto
             $this->mail->Body         = $this->corpoMensagem;                                                       //Mensagem
             //Anexos (opcional)                                                    
             //$mail->AddAttachment("");                                                                             //Anexo
@@ -208,20 +254,13 @@
          */
         private function send2()
         {
-            if(mail($this->para, $this->assunto, $this->corpoMensagem, $this->headers, '-r'.$this->deEmail))
-            {
-                echo "
-                        <script type='text/javascript'> 
-                            alert('Mensagem enviada com sucesso!');
-                        </script>
-                    ";
-            }
+            if	(
+					mail($this->deEmail,				$this->assunto,		$this->corpoMensagem,	$this->headers,		'-r'.$_SESSION['cliente']->email) &&
+					mail($_SESSION['cliente']->email,	$this->assunto,		$this->corpoMensagem,	$this->headers,		'-r'.$this->deEmail)
+				)
+                return true;
             else
-                echo "
-                        <script type='text/javascript'> 
-                            alert(  'Mensagem não enviada');
-                        </script>
-                    ";
+                return false;
         }
     }
     

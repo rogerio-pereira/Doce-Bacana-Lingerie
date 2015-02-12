@@ -346,16 +346,18 @@ class controladorOrcamento
 				$this->setOrcamentoProduto(new orcamentoprodutoModel2());
 				
 				$this->orcamentoProduto->codigoOrcamento	= $produto[0];
-				$this->orcamentoProduto->codigoProduto		= $produto[0];
-				$this->orcamentoProduto->quantidadePP		= $produto[0];
-				$this->orcamentoProduto->quantidadeP		= $produto[0];
-				$this->orcamentoProduto->quantidadeM		= $produto[0];
-				$this->orcamentoProduto->quantidadeG		= $produto[0];
-				$this->orcamentoProduto->quantidadeGG		= $produto[0];
-				$this->orcamentoProduto->quantidade48		= $produto[0];
-				$this->orcamentoProduto->quantidade50		= $produto[0];
-				$this->orcamentoProduto->quantidade52		= $produto[0];
-				$this->orcamentoProduto->quantidade54		= $produto[0];
+				$this->orcamentoProduto->codigoProduto		= $produto[1];
+				$this->orcamentoProduto->quantidadePP		= $produto[2];
+				$this->orcamentoProduto->quantidadeP		= $produto[3];
+				$this->orcamentoProduto->quantidadeM		= $produto[4];
+				$this->orcamentoProduto->quantidadeG		= $produto[5];
+				$this->orcamentoProduto->quantidadeGG		= $produto[6];
+				$this->orcamentoProduto->quantidade48		= $produto[7];
+				$this->orcamentoProduto->quantidade50		= $produto[8];
+				$this->orcamentoProduto->quantidade52		= $produto[9];
+				$this->orcamentoProduto->quantidade54		= $produto[10];
+				$this->orcamento->referencia				= $produto[11];
+				$this->orcamentoProduto->nome				= $produto[12];
 				
 				//RECUPERA CONEXAO BANCO DE DADOS
 				TTransaction2::open('my_bd_site');

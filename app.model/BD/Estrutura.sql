@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 11-Fev-2015 às 18:42
+-- Data de Criação: 12-Fev-2015 às 11:19
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.16
 
@@ -122,6 +122,8 @@ CREATE TABLE IF NOT EXISTS `orcamentoproduto` (
   `quantidade50` int(11) DEFAULT NULL,
   `quantidade52` int(11) DEFAULT NULL,
   `quantidade54` int(11) DEFAULT NULL,
+  `referencia` varchar(20) NOT NULL,
+  `nome` varchar(20) NOT NULL,
   PRIMARY KEY (`codigo`),
   KEY `codigoOrcamento` (`codigoOrcamento`,`codigoProduto`),
   KEY `codigoProduto` (`codigoProduto`)
