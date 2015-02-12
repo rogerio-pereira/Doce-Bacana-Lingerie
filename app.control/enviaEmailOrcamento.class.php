@@ -125,17 +125,17 @@
 										
 										<table>
 											<tr>
-												<td style='padding-right: 10px;'>	<strong>Referencia</strong>		</td>
-												<td>	<strong>Cor</strong>				</td>
-												<td>	<strong>Quantidade PP</strong>	</td>
-												<td>	<strong>Quantidade P</strong>	</td>
-												<td>	<strong>Quantidade M</strong>	</td>
-												<td>	<strong>Quantidade G</strong>	</td>
-												<td>	<strong>Quantidade GG</strong>	</td>
-												<td>	<strong>Quantidade 48</strong>	</td>
-												<td>	<strong>Quantidade 50</strong>	</td>
-												<td>	<strong>Quantidade 52</strong>	</td>
-												<td>	<strong>Quantidade 54</strong>	</td>
+												<td style='padding: 0 10px 0 0px;'>		<strong>Referencia</strong>		</td>
+												<td style='padding: 0 10px 0 0px'>		<strong>Cor</strong>			</td>
+												<td style='padding: 0 10px 0 10px'>		<strong>PP</strong>				</td>
+												<td style='padding: 0 10px 0 10px'>		<strong>P</strong>				</td>
+												<td style='padding: 0 10px 0 10px'>		<strong>M</strong>				</td>
+												<td style='padding: 0 10px 0 10px'>		<strong>G</strong>				</td>
+												<td style='padding: 0 10px 0 10px'>		<strong>GG</strong>				</td>
+												<td style='padding: 0 10px 0 10px'>		<strong>48</strong>				</td>
+												<td style='padding: 0 10px 0 10px'>		<strong>50</strong>				</td>
+												<td style='padding: 0 10px 0 10px'>		<strong>52</strong>				</td>
+												<td style='padding: 0 10px 0 10px'>		<strong>54</strong>				</td>
 											</tr>
 									";
 										
