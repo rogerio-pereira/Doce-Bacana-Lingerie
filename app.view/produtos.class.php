@@ -21,7 +21,7 @@
 		 * Contantes
 		 */
 		const ADJACENTES	= 4;
-		const LIMITE		= 9;
+		const LIMITE		= 12;
 		
 		/*
 		 * Variaveis
@@ -149,7 +149,7 @@
 				$this->setPagina(1);
 			
 			//Calcula Inicio do limite 
-			$inicio = ($this->getPagina() - 1) * 9;
+			$inicio = ($this->getPagina() - 1) * 12;
 			
 			//Calcula itens para paginação
 			$this->setTotal((new controladorProdutos())->getTotal($this->getCodigo()));
@@ -202,7 +202,10 @@
 										</legend>
 									</figure>
 								</a>
-								<a href='/produto/{$produto->codProd}'>Detalhes</a>
+								<a href='/produto/{$produto->codProd}'>Detalhes</a><br>
+								<a class='incluirOrcamento' href='/produto/{$produto->codProd}' onclick='incluirOrcamento({$produto->codProd})'>
+									Incluir no Orçamento
+								</a>
 						</li>
 					";
 			}
@@ -221,7 +224,7 @@
 				}
 				
 				//Menos de 9 paginas no total
-				if ($this->getUltimaPagina() <= 9)
+				if ($this->getUltimaPagina() <= 12)
 				{
 					for ($i=1; $i<=$this->getUltimaPagina(); $i++)
 					{
@@ -232,7 +235,7 @@
 					}
 				} 
 				//Mais de 9 paginas no total
-				if ($this->getUltimaPagina() > 9)
+				if ($this->getUltimaPagina() > 12)
 				{
 					if ($this->getPagina() < 1 + (2 * self::ADJACENTES))
 					{

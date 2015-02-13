@@ -86,17 +86,17 @@ class controladorProdutos
 		if($categoria == NULL)
 		{
 			$criteria->setProperty('order', 'RAND()');
-			$criteria->setProperty('limit', 9);
+			$criteria->setProperty('limit', 12);
 		}
 		else if($categoria == -1)
 		{
 			$criteria->setProperty('order', 'categoria, codigoProduto');
-			$criteria->setProperty('limit', $inicio.',9');
+			$criteria->setProperty('limit', $inicio.',12');
 		}
 		else
 		{
 			$criteria->setProperty('order', 'codigoProduto');
-			$criteria->setProperty('limit', $inicio.',9');
+			$criteria->setProperty('limit', $inicio.',12');
 		}
 		
 		$this->repository = new TRepository();
@@ -143,7 +143,7 @@ class controladorProdutos
 		$criteria->add($criteria2, TExpression::AND_OPERATOR);
 		//Ordenação
 		$criteria->setProperty('order', 'categoria, codigoProduto');
-		$criteria->setProperty('limit', $inicio.',9');
+		$criteria->setProperty('limit', $inicio.',12');
 		
 		$this->repository = new TRepository();
 		
@@ -246,12 +246,13 @@ class controladorProdutos
 			$criteria->add(new TFilter('categoria', '=', $categoria));		
 		$criteria->add(new TFilter('home', '=', 1));
 		$criteria->add(new TFilter('p.codigo', '=', 'c.codigoProduto'));
+		$criteria->add(new TFilter('p.categoria', '=', 'cat.codigo'));
 		
 		$criteria->setProperty('order', 'categoria, codigoProduto');
-		if(($categoria != NULL) && ($categoria != -1))
-			$criteria->setProperty('limit', $inicio.',9');
+		if(($categoria != NULL) && ($categoria == -1))
+			$criteria->setProperty('limit', $inicio.',12');
 		else
-			$criteria->setProperty('limit', '9');
+			$criteria->setProperty('limit', '12');
 				
 		
 		$this->repository = new TRepository();

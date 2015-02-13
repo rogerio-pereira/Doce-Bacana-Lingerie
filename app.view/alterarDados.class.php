@@ -38,8 +38,8 @@
 		public function show()
 		{
 		?>
-			<h1>Alterar Dados Pessoais</h1>
-			<hr>
+			<!--<h1>Alterar Dados Pessoais</h1>
+			<hr>-->
 			<form class="formulario" name="alteraCliente" method="post" action="/app.control/ajax.php" onsubmit="return validaCamposAlterarCliente();">
 				<input type="hidden" name="formularioNome" value="alteraCliente">
 				<input type="hidden" name="codigo"			id='codigo'		value="<?php echo $_SESSION['cliente']->codigo; ?>">

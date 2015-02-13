@@ -47,7 +47,7 @@
 		 */
 		public function show()
 		{
-			echo '<h1>Confirmação de Cadastro</h1><hr>';
+			//echo '<h1>Confirmação de Cadastro</h1><hr>';
 			if($this->getResultado() == true)
 				echo 'Cliente ativado com sucesso!';
 			else

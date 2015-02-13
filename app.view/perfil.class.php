@@ -45,8 +45,8 @@
 		public function show()
 		{
 		?>
-			<h1>Perfil</h1>
-			<hr>
+			<!--<h1>Perfil</h1>
+			<hr>-->
 			<div class='menuPerfil'>
 				<a href='/alterarDados/'>	Alterar Dados	</a><br>
 				<a href='/alterarSenha/'>	Alterar Senha	</a><br>

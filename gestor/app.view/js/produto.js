@@ -81,9 +81,9 @@ function insereCor()
 				"			Banner																																			" +
 				"		</td>																																				" +
 				"		<td>																																				" +
-				"			<input type='checkbox' name='banner1_"	+ numeroCor + "' class='chkBanner1_"	+ numeroCor + "'	value='1'>Banner 1<br>						" +
-				"			<input type='checkbox' name='banner2_"	+ numeroCor + "' class='chkBanner2_"	+ numeroCor + "'	value='1'>Banner 2<br>						" +
-				"			<input type='checkbox' name='banner3_"	+ numeroCor + "' class='chkBanner3_"	+ numeroCor + "'	value='1'>Banner 3<br>						" +
+				//"			<input type='checkbox' name='banner1_"	+ numeroCor + "' class='chkBanner1_"	+ numeroCor + "'	value='1'>Banner 1<br>						" +
+				//"			<input type='checkbox' name='banner2_"	+ numeroCor + "' class='chkBanner2_"	+ numeroCor + "'	value='1'>Banner 2<br>						" +
+				//"			<input type='checkbox' name='banner3_"	+ numeroCor + "' class='chkBanner3_"	+ numeroCor + "'	value='1'>Banner 3<br>						" +
 				"			<input type='checkbox' name='home_"		+ numeroCor + "' class='chkHome_"		+ numeroCor + "'	value='1'>Home<br>							" +
 				"		</td>																																				" +
 				"	</tr>																																					" +

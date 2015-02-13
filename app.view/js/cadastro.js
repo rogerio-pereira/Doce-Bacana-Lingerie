@@ -420,3 +420,59 @@ function validaCamposAlterarCliente()
 		return false;
 	}
 }
+
+function validaAlteracaoSenha()
+{
+	var valida;
+	valida = true;
+	
+	if($('#senhaAtual').val() == '')
+	{
+		alert('Campo em branco: Senha Atual');
+		$('#senhaAtual').focus();
+		return false;
+	}
+	if($('#senhaNova').val() == '')
+	{
+		alert('Campo em branco: Senha Nova');
+		$('#senhaNova').focus();
+		return false;
+	}
+	if($('#confirmacao').val() == '')
+	{
+		alert('Campo em branco: Confirmação de Senha');
+		$('#confirmacao').focus();
+		return false;
+	}
+	if( $("#senhaNova").val() != $("#confirmacao").val())
+	{
+		alert( "Confirmação de Senha diferente da Senha" );
+		$("#senhaNova").val('');
+		$("#confirmacao").val('');
+		$('#senhaNova').focus();
+		return false;
+	}	
+	
+	if (valida = true)
+		alteraSenha();
+}
+
+function alteraSenha()
+{
+	$.ajax
+	({
+		type: "POST",
+		url: "/app.control/ajax.php",
+		data: 
+		{
+			senhaAtual:		$('#senhaAtual').val(),
+			senhaNova:		$('#senhaNova').val(),
+			formularioNome:	'alteraSenha'
+		},
+		success: function(data) 
+		{
+			alert(data);
+			top.location='/';
+		}
+	});
+}

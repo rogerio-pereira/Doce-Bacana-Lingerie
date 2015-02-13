@@ -59,13 +59,16 @@
 		public function show()
 		{
 		?>
-			<h1>Produto</h1>
-			<hr>
+			<!--<h1>Produto</h1>
+			<hr>-->
 			<div class='produtoContainer'>
 				<div class='detalheProduto'>
-					<div class='incluirOrcamento' onclick="incluirOrcamento(<?php echo $this->getProduto()->codigoProduto; ?>)">
-						Incluir no Orçamento
+					<div style="text-align: center; margin: 0px; padding: 0px;">
+						<a class='incluirOrcamento'href='/produto/{$produto->codProd}' onclick="incluirOrcamento(<?php echo $this->getProduto()->codigoProduto; ?>)">
+							Incluir no Orçamento
+						</a>
 					</div>
+					
 					<h2>	<?php echo $this->getProduto()->referencia; ?>	</h2>
 					<strong>	Categoria	</strong> <?php echo $this->getProduto()->categoria; ?><br><br>
 					<strong>	Descrição	</strong><?php echo $this->getProduto()->descricao; ?><br><br>
@@ -136,7 +139,7 @@
 											border-right:	500px solid {$cor->cor2};
 										}
 									</style>
-									<div class='cod_{$i}' onclick='mudaImagemProduto({$cor->codigoProduto}, {$cor->codigo})'></div>
+									<div class='cod_{$i}' onclick='mudaImagemProduto({$cor->codigoProduto}, {$cor->codigo})' alt='{$cor->nome}' title='{$cor->nome}'></div>
 								";
 							$i++;
 						}

@@ -38,8 +38,8 @@
 		public function show()
 		{
 		?>
-			<h1>Política de Compras</h1>
-			<hr>
+			<!--<h1>Política de Compras</h1>
+			<hr>-->
 			
 			<p>
 				A <strong>Doce & Bacana Lingerie</strong>, em respeito a seus cliente trata todos os dados e informações com total privacidade e segurança  durante todo o 

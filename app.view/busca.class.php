@@ -159,8 +159,8 @@
 		
 			echo
 				"
-					<h1>Busca: <span id='logotipo'>{$_GET['chave']}</span></h1>
-					<hr>
+					<!--<h1>Busca: <span id='logotipo'>{$_GET['chave']}</span></h1>
+					<hr>-->
 					<ul class='produtosLista'>
 				";
 			foreach($this->getCollectionProduto() as $produto)

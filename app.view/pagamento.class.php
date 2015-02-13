@@ -38,8 +38,8 @@
 		public function show()
 		{
 		?>
-			<h1>Formas de Pagamento</h1>
-			<hr>
+			<!--<h1>Formas de Pagamento</h1>
+			<hr>-->
 			
 			<p>
 				Se preocupando ao máximo com a segurança dos dados de nossos clientes e para lhe proporcionar uma garantia de  entrega dos produtos trabalhamos com 

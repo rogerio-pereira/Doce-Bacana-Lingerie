@@ -45,6 +45,8 @@ class controladorClientes
 	private $pontoReferencia;
 	private $chave;
 	private $ativo;
+	
+	private $senhaAtual;
 
 
 	/*
@@ -333,7 +335,18 @@ class controladorClientes
 	{
 		$this->ativo = $ativo;
 	}
+	
+	function getSenhaAtual()
+	{
+		return $this->senhaAtual;
+	}
 
+	function setSenhaAtual($senhaAtual)
+	{
+		$this->senhaAtual = md5($senhaAtual);
+	}
+
+	
 
 	/*
 	 * Método Contrutor
@@ -547,6 +560,46 @@ class controladorClientes
 		catch (Exception $e)
 		{
 			return false;
+		}
+	}
+	
+	/*
+	 * Método confirma Senha Atual
+	 * Confirma a senha do usuario logado
+	 */
+	public function verificaSenhaAtual()
+	{
+		if($this->getSenhaAtual() === $_SESSION['cliente']->senha)
+			return true;
+		else
+			return false;
+	}
+	
+	/*
+	 * Método altera senha
+	 * Altera a senha do usuario ativo
+	 */
+	public function alteraSenha()
+	{
+		try
+		{
+			$this->setCliente(new clientes2());
+			
+			$this->cliente->codigo	= $_SESSION['cliente']->codigo;
+			$this->cliente->senha	= $this->getSenha();
+			
+			//RECUPERA CONEXAO BANCO DE DADOS
+			TTransaction2::open('my_bd_site');
+
+			$result = $this->cliente->store();
+
+			TTransaction2::close();
+
+			return true;
+		}
+		catch (Exception $e)
+		{
+			return false;;
 		}
 	}
 }

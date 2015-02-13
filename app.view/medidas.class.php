@@ -38,8 +38,8 @@
 		public function show()
 		{
 		?>
-			<h1>Guia de Medidas</h1>
-			<hr>
+			<!--<h1>Guia de Medidas</h1>
+			<hr>-->
 			<div class='imagemResponsiva'>
 				<img id='imgMedidas' src='app.view/img/medida/guia_medida.jpg' title='Guia de Medidas' alt='Guia de Medida'>
 			</div>

@@ -42,8 +42,8 @@
 			//var_dump($_SESSION['orcamento']);
 			//var_dump($_SESSION['produtosOrcamento']);
 		?>
-			<h1>Orçamento</h1>
-			<hr>
+			<!--<h1>Orçamento</h1>
+			<hr>-->
 			<form class="formulario" name="orcamento" method="post" action="app.control/ajax.php" onsubmit="enviaOrcamento">
 				<input type="hidden" name="formularioNome" value="enviaOrcamento">
 				<table class='tabelaFormulario'>

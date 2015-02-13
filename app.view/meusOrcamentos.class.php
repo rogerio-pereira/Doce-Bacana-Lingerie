@@ -50,7 +50,7 @@
 		public function show()
 		{
 		?>
-			<h1>Orçamentos</h1>
+			<!--<h1>Orçamentos</h1><hr>-->
 			<form class="formulario" name="listaOrcamentos" method="post">
 				<input type="hidden" name="formularioNome" value="listaOrcamentos">
 				<table class='tabelaFormulario'>

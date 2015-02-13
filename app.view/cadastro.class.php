@@ -38,8 +38,8 @@
 		public function show()
 		{
 		?>
-			<h1>Cadastro</h1>
-			<hr>
+			<!--<h1>Cadastro</h1>
+			<hr>-->
 			<form class="formulario" name="cadastroCliente" method="post" action="app.control/ajax.php" onsubmit="return validaCamposCadastroCliente();">
 				<input type="hidden" name="formularioNome" value="cadastroCliente">
 				<table class='tabelaFormulario'>

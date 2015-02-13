@@ -36,7 +36,7 @@
 		 */
 		public function show()
 		{
-			echo '<h1>Erro</h1><hr>';
+			//echo '<h1>Erro</h1><hr>';
 			//Erro 400 - Bad Request
 			if($_GET['codigo'] == 400)
 				echo 

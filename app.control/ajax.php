@@ -735,4 +735,25 @@
 		else
 			echo "<script>alert('Falha ao alterar!');top.location='/perfil';</script>";
 	}
+	//Alteração de Senha
+	else if($formulario == 'alteraSenha')
+	{
+		$controlador = new controladorClientes;
+		$controlador->setSenhaAtual($_POST['senhaAtual']);
+		$controlador->setSenha($_POST['senhaNova']);
+		if($controlador->verificaSenhaAtual())
+		{
+			if($controlador->alteraSenha())
+			{
+				$_SESSION['cliente']->senha = $controlador->getSenha();
+				echo 'Senha alterada com sucesso!';
+			}
+			else
+				echo 'Erro ao alterar senha!';
+		}
+		else
+		{
+			echo 'Senha Atual Inválida!';
+		}
+	}
 ?>

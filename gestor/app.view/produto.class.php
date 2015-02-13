@@ -388,11 +388,6 @@
 							</td>
 						</tr>
 						<tr>
-							<td colspan='2'>
-								<hr>
-							</td>
-						</tr>
-						<tr>
 							<td colspan='2' align='center'>
 								<input name="botaoSalvar" type="submit" id="botaoSalvar" value="Salvar" />
 							</td>

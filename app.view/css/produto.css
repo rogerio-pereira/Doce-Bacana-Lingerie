@@ -60,35 +60,29 @@ div.detalheProduto
 	float:				right
 }
 
-div.incluirOrcamento
+div.detalheProduto a.incluirOrcamento
 {
-	position:				relative;
-	width:					auto;
-	padding:				5px 15px; 
-	background:				#f70d48; 
-	border:					0 none;
-	
-	cursor:					pointer;
-	
-	-webkit-border-radius: 	30px;
-	-moz-border-radius:		30px;
-	border-radius: 			30px;
-	
-	/*font-family:			'Logotipo';*/
-	font-family:			'Muli', sans-serif;
-	font-size:				1.5em;
-	text-align:				center;
 	color:					white;
+	background-color:		#f70d48;
+	font-size:				1.5em;
+	margin-left:			auto;
+	margin-right:			auto;
+	
+	-webkit-border-radius:	30px;
+	-moz-border-radius:		30px;
+	border-radius:			30px;
+	
+	padding-left:			15px;
+	padding-right:			15px;
 	
 	-webkit-transition:		all 1s ease;
 	-moz-transition:		all 1s ease;
 	-ms-transition:			all 1s ease;
 	-o-transition:			all 1s ease;
 	transition:				all 1s ease;
-	
 }
 
-div.incluirOrcamento:hover
+div.detalheProduto a.incluirOrcamento:hover
 {
 	background-color:	white;
 	color:				black;

@@ -301,7 +301,10 @@
 		if($controlador->verificaSenhaAtual())
 		{
 			if($controlador->alteraSenha())
+			{
+				$_SESSION['usuario']->senha = $controlador->getSenha();
 				echo 'Senha alterada com sucesso!';
+			}
 			else
 				echo 'Erro ao alterar senha!';
 		}

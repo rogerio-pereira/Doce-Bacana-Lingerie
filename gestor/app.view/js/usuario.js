@@ -186,7 +186,7 @@ function alteraSenha()
 		success: function(data) 
 		{
 			alert(data);
-			//top.location='/';
+			top.location='/';
 		}
 	});
 }

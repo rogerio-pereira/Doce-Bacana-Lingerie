@@ -13,9 +13,9 @@ class template
 	 *	Variaveis
 	 */
 	private $collectionCategoria;
-	private $produtosBanner1;
-	private $produtosBanner2;
-	private $produtosBanner3;
+	//private $produtosBanner1;
+	//private $produtosBanner2;
+	//private $produtosBanner3;
 
 
 	/*
@@ -69,9 +69,9 @@ class template
 	{
 		new session();
 		$this->setCollectionCategoria((new controladorCategoria())->getCollectionCategoria());
-		$this->setProdutosBanner1((new controladorProdutos())->getCollectionBanner(1));
+		/*$this->setProdutosBanner1((new controladorProdutos())->getCollectionBanner(1));
 		$this->setProdutosBanner2((new controladorProdutos())->getCollectionBanner(2));
-		$this->setProdutosBanner3((new controladorProdutos())->getCollectionBanner(3));
+		$this->setProdutosBanner3((new controladorProdutos())->getCollectionBanner(3));*/
 	}
 
 
@@ -171,6 +171,7 @@ class template
 								<a href='/'><li>Home</li></a>
 								<a href='/empresa'><li>Quem Somos</li></a>
 								<a href='/produtos'><li>Produtos</li></a>
+								<a href='/embalagens'><li>Embalagens</li></a>
 								<a href='/medidas'><li>Guia de Medidas</li></a>
 								<a href='/orcamento'><li>Orçamento</li></a>
 								<a href='/contato'><li>Contato</li></a>
@@ -181,28 +182,28 @@ class template
 					<div id='section'>
 						<!--Section-->
 						<section>
-							<div id='bannerTop'>
+							<!--<div id='bannerTop'>
 								<div class='sliderTop' id='1'>
 									<div class='sliderTopImg'>
 										<?php
-											foreach ($this->getProdutosBanner1() as $cor)
-												echo "<img src='/app.view/img/produtos/banner1/{$cor->codigoProduto}_{$cor->codigo}.jpg'>";
+											/*foreach ($this->getProdutosBanner1() as $cor)
+												echo "<img src='/app.view/img/produtos/banner1/{$cor->codigoProduto}_{$cor->codigo}.jpg'>";*/
 										?>
 									</div>
 								</div>
 								<div class='sliderTop' id='2'>
 									<div class='sliderTopImg'>
 										<?php
-											foreach ($this->getProdutosBanner2() as $cor)
-												echo "<img src='/app.view/img/produtos/banner2/{$cor->codigoProduto}_{$cor->codigo}.jpg'>";
+											/*foreach ($this->getProdutosBanner2() as $cor)
+												echo "<img src='/app.view/img/produtos/banner2/{$cor->codigoProduto}_{$cor->codigo}.jpg'>";*/
 										?>
 									</div>
 								</div>
 								<div class='sliderTop' id='3'>
 									<div class='sliderTopImg'>
 										<?php
-											foreach ($this->getProdutosBanner3() as $cor)
-												echo "<img src='/app.view/img/produtos/banner3/{$cor->codigoProduto}_{$cor->codigo}.jpg'>";
+											/*foreach ($this->getProdutosBanner3() as $cor)
+												echo "<img src='/app.view/img/produtos/banner3/{$cor->codigoProduto}_{$cor->codigo}.jpg'>";*/
 										?>
 									</div>
 								</div>
@@ -210,7 +211,7 @@ class template
 									<div class='sliderTopImg'>
 									<img src='/app.view/img/template/frete.png' alt='Frete' title='Frete'>
 								</div>
-							</div>
+							</div>-->
 							
 							<div>
 								<!--Barra Lateral-->
@@ -236,8 +237,9 @@ class template
 								
 								<!--Banner de Baixo-->
 								<div id='bannerFooter'>
-									<img src='/app.view/img/template/banner_pagseguro3.png'	alt='Formas de Pagamento'	title='Formas de Pagamento'>
+									<img src='/app.view/img/template/banner_pagseguro5.png'	alt='Formas de Pagamento'	title='Formas de Pagamento'>
 									<img src='/app.view/img/template/entrega.jpg'			alt='Entrega'				title='Entrega'>
+									<img src='/app.view/img/template/frete.png'				alt='Frete'					title='Frete'>
 								</div>
 							</div>
 							
@@ -269,7 +271,7 @@ class template
 										</div>
 										<div id='footerDescContato'>
 											<p>
-												<strong>Contate-nos</strong>
+												<strong>Loja</strong>
 											</p>
 											<hr>
 											<p>
@@ -277,6 +279,29 @@ class template
 												Rua Jairo Domingues Siqueira, 50 - Centro - Juruaia - MG - Cep 37805-000
 											</p>
 												
+											<!--<p>
+												TELEFONE<br />
+												(35) 3571 - 5785<br />
+												(35) 3571 - 5785 - WhatsApp
+											</p>
+												
+											<p>
+												E-MAIL<br />
+												<a href='mailto:contato@docebacanalingerue.com.br'>contato@docebacanalingerie.com.br</a>
+											</p>-->
+										</div>
+										<div id='footerDescSocial'>
+											<!--<p>
+												<strong>Mídias Sociais</strong>
+											</p>
+											<hr>
+											<p>
+												
+											</p>-->
+											<p>
+												<strong>Contato</strong>
+											</p>
+											<hr>
 											<p>
 												TELEFONE<br />
 												(35) 3571 - 5785<br />
@@ -287,15 +312,11 @@ class template
 												E-MAIL<br />
 												<a href='mailto:contato@docebacanalingerue.com.br'>contato@docebacanalingerie.com.br</a>
 											</p>
-										</div>
-										<div id='footerDescSocial'>
-											<p>
-												<strong>Mídias Sociais</strong>
-											</p>
-											<hr>
-											<p>
 												
-											</p>
+											<!--<p>
+												Mídias Sociais<br>
+													dsad
+											</p>-->
 										</div>
 									</div>
 									

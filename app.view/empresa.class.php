@@ -38,8 +38,8 @@
 		public function show()
 		{
 		?>
-			<h1>Quem Somos</h1>
-			<hr>
+			<!--<h1>Quem Somos</h1>
+			<hr>-->
 			<p>
 				O projeto <strong>Doce & Bacana Lingerie</strong> surgiu quando analisamos o mercado e observamos uma  grande demanda de produtos desenvolvidos para 
 				proporcionar o máximo de conforto as mulheres, com matérias primas de  qualidade e com um preço  final acessivel. Apartir destas três 

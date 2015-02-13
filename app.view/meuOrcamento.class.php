@@ -73,8 +73,8 @@
 		public function show()
 		{
 		?>
-			<h1>Orçamento</h1>
-			<hr>
+			<!--<h1>Orçamento</h1>
+			<hr>-->
 			<h2>Orçamento <?php echo $this->getOrcamento()->codigo; ?></h2>
 			<?php
 				echo

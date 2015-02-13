@@ -326,8 +326,8 @@ nav#navMenuPrincipal ul a li
 	
 	margin-left:		0px;
 	margin-right:		0px;
-	padding-left:		40px;
-	padding-right:		40px;
+	padding-left:		33px;
+	padding-right:		33px;
 	height:				100%;
 	
 	-webkit-transition: all 1s ease;
@@ -507,7 +507,8 @@ footer div#footerDesc
 	
 	font-size:		.7em;
 	
-	margin-bottom:	23%;
+	margin-bottom:	17%;
+	margin-top:		1%;
 	
 	text-align:		left;
 }
@@ -539,8 +540,8 @@ footer div#footerDesc div#footerDescContato
 footer div#footerDesc div#footerDescSocial
 {
 	position:	absolute;
-	width:		20%;
-	left:		77.5%;
+	width:		25%;
+	left:		75.5%;
 	top:		0px;
 }
 

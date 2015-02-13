@@ -33,8 +33,8 @@ class login
 	public function show()
 	{
 	?>
-		<h1>Login</h1>
-		<hr>
+		<!--<h1>Login</h1>
+		<hr>-->
 		<div class='contentLogin' align='center'>
 			<form 
 					class="formulario"
