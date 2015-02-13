@@ -55,7 +55,7 @@
 				<table class='tabelaFormulario'>
 					<!--Titulo-->
 					<tr>
-						<td align='center'>
+						<td align='center' style="width: 1%;">
 							Alterar
 						</td>
 						<td align='center'>

@@ -65,6 +65,7 @@ class template
 				<!--CSS-->
 				<link rel="stylesheet" type="text/css" href="/app.view/css/template.css">					
 				<link rel="stylesheet" type="text/css" href="/app.view/css/formulario.css">	
+				<link rel="stylesheet" type="text/css" href="/app.view/css/responsivo.css">	
 				
 				<!--JQuery-->
 				<script type="text/javascript" src="/app.view/js/jquery.js"></script>

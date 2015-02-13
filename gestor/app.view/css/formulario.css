@@ -15,6 +15,13 @@ form h1
 {
 	color: 	#f70d48;
 }
+form.formulario table
+{
+	padding-left:	0px;
+	padding-right:	0px;
+	margin-left:	0px;
+	margin-right:	0px;
+}
 form.formulario table tr td
 {
 	vertical-align: top;

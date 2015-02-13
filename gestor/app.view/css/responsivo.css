@@ -1,0 +1,119 @@
+/*
+ *	Arquivo  responsivo.css
+ *	Media Queries de responsividade
+ *	
+ *	Sistema:	Doce___Bacana_Lingerie
+ *	Autor:      Rogério Eduardo Pereira
+ *	Data:       13/02/2015
+ */
+@media screen and (max-width: 1280px)
+{
+	body
+	{
+		font-size:	1.5em;
+	}
+	header h1
+	{
+		left:	23%;
+	}
+}
+@media screen and (max-width: 1024px)
+{
+	body
+	{
+		font-size:	1.5em;
+	}
+	header h1
+	{
+		left:	28.5%;
+	}
+	form.formulario table tr td
+	{
+		padding-left:	5px;
+		padding-right:	5px;
+	}
+}
+@media screen and (max-width: 960px)
+{
+	body
+	{
+		font-size:	1.35em;
+	}
+	header h1
+	{
+		left:	30.5%;
+	}
+}
+@media screen and (max-width: 800px)
+{
+	body
+	{
+		font-size:	1.35em;
+	}
+	h1
+	{
+		font-size: 1.5em;
+	}
+	header h1
+	{
+		left:	36%;
+	}
+	aside
+	{
+		width:	12%;
+	}
+	section
+	{
+		width:			86%;
+		padding-left:	5px;
+	}
+	form.formulario table tr td
+	{
+		padding-left:	1px;
+		padding-right:	1px;
+	}
+}
+@media screen and (max-width: 768px)
+{
+	body
+	{
+		font-size:	1.25em;
+	}
+	header h1
+	{
+		left:	37%;
+		top:	38%;
+	}
+	section
+	{
+		padding-left:	0px;
+	}
+	section h1
+	{
+		margin-top:		5px;
+	}
+	form.formulario table tr td
+	{
+		padding-left:	1px;
+		padding-right:	1px;
+	}
+}
+@media screen and (max-width: 640px)
+{
+	div.contentLogin form.formulario table
+	{
+		left:			35%;
+		top:			30%;
+	}
+	
+	header figure img
+	{
+		width: 60%;
+	}
+	
+	header h1
+	{
+		left:	34%;
+		top:	34%;
+	}
+}
