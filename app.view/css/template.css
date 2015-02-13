@@ -33,7 +33,8 @@ body
 
 a
 {
-	font-family:		'Logotipo';
+	/*font-family:		'Logotipo';*/
+	font-family:		'Muli', sans-serif;
 	text-decoration:	none;
 	color:				#f70d48;
 }
@@ -244,7 +245,7 @@ header div#headerBusca
 header div#headerBusca form input#buscaProduto
 {
 	position:							relative;
-	font-family:						'Logotipo';
+	font-family:						'Open Sans Condensed', sans-serif;
 	font-size:							1em;
 	
 	top:								0px;
@@ -300,6 +301,7 @@ nav#navMenuPrincipal ul
 
 nav#navMenuPrincipal ul a
 {
+	font-family:	'Indie Flower', cursive;
 	color:			white;
 	padding-left:	0px;
 	padding-right:	0px;

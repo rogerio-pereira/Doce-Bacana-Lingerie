@@ -59,6 +59,8 @@ class template
 				
 				<!--Fontes-->
 				<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+				<link href='http://fonts.googleapis.com/css?family=Indie+Flower'			rel='stylesheet' type='text/css'>
+				<link href='http://fonts.googleapis.com/css?family=Muli'					rel='stylesheet' type='text/css'>
 				
 				<!--CSS-->
 				<link rel="stylesheet" type="text/css" href="/app.view/css/template.css">					

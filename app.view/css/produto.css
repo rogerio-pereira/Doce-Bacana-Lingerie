@@ -74,7 +74,8 @@ div.incluirOrcamento
 	-moz-border-radius:		30px;
 	border-radius: 			30px;
 	
-	font-family:			'Logotipo';
+	/*font-family:			'Logotipo';*/
+	font-family:			'Muli', sans-serif;
 	font-size:				1.5em;
 	text-align:				center;
 	color:					white;

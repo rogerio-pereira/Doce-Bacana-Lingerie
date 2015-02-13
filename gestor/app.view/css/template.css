@@ -29,7 +29,8 @@ body
 
 a
 {
-	font-family:		'Logotipo';
+	/*font-family:		'Logotipo';*/
+	font-family:		'Muli', sans-serif;
 	text-decoration:	none;
 	color:				#f70d48;
 }

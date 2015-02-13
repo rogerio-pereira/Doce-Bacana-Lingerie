@@ -8,7 +8,7 @@
  */
 form h1
 {
-	font-family:	'Logotipo';
+	font-family:	'Open Sans Condensed', sans-serif;
 	font-weight:	normal;
 }
 .obrigatorio
@@ -56,7 +56,8 @@ form.formulario input[type='submit'],  form.formulario input[type='reset'], form
 	-moz-border-radius:		10px;
 	border-radius: 			10px;
 	
-	font-family:			'Logotipo';
+	/*font-family:			'Logotipo';*/
+	font-family:			'Muli', sans-serif;
 	font-size:				.8em;
 	
 	text-decoration:		underline;
