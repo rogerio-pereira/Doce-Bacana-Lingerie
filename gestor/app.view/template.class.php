@@ -79,6 +79,29 @@ class template
 			</head>
 			<body>
 				<div id='page'>
+					<div id='menuTopo'>
+						menu
+						<nav id='menuEsconde'>
+							<ul>
+							<?php
+								//Categoria
+								if($_SESSION['usuario']->telaCategoria == true)
+									echo "<a href='/categorias'><li>		Categorias	</li></a>";
+								//Orçamento
+								if($_SESSION['usuario']->telaOrcamento == true)
+									echo "<a href='/orcamentos'><li>		Orcamentos	</li></a>";
+								//Produto
+								if($_SESSION['usuario']->telaProduto == true)
+									echo "<a href='/produtos'><li>		Produtos	</li></a>";
+								//Usuario
+								if($_SESSION['usuario']->telaUsuario == true)
+									echo "<a href='/usuarios'><li>		Usuarios	</li></a>";
+							?>
+								<a href='/senha'><li>		Alterar Senha	</li></a>
+								<a href='/logoff'><li>		Logoff			</li></a>
+							</ul>
+						</nav>
+					</div>
 					<!--Header-->
 					<div id='header'>
 						<header>
@@ -91,9 +114,30 @@ class template
 							</h1>
 						</header>
 					</div>
+					<div id='menuCentral'>
+						<nav>
+							<ul>
+							<?php
+								//Categoria
+								if($_SESSION['usuario']->telaCategoria == true)
+									echo "<a href='/categorias'><li>		Categorias	</li></a>";
+								//Orçamento
+								if($_SESSION['usuario']->telaOrcamento == true)
+									echo "<a href='/orcamentos'><li>		Orcamentos	</li></a>";
+								//Produto
+								if($_SESSION['usuario']->telaProduto == true)
+									echo "<a href='/produtos'><li>		Produtos	</li></a>";
+								//Usuario
+								if($_SESSION['usuario']->telaUsuario == true)
+									echo "<a href='/usuarios'><li>		Usuarios	</li></a>";
+							?>
+								<a href='/senha'><li>		Alterar Senha	</li></a>
+								<a href='/logoff'><li>		Logoff			</li></a>
+							</ul>
+						</nav>
+					</div>
 					<!--Section-->
 					<div id='section'>
-						<hr>
 						<aside>
 							<nav id='menu'>
 								<ul id='menuLista'>
@@ -131,6 +175,14 @@ class template
 						</footer>
 					</div>-->
 				</div>
+				
+				<script>
+					$( "#menuEsconde" ).toggle();
+					$( "#menuTopo" ).click(function() 
+					{
+						$( "#menuEsconde" ).toggle();
+					});
+				</script>
 			</body>
 		</html>
 	<?php

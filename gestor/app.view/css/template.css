@@ -92,6 +92,81 @@ div#page
 	margin:			0px;
 }
 
+div#menuTopo
+{
+	position:				fixed;
+	width:					100%;
+	background-color:		black;
+	background-image:		url('../img/template/menu.png');
+	background-repeat:		no-repeat;
+	background-position:	right;
+	background-size:		6% 100%;
+	z-index:				500;
+	visibility:				hidden;
+}
+
+
+div#menuTopo nav#menuEsconde
+{
+	position:			absolute;
+	width:				100%;
+	padding:			0px;
+	margin:				0px;
+	text-align:			center;
+	background-color:	black;
+	z-index:			100;
+}
+
+div#menuTopo nav#menuEsconde ul
+{
+	list-style: none;
+	
+	margin:		0px;
+	padding:	0px;
+}
+
+div#menuTopo nav#menuEsconde ul a
+{	
+	font-family:	'Indie Flower', cursive;
+	color:			white;
+	padding-left:	0px;
+	padding-right:	0px;
+	margin-left:	0px;
+	margin-right:	0px;
+	padding:		0px;
+	height:			150%;
+	
+	border:			none;
+}
+div#menuTopo nav#menuEsconde ul a:hover
+{
+	text-decoration:	underline;
+}
+
+div#menuTopo nav#menuEsconde ul a li
+{
+	display:			block;
+	
+	margin-left:		0px;
+	margin-right:		0px;
+	padding-left:		33px;
+	padding-right:		33px;
+	height:				150%;
+	
+	-webkit-transition: all 1s ease;
+	-moz-transition:	all 1s ease;
+	-ms-transition:		all 1s ease;
+	-o-transition:		all 1s ease;
+	transition:			all 1s ease;
+}
+
+div#menuTopo nav#menuEsconde ul a li:hover
+{
+	text-decoration:	underline;
+	background-color:	white;
+	color:				black;
+	border:				none;
+}
 
 div#header
 {
@@ -133,6 +208,70 @@ header h1
 	font-weight:	normal;
 }
 
+div#menuCentral nav
+{
+	position:			absolute;
+	width:				100%;
+	height:				9%;
+	top:				28%;
+	padding:			0px;
+	margin:				0px;
+	text-align:			center;
+	background-color:	black;
+	z-index:			50;
+	visibility:			hidden;
+}
+
+div#menuCentral nav ul
+{
+	list-style: none;
+	
+	margin:		0px;
+	padding:	0px;
+}
+
+div#menuCentral nav ul a
+{	
+	font-family:	'Indie Flower', cursive;
+	color:			white;
+	padding-left:	0px;
+	padding-right:	0px;
+	margin-left:	0px;
+	margin-right:	0px;
+	padding:		0px;
+	height:			150%;
+	
+	border:			none;
+}
+div#menuCentral nav ul a:hover
+{
+	text-decoration:	underline;
+}
+
+div#menuCentral nav ul a li
+{
+	display:			inline-block;
+	
+	margin-left:		0px;
+	margin-right:		0px;
+	padding-left:		33px;
+	padding-right:		33px;
+	height:				150%;
+	
+	-webkit-transition: all 1s ease;
+	-moz-transition:	all 1s ease;
+	-ms-transition:		all 1s ease;
+	-o-transition:		all 1s ease;
+	transition:			all 1s ease;
+}
+
+div#menuCentral nav ul a li:hover
+{
+	text-decoration:	underline;
+	background-color:	white;
+	color:				black;
+	border:				none;
+}
 
 div#section
 {

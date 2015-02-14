@@ -100,10 +100,30 @@
 }
 @media screen and (max-width: 640px)
 {
-	div.contentLogin form.formulario table
+	body
 	{
-		left:			35%;
-		top:			30%;
+		font-size:	1.15em;
+	}
+	
+	div#menuCentral nav
+	{
+		visibility:	visible;
+	}
+	
+	div#menuCentral nav ul a li
+	{
+		padding-left:		8px;
+		padding-right:		8px;
+	}
+	
+	aside
+	{
+		visibility: hidden;
+	}
+	
+	h1
+	{
+		font-size: 1.6em;
 	}
 	
 	header figure img
@@ -113,7 +133,152 @@
 	
 	header h1
 	{
-		left:	34%;
-		top:	34%;
+		left:	30%;
+		top:	37%;
+	}
+	
+	div#section
+	{
+		top:			35%;
+	}
+	
+	section
+	{
+		width:			95%;
+	}
+}
+
+@media screen and (max-width: 600px)
+{
+	div#menuCentral nav
+	{
+		top:	13%;
+		height: 4.5%
+	}
+	header figure img
+	{
+		width: 55%;
+	}
+	header h1
+	{
+		left:		32%;
+		top:		33%;
+		font-size:	1.4em;
+	}
+	div#section
+	{
+		top:	18%;
+	}
+	section
+	{
+		width:	98%;
+	}
+}
+
+@media screen and (max-width: 568px)
+{
+	div#menuCentral nav
+	{
+		top:	26%;
+		height: 10%
+	}
+	header figure img
+	{
+		width: 50%;
+	}
+	header h1
+	{
+		left:		30%;
+		top:		37%;
+		font-size:	1.3em;
+	}
+	div#section
+	{
+		top:	35%;
+	}
+	section
+	{
+		width:	98%;
+	}
+}
+@media screen and (max-width: 480px)
+{
+	div#menuTopo
+	{
+		visibility: visible;
+	}
+	div#menuCentral nav
+	{
+		visibility: hidden;
+	}
+	div#header
+	{
+		position:	absolute;
+		top:		7%;
+	}
+	header figure
+	{
+		width: 98%;
+		text-align: center;
+	}
+	header figure img
+	{
+		width: 70%;
+	}
+	header h1
+	{
+		left:		0%;
+		top:		85%;
+		font-size:	1.7em;
+	}
+	div#section
+	{
+		top:	55%;
+	}
+	section
+	{
+		width:	98%;
+	}
+}
+@media screen and (max-width: 384px)
+{
+	div#menuTopo
+	{
+		background-size:		8% 100%;
+	}
+	header h1
+	{
+		font-size:	1.3em;
+	}
+	div#section
+	{
+		top:	30%;
+	}
+}
+@media screen and (max-width: 360px)
+{
+	header h1
+	{
+		font-size:	1.2em;
+	}
+	div#header
+	{
+		position:	absolute;
+		top:		5%;
+	}
+	div#section
+	{
+		top:	27%;
+	}
+}
+@media screen and (max-width: 360px)
+{
+	header h1
+	{
+		font-size:	1.15em;
+	}
+	div#section
+	{
+		top:	29%;
 	}
 }

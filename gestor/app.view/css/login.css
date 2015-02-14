@@ -35,6 +35,15 @@ form.formulario table
 	div.contentLogin form.formulario table
 	{
 		left:			35%;
-		top:			30%;
+		top:			25%;
+	}
+}
+
+@media screen and (max-width: 480px)
+{
+	div.contentLogin form.formulario table
+	{
+		left:			30%;
+		top:			20%;
 	}
 }
