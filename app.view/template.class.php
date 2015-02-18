@@ -114,6 +114,7 @@ class template
 				<link rel="stylesheet" type="text/css" href="/app.view/css/produto.css">
 				<link rel="stylesheet" type="text/css" href="/app.view/css/perfil.css">
 				<link rel="stylesheet" type="text/css" href="/app.view/css/responsiveslides.css">
+				<link rel="stylesheet" type="text/css" href="/app.view/css/responsivo.css">
 				
 				<!--JQuery-->
 				<script type="text/javascript" src="/app.view/js/jquery.js"></script>
@@ -135,6 +136,33 @@ class template
 			<body>
 				<!--Usado para o retorno de mensagens do ajax-->
 				<div class='retornoAjax'></div>
+				<div id='menuTopo'>
+					menu
+					<nav id='menuEsconde'>
+						<ul>
+							<a href='/login' title='Login'><li>			Login				</a></li></a>
+							<a href="/cadastro" title='Cadastro'><li>	Cadastre-se			</a></li></a>
+							<a><li>										<br>				</li></a>
+							<a href='/'><li>							Home				</li></a>
+							<a href='/empresa'><li>						Quem Somos			</li></a>
+							<a href='/produtos'><li>					Produtos			</li></a>
+							<li>
+								<ul>
+									<?php
+										foreach ($this->getCollectionCategoria() as $categoria)
+										{
+											echo "<a href='/categoria/{$categoria->codigo}'><li>	{$categoria->nome}	</li></a>";
+										}
+									?>
+								</ul>
+							</li>
+							<a href='/embalagens'><li>					Embalagens			</li></a>
+							<a href='/medidas'><li>						Guia de Medidas		</li></a>
+							<a href='/orcamento'><li>					Orçamento			</li></a>
+							<a href='/contato'><li>						Contato				</li></a>
+						</ul>
+					</nav>
+				</div>
 				<div id='page'>
 					<div id='header'>
 						<header>
@@ -239,7 +267,7 @@ class template
 								
 								<!--Banner de Baixo-->
 								<div id='bannerFooter'>
-									<img src='/app.view/img/template/banner_pagseguro5.png'	alt='Formas de Pagamento'	title='Formas de Pagamento'>
+									<img src='/app.view/img/template/banner_pagseguro5.png'	alt='Formas de Pagamento'	title='Formas de Pagamento' id='pagSeguro'>
 									<img src='/app.view/img/template/entrega.jpg'			alt='Entrega'				title='Entrega'>
 									<img src='/app.view/img/template/frete.png'				alt='Frete'					title='Frete'>
 								</div>
@@ -252,7 +280,7 @@ class template
 									<div id='footerDesc'>
 										<div id='footerDescInformacoes'>
 											<p>
-												<strong>INFORMAÇÕES</strong>
+												<strong>Informações</strong>
 											</p>
 											<hr>
 											<p>
@@ -312,7 +340,9 @@ class template
 												
 											<p>
 												E-MAIL<br />
-												<a href='mailto:contato@docebacanalingerue.com.br'>contato@docebacanalingerie.com.br</a>
+												<a href='mailto:contato@docebacanalingerue.com.br' id='email'>
+													<span id='email'>contato@docebacanalingerie.com.br</span><span id='emailResponsivo'>Contato</span>
+												</a>
 											</p>
 												
 											<!--<p>
@@ -337,6 +367,12 @@ class template
 				iniciaSlider();
 				adicionaMascaras();
 				selecionaPessoaFisica();
+				
+				$( "#menuEsconde" ).toggle();
+				$( "#menuTopo" ).click(function() 
+				{
+					$( "#menuEsconde" ).toggle();
+				});
 			</script>
 		</html>
 	<?php

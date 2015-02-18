@@ -1,0 +1,344 @@
+/*
+ *	Arquivo  responsivo.css
+ *	Media Queries de responsividade
+ *	
+ *	Sistema:	Doce___Bacana_Lingerie
+ *	Autor:      Rogério Eduardo Pereira
+ *	Data:       13/02/2015
+ */
+@media screen and (max-width: 1280px)
+{
+	body
+	{
+		font-size:	1.5em;
+	}
+	nav#navMenuPrincipal ul a li
+	{
+		padding-left:		28px;
+		padding-right:		28px;
+	}
+	section div#bannerFooter 
+	{
+		width:	85%;
+	}
+}
+@media screen and (max-width: 1024px)
+{
+	nav#navMenuPrincipal ul a li
+	{
+		padding-left:		14px;
+		padding-right:		14px;
+	}
+	section aside#categoria
+	{
+		width:			13%;
+	}
+	footer a#email
+	{
+		font-size: .8em;
+	}
+	footer div#footerDesc
+	{	
+		margin-bottom:	20%;
+	}
+	ul.produtosLista li a.linkImagem figure.imgProduto img
+	{
+		width: 160%;
+	}
+	header div#headerLogin
+	{
+		right:		19%;
+	}
+}
+@media screen and (max-width: 960px)
+{
+	nav#navMenuPrincipal ul a li
+	{
+		padding-left:		10px;
+		padding-right:		10px;
+	}
+	header div#headerLogin
+	{
+		right:		20%;
+	}
+	footer div#footerDesc div#footerDescSocial span#email
+	{
+		visibility: hidden;
+	}
+	footer div#footerDesc div#footerDescSocial span#emailResponsivo
+	{
+		visibility: visible;
+		font-size:	1.3em;
+	}
+	footer div#footerDesc
+	{	
+		margin-bottom:	21%;
+	}
+}
+@media screen and (max-width: 800px)
+{
+	body
+	{
+		font-size: 1.4em;
+	}
+	section aside#categoria
+	{
+		width:			12%;
+	}
+	nav#navMenuPrincipal
+	{
+		font-size: .85em;
+	}
+	footer div#footerDesc
+	{	
+		margin-bottom:	24%;
+	}
+	header div#headerLogin
+	{
+		right:		22%;
+	}
+	div.menuPerfil
+	{
+		width:		28%;
+	}
+}
+@media screen and (max-width: 768px)
+{
+	body
+	{
+		font-size: 1.3em;
+	}
+	div.informacoesPerfil
+	{
+		width:		72%;
+	}
+}
+@media screen and (max-width: 640px)
+{
+	body
+	{
+		font-size: 1.2em;
+		overflow-x: auto;
+	}
+	header figure img
+	{
+		width: 45%;
+	}
+	nav#navMenuPrincipal ul a li
+	{
+		padding-left:		5px;
+		padding-right:		5px;
+	}
+	header div#headerLogin
+	{
+		right:	25%;
+	}
+	div#menu
+	{
+		top:	38%;
+	}
+	div#section
+	{	
+		top:	47%;
+	}
+	section aside#categoria
+	{
+		width:			15%;
+	}
+	section div#conteudo
+	{
+		width:	78%;
+	}
+	section div#bannerFooter img#pagSeguro
+	{
+		width: 100%;
+	}
+	footer
+	{
+		font-size: 1.1em;
+	}
+	footer div#footerDesc
+	{	
+		margin-bottom:	28%;
+	}
+	ul.produtosLista li a.linkImagem figure.imgProduto img
+	{
+		width: 400%;
+	}
+	div.menuPerfil
+	{
+		width:		32%;
+	}
+	div.informacoesPerfil
+	{
+		width:		68%;
+	}
+}
+@media screen and (max-width: 600px)
+{
+	div#menu
+	{
+		top:	20%;
+	}
+	div#section
+	{	
+		top:	25%;
+		padding-left: 3%;
+	}
+	header div#headerLogin
+	{
+		right:	27%;
+	}
+	nav#navMenuPrincipal ul a li
+	{
+		padding-left:		4px;
+		padding-right:		4px;
+	}
+	section div#conteudo
+	{
+		width:	76%;
+		padding-left: 3%;
+	}
+	footer div#footerDesc
+	{	
+		margin-bottom:	30%;
+	}
+	ul.produtosLista li a.incluirOrcamento
+	{
+		padding-left:	5px;
+		padding-right:	5px;
+	}
+	ul.produtosLista li a#botaoDetalhes
+	{
+		padding-left:	12px;
+		padding-right:	12px;
+	}
+	ul.produtosLista li a.linkImagem figure.imgProduto img
+	{
+		width: 620%;
+	}
+	div.menuPerfil
+	{
+		width:		35%;
+	}
+	div.informacoesPerfil
+	{
+		width:		65%;
+	}
+	section div#bannerFooter img#pagSeguro
+	{
+		width: 100%;
+		margin: 0px;
+		padding: 0px;
+	}
+}
+@media screen and (max-width: 568px)
+{
+	div#menuTopo
+	{
+		visibility: visible;
+	}
+	nav#navMenuPrincipal
+	{
+		visibility: hidden;
+	}
+	header div#headerLogin
+	{
+		visibility: hidden;
+	}
+	header div#headerCadastro
+	{
+		visibility: hidden;
+	}
+	section aside#categoria
+	{
+		visibility: hidden;
+	}
+	header
+	{
+		top:		8%;
+		text-align: center;
+		display:	block;
+	}
+	header figure
+	{
+		width: 100%;
+	}
+	header figure img
+	{
+		width: 60%;
+	}
+	header div#usuarioNome
+	{
+		top:			100%;
+		margin-right:	auto;
+		margin-left:	auto;
+		width:			100%;
+		z-index:		30;
+	}
+	header div#headerBusca
+	{
+		top:			120%;	
+		margin-right:	auto;
+		margin-left:	auto;
+		width:			100%;
+		z-index:		30;
+	}
+	div#section
+	{	
+		top:	47%;
+	}
+	section div#conteudo
+	{
+		width:	96%;		
+	}
+	section div#bannerFooter
+	{
+		margin-top: 5%;
+	}
+	ul.produtosLista li a.linkImagem figure.imgProduto img
+	{
+		width: 250%;
+	}
+	footer div#footerDesc
+	{	
+		margin-bottom:	39%;
+	}
+}
+@media screen and (max-width: 480px)
+{
+	footer div#footerDesc
+	{	
+		margin-bottom:	43%;
+	}
+	ul.produtosLista li a.linkImagem figure.imgProduto img
+	{
+		width: 550%;
+	}
+}
+@media screen and (max-width: 384px)
+{
+	div#section
+	{	
+		top:	20%;
+	}
+	footer div#footerDesc
+	{	
+		margin-bottom:	61%;
+	}
+	ul.produtosLista li a.linkImagem figure.imgProduto img
+	{
+	}
+	ul.produtosLista li
+	{	
+		width:	25%;
+	}
+}
+@media screen and (max-width: 360px)
+{
+	
+}
+@media screen and (max-width: 360px)
+{
+	
+}
