@@ -1,0 +1,65 @@
+/*! http://responsiveslides.com v1.54 by @viljamis */
+
+.rslides {
+  position: relative;
+  list-style: none;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  }
+
+.rslides li {
+  -webkit-backface-visibility: hidden;
+  position: absolute;
+  display: none;
+  width: 100%;
+  left: 0;
+  top: 0;
+  }
+
+.rslides li:first-child {
+  position: relative;
+  display: block;
+  float: left;
+  }
+
+.rslides img {
+  display: block;
+  height: auto;
+  float: left;
+  width: 100%;
+  border: 0;
+  }
+  
+#sliderEmbalagem-pager
+{
+	list-style: none;
+	padding-left: 0px;
+	margin-left: 0px;
+}
+#sliderEmbalagem-pager li {
+  display: inline-block;
+  padding-left: 0px;
+  margin-left: 0px;
+  margin-right: 5px;
+}
+  
+#sliderEmbalagem-pager a {
+  display: inline-block;
+  padding-left: 0px;
+  margin-left: 0px;
+}
+
+#sliderEmbalagem-pager img {
+  float: left;
+}
+
+#sliderEmbalagem-pager .rslides_here a {
+  background: transparent;
+  box-shadow: 0 0 0 2px #f70d48;
+}
+
+#sliderEmbalagem-pager a {
+  padding: 0;
+}

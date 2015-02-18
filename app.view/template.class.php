@@ -113,6 +113,7 @@ class template
 				<link rel="stylesheet" type="text/css" href="/app.view/css/login.css">
 				<link rel="stylesheet" type="text/css" href="/app.view/css/produto.css">
 				<link rel="stylesheet" type="text/css" href="/app.view/css/perfil.css">
+				<link rel="stylesheet" type="text/css" href="/app.view/css/responsiveslides.css">
 				
 				<!--JQuery-->
 				<script type="text/javascript" src="/app.view/js/jquery.js"></script>
@@ -120,6 +121,7 @@ class template
 				<script type="text/javascript" src="/app.view/js/jquery-cycle.js"></script>
 				<script type="text/javascript" src="/app.view/js/jquery.elevatezoom.js"></script>
 				<script type="text/javascript" src="/app.view/js/jquery.numeric.js"></script>
+				<script type="text/javascript" src="/app.view/js/jquery.responsiveslides.js"></script>
 				
 				<!--JavaScript-->
 				<script type="text/javascript" src="/app.view/js/contato.js"></script>

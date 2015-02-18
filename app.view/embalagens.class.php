@@ -37,7 +37,42 @@
 		 */
 		public function show()
 		{
+			//Slider
+			echo "<div align='center'><ul class='rslides' id='sliderEmbalagem'>";
+			for($i=1; $i<9; $i++)
+			{
+				echo "
+						<li>
+							<img 
+								src='/app.view/img/embalagens/embalagem_0{$i}.jpg'
+								alt='Embalagem {$i}' 
+								title'Embalagem {$i}'
+							>
+						</li>
+					";
+			}
+			echo '</ul><br>';
 			
+			//Paginação
+			echo "<ul id='sliderEmbalagem-pager'>";
+			for($i=1; $i<9; $i++)
+			{
+				echo "<li><a href='#'><img src='/app.view/img/embalagens/miniaturas/embalagem_0{$i}.jpg' alt='Embalagem {$i}' title'Embalagem {$i}></a></li>";
+			}
+			echo '</ul></div>';
+			
+			?>
+				<script>
+					 // SlideShow
+					$("#sliderEmbalagem").responsiveSlides(
+					{
+						manualControls: '#sliderEmbalagem-pager',
+						speed: 1000,
+						timeout: 6000,
+						maxwidth: 600
+					});
+				</script>
+			<?php
 		}
 	}
 
