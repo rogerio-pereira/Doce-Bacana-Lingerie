@@ -191,9 +191,9 @@
 										</legend>
 									</figure>
 								</a>
-								<a href='/produto/{$produto->codProd}'>Detalhes</a><br>
+								<a href='/produto/{$produto->codProd}' id='botaoDetalhes'>Detalhes</a><br>
 								<a class='incluirOrcamento' href='/produto/{$produto->codProd}' onclick='incluirOrcamento({$produto->codProd})'>
-									Incluir no Orçamento
+									Orçamento
 								</a>
 						</li>
 					";

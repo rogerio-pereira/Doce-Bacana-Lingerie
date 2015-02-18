@@ -47,6 +47,8 @@
 			<form class="formulario" name="orcamento" method="post" action="app.control/ajax.php" onsubmit="enviaOrcamento">
 				<input type="hidden" name="formularioNome" value="enviaOrcamento">
 				<table class='tabelaFormulario'>
+					<tr><td colspan='10' align='center' style='font-size: 1.3em;'><input type='button' value='Incluir nova referencia' onclick="top.location='/';"></td></tr>
+					<tr><td colspan='10'><hr></td></tr>
 					<?php
 						if(count($_SESSION['produtosOrcamento']) > 0)
 						{
