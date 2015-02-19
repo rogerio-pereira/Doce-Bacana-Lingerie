@@ -20,7 +20,7 @@ function executaLogin()
 		},
 		success: function(data) 
 		{
-			top.location='/';
+			top.location='/perfil';
 		}
 	});
 }
