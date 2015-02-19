@@ -274,7 +274,7 @@
 		margin-right:	auto;
 		margin-left:	auto;
 		width:			100%;
-		z-index:		30;
+		z-index:		500;
 	}
 	header div#headerBusca
 	{
@@ -321,24 +321,91 @@
 	div#section
 	{	
 		top:	20%;
+		z-index: 300;
 	}
 	footer div#footerDesc
 	{	
-		margin-bottom:	61%;
+		margin-bottom:	83%;
+	}
+	ul.produtosLista li
+	{
+		display:	inline-block;
+		width:		100%;
+		text-align: center;
+		margin-left: auto;
+		margin-right:	auto;
+	}
+	ul.produtosLista li a.linkImagem figure.imgProduto
+	{
+		padding-left: 20%;
 	}
 	ul.produtosLista li a.linkImagem figure.imgProduto img
 	{
+		width:		100%;
 	}
-	ul.produtosLista li
+	footer div#footerDesc
+	{
+		display: inline-block;
+	}
+	footer div#footerDesc div#footerDescInformacoes
+	{
+		width:		40%;
+		left:		2.5%;
+		top:		0px;
+	}
+	footer div#footerDesc div#footerDescConta
+	{
+		width:		40%;
+		left:		55%;
+		top:		0px;
+	}
+	footer div#footerDesc div#footerDescContato
+	{
+		width:		40%;
+		left:		2.5%;
+		top:		145px;
+	}
+	footer div#footerDesc div#footerDescSocial
+	{
+		width:		40%;
+		left:		55%;
+		top:		145px;
+	}
+	div.menuPerfil
+	{
+		width:		100%;
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;		
+	}
+	div.informacoesPerfil
+	{
+		width:		100%;
+	}
+}
+@media screen and (max-width: 360px)
+{
+	footer div#footerDesc
 	{	
-		width:	25%;
+		margin-bottom:	100%;
+	}
+	footer div#footerDesc div#footerDescContato
+	{
+		top:		170px;
+	}
+	footer div#footerDesc div#footerDescSocial
+	{
+		top:		170px;
 	}
 }
-@media screen and (max-width: 360px)
+@media screen and (max-width: 320px)
 {
-	
-}
-@media screen and (max-width: 360px)
-{
-	
+	footer div#footerDesc
+	{	
+		margin-bottom:	113%;
+	}
+	div.detalheProduto a.incluirOrcamento
+	{
+		white-space: nowrap;
+	}
 }
