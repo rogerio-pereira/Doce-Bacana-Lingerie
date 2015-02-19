@@ -269,7 +269,7 @@ class template
 								<div id='bannerFooter'>
 									<img src='/app.view/img/template/banner_pagseguro5.png'	alt='Formas de Pagamento'	title='Formas de Pagamento' id='pagSeguro'>
 									<img src='/app.view/img/template/entrega.jpg'			alt='Entrega'				title='Entrega'>
-									<img src='/app.view/img/template/frete.png'				alt='Frete'					title='Frete'>
+									<!--<img src='/app.view/img/template/frete.png'				alt='Frete'					title='Frete'>-->
 								</div>
 							</div>
 							
