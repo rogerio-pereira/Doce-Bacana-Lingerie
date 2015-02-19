@@ -63,12 +63,12 @@
 		$controlador->setEstado($_POST['estado']);
 		$controlador->setPontoReferencia($_POST['referencia']);
 		$controlador->setChave(md5($_POST['email']));
-		$controlador->setAtivo(FALSE);
+		$controlador->setAtivo(1);
 		
 		if($controlador->salvar() == true)
-			echo "<script>alert('Cadastrado com Sucesso!');</script>";
+			echo "<script>alert('Cadastrado com Sucesso!');top.location='/';</script>";
 		else
-			echo "<script>alert('Falha ao cadastrar!');</script>";
+			echo "<script>alert('Falha ao cadastrar!');window.history.back();</script>";
 	}
 	else if ($formulario == 'login')
 	{

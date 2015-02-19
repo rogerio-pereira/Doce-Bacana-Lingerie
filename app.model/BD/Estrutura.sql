@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 13-Fev-2015 às 16:22
+-- Data de Criação: 19-Fev-2015 às 17:58
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.16
 
@@ -55,8 +55,8 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   `celular` varchar(17) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
   `senha` varchar(32) NOT NULL,
-  `ofertaEmail` tinyint(1) NOT NULL,
-  `ofertaCelular` tinyint(1) NOT NULL,
+  `ofertaEmail` tinyint(1) DEFAULT NULL,
+  `ofertaCelular` tinyint(1) DEFAULT NULL,
   `cep` varchar(9) NOT NULL,
   `endereco` varchar(100) NOT NULL,
   `numero` int(11) NOT NULL,
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `chave` (`chave`),
   UNIQUE KEY `cpf` (`cpf`,`cnpj`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
 
 -- --------------------------------------------------------
 

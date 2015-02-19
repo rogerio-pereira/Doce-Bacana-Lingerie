@@ -393,7 +393,7 @@ class controladorClientes
 	{
 		try
 		{
-			$this->setCliente(new clientes2);
+			$this->setCliente(new clientes2());
 			
 			$this->cliente->pessoa					= $this->getPessoa();
 			$this->cliente->nome					= $this->getNome();
@@ -421,7 +421,7 @@ class controladorClientes
 			$this->cliente->chave					= $this->getChave();
 			$this->cliente->ativo					= $this->getAtivo();
 			
-
+			
 			//RECUPERA CONEXAO BANCO DE DADOS
 			TTransaction2::open('my_bd_site');
 

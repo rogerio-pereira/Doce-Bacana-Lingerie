@@ -49,6 +49,14 @@ function selecionaPessoaJuridica()
 	$(".camposJuridico").show();
 }
 
+function selecionaInformacoesTributarias()
+{
+	if($("#radioInformacoesTributariasIsento").is(":checked") == true)
+		$("#inscricaoEstadual").attr('disabled','disabled');  
+	else
+		$("#inscricaoEstadual").removeAttr('disabled');
+}
+
 function validaEmail(field)
 {
 	usuario = field.substring(0, field.indexOf("@"));
@@ -214,7 +222,7 @@ function validaCamposCadastroCliente()
 				if(i == 4)
 					aux = 9;
 				
-				add += parseInt(cnpj.charAt(i)) * (10 - aux);
+				add += parseInt(cnpj.charAt(i)) * (aux);
 				
 				aux--;
 			}
@@ -222,7 +230,7 @@ function validaCamposCadastroCliente()
 			rev = 11 - (add % 11);
 			if (rev == 10 || rev == 11)
 				rev = 0;
-			if (rev != parseInt(cnpj.charAt(13)))
+			if (rev != parseInt(cnpj.charAt(12)))
 			{
 				alert('CNPJ Inválido!');
 				$("#cnpj").val('');
@@ -238,14 +246,14 @@ function validaCamposCadastroCliente()
 				if(i == 5)
 					aux = 9;
 				
-				add += parseInt(cnpj.charAt(i)) * (10 - aux);
+				add += parseInt(cnpj.charAt(i)) * (aux);
 				
 				aux--;
 			}
 			rev = 11 - (add % 11);
 			if (rev == 10 || rev == 11)
 				rev = 0;
-			if (rev != parseInt(cnpj.charAt(14)))
+			if (rev != parseInt(cnpj.charAt(13)))
 			{
 				alert('CNPJ Inválido!');
 				$("#cnpj").val('');
@@ -265,11 +273,17 @@ function validaCamposCadastroCliente()
 			return false;
 		}
 		//Inscrição Estadual
-		if( $("#inscricaoEstadual").val() == '')
+		if	(
+				($("#radioInformacoesTributariasContribuinte").is(":checked") == true) ||
+				($("#radioInformacoesTributariasNaoContribuinte").is(":checked") == true)
+			)
 		{
-			alert( "Campo em branco: Inscrição Estadual" );
-			$('#inscricaoEstadual').focus();
-			return false;
+			if( $("#inscricaoEstadual").val() == '')
+			{
+				alert( "Campo em branco: Inscrição Estadual" );
+				$('#inscricaoEstadual').focus();
+				return false;
+			}
 		}
 	}
 	//E-mail

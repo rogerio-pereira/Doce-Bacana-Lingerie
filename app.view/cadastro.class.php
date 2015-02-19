@@ -88,11 +88,11 @@
 							<label for='radioInformacoesTributarias' class='titulo obrigatorio'>Informações Tributárias</label>
 						</td>
 						<td>
-							<input type='radio' name='radioInformacoesTributarias' id='radioInformacoesTributariasContribuinte' value='0'>
+							<input type='radio' name='radioInformacoesTributarias' id='radioInformacoesTributariasContribuinte' value='0' onclick='selecionaInformacoesTributarias()'>
 								<label for='radioInformacoesTributariasContribuinte'>Contribuinte ICMS</label><br />
-							<input type='radio' name='radioInformacoesTributarias' id='radioInformacoesTributariasNaoContribuinte' value='1'>
+							<input type='radio' name='radioInformacoesTributarias' id='radioInformacoesTributariasNaoContribuinte' value='1' onclick='selecionaInformacoesTributarias()'>
 								<label for='radioInformacoesTributariasNaoContribuinte'>Não Contribuinte</label><br />
-							<input type='radio' name='radioInformacoesTributarias' id='radioInformacoesTributariasIsento' value='2'>
+							<input type='radio' name='radioInformacoesTributarias' id='radioInformacoesTributariasIsento' value='2' onclick='selecionaInformacoesTributarias()'>
 								<label for='radioInformacoesTributariasIsento'>Isento de Inscrição Estadual</label>
 						</td>
 					</tr>

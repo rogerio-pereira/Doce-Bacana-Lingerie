@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 13-Fev-2015 às 16:22
+-- Data de Criação: 19-Fev-2015 às 17:58
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.16
 
@@ -64,8 +64,8 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   `celular` varchar(17) DEFAULT NULL,
   `email` varchar(100) NOT NULL,
   `senha` varchar(32) NOT NULL,
-  `ofertaEmail` tinyint(1) NOT NULL,
-  `ofertaCelular` tinyint(1) NOT NULL,
+  `ofertaEmail` tinyint(1) DEFAULT NULL,
+  `ofertaCelular` tinyint(1) DEFAULT NULL,
   `cep` varchar(9) NOT NULL,
   `endereco` varchar(100) NOT NULL,
   `numero` int(11) NOT NULL,
@@ -80,14 +80,19 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `chave` (`chave`),
   UNIQUE KEY `cpf` (`cpf`,`cnpj`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
 
 --
 -- Extraindo dados da tabela `clientes`
 --
 
 INSERT INTO `clientes` (`codigo`, `pessoa`, `nome`, `nomeResponsavel`, `cpf`, `cnpj`, `informacaoTributaria`, `inscricaoEstadual`, `nascimento`, `sexo`, `telefone`, `celular`, `email`, `senha`, `ofertaEmail`, `ofertaCelular`, `cep`, `endereco`, `numero`, `complemento`, `bairro`, `cidade`, `estado`, `pontoReferencia`, `chave`, `ativo`) VALUES
-(13, 1, 'Rogério Eduardo Pereira', NULL, '101.042.346-01', NULL, NULL, NULL, '1991-03-01', 1, '(35) 9109 - 0906', '(35) 9109 - 0906', 'rogerio@rogerio.com', '673026bc5f6bf0bdcf136c961e0b3a09', 0, 0, '37701-223', 'Rua Major Luis Loiola', 45, NULL, 'Jardim Bela Vista', 'Poços de Caldas', 'MG', NULL, '8c0f45f4ad8126311b4f9869728cf0af', 0);
+(13, 1, 'Rogério Eduardo Pereira', NULL, '101.042.346-01', NULL, NULL, NULL, '1991-03-01', 1, '(35) 9109 - 0906', '(35) 9109 - 0906', 'rogerio@rogerio.com', '673026bc5f6bf0bdcf136c961e0b3a09', 0, 0, '37701-223', 'Rua Major Luis Loiola', 45, NULL, 'Jardim Bela Vista', 'Poços de Caldas', 'MG', NULL, '8c0f45f4ad8126311b4f9869728cf0af', 0),
+(14, 1, 'Rogério Eduardo Pereira', NULL, '520.245.511-90', NULL, NULL, NULL, '1991-03-01', 1, NULL, '(35) 9109 - 0906', 'rogerio@rogeriopereira.info', '202cb962ac59075b964b07152d234b70', NULL, NULL, '37701-227', 'Rua Major Luis Loiola', 45, NULL, 'Jardim Bela Vista', 'Poços de Caldas', 'MG', NULL, '4d6bf8d7f0342e6e4279e2b8dbea7b92', 1),
+(17, 1, 'Rogério Eduardo Pereira', NULL, '173.585.824-20', NULL, NULL, NULL, '1991-03-01', 1, NULL, '(35) 9109 - 0906', 'rogeriopereira.info@gmail.com', '202cb962ac59075b964b07152d234b70', NULL, NULL, '37701-227', 'Rua Major Luis Loiola', 45, NULL, 'Jardim Bela Vista', 'Poços de Caldas', 'MG', NULL, '7de38fd323918abf82449b80067919e0', 1),
+(18, 1, 'Rogério Eduardo Pereira', NULL, '683.192.495-62', NULL, NULL, NULL, '1991-03-01', 1, NULL, '(35) 9109 - 0906', 'rodu.pereira@gmail.com', '202cb962ac59075b964b07152d234b70', NULL, NULL, '37701-227', 'Rua Major Luis Loiola', 45, NULL, 'Jardim Bela Vista', 'Poços de Caldas', 'MG', NULL, 'e5e9fadab0def10e11fa9579607cf94e', 1),
+(19, 2, 'Rogério Eduardo Pereira', 'Rogério Eduardo Pereira', NULL, '19.022.865/0001-87', 002, NULL, NULL, NULL, NULL, '(55) 5555 - 55555', 'das@dasd.com', '202cb962ac59075b964b07152d234b70', NULL, NULL, '11111-111', 'das', 1, NULL, 'das', 'dasd', 'PB', 'dsad', 'a20b0984321718b296d156094adcad5a', 1),
+(20, 2, 'Rogério Eduardo Pereira', 'Rogério Eduardo Pereira', NULL, '73.444.184/0001-52', 000, 'dsada', NULL, NULL, NULL, '(55) 5555 - 55555', 'dads@ddsadasd.com', '202cb962ac59075b964b07152d234b70', NULL, NULL, '11111-111', 'das', 1, NULL, 'das', 'dasd', 'PB', 'dsad', 'a886973c3c9e645fffbc92ef54732272', 1);
 
 -- --------------------------------------------------------
 
