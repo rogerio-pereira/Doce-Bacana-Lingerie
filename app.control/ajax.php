@@ -93,10 +93,13 @@
 		try
 		{
 			$adiciona = true;
-			foreach ($_SESSION['orcamento'] as $orcamento)
+			if(count($_SESSION['orcamento']) > 0)
 			{
-				if($orcamento == $_POST['codigo'])
-					$adiciona = false;
+				foreach ($_SESSION['orcamento'] as $orcamento)
+				{
+					if($orcamento == $_POST['codigo'])
+						$adiciona = false;
+				}
 			}
 					
 			if($adiciona == true)	

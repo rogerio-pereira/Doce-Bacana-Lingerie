@@ -55,6 +55,15 @@
                                     <input name="txtTelefone" class='campoTelefone campo' type="text" id="txtTelefone" placeholder='Telefone'/>
                                 </td>
                             </tr>
+							<!--Telefone-->
+                            <tr>
+                                <td style="width: 30%">
+                                    <label for='txtOperadora' class='titulo'>Operadora</label>
+                                </td>
+                                <td style="width: 70%">
+                                    <input name="txtOperadora" class='campo' type="text" id="txtOperadora" placeholder='Operadora'/>
+                                </td>
+                            </tr>
                             <!--Cidade-->
                             <tr>
                                 <td style="width: 30%">

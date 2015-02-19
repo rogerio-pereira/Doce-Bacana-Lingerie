@@ -177,7 +177,7 @@
 									</figure>
 								</a>
 								<a href='/produto/{$produto->codProd}' id='botaoDetalhes'>Detalhes</a>
-								<a class='incluirOrcamento' href='/produto/{$produto->codProd}' onclick='incluirOrcamento({$produto->codProd})'>
+								<a class='incluirOrcamento' href='/orcamento' onclick='incluirOrcamento({$produto->codProd})'>
 									Orçamento
 								</a>
 						</li>

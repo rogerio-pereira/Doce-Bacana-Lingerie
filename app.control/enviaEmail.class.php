@@ -14,6 +14,7 @@
         private $para;
         private $mail;
         private $telefone;
+		private $operadora;
         private $cidade;
         //private $headers;
         
@@ -36,13 +37,14 @@
          */
         private function getValores()
         {
-            $this->nome     = $_POST['txtNome'];
-            $this->de       = $_POST['txtEmail'];
-            $this->assunto  = $_POST['txtAssunto'];
-            $this->mensagem = $_POST['txtMensagem'];
-            $this->telefone = $_POST['txtTelefone'];
-            $this->cidade   = $_POST['txtCidade'];
-            $this->para     = 'contato@docebacanalingerie.com.br';  //Email que vai receber o email de contato
+            $this->nome			= $_POST['txtNome'];
+            $this->de			= $_POST['txtEmail'];
+            $this->assunto		= $_POST['txtAssunto'];
+            $this->mensagem		= $_POST['txtMensagem'];
+            $this->telefone		= $_POST['txtTelefone'];
+			$this->operadora	= $_POST['txtOperadora'];
+            $this->cidade		= $_POST['txtCidade'];
+            $this->para			= 'contato@docebacanalingerie.com.br';  //Email que vai receber o email de contato
         }
         
         /*
@@ -59,11 +61,14 @@
             $this->headers .= "From: $this->Nome <$this->de>\n";                // remetente
             $this->headers .= "Return-Path: $this->de\n";                       // return-path
             $this->headers .= "Reply-To: $this->de\n";                          // Endereço (devidamente validado) que o seu usuário informou no contato*/
+			
+			if(isset($this->operadora) || ($this->operadora != ''))
+				$op = " ({$this->operadora})";
             
             $this->corpoMensagem =  "
                                         <b>Nome:</b> {$this->nome}<br>\n
                                         <b>Email:</b> {$this->de}<br>\n
-                                        <b>Telefone:</b> {$this->telefone}<br>\n
+                                        <b>Telefone:</b> {$this->telefone}{$op}<br>\n
                                         <b>Cidade:</b> {$this->cidade}<br>\n
                                         <b>Assunto:</b> {$this->assunto}<br>\n
                                         <b>Mensgem:</b><br>\n

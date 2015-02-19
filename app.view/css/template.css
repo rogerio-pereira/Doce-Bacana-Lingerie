@@ -123,7 +123,8 @@ div#menuTopo nav#menuEsconde ul
 
 div#menuTopo nav#menuEsconde ul a
 {	
-	font-family:	'Indie Flower', cursive;
+	/*font-family:	'Indie Flower', cursive;*/
+	font-family:		'Muli', sans-serif;
 	color:			white;
 	padding-left:	0px;
 	padding-right:	0px;
@@ -382,7 +383,8 @@ nav#navMenuPrincipal ul
 
 nav#navMenuPrincipal ul a
 {
-	font-family:	'Indie Flower', cursive;
+	/*font-family:	'Indie Flower', cursive;*/
+	font-family:		'Muli', sans-serif;
 	color:			white;
 	padding-left:	0px;
 	padding-right:	0px;
@@ -407,8 +409,8 @@ nav#navMenuPrincipal ul a li
 	
 	margin-left:		0px;
 	margin-right:		0px;
-	padding-left:		33px;
-	padding-right:		33px;
+	padding-left:		23px;
+	padding-right:		23px;
 	height:				100%;
 	
 	-webkit-transition: all 1s ease;
