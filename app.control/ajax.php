@@ -267,11 +267,26 @@
 				if($i>0)
 				{
 					if($codigoAnterior != $codigoAtual)
-						echo "<tr><td colspan='10'><hr></td></tr>";
+						echo 
+							"
+								<tr>
+									<td colspan='10' align='center' style='font-size: 1.3em;'>
+										<input type='button' value='Excluir do orçamento' onclick='removeOrcamento($codigoAnterior)'>
+									</td>
+								</tr>
+								<tr><td colspan='10'><hr></td></tr>
+							";
 				}
 
 				if($codigoAnterior != $codigoAtual)
-					echo "<tr><td colspan='10' align='center' style='font-size: 1.3em;'><input type='button' value='Apagar Referencia' onclick='removeOrcamento({$produto['codigoProduto']})'></td></tr>";
+					echo	
+						"
+							<tr>
+								<td colspan='10' align='center' style='font-size: 1.3em;'>
+									<strong>{$produto['referencia']}<strong>
+								</td>
+							</tr>
+						";
 
 				echo
 					"
@@ -618,6 +633,14 @@
 
 				$i++;
 			}
+			echo 
+				"
+					<tr>
+						<td colspan='10' align='center' style='font-size: 1.3em;'>
+							<input type='button' value='Excluir do orçamento' onclick='removeOrcamento($codigoAnterior)'>
+						</td>
+					</tr>
+				";
 			echo "<tr><td colspan='10'><hr></td></tr>";
 		}
 		else

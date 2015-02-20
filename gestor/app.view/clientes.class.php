@@ -49,9 +49,9 @@
 		public function show()
 		{
 		?>
-			<h1>Categorias</h1>
-			<form class="formulario" name="ListaCategoria" method="post">
-				<input type="hidden" name="formularioNome" value="ListaCategoria">
+			<h1>Clientes</h1>
+			<form class="formulario" name="listaClientes" method="post">
+				<input type="hidden" name="formularioNome" value="listaClientes">
 				<table class='tabelaFormulario'>
 					<!--Titulo-->
 					<tr>
