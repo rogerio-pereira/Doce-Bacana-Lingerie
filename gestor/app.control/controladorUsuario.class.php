@@ -30,6 +30,7 @@ class controladorUsuario
 	private $telaOrcamento;
 	private $telaProduto;
 	private $telaUsuario;
+	private $telaCliente;
 	
 	private $senhaAtual;
 	
@@ -256,8 +257,17 @@ class controladorUsuario
 	{
 		$this->senhaAtual = md5($senhaAtual);
 	}
+	function getTelaCliente()
+	{
+		return $this->telaCliente;
+	}
 
-	
+	function setTelaCliente($telaCliente)
+	{
+		$this->telaCliente = $telaCliente;
+	}
+
+		
 		
 
 	/*
@@ -272,6 +282,7 @@ class controladorUsuario
 		$this->setUser(NULL);
 		$this->setSenha(NULL);
 		$this->setSenhaAtual(NULL);
+		$this->setTelaCliente(NULL);
 	}
 
 	public function zeraRepository()
@@ -351,6 +362,7 @@ class controladorUsuario
 			$this->usuario->telaOrcamento	= $this->getTelaOrcamento();
 			$this->usuario->telaProduto		= $this->getTelaProduto();
 			$this->usuario->telaUsuario		= $this->getTelaUsuario();
+			$this->usuario->telaCliente		= $this->getTelaCliente();
 			
 			//RECUPERA CONEXAO BANCO DE DADOS
 			TTransaction2::open('my_bd_site');

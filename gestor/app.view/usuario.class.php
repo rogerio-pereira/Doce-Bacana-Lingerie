@@ -113,7 +113,7 @@
 					<!--Usuario-->
 					<tr>
 						<td>
-							Usuário
+							<label for='checkUsuario'>Usuário</label>
 						</td>
 						<td>
 						<?php
@@ -127,7 +127,7 @@
 					<!--Categoria-->
 					<tr>
 						<td>
-							Categoria
+							<label for='checkCategoria'>Categoria</label>
 						</td>
 						<td>
 						<?php
@@ -141,7 +141,7 @@
 					<!--Produto-->
 					<tr>
 						<td>
-							Produto
+							<label for='checkProduto'>Produto</label>
 						</td>
 						<td>
 						<?php
@@ -155,7 +155,7 @@
 					<!--Orçamento-->
 					<tr>
 						<td>
-							Orçamento
+							<label for='checkOrcamento'>Orçamento</label>
 						</td>
 						<td>
 						<?php
@@ -163,6 +163,21 @@
 								echo "<input type='checkbox' name='checkOrcamento' id='checkOrcamento' value='1' checked>";
 							else
 								echo "<input type='checkbox' name='checkOrcamento' id='checkOrcamento' value='1'>";
+						?>
+							
+						</td>
+					</tr>
+					<!--Orçamento-->
+					<tr>
+						<td>
+							<label for='checkCliente'>Cliente</label>
+						</td>
+						<td>
+						<?php
+							if($this->getUsuario()->telaOrcamento == 1)
+								echo "<input type='checkbox' name='checkCliente' id='checkCliente' value='1' checked>";
+							else
+								echo "<input type='checkbox' name='checkCliente' id='checkCliente' value='1'>";
 						?>
 							
 						</td>

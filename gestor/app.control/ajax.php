@@ -148,18 +148,7 @@
 		$controlador->setTelaOrcamento($_POST['telaOrcamento']);
 		$controlador->setTelaProduto($_POST['telaProduto']);
 		$controlador->setTelaUsuario($_POST['telaUsuario']);
-		
-		echo 
-			"
-				{$_POST['codigo']}\n
-				{$_POST['nome']}\n
-				{$_POST['usuario']}\n
-				{$_POST['senha']}\n
-				{$_POST['categoria']}\n
-				{$_POST['orcamento']}\n
-				{$_POST['produto']}\n
-				{$_POST['usuario']}\n
-			";
+		$controlador->setTelaCliente($_POST['telaCliente']);
 		
 		if($controlador->salvarUsuario2())
 			return true;

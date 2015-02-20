@@ -88,6 +88,11 @@ function salvarUsuario()
 	else
 		orc = 0;
 	
+	if ($('#checkCliente').is(":checked"))
+		cli = 1;
+	else
+		cli = 0;
+	
 	$.ajax
 	({
 		type: "POST",
@@ -102,12 +107,13 @@ function salvarUsuario()
 			telaOrcamento:	orc,
 			telaProduto:	prod,
 			telaUsuario:	user,
+			telaCliente:	cli,
 			formularioNome:	'salvaUsuario'
 		},
 		success: function(data) 
 		{
 			alert("Usuario Cadastrado com sucesso!");
-			top.location='/usuarios';
+			top.location='/';
 		}
 	});
 }

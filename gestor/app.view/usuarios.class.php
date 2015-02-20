@@ -77,11 +77,14 @@
 							Orçamento
 						</td>
 						<td align='center'>
+							Cliente
+						</td>
+						<td align='center'>
 							Excluir
 						</td>
 					</tr>
 					<tr>
-						<td colspan='8'>
+						<td colspan='9'>
 							<hr>
 						</td>
 					</tr> 
@@ -131,6 +134,13 @@
 								"
 										</td>
 										<td align='center'>
+								";
+							if($usuario->telaCliente == 1)
+								echo '&check;';
+							echo
+								"
+										</td>
+										<td align='center'>
 											<input type='checkbox' name='usuariosApagar[]' class='chkUsuariosApagar' value='{$usuario->codigo}'>
 										</td>
 									</tr>
@@ -138,7 +148,7 @@
 						}
 					?>
 					<tr>
-						<td colspan='8'>
+						<td colspan='9'>
 							<hr>
 						</td>
 					</tr>
@@ -147,7 +157,7 @@
 						<td align='center'>
 							<input type='button' value='Alterar' onclick='alteraUsuario()'>
 						</td>
-						<td colspan='6' align='center'>
+						<td colspan='7' align='center'>
 							<input type='button' value='Cadastrar' onclick='novoUsuario()'>
 						</td>
 						<td align='center'>
