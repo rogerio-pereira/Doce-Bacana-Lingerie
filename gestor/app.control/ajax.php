@@ -313,6 +313,18 @@
 			echo 'Senha Atual Inválida!';
 		}
 	}
+	//Alteração de Senha Cliente
+	else if($request == 'alteraSenhaCliente')
+	{
+		$controlador = new controladorClientes();
+		$controlador->setCodigo($_POST['codigo']);
+		$controlador->setSenha($_POST['senhaNova']);
+		
+		if($controlador->alteraSenha())
+			echo 'Senha alterada com sucesso!';
+		else
+			echo 'Erro ao alterar senha!';
+	}
 	//Remover Cor
 	else if($request == 'apagaCor')
 	{

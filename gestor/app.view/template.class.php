@@ -76,6 +76,7 @@ class template
 				<script type="text/javascript" src="/app.view/js/usuario.js"></script>
 				<script type="text/javascript" src="/app.view/js/produto.js"></script>
 				<script type="text/javascript" src="/app.view/js/orcamento.js"></script>
+				<script type="text/javascript" src="/app.view/js/cliente.js"></script>
 			</head>
 			<body>
 				<div id='page'>
@@ -84,12 +85,15 @@ class template
 						<nav id='menuEsconde'>
 							<ul>
 							<?php
+								//Cliente
+								if($_SESSION['usuario']->telaCliente == true)
+									echo "<a href='/clientes'><li>		Clientes	</li></a>";
 								//Categoria
 								if($_SESSION['usuario']->telaCategoria == true)
-									echo "<a href='/categorias'><li>		Categorias	</li></a>";
+									echo "<a href='/categorias'><li>	Categorias	</li></a>";
 								//Orçamento
 								if($_SESSION['usuario']->telaOrcamento == true)
-									echo "<a href='/orcamentos'><li>		Orcamentos	</li></a>";
+									echo "<a href='/orcamentos'><li>	Orcamentos	</li></a>";
 								//Produto
 								if($_SESSION['usuario']->telaProduto == true)
 									echo "<a href='/produtos'><li>		Produtos	</li></a>";
@@ -118,12 +122,15 @@ class template
 						<nav>
 							<ul>
 							<?php
+								//Cliente
+								if($_SESSION['usuario']->telaCliente == true)
+									echo "<a href='/clientes'><li>		Clientes	</li></a>";
 								//Categoria
 								if($_SESSION['usuario']->telaCategoria == true)
-									echo "<a href='/categorias'><li>		Categorias	</li></a>";
+									echo "<a href='/categorias'><li>	Categorias	</li></a>";
 								//Orçamento
 								if($_SESSION['usuario']->telaOrcamento == true)
-									echo "<a href='/orcamentos'><li>		Orcamentos	</li></a>";
+									echo "<a href='/orcamentos'><li>	Orcamentos	</li></a>";
 								//Produto
 								if($_SESSION['usuario']->telaProduto == true)
 									echo "<a href='/produtos'><li>		Produtos	</li></a>";
@@ -142,6 +149,9 @@ class template
 							<nav id='menu'>
 								<ul id='menuLista'>
 								<?php
+									//Cliente
+									if($_SESSION['usuario']->telaCliente == true)
+										echo "<a href='/clientes'><li>		Clientes	</li></a>";
 									//Categoria
 									if($_SESSION['usuario']->telaCategoria == true)
 										echo "<a href='/categorias'><li>		Categorias	</li></a>";

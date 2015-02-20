@@ -50,6 +50,7 @@
 		{
 		?>
 			<h1>Categoria</h1>
+			<hr>
 			<form class="formulario" name="salvaCategoria"	method="post" onsubmit="validaCategoria()">
 				<input type="hidden" name="formularioNome"	value="salvaCategoria">
 				<input type="hidden" name="codigo"			id='codigo' value="<?php echo $this->getCategoria()->codigo; ?>">

@@ -1,6 +1,6 @@
 <?php
 /*
- *	Classe  clientes.class.php
+ *	Classe  clientesModel.class.php
  *	Classe de Modelo da tabela clientes
  *	
  *	Sistema:	Doce___Bacana_Lingerie
@@ -9,9 +9,9 @@
  */
 
 	/*
-	 * Classe clientes.class.php
+	 * Classe clientesModel.class.php
 	 */
-	class clientes extends TRecord
+	class clientesModel extends TRecord
 	{
 		/*
 		 * Variaveis
