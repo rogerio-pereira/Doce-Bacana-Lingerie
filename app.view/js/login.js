@@ -20,7 +20,7 @@ function executaLogin()
 		},
 		success: function(data) 
 		{
-			top.location='/perfil';
+			top.location='/orcamento';
 		}
 	});
 }

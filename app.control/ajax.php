@@ -254,6 +254,12 @@
 		$_SESSION['produtosOrcamento']	= array_values($_SESSION['produtosOrcamento']);
 		$_SESSION['orcamento']			= array_values($_SESSION['orcamento']);
 		
+		echo 
+			"
+				<tr><td colspan='10' align='center' style='font-size: 1.3em'><input type='button' value='Incluir nova referencia' onclick=\"top.location='/'\"></td></tr>
+				<tr><td colspan='10'><hr></td></tr>
+			";
+		
 		if(count($_SESSION['produtosOrcamento']) > 0)
 		{
 			$i = 0;

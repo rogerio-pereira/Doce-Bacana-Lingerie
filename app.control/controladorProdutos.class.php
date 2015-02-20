@@ -253,7 +253,10 @@ class controladorProdutos
 		if(($categoria != NULL) && ($categoria == -1))
 			$criteria->setProperty('limit', $inicio.',12');
 		else
+		{
 			$criteria->setProperty('limit', '12');
+			$criteria->setProperty('order', 'rand()');
+		}
 				
 		
 		$this->repository = new TRepository();
