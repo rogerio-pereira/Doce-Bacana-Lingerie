@@ -67,7 +67,13 @@
 								}
 								
 								if($codigoAnterior != $codigoAtual)
-									echo "<tr><td colspan='10' align='center' style='font-size: 1.3em;'><input type='button' value='Apagar Referencia' onclick='removeOrcamento({$produto['codigoProduto']})'></td></tr>";
+									echo "
+											<tr>
+												<td colspan='10' align='center' style='font-size: 1.3em;'>
+													<input type='button' value='Apagar Referencia {$produto['referencia']}' onclick='removeOrcamento({$produto['codigoProduto']})'>
+												</td>
+											</tr>
+										 ";
 								
 								echo
 									"

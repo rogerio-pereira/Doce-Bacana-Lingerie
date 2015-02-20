@@ -119,6 +119,7 @@ class controladorProdutos
 	
 	function getCollectionProdutoBusca($busca, $inicio)
 	{		
+		$busca = str_replace('+', ' ', $busca);
 		
 		$this->setCollectionProduto(NULL);
 		

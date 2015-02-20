@@ -335,7 +335,7 @@ class template
 											<p>
 												TELEFONE<br />
 												(35) 3571 - 5785<br />
-												(35) 3571 - 5785 - WhatsApp
+												(35) 9174 - 5885 - WhatsApp
 											</p>
 												
 											<p>

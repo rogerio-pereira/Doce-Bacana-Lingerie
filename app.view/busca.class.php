@@ -127,8 +127,11 @@
 			//Busca
 			if(!empty($_GET['chave']))
 				$this->setBusca($_GET['chave']);
+			if(!empty($_GET['cod']))
+				$this->setBusca($_GET['cod']);
 			else
 				$this->setBusca (NULL);
+			
 			
 			//Pagina
 			if(!empty($_GET['pag']))
