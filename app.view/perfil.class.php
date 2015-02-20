@@ -50,7 +50,8 @@
 			<div class='menuPerfil'>
 				<a href='/alterarDados/'>	Alterar Dados	</a><br>
 				<a href='/alterarSenha/'>	Alterar Senha	</a><br>
-				<a href='/meusOrcamentos/'>	Meus Orcamentos	</a>
+				<a href='/meusOrcamentos/'>	Meus Orcamentos	</a><br>
+				<a href='/logoff'>			Logoff			</a>
 			</div>
 			
 			<div class='informacoesPerfil'>
