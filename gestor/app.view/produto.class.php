@@ -313,7 +313,7 @@
 									"		</td>																													" .
 									"		<td>																													";
 
-									//Banner 1
+									/*//Banner 1
 									if($cor->banner1 == 1)
 										echo "<input type='checkbox' name='banner1_'.$numeroCor.'	class='chkBanner1_'.$numeroCor.'	value='1' checked disabled>Banner 1<br>";
 									else
@@ -329,7 +329,7 @@
 									if($cor->banner3 == 1)
 										echo "<input type='checkbox' name='banner3_'.$numeroCor.'	class='chkBanner3_'.$numeroCor.'	value='1' checked disabled>Banner 3<br>";
 									else
-										echo "<input type='checkbox' name='banner3_'.$numeroCor.'	class='chkBanner3_'.$numeroCor.'	value='1' disabled>Banner 3<br>";
+										echo "<input type='checkbox' name='banner3_'.$numeroCor.'	class='chkBanner3_'.$numeroCor.'	value='1' disabled>Banner 3<br>";*/
 
 									//Home
 									if($cor->home == 1)

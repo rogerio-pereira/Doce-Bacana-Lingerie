@@ -51,7 +51,7 @@
 				<a href='/alterarDados/'>	Alterar Dados	</a><br>
 				<a href='/alterarSenha/'>	Alterar Senha	</a><br>
 				<a href='/meusOrcamentos/'>	Meus Orcamentos	</a><br>
-				<a href='/logoff'>			Logoff			</a>
+				<a href='/logoff'>			Sair			</a>
 			</div>
 			
 			<div class='informacoesPerfil'>
