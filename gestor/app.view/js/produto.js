@@ -405,3 +405,48 @@ function selecionaCorDefinida(componente)
 		}
 	});	
 }
+
+function alteraCor()
+{
+	var codigo = $('input[name=radioCor]:checked').val();
+	
+	top.location='/cor/'+codigo;
+}
+
+function validaCor()
+{
+	var valida;
+	valida = true;
+	
+	if ($('#nome').val() == '')
+	{
+		alert('Digite um nome');
+		$('#nome').focus();
+		return;
+	}
+	
+	if (valida = true)
+		salvaCor();
+}
+
+function salvaCor()
+{
+	$.ajax
+	({
+		type: "POST",
+		url: "/app.control/ajax.php",
+		data: 
+		{
+			codigo:			$('#codigo').val(),
+			nome:			$('#nome').val(),
+			cor1:			$('#cor1').val(),
+			cor2:			$('#cor2').val(),
+			formularioNome:	'alteraCor'
+		},
+		success: function(data) 
+		{
+			alert(data);
+			top.location='/produtos';
+		}
+	});	
+}

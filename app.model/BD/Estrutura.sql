@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 19-Fev-2015 às 17:58
+-- Data de Criação: 21-Fev-2015 às 13:38
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.16
 
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `chave` (`chave`),
   UNIQUE KEY `cpf` (`cpf`,`cnpj`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 -- --------------------------------------------------------
 
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `cores` (
   `cor1` varchar(7) NOT NULL,
   `cor2` varchar(7) NOT NULL,
   PRIMARY KEY (`codigo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
 
 -- --------------------------------------------------------
 
@@ -164,16 +164,15 @@ CREATE TABLE IF NOT EXISTS `produtos` (
 CREATE TABLE IF NOT EXISTS `produtoscores` (
   `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `codigoProduto` bigint(20) unsigned NOT NULL,
-  `nome` varchar(20) NOT NULL,
-  `cor1` varchar(7) NOT NULL,
-  `cor2` varchar(7) NOT NULL,
   `banner1` tinyint(1) DEFAULT NULL,
   `banner2` tinyint(1) DEFAULT NULL,
   `banner3` tinyint(1) DEFAULT NULL,
   `home` tinyint(1) DEFAULT NULL,
+  `codigoCoresDefinidas` bigint(20) unsigned NOT NULL,
   PRIMARY KEY (`codigo`),
-  KEY `codigoProduto` (`codigoProduto`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=133 ;
+  KEY `codigoProduto` (`codigoProduto`),
+  KEY `codigoCoresDefinidas` (`codigoCoresDefinidas`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=135 ;
 
 -- --------------------------------------------------------
 
@@ -190,6 +189,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `telaOrcamento` tinyint(1) NOT NULL,
   `telaProduto` tinyint(1) NOT NULL,
   `telaUsuario` tinyint(1) NOT NULL,
+  `telaCliente` tinyint(1) NOT NULL,
   PRIMARY KEY (`codigo`),
   UNIQUE KEY `usuario` (`usuario`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
@@ -221,6 +221,7 @@ ALTER TABLE `produtos`
 -- Limitadores para a tabela `produtoscores`
 --
 ALTER TABLE `produtoscores`
+  ADD CONSTRAINT `cor_corpredefinida` FOREIGN KEY (`codigoCoresDefinidas`) REFERENCES `cores` (`codigo`) ON UPDATE CASCADE,
   ADD CONSTRAINT `produtos_cor` FOREIGN KEY (`codigoProduto`) REFERENCES `produtos` (`codigo`) ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

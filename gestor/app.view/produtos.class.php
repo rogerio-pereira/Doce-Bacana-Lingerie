@@ -17,6 +17,7 @@
 		 * Variaveis
 		 */
 		private $collectionProdutos;
+		private $collectionCores;
 		
 		
 		/*
@@ -31,7 +32,18 @@
 		{
 			$this->collectionProdutos = $collectionProdutos;
 		}
+		
+		function getCollectionCores()
+		{
+			return $this->collectionCores;
+		}
 
+		function setCollectionCores($collectionCores)
+		{
+			$this->collectionCores = $collectionCores;
+		}
+
+		
 				
 		
 		/*
@@ -40,6 +52,7 @@
 		public function __construct()
 		{
 			$this->setCollectionProdutos((new controladorProdutos())->getCollectionProdutos());
+			$this->setCollectionCores((new controladorProdutos())->getCollectionCores());
 		}
 		
 		/*
@@ -49,8 +62,8 @@
 		public function show()
 		{
 		?>
-
 			<h1>Produtos</h1>
+			<hr>
 			<form class="formulario" name="listaProdutos"	method="post" onsubmit="validaAlteracaoSenha()">
 				<input type="hidden" name="formularioNome"	value="listaProdutos">
 				<table class='tabelaFormulario'>
@@ -117,6 +130,82 @@
 								echo "<input type='button' value='Apagar' onclick='apagaProdutos()'>";
 						?>
 						</td>
+					</tr>
+				</table>
+			</form>
+			<hr><br>
+			<h1>Cores</h1>
+			<hr>
+			<form class="formulario" name="listaCores"	method="post">
+				<input type="hidden" name="formularioNome"	value="listaCores">
+				<table class='tabelaFormulario'>
+					<tr>
+						<td>
+							Selecionar
+						</td>
+						<td>
+							Nome
+						</td>
+						<td>
+							Cor
+						</td>
+					</tr>
+					<?php
+						$i = 0;
+						foreach ($this->getCollectionCores() as $cor)
+						{
+							echo
+								"
+									<tr>
+										<td align='center'>
+											<input type='radio' name='radioCor' id='radioCor' value='{$cor->codigo}'>
+										</td>
+										<td>
+											{$cor->nome}
+										</td>
+										<td>
+											<style>
+												.cod_{$i}
+												{
+													width:			5%;
+													height:			0;
+													padding-top:	5%;
+													overflow:		hidden;
+													display:		inline-block;
+													border:			solid 2px black;
+													margin:			0px;
+													cursor:			pointer;
+												}
+												.cod_{$i}:after 
+												{
+													content:		'';
+													display:		block;
+													width:			0;
+													height:			0;
+													margin-top:		-500px;
+
+													cursor:			pointer;
+
+													border-top:		500px solid {$cor->cor1};
+													border-right:	500px solid {$cor->cor2};
+												}
+											</style>
+											<div 
+												class='cod_{$i}' alt='{$cor->nome}' title='{$cor->nome}'>
+											</div>
+										</td>
+									</tr>
+								";
+							$i++;
+						}
+					?>
+					<tr>
+						<!--Estou usando 3 td no lugar de colspan devido ao .cod_{$i}:after (border-right) ser de 500px, então a tabela fica bem grande-->
+						<td></td>
+						<td align='center'>
+							<input type='button' value='Alterar' onclick='alteraCor()'>
+						</td>
+						<td></td>
 					</tr>
 				</table>
 			</form>

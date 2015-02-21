@@ -48,6 +48,7 @@ class controladorProdutos extends controladorUpload
 	private $banner2;
 	private $banner3;
 	private $home;
+	private $codigoCoresDefinidas;
 	
 	private $collectionCores;
 	private $cor;
@@ -203,6 +204,8 @@ class controladorProdutos extends controladorUpload
 	{
 		return $this->tamanho54;
 	}
+	
+	
 
 	function getCollectionProdutosCores($codigo)
 	{
@@ -213,13 +216,25 @@ class controladorProdutos extends controladorUpload
 
 		//TABELA exposition_gallery
 		$criteria	= new TCriteria;
-		$criteria->add(new TFilter('codigoProduto', '=', $codigo));
+		$criteria->add(new TFilter('p.codigoProduto', '=', $codigo));
+		$criteria->add(new TFilter('p.codigoCoresDefinidas', '=', 'c.codigo'));
 		$criteria->setProperty('order', 'nome');
 		
 		$this->repository = new TRepository();
 		
-		$this->repository->addColumn('*');
-		$this->repository->addEntity('produtoscores');
+		$this->repository->addColumn('p.codigo as codigo');
+		$this->repository->addColumn('p.codigoProduto as codigoProduto');
+		$this->repository->addColumn('p.codigoProduto as codigoProduto');
+		$this->repository->addColumn('p.banner1 as banner1');
+		$this->repository->addColumn('p.banner2 as banner2');
+		$this->repository->addColumn('p.banner3 as banner3');
+		$this->repository->addColumn('p.home as home');
+		$this->repository->addColumn('p.codigoCoresDefinidas as codigoCoresDefinidas');
+		$this->repository->addColumn('c.nome as nome');
+		$this->repository->addColumn('c.cor1 as cor1');
+		$this->repository->addColumn('c.cor2 as cor2');
+		$this->repository->addEntity('produtoscores p');
+		$this->repository->addEntity('cores c');
 		
 		$this->setCollectionProdutosCores($this->repository->load($criteria));
 		
@@ -567,7 +582,17 @@ class controladorProdutos extends controladorUpload
 		$this->cor2Cores = $cor2Cores;
 	}
 
-			
+	function getCodigoCoresDefinidas()
+	{
+		return $this->codigoCoresDefinidas;
+	}
+
+	function setCodigoCoresDefinidas($codigoCoresDefinidas)
+	{
+		$this->codigoCoresDefinidas = $codigoCoresDefinidas;
+	}
+
+	
 	
 	
 	/*
@@ -602,6 +627,7 @@ class controladorProdutos extends controladorUpload
 		$this->setBanner2(NULL);
 		$this->setBanner3(NULL);
 		$this->setHome(NULL);
+		$this->setCodigoCoresDefinidas(NULL);
 		$this->setCollectionCores(NULL);
 		$this->setCor(NULL);
 		$this->setCodigoCores(NULL);
@@ -660,16 +686,22 @@ class controladorProdutos extends controladorUpload
 	{
 		try
 		{	
+			if($this->existeCor($this->getNome(), $this->getCor1(), $this->getCor2()) == false)
+			{
+				$this->salvaCorNova($this->getNome(), $this->getCor1(), $this->getCor2());
+				$this->setCodigoCoresDefinidas($this->getLastCorPredefinida());
+			}
+			else
+				$this->setCodigoCoresDefinidas($this->getCodCorByCaracteriticas($this->getNome(), $this->getCor1(), $this->getCor2() ) );
+				
 			$this->setProdutoCor(new produtoscoresModel2());
 			
-			$this->produtoCor->codigoProduto	= $this->getCodigoProduto();
-			$this->produtoCor->nome				= $this->getNome();
-			$this->produtoCor->cor1				= $this->getCor1();
-			$this->produtoCor->cor2				= $this->getCor2();
-			$this->produtoCor->banner1			= $this->getBanner1();
-			$this->produtoCor->banner2			= $this->getBanner2();
-			$this->produtoCor->banner3			= $this->getBanner3();
-			$this->produtoCor->home				= $this->getHome();
+			$this->produtoCor->codigoProduto			= $this->getCodigoProduto();
+			$this->produtoCor->banner1					= $this->getBanner1();
+			$this->produtoCor->banner2					= $this->getBanner2();
+			$this->produtoCor->banner3					= $this->getBanner3();
+			$this->produtoCor->home						= $this->getHome();
+			$this->produtoCor->codigoCoresDefinidas		= $this->getCodigoCoresDefinidas();
 			
 			//RECUPERA CONEXAO BANCO DE DADOS
 			TTransaction2::open('my_bd_site');
@@ -678,8 +710,7 @@ class controladorProdutos extends controladorUpload
 
 			TTransaction2::close();
 			
-			if($this->existeCor($this->getNome(), $this->getCor1(), $this->getCor2()) == false)
-					$this->salvaCorNova($this->getNome(), $this->getCor1(), $this->getCor2());
+			
 					
 			return true;
 		} 
@@ -865,6 +896,85 @@ class controladorProdutos extends controladorUpload
 			return true;
 		} 
 		catch (Exception $ex)
+		{
+			return false;
+		}
+	}
+	
+	/*
+	 * Método getLastCorPredefinida
+	 * Obtem o ultimo codigo cadastrado na tabela cores
+	 */
+	public function getLastCorPredefinida()
+	{
+		$this->setCor(new coresModel2());
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction2::open('my_bd_site');
+		
+		$codigo =  $this->cor->getLast();
+		
+		TTransaction2::close();
+		
+		return $codigo;
+	}
+	
+	/*
+	 * Método getCodCorByCaracteriticas
+	 * Obtem o codigo da cor de acordo com as caracteristicas
+	 */
+	public function getCodCorByCaracteriticas($nome, $cor1, $cor2)
+	{
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction2::open('my_bd_site');
+
+		//TABELA exposition_gallery
+		$criteria	= new TCriteria;
+		$criteria->add(new TFilter('nome', '=', $nome));
+		$criteria->add(new TFilter('cor1', '=', $cor1));
+		$criteria->add(new TFilter('cor2', '=', $cor2));
+		//$criteria->setProperty('order', 'ordem ASC');
+		
+		$this->repository = new TRepository2();
+		
+		$this->repository->addColumn('codigo');
+		$this->repository->addEntity('cores');
+		
+		$codigo = $this->repository->load($criteria);
+		
+		$codigo = $codigo[0]->codigo;
+		
+		TTransaction::close();
+		
+		return $codigo;
+	}
+	
+	/*
+	 * Método atualizaCor
+	 * Atualiza a cor
+	 */
+	public function atualizaCor()
+	{
+		try
+		{
+			$this->setCor(new coresModel2());
+			
+			$this->cor->codigo	= $this->getCodigoCores();
+			$this->cor->nome	= $this->getNomeCores();
+			$this->cor->cor1	= $this->getCor1Cores();
+			$this->cor->cor2	= $this->getCor2Cores();
+			
+			
+			//RECUPERA CONEXAO BANCO DE DADOS
+			TTransaction2::open('my_bd_site');
+			
+			$result = $this->cor->store();
+
+			TTransaction2::close();
+
+			return true;
+		}
+		catch(Exception $e)
 		{
 			return false;
 		}

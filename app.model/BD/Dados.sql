@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 19-Fev-2015 às 17:58
+-- Data de Criação: 21-Fev-2015 às 13:38
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.16
 
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `chave` (`chave`),
   UNIQUE KEY `cpf` (`cpf`,`cnpj`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Extraindo dados da tabela `clientes`
@@ -92,7 +92,8 @@ INSERT INTO `clientes` (`codigo`, `pessoa`, `nome`, `nomeResponsavel`, `cpf`, `c
 (17, 1, 'Rogério Eduardo Pereira', NULL, '173.585.824-20', NULL, NULL, NULL, '1991-03-01', 1, NULL, '(35) 9109 - 0906', 'rogeriopereira.info@gmail.com', '202cb962ac59075b964b07152d234b70', NULL, NULL, '37701-227', 'Rua Major Luis Loiola', 45, NULL, 'Jardim Bela Vista', 'Poços de Caldas', 'MG', NULL, '7de38fd323918abf82449b80067919e0', 1),
 (18, 1, 'Rogério Eduardo Pereira', NULL, '683.192.495-62', NULL, NULL, NULL, '1991-03-01', 1, NULL, '(35) 9109 - 0906', 'rodu.pereira@gmail.com', '202cb962ac59075b964b07152d234b70', NULL, NULL, '37701-227', 'Rua Major Luis Loiola', 45, NULL, 'Jardim Bela Vista', 'Poços de Caldas', 'MG', NULL, 'e5e9fadab0def10e11fa9579607cf94e', 1),
 (19, 2, 'Rogério Eduardo Pereira', 'Rogério Eduardo Pereira', NULL, '19.022.865/0001-87', 002, NULL, NULL, NULL, NULL, '(55) 5555 - 55555', 'das@dasd.com', '202cb962ac59075b964b07152d234b70', NULL, NULL, '11111-111', 'das', 1, NULL, 'das', 'dasd', 'PB', 'dsad', 'a20b0984321718b296d156094adcad5a', 1),
-(20, 2, 'Rogério Eduardo Pereira', 'Rogério Eduardo Pereira', NULL, '73.444.184/0001-52', 000, 'dsada', NULL, NULL, NULL, '(55) 5555 - 55555', 'dads@ddsadasd.com', '202cb962ac59075b964b07152d234b70', NULL, NULL, '11111-111', 'das', 1, NULL, 'das', 'dasd', 'PB', 'dsad', 'a886973c3c9e645fffbc92ef54732272', 1);
+(20, 2, 'Rogério Eduardo Pereira', 'Rogério Eduardo Pereira', NULL, '73.444.184/0001-52', 000, 'dsada', NULL, NULL, NULL, '(55) 5555 - 55555', 'dads@ddsadasd.com', '202cb962ac59075b964b07152d234b70', 1, 1, '11111-111', 'das', 1, NULL, 'das', 'dasd', 'PB', 'dsad', 'a886973c3c9e645fffbc92ef54732272', 1),
+(21, 0, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '202cb962ac59075b964b07152d234b70', NULL, NULL, '', '', 0, NULL, '', '', '', NULL, '', 0);
 
 -- --------------------------------------------------------
 
@@ -106,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `cores` (
   `cor1` varchar(7) NOT NULL,
   `cor2` varchar(7) NOT NULL,
   PRIMARY KEY (`codigo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
 
 --
 -- Extraindo dados da tabela `cores`
@@ -131,7 +132,8 @@ INSERT INTO `cores` (`codigo`, `nome`, `cor1`, `cor2`) VALUES
 (16, 'Chocolate', '#e6c391', '#e6c391'),
 (17, 'Preto com Bic', '#000000', '#4132c8'),
 (18, 'Zebra', '#000000', '#ffffff'),
-(19, 'Mamona Assassina', '#00ff00', '#ff0000');
+(19, 'Mamona Assassina', '#00ff00', '#ff0000'),
+(20, 'Abacate', '#7a2374', '#7a2374');
 
 -- --------------------------------------------------------
 
@@ -266,95 +268,96 @@ INSERT INTO `produtos` (`codigo`, `referencia`, `categoria`, `descricao`, `carac
 CREATE TABLE IF NOT EXISTS `produtoscores` (
   `codigo` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `codigoProduto` bigint(20) unsigned NOT NULL,
-  `nome` varchar(20) NOT NULL,
-  `cor1` varchar(7) NOT NULL,
-  `cor2` varchar(7) NOT NULL,
   `banner1` tinyint(1) DEFAULT NULL,
   `banner2` tinyint(1) DEFAULT NULL,
   `banner3` tinyint(1) DEFAULT NULL,
   `home` tinyint(1) DEFAULT NULL,
+  `codigoCoresDefinidas` bigint(20) unsigned NOT NULL,
   PRIMARY KEY (`codigo`),
-  KEY `codigoProduto` (`codigoProduto`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=133 ;
+  KEY `codigoProduto` (`codigoProduto`),
+  KEY `codigoCoresDefinidas` (`codigoCoresDefinidas`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=135 ;
 
 --
 -- Extraindo dados da tabela `produtoscores`
 --
 
-INSERT INTO `produtoscores` (`codigo`, `codigoProduto`, `nome`, `cor1`, `cor2`, `banner1`, `banner2`, `banner3`, `home`) VALUES
-(54, 10, 'Preto', '#000000', '#000000', NULL, NULL, NULL, NULL),
-(55, 10, 'Branco', '#ffffff', '#ffffff', 1, NULL, NULL, NULL),
-(56, 10, 'Chocolate', '#c48888', '#c48888', NULL, NULL, NULL, 1),
-(60, 9, 'Preto', '#000000', '#000000', NULL, NULL, NULL, NULL),
-(61, 9, 'Branco', '#ffffff', '#ffffff', NULL, NULL, NULL, 1),
-(62, 9, 'Chocolate', '#c48888', '#c48888', 1, NULL, NULL, NULL),
-(63, 11, 'Preto', '#000000', '#000000', NULL, NULL, NULL, NULL),
-(65, 11, 'Chocolate', '#c48888', '#c48888', NULL, NULL, NULL, 1),
-(66, 11, 'Branco', '#ffffff', '#ffffff', NULL, NULL, NULL, NULL),
-(67, 12, 'Rubi', '#c80a14', '#c80a14', NULL, NULL, NULL, NULL),
-(69, 12, 'Suzy', '#00c8e6', '#ffffff', NULL, NULL, NULL, 1),
-(70, 12, 'Preto', '#000000', '#000000', NULL, NULL, NULL, NULL),
-(71, 12, 'Branco', '#ffffff', '#00c8e6', NULL, NULL, 1, NULL),
-(72, 13, 'Preto', '#000000', '#000000', NULL, NULL, NULL, NULL),
-(73, 13, 'Estampado Rubi', '#ffffff', '#c80a14', NULL, 1, NULL, 1),
-(74, 14, 'Branco', '#ffffff', '#ffffff', NULL, NULL, NULL, NULL),
-(75, 14, 'Estampado Preto', '#ffffff', '#000000', NULL, 1, NULL, NULL),
-(76, 14, 'Estampado Rosa', '#ffffff', '#d2a0b4', NULL, NULL, NULL, NULL),
-(77, 14, 'Estampado Rubi', '#ffffff', '#c80a14', NULL, NULL, NULL, NULL),
-(78, 14, 'Estampado Suzy', '#ffffff', '#00c8e6', NULL, NULL, NULL, NULL),
-(79, 14, 'Preto', '#000000', '#000000', NULL, NULL, NULL, NULL),
-(80, 14, 'Rosa Bebe', '#d2a0b4', '#d2a0b4', NULL, NULL, NULL, NULL),
-(81, 14, 'Rubi', '#c80a14', '#c80a14', NULL, NULL, NULL, 1),
-(82, 14, 'Suzy', '#00c8e6', '#00c8e6', NULL, NULL, NULL, NULL),
-(83, 15, 'Branco', '#ffffff', '#ffffff', NULL, NULL, NULL, NULL),
-(84, 15, 'Estampado Rosa', '#ffffff', '#d2a0b4', NULL, 1, NULL, NULL),
-(85, 15, 'Estampado Rubi', '#ffffff', '#c80a14', NULL, NULL, NULL, NULL),
-(86, 15, 'Estampado Suzy', '#ffffff', '#00c8e6', NULL, NULL, NULL, 1),
-(87, 15, 'Preto', '#000000', '#000000', NULL, NULL, NULL, NULL),
-(88, 15, 'Rubi', '#c80a14', '#c80a14', NULL, NULL, NULL, NULL),
-(89, 15, 'Suzy', '#00c8e6', '#00c8e6', NULL, NULL, NULL, NULL),
-(90, 16, 'Bic', '#4132c8', '#4132c8', NULL, NULL, NULL, NULL),
-(91, 16, 'Preto', '#000000', '#000000', NULL, NULL, NULL, NULL),
-(92, 16, 'Rubi', '#c80a14', '#c80a14', 1, NULL, NULL, 1),
-(93, 17, 'Branco', '#ffffff', '#ffffff', 1, NULL, NULL, 1),
-(94, 17, 'Preto', '#000000', '#000000', NULL, NULL, NULL, NULL),
-(95, 17, 'Bic', '#4132c8', '#4132c8', NULL, NULL, NULL, NULL),
-(96, 18, 'Rubi', '#c80a14', '#c80a14', 1, NULL, NULL, 1),
-(97, 18, 'Branco', '#ffffff', '#ffffff', NULL, NULL, NULL, NULL),
-(98, 18, 'Bic', '#4132c8', '#4132c8', NULL, NULL, NULL, NULL),
-(99, 19, 'Camaro', '#fae10f', '#fae10f', NULL, NULL, 1, NULL),
-(100, 19, 'Suzy', '#00c8e6', '#00c8e6', NULL, NULL, NULL, 1),
-(101, 19, 'Preto', '#000000', '#000000', NULL, NULL, NULL, NULL),
-(102, 19, 'Branco', '#ffffff', '#ffffff', NULL, NULL, NULL, NULL),
-(103, 19, 'Rubi', '#c80a14', '#c80a14', NULL, NULL, NULL, NULL),
-(104, 20, 'Branco', '#ffffff', '#ffffff', NULL, NULL, NULL, NULL),
-(105, 20, 'Onça', '#000000', '#ffff80', 1, NULL, NULL, 1),
-(107, 20, 'Preto', '#000000', '#000000', NULL, NULL, NULL, NULL),
-(108, 20, 'Rubi', '#c80a14', '#c80a14', NULL, NULL, NULL, NULL),
-(109, 20, 'Chocolate', '#e6c391', '#e6c391', NULL, NULL, NULL, NULL),
-(110, 21, 'Bic', '#4132c8', '#4132c8', NULL, 1, NULL, 1),
-(111, 21, 'Branco', '#ffffff', '#ffffff', NULL, NULL, NULL, NULL),
-(112, 21, 'Preto', '#000000', '#000000', NULL, NULL, NULL, NULL),
-(113, 21, 'Rubi', '#c80a14', '#c80a14', NULL, NULL, NULL, NULL),
-(114, 22, 'Bic', '#4132c8', '#4132c8', NULL, 1, NULL, NULL),
-(115, 22, 'Branco', '#ffffff', '#ffffff', NULL, NULL, NULL, NULL),
-(116, 22, 'Preto', '#000000', '#000000', NULL, NULL, NULL, NULL),
-(117, 22, 'Preto com Bic', '#000000', '#4132c8', NULL, NULL, NULL, 1),
-(118, 23, 'Onça', '#000000', '#ffff80', 1, NULL, NULL, 1),
-(119, 23, 'Preto', '#000000', '#000000', NULL, NULL, NULL, NULL),
-(120, 24, 'Preto', '#000000', '#000000', NULL, NULL, NULL, NULL),
-(121, 24, 'Zebra', '#000000', '#ffffff', NULL, 1, NULL, 1),
-(122, 25, 'Preto', '#000000', '#000000', NULL, NULL, NULL, NULL),
-(123, 26, 'Preto', '#000000', '#000000', NULL, NULL, NULL, NULL),
-(124, 27, 'Branco', '#ffffff', '#ffffff', NULL, NULL, NULL, NULL),
-(125, 28, 'Preto', '#000000', '#000000', NULL, NULL, NULL, NULL),
-(126, 29, 'Preto', '#000000', '#000000', NULL, NULL, NULL, NULL),
-(127, 30, 'Mamona Assassina', '#00ff00', '#ff0000', NULL, NULL, NULL, NULL),
-(128, 31, 'Mamona Assassina', '#00ff00', '#ff0000', NULL, NULL, NULL, NULL),
-(129, 31, 'Mamona Assassina', '#00ff00', '#ff0000', NULL, NULL, NULL, NULL),
-(130, 31, 'Chocolate', '#c48888', '#c48888', NULL, NULL, NULL, NULL),
-(131, 32, 'Mamona Assassina', '#00ff00', '#ff0000', NULL, NULL, NULL, NULL),
-(132, 32, 'Chocolate', '#c48888', '#c48888', NULL, NULL, NULL, NULL);
+INSERT INTO `produtoscores` (`codigo`, `codigoProduto`, `banner1`, `banner2`, `banner3`, `home`, `codigoCoresDefinidas`) VALUES
+(54, 10, NULL, NULL, NULL, NULL, 1),
+(55, 10, 1, NULL, NULL, NULL, 2),
+(56, 10, NULL, NULL, NULL, 1, 3),
+(60, 9, NULL, NULL, NULL, NULL, 1),
+(61, 9, NULL, NULL, NULL, 1, 2),
+(62, 9, 1, NULL, NULL, NULL, 3),
+(63, 11, NULL, NULL, NULL, NULL, 1),
+(65, 11, NULL, NULL, NULL, 1, 3),
+(66, 11, NULL, NULL, NULL, NULL, 2),
+(67, 12, NULL, NULL, NULL, NULL, 4),
+(69, 12, NULL, NULL, NULL, 1, 5),
+(70, 12, NULL, NULL, NULL, NULL, 1),
+(71, 12, NULL, NULL, 1, NULL, 6),
+(72, 13, NULL, NULL, NULL, NULL, 1),
+(73, 13, NULL, 1, NULL, 1, 7),
+(74, 14, NULL, NULL, NULL, NULL, 2),
+(75, 14, NULL, 1, NULL, NULL, 8),
+(76, 14, NULL, NULL, NULL, NULL, 9),
+(77, 14, NULL, NULL, NULL, NULL, 7),
+(78, 14, NULL, NULL, NULL, NULL, 10),
+(79, 14, NULL, NULL, NULL, NULL, 1),
+(80, 14, NULL, NULL, NULL, NULL, 11),
+(81, 14, NULL, NULL, NULL, 1, 4),
+(82, 14, NULL, NULL, NULL, NULL, 12),
+(83, 15, NULL, NULL, NULL, NULL, 2),
+(84, 15, NULL, 1, NULL, NULL, 9),
+(85, 15, NULL, NULL, NULL, NULL, 7),
+(86, 15, NULL, NULL, NULL, 1, 10),
+(87, 15, NULL, NULL, NULL, NULL, 1),
+(88, 15, NULL, NULL, NULL, NULL, 4),
+(89, 15, NULL, NULL, NULL, NULL, 12),
+(90, 16, NULL, NULL, NULL, NULL, 13),
+(91, 16, NULL, NULL, NULL, NULL, 1),
+(92, 16, 1, NULL, NULL, 1, 4),
+(93, 17, 1, NULL, NULL, 1, 2),
+(94, 17, NULL, NULL, NULL, NULL, 1),
+(95, 17, NULL, NULL, NULL, NULL, 13),
+(96, 18, 1, NULL, NULL, 1, 4),
+(97, 18, NULL, NULL, NULL, NULL, 2),
+(98, 18, NULL, NULL, NULL, NULL, 13),
+(99, 19, NULL, NULL, 1, NULL, 14),
+(100, 19, NULL, NULL, NULL, 1, 12),
+(101, 19, NULL, NULL, NULL, NULL, 1),
+(102, 19, NULL, NULL, NULL, NULL, 2),
+(103, 19, NULL, NULL, NULL, NULL, 4),
+(104, 20, NULL, NULL, NULL, NULL, 2),
+(105, 20, 1, NULL, NULL, 1, 15),
+(107, 20, NULL, NULL, NULL, NULL, 1),
+(108, 20, NULL, NULL, NULL, NULL, 4),
+(109, 20, NULL, NULL, NULL, NULL, 16),
+(110, 21, NULL, 1, NULL, 1, 13),
+(111, 21, NULL, NULL, NULL, NULL, 2),
+(112, 21, NULL, NULL, NULL, NULL, 1),
+(113, 21, NULL, NULL, NULL, NULL, 4),
+(114, 22, NULL, 1, NULL, NULL, 13),
+(115, 22, NULL, NULL, NULL, NULL, 2),
+(116, 22, NULL, NULL, NULL, NULL, 1),
+(117, 22, NULL, NULL, NULL, 1, 17),
+(118, 23, 1, NULL, NULL, 1, 15),
+(119, 23, NULL, NULL, NULL, NULL, 1),
+(120, 24, NULL, NULL, NULL, NULL, 1),
+(121, 24, NULL, 1, NULL, 1, 18),
+(122, 25, NULL, NULL, NULL, NULL, 1),
+(123, 26, NULL, NULL, NULL, NULL, 1),
+(124, 27, NULL, NULL, NULL, NULL, 2),
+(125, 28, NULL, NULL, NULL, NULL, 1),
+(126, 29, NULL, NULL, NULL, NULL, 1),
+(127, 30, NULL, NULL, NULL, NULL, 19),
+(128, 31, NULL, NULL, NULL, NULL, 19),
+(129, 31, NULL, NULL, NULL, NULL, 19),
+(130, 31, NULL, NULL, NULL, NULL, 3),
+(131, 32, NULL, NULL, NULL, NULL, 19),
+(132, 32, NULL, NULL, NULL, NULL, 3),
+(133, 20, NULL, NULL, NULL, NULL, 14),
+(134, 20, NULL, NULL, NULL, NULL, 20);
 
 -- --------------------------------------------------------
 
@@ -371,6 +374,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `telaOrcamento` tinyint(1) NOT NULL,
   `telaProduto` tinyint(1) NOT NULL,
   `telaUsuario` tinyint(1) NOT NULL,
+  `telaCliente` tinyint(1) NOT NULL,
   PRIMARY KEY (`codigo`),
   UNIQUE KEY `usuario` (`usuario`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
@@ -379,9 +383,9 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`codigo`, `nome`, `usuario`, `senha`, `telaCategoria`, `telaOrcamento`, `telaProduto`, `telaUsuario`) VALUES
-(20, 'Rogerio Eduardo Pereira', 'rodu_pereira', '673026bc5f6bf0bdcf136c961e0b3a09', 1, 1, 1, 1),
-(21, 'Administrador', 'docebac_admin', '60517bfbcd49ce758a56feb0d9299494', 1, 1, 1, 1);
+INSERT INTO `usuarios` (`codigo`, `nome`, `usuario`, `senha`, `telaCategoria`, `telaOrcamento`, `telaProduto`, `telaUsuario`, `telaCliente`) VALUES
+(20, 'Rogerio Eduardo Pereira', 'rodu_pereira', '673026bc5f6bf0bdcf136c961e0b3a09', 1, 1, 1, 1, 1),
+(21, 'Administrador', 'docebac_admin', '60517bfbcd49ce758a56feb0d9299494', 1, 1, 1, 1, 1);
 
 --
 -- Constraints for dumped tables
@@ -410,6 +414,7 @@ ALTER TABLE `produtos`
 -- Limitadores para a tabela `produtoscores`
 --
 ALTER TABLE `produtoscores`
+  ADD CONSTRAINT `cor_corpredefinida` FOREIGN KEY (`codigoCoresDefinidas`) REFERENCES `cores` (`codigo`) ON UPDATE CASCADE,
   ADD CONSTRAINT `produtos_cor` FOREIGN KEY (`codigoProduto`) REFERENCES `produtos` (`codigo`) ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

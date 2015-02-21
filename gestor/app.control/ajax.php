@@ -385,7 +385,7 @@
 					</td>																													
 					<td>																													";
 
-			//Banner 1
+			/*//Banner 1
 			if($cor->banner1 == 1)
 				echo "<input type='checkbox' name='banner1_".strval($numeroCor)."'	class='chkBanner1_".strval($numeroCor)."'	value='1' checked>Banner 1<br>";
 			else
@@ -401,7 +401,7 @@
 			if($cor->banner3 == 1)
 				echo "<input type='checkbox' name='banner3_".strval($numeroCor)."'	class='chkBanner3_".strval($numeroCor)."'	value='1' checked>Banner 3<br>";
 			else
-				echo "<input type='checkbox' name='banner3_".strval($numeroCor)."'	class='chkBanner3_".strval($numeroCor)."'	value='1'>Banner 3<br>";
+				echo "<input type='checkbox' name='banner3_".strval($numeroCor)."'	class='chkBanner3_".strval($numeroCor)."'	value='1'>Banner 3<br>";*/
 
 			//Home
 			if($cor->home == 1)
@@ -545,5 +545,19 @@
 			echo 'Orçamento atualizado com sucesso!';
 		else
 			echo 'Falha ao atualizar orçamento!';
+	}
+	else if($request == 'alteraCor')
+	{
+		$controlador = new controladorProdutos();
+		
+		$controlador->setCodigoCores($_POST['codigo']);
+		$controlador->setNomeCores($_POST['nome']);
+		$controlador->setCor1Cores($_POST['cor1']);
+		$controlador->setCor2Cores($_POST['cor2']);
+		
+		if($controlador->atualizaCor())
+			echo 'Cor atualizada com sucesso!';
+		else
+			echo 'Falha ao atualizar cor!';
 	}
 ?>
