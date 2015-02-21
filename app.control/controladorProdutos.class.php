@@ -323,13 +323,25 @@ class controladorProdutos
 
 		//TABELA exposition_gallery
 		$criteria	= new TCriteria;
-		$criteria->add(new TFilter('codigoProduto', '=', $codigo));
+		$criteria->add(new TFilter('p.codigoProduto', '=', $codigo));
+		$criteria->add(new TFilter('p.codigoCoresDefinidas', '=', 'c.codigo'));
 		$criteria->setProperty('order', 'nome');
 		
 		$this->repository = new TRepository2();
 		
-		$this->repository->addColumn('*');
-		$this->repository->addEntity('produtoscores');
+		$this->repository->addColumn('p.codigo as codigo');
+		$this->repository->addColumn('p.codigoProduto as codigoProduto');
+		$this->repository->addColumn('p.codigoProduto as codigoProduto');
+		$this->repository->addColumn('p.banner1 as banner1');
+		$this->repository->addColumn('p.banner2 as banner2');
+		$this->repository->addColumn('p.banner3 as banner3');
+		$this->repository->addColumn('p.home as home');
+		$this->repository->addColumn('p.codigoCoresDefinidas as codigoCoresDefinidas');
+		$this->repository->addColumn('c.nome as nome');
+		$this->repository->addColumn('c.cor1 as cor1');
+		$this->repository->addColumn('c.cor2 as cor2');
+		$this->repository->addEntity('produtoscores p');
+		$this->repository->addEntity('cores c');
 		
 		$this->setCollectionCores($this->repository->load($criteria));
 		
