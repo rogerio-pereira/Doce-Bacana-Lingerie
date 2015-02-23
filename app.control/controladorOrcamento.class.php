@@ -315,6 +315,10 @@ class controladorOrcamento
 		$this->quantidade54 = $quantidade54;
 	}
 
+	function returnCollectioOrcamentosProdutos()
+	{
+		return $this->collectionOrcamentosProdutos;
+	}
 	
 
 	/*
@@ -402,7 +406,7 @@ class controladorOrcamento
 	{
 		try
 		{
-			foreach($this->getCollectionOrcamentosProdutos() as $produto)
+			foreach($this->collectionOrcamentosProdutos as $produto)
 			{
 				$this->setOrcamentoProduto(new orcamentoprodutoModel2());
 				

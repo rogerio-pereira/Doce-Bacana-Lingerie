@@ -656,6 +656,7 @@
 	//Envio de Orçamento
 	else if($formulario == 'enviaOrcamento')
 	{
+		
 		//Não existe cliente logado
 		if($_SESSION['cliente'] == '')
 			echo
@@ -670,7 +671,7 @@
 			
 			$controlador->setCliente($_SESSION['cliente']->codigo);
 			$controlador->setDataHora(date('Y-m-d H:i'));
-			$controlador->setStatus(0);	
+			$controlador->setStatus('0');	
 			
 			if($controlador->salvaOrcamento())
 			{
@@ -713,8 +714,17 @@
 
 				if($controlador->salvaProdutosOrcamento())
 				{
-					if(new enviaEmailOrcamento($codigoOrcamento, $controlador->getCollectionOrcamentosProdutos()));
-						echo "<script>alert('Orçamento enviado com sucesso!');</script>";
+					$email = new enviaEmailOrcamento();
+					$email->iniciaEmail($codigoOrcamento, $controlador->returnCollectioOrcamentosProdutos());
+					
+					if($email->send2())
+					{
+						$_SESSION['orcamento']			= NULL;
+						$_SESSION['produtosOrcamento']	= NULL;
+						echo "<script>alert('Orçamento enviado com sucesso!');top.location='/';</script>";
+					}
+					else
+						echo "<script>alert('Falha ao enviar o orçamento!');top.location='/';</script>";
 				}
 			}
 		}

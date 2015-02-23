@@ -162,11 +162,12 @@
          */
         private function send2()
         {
-            if(mail($this->para, $this->assunto, $this->corpoMensagem, $this->headers, '-r'.$this->para))
+            if(mail($this->para, $this->assunto, $this->corpoMensagem, $this->headers, '-r'.$this->de))
             {
                 echo "
                         <script type='text/javascript'> 
                             alert('Mensagem enviada com sucesso!');
+                            top.location='/';
                         </script>
                     ";
             }
@@ -174,6 +175,7 @@
                 echo "
                         <script type='text/javascript'> 
                             alert(  'Mensagem não enviada');
+                            top.location='/';
                         </script>
                     ";
         }

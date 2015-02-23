@@ -54,40 +54,44 @@
 		{
 			$this->collectionProdutos = $collectionProdutos;
 		}
+		
+		/*
+		 * MÈtodo contrutor
+		 */
+		public function __construct()
+		{
+			
+		}
 
 		
 		
 		        
         /*
-         *  MÈtodo construtor
+         *  MÈtodo iniciaEmail
          *  Inicializa as variaveis, constroi o email, configura servidor e envia
          */
-        public function __construct($codigoOrcamento, $collectionProdutos)
+        public function iniciaEmail($codigoOrcamento, $collectionProdutos)
         {
 			$this->setCodigoOrcamento($codigoOrcamento);
 			$this->setCollectionProdutos($collectionProdutos);
 			
             $this->configuraEmail();
             $this->constroiEmail();
-            //$this->send();
-            if($this->send2())
-				return true;
-			else
-				return false;
         }
-        
-        /*
+
+
+		/*
          *  MÈtodo constroiEmail
          *  Monta o email no formato para ser enviado
          */
-        private function constroiEmail()
+        public function constroiEmail()
         {
             /*
              *  Headers
              */
 			$nome = self::DE;
             $this->headers = "MIME-Version: 1.1\n";
-            $this->headers .= "Content-type: text/plain; charset=iso-8859-1\n";		// ou UTF-8, como queira
+            $this->headers .= "Content-type: text/html; charset=iso-8859-1\n";		// ou UTF-8, como queira
             $this->headers .= "From: {$nome} <{$this->deEmail}}>\n";		       // remetente
             /*$this->headers .= "Return-Path: $this->de\n";							// return-path
             $this->headers .= "Reply-To: $this->de\n";								// EndereÁo (devidamente validado) que o seu usu·rio informou no contato*/
@@ -140,6 +144,7 @@
 									";
 										
 			foreach($this->getCollectionProdutos() as $produto)
+			{
 				$this->corpoMensagem .=
 										"
 											<tr>
@@ -156,6 +161,7 @@
 												<td align='center'>		$produto[10]					</td>	
 											<tr>
 										";
+			}
 			
 			$this->corpoMensagem .=
 									"
@@ -174,7 +180,7 @@
          *  MÈtodo configuraEmail
          *  Configura parametros da classe PHPMailer
          */
-        private function configuraEmail()
+        public function configuraEmail()
         {
             // verifica se existe arquivo de configura√ß√£o para este banco de dados
             if (file_exists("../app.config/mailOrcamento.ini"))
@@ -220,7 +226,7 @@
          *  MÈtodo send
          *  Envia o email
          */
-        private function send()
+        public function send()
         {
             //Envia
             $enviado = $this->mail->Send();
@@ -235,7 +241,7 @@
                 echo "
                         <script type='text/javascript'> 
                             alert('Mensagem enviada com sucesso!');
-                            history.back(1);
+                            top.location='/';
                         </script>
                     ";
             }
@@ -244,7 +250,7 @@
                 echo "
                         <script type='text/javascript'> 
                             alert(  'Mensagem n√£o enviada');
-                            history.back(1)
+							top.location='/';
                         </script>
                     ";
             }
@@ -255,13 +261,15 @@
          *  MÈtodo send2
          *  Envia o email pela funÁ„o mail
          */
-        private function send2()
+        public function send2()
         {
 			if	(
 					mail($this->getDeEmail(),			self::ASSUNTO,		$this->corpoMensagem,	$this->headers,		'-r'.$_SESSION['cliente']->email) &&
 					mail($_SESSION['cliente']->email,	self::ASSUNTO,		$this->corpoMensagem,	$this->headers,		'-r'.$this->getDeEmail())
 				)
-                return true;
+			{
+				return true;
+			}
             else
                 return false;
         }

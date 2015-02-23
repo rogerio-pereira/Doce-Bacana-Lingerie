@@ -213,6 +213,7 @@
                 echo "
                         <script type='text/javascript'> 
                             alert('Mensagem enviada com sucesso!');
+                            history.back(1);
                         </script>
                     ";
             }
@@ -220,10 +221,9 @@
                 echo "
                         <script type='text/javascript'> 
                             alert(  'Mensagem não enviada');
+                            history.back(1);
                         </script>
                     ";
         }
     }
-    
-    new enviaEmail;
 ?>
