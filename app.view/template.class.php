@@ -88,8 +88,7 @@ class template
 				<title>		Doce & Bacana Lingerie 		</title>
 			
 				<!--Meta Tags-->
-				<meta name="description" content=	"">
-				<meta name="keywords" content=	"">
+				<meta name="description" content=	"Fábrica de Lingerie situada em Juruaia. Fazemos encomendas no atacado e varejo">
 				<meta charset='UTF-8' />
 				
 				<!--FavIcon-->
@@ -98,6 +97,7 @@ class template
 				<!--Acentos-->
 				<!--<meta http-equiv="content-type" content="text/html; charset=utf-8" />-->
 				<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+				<link rel="alternate" href="http://www.docebacanalingerie.com.br" hreflang="pt-br" />
 				
 				<!--Fontes-->
 				<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
