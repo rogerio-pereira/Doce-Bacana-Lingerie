@@ -66,7 +66,10 @@
 		$controlador->setAtivo(1);
 		
 		if($controlador->salvar() == true)
+		{
+			$_SESSION['cliente'] = $controlador->getClienteByEmail($controlador->getEmail());
 			echo "<script>alert('Cadastrado com Sucesso!');top.location='/';</script>";
+		}
 		else
 			echo "<script>alert('Falha ao cadastrar!');window.history.back();</script>";
 	}
