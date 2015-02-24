@@ -109,7 +109,7 @@
 					<tr>
 						<td colspan='4' align='center'>
 							<input type='button' value='Visualizar'		onclick='visualizaCliente()'>
-							<input type='button' value='AlterarSenha'	onclick='alteraSenhaCliente()'>
+							<input type='button' value='AlterarSenha'	onclick='redirecionaSenhaCliente()'>
 						</td>
 					</tr>
 				</table>

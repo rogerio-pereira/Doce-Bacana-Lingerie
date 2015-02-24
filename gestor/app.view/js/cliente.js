@@ -12,7 +12,7 @@ function visualizaCliente()
 	
 	top.location='/cliente/'+codigo;
 }
-function alteraSenhaCliente()
+function redirecionaSenhaCliente()
 {
 	var codigo = $('input[name=radioCliente]:checked').val();
 	

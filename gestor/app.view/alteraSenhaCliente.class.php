@@ -39,9 +39,9 @@
 		{
 		?>
 			<h1>Alteração de Senha Cliente</h1>
-			<form class="formulario" name="alteraSenha"	method="post" onsubmit="validaAlteracaoSenhaCliente()">
+			<form class="formulario" name="alteraSenha"	method="post" action='/app.control/ajax.php' onsubmit="validaAlteracaoSenhaCliente()">
 				<input type="hidden" name="formularioNome"		value="alteraSenhaCliente">
-				<input type="hidden" name="codigo" id='codigo'	value="<?php $_GET['cod'] ?>">
+				<input type="hidden" name="codigo" id='codigo'	value="<?php echo $_GET['cod']; ?>">
 				<table class='tabelaFormulario'>
 					<!--Senha Nova-->
 					<tr>
