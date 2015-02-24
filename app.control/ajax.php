@@ -84,11 +84,21 @@
 		
 		if($retorno == true)
 		{
-			echo "Login sucedido!";
+			echo 
+				"
+					<script>
+						top.location='/orcamento';
+					</script>
+				";
 		}
 		else
 		{
-			echo "Falha ao fazer login";
+			echo 
+				"
+					<script>
+						alert('Falha ao fazer login');
+					</script>
+				";
 		}
 	}
 	else if($formulario == 'incluiOrcamento')
