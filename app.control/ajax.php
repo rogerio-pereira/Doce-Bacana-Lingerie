@@ -184,6 +184,7 @@
 				echo "
 						<script>
 							alert('Item incluido no orçamento!');
+							top.location='/orcamento';
 						</script>
 					";
 			}
@@ -191,6 +192,7 @@
 				echo "
 						<script>
 							alert('Item já havia sido incluido no orçamento antes!');
+							top.location='/orcamento';
 						</script>
 					";
 			
@@ -810,6 +812,25 @@
 		else
 		{
 			echo 'Senha Atual Inválida!';
+		}
+	}
+	//Cliente perdeu a senha
+	else if($formulario == 'novaSenha')
+	{
+		$controlador = new controladorClientes();
+		$controlador->setSenha($_POST['senhaNova']);
+		$controlador->setChave($_POST['chave']);
+		
+		if($controlador->alteraSenhaChave())
+		{
+			$_SESSION['cliente'] = $controlador->getClienteByChave2($controlador->getChave());
+			
+			echo "<script>alert('Senha Alterada com Sucesso!');top.location='/';</script>";
+		}
+		else
+		{
+			echo "<script>alert('2');</script>";
+			echo "<script>alert('Falha ao alterar Senha!');</script>";
 		}
 	}
 ?>

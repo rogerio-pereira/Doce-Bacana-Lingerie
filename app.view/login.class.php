@@ -71,7 +71,14 @@ class login
 					<!--Botão-->
 					<tr>
 						<td align=center >
-							<input name='botaoLogin' type='submit' id='botaoLogin' value='Login' onclick='executaLogin()'/>
+							<input name='botaoLogin' type='submit' id='botaoLogin' value='Login' onclick='executaLogin()'/><br>
+							<input 
+								name='botaoEsqueciSenha' 
+								type='button' 
+								id='botaoEsqueciSenha' 
+								value='Esqueci a Senha' 
+								onclick="top.location='/esqueciSenha'"
+							/>
 						</td>
 					</tr>
 				</table>

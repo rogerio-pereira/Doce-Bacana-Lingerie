@@ -88,7 +88,7 @@ class template
 				<title>		Doce & Bacana Lingerie 		</title>
 			
 				<!--Meta Tags-->
-				<meta name="description" content=	"Fábrica de Lingerie situada em Juruaia. Fazemos encomendas no atacado e varejo">
+				<meta name="description" content="Fábrica de Lingerie situada em Juruaia. Fazemos encomendas no atacado e varejo">
 				<meta charset='UTF-8' />
 				
 				<!--FavIcon-->

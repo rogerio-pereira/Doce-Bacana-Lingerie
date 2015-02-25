@@ -490,3 +490,52 @@ function alteraSenha()
 		}
 	});
 }
+
+function validaNovaSenha()
+{
+	var valida;
+	valida = true;
+	
+	if($('#senhaNova').val() == '')
+	{
+		alert('Campo em branco: Senha Nova');
+		$('#senhaNova').focus();
+		return false;
+	}
+	if($('#confirmacao').val() == '')
+	{
+		alert('Campo em branco: Confirmação de Senha');
+		$('#confirmacao').focus();
+		return false;
+	}
+	if( $("#senhaNova").val() != $("#confirmacao").val())
+	{
+		alert( "Confirmação de Senha diferente da Senha" );
+		$("#senhaNova").val('');
+		$("#confirmacao").val('');
+		$('#senhaNova').focus();
+		return false;
+	}	
+	
+	if (valida = true)
+		novaSenha();
+}
+
+function novaSenha()
+{
+	$.ajax
+	({
+		type: "POST",
+		url: "/app.control/ajax.php",
+		data: 
+		{
+			chave:			$('#chave').val(),
+			senhaNova:		$('#senhaNova').val(),
+			formularioNome:	'novaSenha'
+		},
+		success: function(data) 
+		{
+			$('.retornoAjax').html(data);
+		}
+	});
+}	

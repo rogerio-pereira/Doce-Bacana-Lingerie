@@ -26,7 +26,7 @@
 				<!--<h1>Contato</h1>
 				<hr>-->
                 <div class='contatoContent'>
-                    <form class="formulario" name="contato" method="post" action="app.control/enviaEmail.class.php" onsubmit="return validaCamposContato();">
+                    <form class="formulario" name="contato" method="post" action="app.control/enviaEmailSenha.class.php" onsubmit="return validaCamposContato();">
                         <table class="contatoTable">
                             <!--Nome-->
                             <tr>

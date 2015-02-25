@@ -64,7 +64,7 @@
 			<div class='produtoContainer'>
 				<div class='detalheProduto'>
 					<div style="text-align: center; margin: 0px; padding: 0px;">
-						<a class='incluirOrcamento' href='/orcamento' onclick="incluirOrcamento(<?php echo $this->getProduto()->codigoProduto; ?>)">
+						<a class='incluirOrcamento' onclick="incluirOrcamento(<?php echo $this->getProduto()->codigoProduto; ?>)">
 							Incluir no Orçamento
 						</a>
 					</div>

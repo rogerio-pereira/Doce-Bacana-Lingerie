@@ -463,6 +463,31 @@ class controladorClientes
 	}
 	
 	/*
+	 * Método getClienteByChave
+	 * Obtem o cliente pela chave
+	 */
+	public function getClienteByChave2($chave)
+	{
+		$this->setCliente(NULL);
+		$result;
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction2::open('my_bd_site');
+
+		//TABELA exposition_gallery
+		$criteria	= new TCriteria;
+		$criteria->add(new TFilter('chave', '=', $chave));
+		//$criteria->setProperty('order', 'ordem ASC');
+		
+		$this->setCliente( new clientes2());
+		$result = $this->cliente->loadCriteria($criteria);
+		
+		TTransaction2::close();
+		
+		return $result;
+	}
+	
+	/*
 	 * Método ativaClienteByChave
 	 * Obtem o cliente pela chave
 	 */
@@ -586,6 +611,36 @@ class controladorClientes
 			$this->setCliente(new clientes2());
 			
 			$this->cliente->codigo	= $_SESSION['cliente']->codigo;
+			$this->cliente->senha	= $this->getSenha();
+			
+			//RECUPERA CONEXAO BANCO DE DADOS
+			TTransaction2::open('my_bd_site');
+
+			$result = $this->cliente->store();
+
+			TTransaction2::close();
+
+			return true;
+		}
+		catch (Exception $e)
+		{
+			return false;;
+		}
+	}
+	
+	/*
+	 * Método novaSenha
+	 * Altera a senha do usuario ativo
+	 */
+	public function alteraSenhaChave()
+	{
+		try
+		{
+			$this->setCliente(new clientes2());
+			
+			$clienteAux = $this->getClienteByChave2($this->getChave());
+			
+			$this->cliente->codigo	= $clienteAux->codigo;
 			$this->cliente->senha	= $this->getSenha();
 			
 			//RECUPERA CONEXAO BANCO DE DADOS
