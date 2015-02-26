@@ -51,7 +51,7 @@ class template
 				<meta charset='UTF-8' />
 				
 				<!--FavIcon-->
-				<link rel="shortcut icon" type="image/x-icon" href="/app.view/img/favicon2.ico"/>
+				<link rel="shortcut icon" type="image/x-icon" href="/app.view/img/template/favicon2.ico"/>
 				
 				<!--Acentos-->
 				<!--<meta http-equiv="content-type" content="text/html; charset=utf-8" />-->

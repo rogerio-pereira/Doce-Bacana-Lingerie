@@ -81,6 +81,23 @@ class login
 							/>
 						</td>
 					</tr>
+					<tr>
+						<td>
+							<hr>
+						</td>
+					</tr>
+					<tr>
+						<td align='center'>
+							Ainda não é cadastrado<br>
+							<input 
+								name='botaoCadastro' 
+								type='button' 
+								id='botaoCadastro' 
+								value='Cadastro' 
+								onclick="top.location='/cadastro'"
+							/>
+						</td>
+					</tr>
 				</table>
 			  </form>
 		</div>
