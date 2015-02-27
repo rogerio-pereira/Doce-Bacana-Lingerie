@@ -47,7 +47,16 @@
 			<form class="formulario" name="orcamento" method="post" action="app.control/ajax.php" onsubmit="enviaOrcamento">
 				<input type="hidden" name="formularioNome" value="enviaOrcamento">
 				<table class='tabelaFormulario'>
-					<tr><td colspan='10' align='center' style='font-size: 1.3em;'><input type='button' value='Incluir nova referencia' onclick="top.location='/';"></td></tr>
+					<tr>
+						<td colspan='10'>
+							<strong>Preencha a grade com a quantidade desejada de cada produto. Você ainda pode adicionar outras 
+							referências clicando em "Incluir nova Referência", quando incluir todas as referências desejadas
+							e ter preenchido a grade com a quantidade que deseja, clique em "Enviar Orçamento" que está no 
+							final da página.</strong>
+						</td>
+					</tr>
+					<tr><td colspan='10'><hr></td></tr>
+					<tr><td colspan='10' align='center' style='font-size: 1.3em;'><input type='button' value='Incluir nova referência' onclick="top.location='/';"></td></tr>
 					<tr><td colspan='10'><hr></td></tr>
 					<?php
 						if(count($_SESSION['produtosOrcamento']) > 0)
