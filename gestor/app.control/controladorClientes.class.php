@@ -74,6 +74,30 @@ class controladorClientes
 		
 		return $this->collectionClientes;
 	}
+	
+	function getCollectionClientes2()
+	{
+		$this->setCollectionClientes(NULL);
+		
+		//RECUPERA CONEXAO BANCO DE DADOS
+		TTransaction2::open('my_bd_site');
+
+		//TABELA exposition_gallery
+		$criteria	= new TCriteria;
+		//$criteria->add(new TFilter('situacao', '=', $situacao));
+		$criteria->setProperty('order', 'nome');
+		
+		$this->repository = new TRepository2();
+		
+		$this->repository->addColumn('*');
+		$this->repository->addEntity('clientes');
+		
+		$this->setCollectionClientes($this->repository->load($criteria));
+		
+		TTransaction2::close();
+		
+		return $this->collectionClientes;
+	}
 
 	function setCollectionClientes($collectionClientes)
 	{
@@ -133,6 +157,31 @@ class controladorClientes
 			return true;
 		}
 		catch (Exception $e)
+		{
+			return false;
+		}
+	}
+	/*
+	 *	Método apaga2
+	 *	Apaga os clientes com o codigo especifico;
+	 *	Usado em IFRAME
+	 */
+	public function apaga2($codigo)
+	{
+		try
+		{
+			$this->setCliente(new clientesModel2());
+
+			//RECUPERA CONEXAO BANCO DE DADOS
+			TTransaction2::open('my_bd_site');
+
+			$this->cliente->delete($codigo);
+
+			TTransaction2::close();
+
+			return true;
+		}
+		catch(Exception $e)
 		{
 			return false;
 		}

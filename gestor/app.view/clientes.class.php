@@ -67,9 +67,12 @@
 						<td align='center'>
 							Email
 						</td>
+						<td align='center'>
+							Excluir
+						</td>
 					</tr>
 					<tr>
-						<td colspan='4'>
+						<td colspan='5'>
 							<hr>
 						</td>
 					</tr>
@@ -96,20 +99,27 @@
 										<td>
 											{$cliente->email}
 										</td>
+										<td align='center'>
+											<input type='checkbox' name='clientesApagar[]' class='chkClientesApagar' value='{$cliente->codigo}'>
+										</td>
 									</tr>
 								";
 						}
 					?>
 					<tr>
-						<td colspan='4'>
+						<td colspan='5'>
 							<hr>
 						</td>
 					</tr>
 					<!--Botões-->
 					<tr>
-						<td colspan='4' align='center'>
+						<td colspan='5' align='center'>
 							<input type='button' value='Visualizar'		onclick='visualizaCliente()'>
 							<input type='button' value='AlterarSenha'	onclick='redirecionaSenhaCliente()'>
+							<?php
+								if(count($this->getCollectionClientes()) > 0)
+									echo "<input type='button' value='Apagar' onclick='apagaClientes()'>";
+							?>
 						</td>
 					</tr>
 				</table>

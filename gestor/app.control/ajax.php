@@ -560,4 +560,96 @@
 		else
 			echo 'Falha ao atualizar cor!';
 	}
+	//Apagar Categoria
+	else if($request == 'apagaClientes')
+	{
+		$codigos = $_POST['codigos'];
+		$apagado  = 0;
+		
+		$controlador	= new controladorClientes();
+		
+		foreach ($codigos as $codigo)
+		{
+			$controlador->apaga2($codigo);
+		}
+		
+		$collectionCliente = $controlador->getCollectionClientes2();
+		
+		echo
+			"
+				<tr>
+					<td align='center'>
+						Selecionar
+					</td>
+					<td align='center'>
+						Nome
+					</td>
+					<td align='center'>
+						Documento
+					</td>
+					<td align='center'>
+						Email
+					</td>
+					<td align='center'>
+						Excluir
+					</td>
+				</tr>
+				<tr>
+					<td colspan='5'>
+						<hr>
+					</td>
+				</tr>
+			";
+		
+		foreach($collectionCliente as $cliente)
+		{
+			if(isset($cliente->cpf) && ($cliente->cpf != ''))
+				$documento = $cliente->cpf;
+			if(isset($cliente->cnpj) && ($cliente->cnpj != ''))
+				$documento = $cliente->cnpj;
+			echo 
+				"
+					<tr>
+						<td>
+							<input type='radio' name='radioCliente' id='radioCliente' value='{$cliente->codigo}'>
+						</td>
+						<td>
+							{$cliente->nome}
+						</td>
+						<td>
+							{$documento}
+						</td>
+						<td>
+							{$cliente->email}
+						</td>
+						<td align='center'>
+							<input type='checkbox' name='clientesApagar[]' class='chkClientesApagar' value='{$cliente->codigo}'>
+						</td>
+					</tr>
+				";
+		}
+		
+		echo
+			"
+				<tr>
+					<td colspan='5'>
+						<hr>
+					</td>
+				</tr>
+				<!--Botões-->
+				<tr>
+					<td colspan='5' align='center'>
+						<input type='button' value='Visualizar'		onclick='visualizaCliente()'>
+						<input type='button' value='AlterarSenha'	onclick='redirecionaSenhaCliente()'>
+			";
+		
+		if(count($this->getCollectionClientes()) > 0)
+			echo "<input type='button' value='Apagar' onclick='apagaClientes()'>";
+		
+		echo
+			"
+					</td>
+				</tr>
+			";
+	}
 ?>

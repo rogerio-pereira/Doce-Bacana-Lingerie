@@ -68,3 +68,26 @@ function alteraSenhaCliente()
 		}
 	});
 }
+
+function apagaClientes()
+{
+	var arrCod = [];
+	$(".chkClientesApagar:checked").each(function() {
+		arrCod.push($(this).val());
+	});
+	
+	$.ajax
+	({
+		type: "POST",
+		url: "/app.control/ajax.php",
+		data: 
+		{
+			codigos:		arrCod,
+			formularioNome:	'apagaClientes'
+		},
+		success: function(data) 
+		{
+			$('.tabelaFormulario').html(data);
+		}
+	});	
+}
