@@ -652,4 +652,19 @@
 				</tr>
 			";
 	}
+	else if($request == 'salvaTutorial')
+	{
+		
+		$link = $_POST['link'];
+		if(strpos($link, 'watch?v=') !== false)
+			$link = str_replace('watch?v=', 'embed/', $link);
+		
+		$controlador = new controladorTutorial();
+		
+		$controlador->setLink($link);
+		if($controlador->salva())
+			echo "";
+		else
+			echo "";
+	}
 ?>

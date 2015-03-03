@@ -77,6 +77,7 @@ class template
 				<script type="text/javascript" src="/app.view/js/produto.js"></script>
 				<script type="text/javascript" src="/app.view/js/orcamento.js"></script>
 				<script type="text/javascript" src="/app.view/js/cliente.js"></script>
+				<script type="text/javascript" src="/app.view/js/tutorial.js"></script>
 			</head>
 			<body>
 				<div id='page'>
@@ -101,6 +102,7 @@ class template
 								if($_SESSION['usuario']->telaUsuario == true)
 									echo "<a href='/usuarios'><li>		Usuarios	</li></a>";
 							?>
+								<a href='/tutorial'><li>	Video Tutorial	</li></a>
 								<a href='/senha'><li>		Alterar Senha	</li></a>
 								<a href='/logoff'><li>		Logoff			</li></a>
 							</ul>
@@ -138,6 +140,7 @@ class template
 								if($_SESSION['usuario']->telaUsuario == true)
 									echo "<a href='/usuarios'><li>		Usuarios	</li></a>";
 							?>
+								<a href='/tutorial'><li>	Video Tutorial	</li></a>
 								<a href='/senha'><li>		Alterar Senha	</li></a>
 								<a href='/logoff'><li>		Logoff			</li></a>
 							</ul>
@@ -165,6 +168,7 @@ class template
 									if($_SESSION['usuario']->telaUsuario == true)
 										echo "<a href='/usuarios'><li>		Usuarios	</li></a>";
 								?>
+									<a href='/tutorial'><li>	Video Tutorial	</li></a>
 									<a href='/senha'><li>		Alterar Senha	</li></a>
 									<a href='/logoff'><li>		Logoff			</li></a>
 								</ul>

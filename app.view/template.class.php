@@ -144,7 +144,7 @@ class template
 							<a href="/cadastro" title='Cadastro'><li>	Cadastre-se			</a></li></a>
 							<a><li>										<br>				</li></a>
 							<a href='/'><li>							Home				</li></a>
-							<a href='/empresa'><li>						Quem Somos			</li></a>
+							<!--<a href='/empresa'><li>						Quem Somos			</li></a>-->
 							<a href='/produtos'><li>					Produtos			</li></a>
 							<li>
 								<ul>
@@ -159,6 +159,7 @@ class template
 							<a href='/embalagens'><li>					Embalagens			</li></a>
 							<a href='/medidas'><li>						Guia de Medidas		</li></a>
 							<a href='/orcamento'><li>					Orçamento			</li></a>
+							<a href='/tutorial'><li>					Passo a Passo		</li></a>
 							<a href='/contato'><li>						Contato				</li></a>
 						</ul>
 					</nav>
@@ -199,11 +200,12 @@ class template
 						<nav id='navMenuPrincipal'>
 							<ul id='navMenuPrincipalLista'>
 								<a href='/'><li>Home</li></a>
-								<a href='/empresa'><li>Quem Somos</li></a>
+								<!--<a href='/empresa'><li>Quem Somos</li></a>-->
 								<a href='/produtos'><li>Produtos</li></a>
 								<a href='/embalagens'><li>Embalagens</li></a>
 								<a href='/medidas'><li>Guia de Medidas</li></a>
 								<a href='/orcamento'><li>Orçamento</li></a>
+								<a href='/tutorial'><li>Passo a Passo</li></a>
 								<a href='/contato'><li>Contato</li></a>
 							</ul>
 						</nav>
@@ -287,6 +289,7 @@ class template
 												<a href='/empresa'				title='Quem Somos'				alt='Quem Somos'>				Quem Somos				</a><br>
 												<a href='/politicaCompras'		title='Politica de Compras'		alt='Politica de Compras'>		Politica de Compras		</a><br>
 												<a href='/pagamento'			title='Formas de Pagamento'		alt='Formas de Pagamento'>		Formas de Pagamento		</a><br>
+												<a href='/tutorial'				title='Passo a Passo'			alt='Passo a Passo'>			Passo a Passo			</a><br>
 											</p>
 										</div>
 										<div id='footerDescConta'>
