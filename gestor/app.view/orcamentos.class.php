@@ -60,6 +60,9 @@
 							Selecionar
 						</td>
 						<td align='center'>
+							Código
+						</td>
+						<td align='center'>
 							Cliente
 						</td>
 						<td align='center'>
@@ -73,7 +76,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td colspan='5'>
+						<td colspan='6'>
 							<hr>
 						</td>
 					</tr>
@@ -103,6 +106,9 @@
 											<input type='radio' name='radioOrcamento' id='radioOrcamento' value='{$orcamento->codigo}'>
 										</td>
 										<td>
+											{$orcamento->codigo}
+										</td>
+										<td>
 											{$orcamento->cliente}
 										</td>
 										<td>
@@ -119,13 +125,13 @@
 						}
 					?>
 					<tr>
-						<td colspan='5'>
+						<td colspan='6'>
 							<hr>
 						</td>
 					</tr>
 					<!--Botões-->
 					<tr>
-						<td colspan='5' align='center'>
+						<td colspan='6' align='center'>
 							<input type='button' value='Selecionar' onclick='selecionaOrcamento()'>
 						</td>
 					</tr>
