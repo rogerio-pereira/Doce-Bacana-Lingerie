@@ -10,7 +10,7 @@
 		 * Constantes
 		 */
 		const DE		= 'Orçamento - Doce & Bacana Lingerie';
-		const ASSUNTO	= 'Solicitação de Orçamento';
+		const ASSUNTO	= 'Solicitação de Orçamento - Código ';
 		
 		/*
 		 * Variaveis
@@ -142,12 +142,17 @@
 												<td style='padding: 0 10px 0 10px'>		<strong>54</strong>				</td>
 											</tr>
 									";
-										
+								
+			$linha = 0;
 			foreach($this->getCollectionProdutos() as $produto)
 			{
+				if(($linha % 2) == 0 )
+					$this->corpoMensagem .= "<tr style='background-color: #cbcbcb;'>";
+				else
+					$this->corpoMensagem .= "<tr>";
+				
 				$this->corpoMensagem .=
 										"
-											<tr>
 												<td>					$produto[11]					</td>
 												<td>					$produto[12]					</td>
 												<td align='center'>		$produto[2]						</td>
@@ -161,6 +166,7 @@
 												<td align='center'>		$produto[10]					</td>	
 											<tr>
 										";
+				$linha++;
 			}
 			
 			$this->corpoMensagem .=
@@ -264,8 +270,8 @@
         public function send2()
         {
 			if	(
-					mail($this->getDeEmail(),			self::ASSUNTO,		$this->corpoMensagem,	$this->headers,		'-r'.$_SESSION['cliente']->email) &&
-					mail($_SESSION['cliente']->email,	self::ASSUNTO,		$this->corpoMensagem,	$this->headers,		'-r'.$this->getDeEmail())
+					mail($this->getDeEmail(),			self::ASSUNTO.$this->getCodigoOrcamento(),	$this->corpoMensagem,	$this->headers,		'-r'.$_SESSION['cliente']->email) &&
+					mail($_SESSION['cliente']->email,	self::ASSUNTO.$this->getCodigoOrcamento(),	$this->corpoMensagem,	$this->headers,		'-r'.$this->getDeEmail())
 				)
 			{
 				return true;
