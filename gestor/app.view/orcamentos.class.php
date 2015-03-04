@@ -74,9 +74,12 @@
 						<td>
 							Status
 						</td>
+						<td>
+							Excluir
+						</td>
 					</tr>
 					<tr>
-						<td colspan='6'>
+						<td colspan='7'>
 							<hr>
 						</td>
 					</tr>
@@ -120,19 +123,26 @@
 										<td>
 											{$status}
 										</td>
+										<td align='center'>
+											<input type='checkbox' name='orcamentosApagar[]' class='chkOrcamentosApagar' value='{$orcamento->codigo}'>
+										</td>
 									</tr>
 								";
 						}
 					?>
 					<tr>
-						<td colspan='6'>
+						<td colspan='7'>
 							<hr>
 						</td>
 					</tr>
 					<!--Botões-->
 					<tr>
-						<td colspan='6' align='center'>
+						<td colspan='7' align='center'>
 							<input type='button' value='Selecionar' onclick='selecionaOrcamento()'>
+							<?php
+								if(count($this->getCollectionOrcamento()) > 0)
+									echo "<input type='button' value='Apagar' onclick='apagaOrcamentos()'>";
+							?>
 						</td>
 					</tr>
 				</table>

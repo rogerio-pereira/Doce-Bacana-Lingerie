@@ -667,4 +667,119 @@
 		else
 			echo "";
 	}
+	else if($request == 'apagaOrcamento')
+	{
+		$codigos = $_POST['codigos'];
+		
+		$controlador	= new controladorOrcamentos();
+		
+		foreach ($codigos as $codigo)
+		{
+			if($controlador->apagaProdutoOrcamento($codigo))
+				$controlador->apagaOrcamento($codigo);
+		}
+		
+		$collectionOrcamento = $controlador->getCollectionOrcamentos2();
+		
+		echo 
+			"
+				<tr>
+					<td align='center'>
+						Selecionar
+					</td>
+					<td align='center'>
+						Código
+					</td>
+					<td align='center'>
+						Cliente
+					</td>
+					<td align='center'>
+						Data e Hora
+					</td>
+					<td align='center'>
+						Quantidade de itens
+					</td>
+					<td>
+						Status
+					</td>
+					<td>
+						Excluir
+					</td>
+				</tr>
+				<tr>
+					<td colspan='7'>
+						<hr>
+					</td>
+				</tr>
+			";
+		
+		
+		foreach($collectionOrcamento as $orcamento)
+		{
+			
+			$data = $controlador->converteData($orcamento->dataHora);
+
+			if($orcamento->status == 0)
+				$status = 'Aberto';
+			else if($orcamento->status == 1)
+				$status = 'Realizando Orçamento';
+			else if($orcamento->status == 2)
+				$status = 'Aguardando Cliente';
+			else if($orcamento->status == 3)
+				$status = 'Aguardando Pagamento';
+			else if($orcamento->status == 4)
+				$status = 'Postado no Correio';
+			else if($orcamento->status == 5)
+				$status = 'Entregue';
+
+			echo
+				"
+					<tr>
+						<td align='center'>
+							<input type='radio' name='radioOrcamento' id='radioOrcamento' value='{$orcamento->codigo}'>
+						</td>
+						<td>
+							{$orcamento->codigo}
+						</td>
+						<td>
+							{$orcamento->cliente}
+						</td>
+						<td>
+							{$data}
+						</td>
+						<td align='center'>
+							{$orcamento->total}
+						</td>
+						<td>
+							{$status}
+						</td>
+						<td align='center'>
+							<input type='checkbox' name='orcamentosApagar[]' class='chkOrcamentosApagar' value='{$orcamento->codigo}'>
+						</td>
+					</tr>
+				";
+		}
+		
+		echo
+			"
+				<tr>
+					<td colspan='7'>
+						<hr>
+					</td>
+				</tr>
+				<!--Botões-->
+				<tr>
+					<td colspan='7' align='center'>
+						<input type='button' value='Selecionar' onclick='selecionaOrcamento()'>
+			";
+		
+		if(count($collectionOrcamento > 0))
+			echo "<input type='button' value='Apagar' onclick='apagaOrcamentos()'>";
+		
+		echo 
+			'
+					</td>
+				</tr>
+			';
+	}
 ?>

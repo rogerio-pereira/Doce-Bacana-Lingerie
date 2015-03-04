@@ -198,6 +198,31 @@
 			}			
 		}
 		
+		public function deleteCriteria($criteria)
+		{
+		
+			$codigo = $codigo ? $codigo : $this->codigo;
+			
+			// cria instruÃ§Ã£o SQL
+			$sql = new TSqlDelete;
+			$sql->addEntity($this->getEntity());
+			
+			//$criteria = new TCriteria;
+			//$criteria->add(new TFilter('codigo', '=', $codigo));
+			$sql->setCriteria($criteria);	
+
+			if ( $conn = TTransaction2::get() ) 
+			{
+				$result = $conn->exec($sql->getInstruction());
+
+				return $result;
+			}
+			else
+			{
+				throw new Exception('Não há transação ativa');
+			}			
+		}
+		
 		public function getLast()
 		{
 			if ( $conn = TTransaction2::get() ) 

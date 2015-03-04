@@ -67,6 +67,39 @@
 
 			return $this->collectionOrcamentos;
 		}
+		
+		function getCollectionOrcamentos2()
+		{
+			$this->setCollectionOrcamentos(NULL);
+		
+			//RECUPERA CONEXAO BANCO DE DADOS
+			TTransaction2::open('my_bd_site');
+			//TABELA exposition_gallery
+			$criteria	= new TCriteria;
+			//$criteria->add(new TFilter('situacao', '=', $situacao));
+			$criteria->add(new TFilter('o.cliente', '=', 'c.codigo'));
+			$criteria->add(new TFilter('o.codigo', '=', 'p.codigoOrcamento'));
+			$criteria->setProperty('group', 'codigoOrcamento');
+			$criteria->setProperty('order', 'c.codigo DESC');	
+			
+			$this->repository = new TRepository2();
+
+			$this->repository->addColumn('o.codigo as codigo');
+			$this->repository->addColumn('o.status as status');
+			$this->repository->addColumn('p.codigoOrcamento as codigoOrcamento');
+			$this->repository->addColumn('c.nome as cliente');
+			$this->repository->addColumn('o.dataHora as dataHora');
+			$this->repository->addColumn('count(p.codigo) as total');
+			$this->repository->addEntity('orcamento o');
+			$this->repository->addEntity('clientes c');
+			$this->repository->addEntity('orcamentoproduto p');
+
+			$this->setCollectionOrcamentos($this->repository->load($criteria));
+			
+			TTransaction2::close();
+
+			return $this->collectionOrcamentos;
+		}
 
 		function getCollectionOrcamentosProdutos($codigo)
 		{
@@ -206,6 +239,92 @@
 				return false;
 			}
 		}
-	}
+		
+		/*
+		 *	Método apagaOrcamento
+		 *	Apaga o orçamento com o codigo especifico;
+		 *	Usado em IFRAME
+		 */
+		public function apagaOrcamento($codigo)
+		{
+			try
+			{
+				$this->setOrcamento(new orcamentoModel2());
 
+				//RECUPERA CONEXAO BANCO DE DADOS
+				TTransaction2::open('my_bd_site');
+
+				$this->orcamento->delete($codigo);
+
+				TTransaction2::close();
+
+				return true;
+			}
+			catch(Exception $e)
+			{
+				return false;
+			}
+		}
+		
+		/*
+		 *	Método apagaProdutoOrcamento
+		 *	Apaga os produtos do orçamento com o codigo especifico;
+		 *	Usado em IFRAME
+		 */
+		public function apagaProdutoOrcamento($codigo)
+		{
+			try
+			{
+				$this->setOrcamento(new orcamentoprodutoModel2());
+
+				//RECUPERA CONEXAO BANCO DE DADOS
+				TTransaction2::open('my_bd_site');
+				
+				$criteria	= new TCriteria;
+				$criteria->add(new TFilter('codigoOrcamento', '=', $codigo));
+
+				$this->orcamento->deleteCriteria($criteria);
+
+				TTransaction2::close();
+				
+				return true;
+			}
+			catch(Exception $e)
+			{
+				return false;
+			}
+		}
+		
+		/*
+         *  Método converteData
+         *  Converte da data
+         *  Brasileiro -> Banco de Dados
+         *  Banco de Dados -> Brasileiro
+         *  @param $data = Data a ser convertida
+         */
+        public function converteData($data)
+        {
+            $array		= array();
+			$dateTime	= array();
+            $convert;
+			
+			$dateTime = explode(' ', $data);
+			$data = $dateTime[0];
+			
+            //Data no formato Brasileiro
+            if(strstr($data, '/'))
+            {
+                $array      = explode('/', $data);
+                $convert    = $array[2] . '-' . $array[1] . '-' . $array[0];
+            }
+            if(strstr($data, '-'))
+            {
+                $array      = explode('-', $data);
+                $convert    = $array[2] . '/' . $array[1] . '/' . $array[0];
+            }
+			$convert = $convert.' '.$dateTime[1];
+			
+            return $convert;
+        }
+	}
 ?>

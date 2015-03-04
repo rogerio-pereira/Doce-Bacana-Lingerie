@@ -40,3 +40,26 @@ function atualizaOrcamento()
 		}
 	});
 }
+
+function apagaOrcamentos()
+{
+	var arrCod = [];
+	$(".chkOrcamentosApagar:checked").each(function() {
+		arrCod.push($(this).val());
+	});
+	
+	$.ajax
+	({
+		type: "POST",
+		url: "/app.control/ajax.php",
+		data: 
+		{
+			codigos:		arrCod,
+			formularioNome:	'apagaOrcamento'
+		},
+		success: function(data) 
+		{
+			$('.tabelaFormulario').html(data);
+		}
+	});	
+}

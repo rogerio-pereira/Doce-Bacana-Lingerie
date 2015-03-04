@@ -119,7 +119,7 @@
 			}
 			else
 			{
-				throw new Exception('NÃ£o hÃ¡ transaÃ§Ã£o ativa');
+				throw new Exception('Não há transação ativa');
 			}
 		}
 		
@@ -145,7 +145,7 @@
 			}
 			else
 			{
-				throw new Exception('Nï¿½o hï¿½ transaï¿½ï¿½o ativa');
+				throw new Exception('Não há transação ativa');
 			}
 		}
 		
@@ -171,7 +171,7 @@
 			}
 			else
 			{
-				throw new Exception('Nï¿½o hï¿½ transaï¿½ï¿½o ativa');
+				throw new Exception('Não há transação ativa');
 			}
 		}
 		
@@ -196,7 +196,32 @@
 			}
 			else
 			{
-				throw new Exception('NÃ£o hÃ¡ transaÃ§Ã£o ativa');
+				throw new Exception('Não há transação ativa');
+			}			
+		}
+		
+		public function deleteCriteria($criteria)
+		{
+		
+			$codigo = $codigo ? $codigo : $this->codigo;
+			
+			// cria instruÃ§Ã£o SQL
+			$sql = new TSqlDelete;
+			$sql->addEntity($this->getEntity());
+			
+			//$criteria = new TCriteria;
+			//$criteria->add(new TFilter('codigo', '=', $codigo));
+			$sql->setCriteria($criteria);	
+
+			if ( $conn = TTransaction::get() ) 
+			{
+				$result = $conn->exec($sql->getInstruction());
+
+				return $result;
+			}
+			else
+			{
+				throw new Exception('Não há transação ativa');
 			}			
 		}
 		
@@ -216,7 +241,7 @@
 			}
 			else
 			{
-				throw new Exception('NÃ£o hÃ¡ transaÃ§Ã£o ativa');
+				throw new Exception('Não há transação ativa');
 			}			
 		}
 	}
